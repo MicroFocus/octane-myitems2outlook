@@ -1,0 +1,38 @@
+﻿using OctaneMyItemsSyncService.Services;
+using System;
+using System.Linq;
+
+namespace OctaneMyItemsSyncServiceDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Test();
+
+            Console.ReadKey();
+        }
+
+        static async void Test()
+        {
+            OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
+            await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
+
+            octaneService.SetDefaultSharespace(1001);
+
+            var workspaces = await octaneService.GetWorkspace();
+            octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.id == 2011));
+
+            var backlogs = await octaneService.GetBacklogs();
+            var myBacklogs = await octaneService.GetMyBacklogs();
+
+            var tests = await octaneService.GetTests();
+            var myTests = await octaneService.GetMyTests();
+
+            var runs = await octaneService.GetRuns();
+            var myRuns = await octaneService.GetMyRuns();
+
+            await octaneService.Logout();
+        }
+    }
+}
