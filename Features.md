@@ -24,6 +24,7 @@ Outlook Plug-in for ALM Octane Functional Spec
 * Refresh task in this category, meaning delete all old ones and create new ones for each work item.
 * The task should contain item type and basic fields and descriptions of the work item.
 ** Task name = id + "-" + name in octane.
+** A url at the top (and the bottom) links to the entity details in Octane.
 ** Show the description in the html format similar to web ui.
 ** [P1] comments.
 ** [P1] download attachments and attach them to the task.
