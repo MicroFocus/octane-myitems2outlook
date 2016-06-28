@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="MyGroup"
+               label="Octane My Items">
+          <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" />
+          <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" />
+
+      </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

@@ -3,3 +3,10 @@
 ################################################################################
 
 /OctaneMyItems/OctaneMyItems/bin/Debug
+/OctaneMyItems/OctaneMyItems/obj/Debug
+/OctaneMyItems/OctaneMyItems/publish
+/OctaneMyItems/OctaneMyItemsSyncService/bin/Debug
+/OctaneMyItems/OctaneMyItemsSyncServiceDemo/bin/Debug
+/OctaneMyItems/OctaneMyItemsSyncService/obj/Debug
+/OctaneMyItems/OctaneMyItemsSyncServiceDemo/obj/Debug
+/OctaneMyItems/packages
