@@ -12,6 +12,7 @@ namespace OctaneMyItemsSyncService.Services
         private readonly string _octaneServer;
         private HttpClient _httpClient;
 
+        private string _currentUserName;
         private User _currentUser;
         private int _defaultSharespaceId;
         private Workspace _defaultWorkspace;
@@ -47,10 +48,7 @@ namespace OctaneMyItemsSyncService.Services
             }
 
             _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_MQM_UI");
-
-            var response1 = await _httpClient.GetAsync($"api/shared_spaces/1001/workspaces/2011/workspace_users?query=\"name='{user}'\"");
-            var result1 = await response1.Content.ReadAsAsync<Users>();
-            _currentUser = result1.data[0];
+            _currentUserName = user;
         }
         public async Task Logout()
         {
@@ -62,9 +60,12 @@ namespace OctaneMyItemsSyncService.Services
         {
             _defaultSharespaceId = sharespaceId;
         }
-        public void SetDefaultWorkspace(Workspace workspace)
+        public async Task SetDefaultWorkspace(Workspace workspace)
         {
             _defaultWorkspace = workspace;
+            var response = await _httpClient.GetAsync($"api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
+            var result = await response.Content.ReadAsAsync<Users>();
+            _currentUser = result.data[0];
         }
 
         public async Task<Workspaces> GetWorkspace()

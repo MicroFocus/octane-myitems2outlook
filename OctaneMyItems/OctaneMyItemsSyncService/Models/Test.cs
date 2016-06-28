@@ -18,7 +18,7 @@ namespace OctaneMyItemsSyncService.Models
         public object description { get; set; }
         public string script_path { get; set; }
         public bool manual { get; set; }
-        public int latest_version { get; set; }
+        public int? latest_version { get; set; }
         public string subtype { get; set; }
         public int steps_num { get; set; }
         public int id { get; set; }

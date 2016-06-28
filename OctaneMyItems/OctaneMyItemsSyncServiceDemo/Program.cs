@@ -21,7 +21,7 @@ namespace OctaneMyItemsSyncServiceDemo
             octaneService.SetDefaultSharespace(1001);
 
             var workspaces = await octaneService.GetWorkspace();
-            octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.id == 2011));
+            await octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.name == "D22438_Aimon_Xia_My_Items_2_Outlook"));
 
             var backlogs = await octaneService.GetBacklogs();
             var myBacklogs = await octaneService.GetMyBacklogs();
