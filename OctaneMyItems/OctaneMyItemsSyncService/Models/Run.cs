@@ -39,7 +39,7 @@ namespace OctaneMyItemsSyncService.Models
         public object package { get; set; }
         public Test test { get; set; }
         public Native_Status native_status { get; set; }
-        public Run_By run_by { get; set; }
+        public User run_by { get; set; }
         public object test_level { get; set; }
         public DateTime started { get; set; }
         public object product_areas_hash { get; set; }
@@ -62,6 +62,7 @@ namespace OctaneMyItemsSyncService.Models
     public class Release
     {
         public string type { get; set; }
+        public string name { get; set; }
         public int id { get; set; }
     }
 
@@ -77,11 +78,6 @@ namespace OctaneMyItemsSyncService.Models
         public int id { get; set; }
     }
 
-    public class Run_By
-    {
-        public string type { get; set; }
-        public int id { get; set; }
-    }
 
     public class Status
     {

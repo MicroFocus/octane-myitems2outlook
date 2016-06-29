@@ -26,13 +26,13 @@ namespace OctaneMyItemsSyncService.Models
         public DateTime last_modified { get; set; }
         public int? approved_version { get; set; }
         public Phase phase { get; set; }
-        public Owner owner { get; set; }
+        public User owner { get; set; }
         public object package { get; set; }
         public bool has_attachments { get; set; }
         public DateTime created { get; set; }
         public Product_Areas product_areas { get; set; }
         public object test_level { get; set; }
-        public Designer designer { get; set; }
+        public User designer { get; set; }
         public object estimated_duration { get; set; }
         public string sha { get; set; }
         public object identity_hash { get; set; }
@@ -59,11 +59,6 @@ namespace OctaneMyItemsSyncService.Models
         public int id { get; set; }
     }
 
-    public class Designer
-    {
-        public string type { get; set; }
-        public int id { get; set; }
-    }
 
     public class Test_Type
     {
