@@ -77,6 +77,12 @@ namespace OctaneMyItemsSyncService.Models
 
     }
 
+    public class TestScript
+    {
+        public string script { get; set; }
+        public string sha { get; set; }
+    }
+
     //public class Automation_Status
     //{
     //    public string type { get; set; }

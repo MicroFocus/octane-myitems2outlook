@@ -100,6 +100,14 @@ namespace OctaneMyItemsSyncService.Services
             return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand));
         }
 
+        public async Task<TestScript> GetTestScript(int test_id)
+        {
+            var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
+            var response = await _httpClient.GetAsync(url);
+            return await response.Content.ReadAsAsync<TestScript>();
+        }
+
+
         public async Task<Runs> GetRuns(string parameters = null)
         {
             var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/runs";
@@ -112,5 +120,13 @@ namespace OctaneMyItemsSyncService.Services
             var query = "run_by={id=" + _currentUser.id + "};(native_status={logical_name EQ 'list_node.run_native_status.planned' }||native_status={logical_name EQ 'list_node.run_native_status.blocked'}||native_status={logical_name EQ 'list_node.run_native_status.not_completed'});((parent_suite={null};subtype EQ 'run_manual')||(subtype EQ 'run_suite'))";            var expand = "$all{fields = name}";
             return await GetRuns(string.Format("query=\"{0}\"&skip_subtype_filter={1}&expand={2}", query, true, expand));
         }
+
+        public async Task<Run_Steps> GetRunSteps(int run_id)
+        {
+            var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/run_steps" + "?query=\"run={id=" + run_id + "}\"";
+            var response = await _httpClient.GetAsync(url);
+            return await response.Content.ReadAsAsync<Run_Steps>();
+        }
+
     }
 }

@@ -72,4 +72,24 @@ namespace OctaneMyItemsSyncService.Models
     //    public object[] data { get; set; }
     //}
 
+    public class Run_Steps
+    {
+        public int total_count { get; set; }
+        public Run_Step[] data { get; set; }
+        public bool exceeds_total_count { get; set; }
+    }
+
+    public class Run_Step
+    {
+        public string type { get; set; }
+        public DateTime creation_time { get; set; }
+        public DateTime last_modified { get; set; }
+        public string result { get; set; }
+        public string actual { get; set; }
+        public string description { get; set; }
+        public long id { get; set; }
+        public int? order { get; set; }
+        public int version_stamp { get; set; }
+        public ListNode step_type { get; set; }
+    }
 }
