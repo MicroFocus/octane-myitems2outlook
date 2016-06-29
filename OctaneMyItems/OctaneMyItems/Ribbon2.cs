@@ -55,30 +55,28 @@ namespace OctaneMyItems
        Bitmap bitmap =(Bitmap) Properties.Resources.ResourceManager.GetObject("OptionsButtonIcon");
       Stream s = this.GetType().Assembly.GetManifestResourceStream("OptionsButtonIcon");
       //this.GetType().Assembly
-      string imageName = string.Empty;
+      Bitmap bmp = null;
       switch (button.Id)
       {
         case "configuration":
-          imageName = "Options";
+          bmp = Images.Resource.OptionsButtonIcon;
           break;
         case "syncAll":
-          imageName = "SyncAll";
+          bmp = Images.Resource.SyncAllButtonIcon;
           break;
         case "syncBacklogItem":
-          imageName = "syncBacklogItem";
+          bmp = Images.Resource.SyncBacklogItemButtonIcon;
           break;
         case "syncTest":
-          imageName = "SyncTest";
+          bmp = Images.Resource.SyncTestButtonIcon;
           break;
         case "syncRun":
-          imageName = "SyncRun";
+          bmp = Images.Resource.SyncRunButtonIcon;
           break;
         default:
           break;
       }
-
-      string imagePath = string.Format(@"C:\Users\xitian\Source\Repos\D22438_My_Items_2_Outlook\OctaneMyItems\OctaneMyItems\Resources\{0}ButtonIcon.png", imageName);
-      Bitmap bmp = new Bitmap(imagePath);
+      
       return bmp;
     }
 
