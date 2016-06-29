@@ -40,7 +40,7 @@
             this.m_sharedSpaceId = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.m_workSpaces = new System.Windows.Forms.ComboBox();
+            this.m_workspacesComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -146,16 +146,16 @@
             // 
             // m_workSpaces
             // 
-            this.m_workSpaces.FormattingEnabled = true;
-            this.m_workSpaces.Location = new System.Drawing.Point(136, 238);
-            this.m_workSpaces.Name = "m_workSpaces";
-            this.m_workSpaces.Size = new System.Drawing.Size(341, 24);
-            this.m_workSpaces.TabIndex = 9;
+            this.m_workspacesComboBox.FormattingEnabled = true;
+            this.m_workspacesComboBox.Location = new System.Drawing.Point(136, 238);
+            this.m_workspacesComboBox.Name = "m_workSpaces";
+            this.m_workspacesComboBox.Size = new System.Drawing.Size(341, 24);
+            this.m_workspacesComboBox.TabIndex = 9;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.m_workSpaces);
+            this.groupBox1.Controls.Add(this.m_workspacesComboBox);
             this.groupBox1.Controls.Add(this.buttonTestConnection);
             this.groupBox1.Controls.Add(this.m_password);
             this.groupBox1.Controls.Add(this.label3);
@@ -216,7 +216,7 @@
     private System.Windows.Forms.TextBox m_sharedSpaceId;
     private System.Windows.Forms.Button buttonOK;
     private System.Windows.Forms.Button buttonCancel;
-    private System.Windows.Forms.ComboBox m_workSpaces;
+    private System.Windows.Forms.ComboBox m_workspacesComboBox;
     private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
     }
