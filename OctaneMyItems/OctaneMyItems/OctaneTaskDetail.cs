@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Office = Microsoft.Office.Core;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -36,29 +32,43 @@ namespace OctaneMyItems
       var octane = octaneTask.UserProperties["Octane"];
       if (octane == null) return;
 
-      if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+      try
       {
-        var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-        p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
-        wb_description.DocumentText = backlog.description;
+        if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+        {
+          var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
+          p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
+          wb_description.DocumentText = backlog.description;
+        }
+        else if ("\"Story\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+        {
+          var story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
+          p_fields.Controls.Add(new FieldsDetail_Story(story) { Dock = System.Windows.Forms.DockStyle.Fill });
+          wb_description.DocumentText = story.description;
+        }
+        else if ("\"Run\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+        {
+          var run = JsonConvert.DeserializeObject<Run>(octane.Value);
+          p_fields.Controls.Add(new FieldsDetail_Run(run) { Dock = System.Windows.Forms.DockStyle.Fill });
+          wb_description.DocumentText = run.description;
+        }
+        else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+        {
+          var test = JsonConvert.DeserializeObject<Test>(octane.Value);
+          p_fields.Controls.Add(new FieldsDetail_Test(test) { Dock = System.Windows.Forms.DockStyle.Fill });
+          wb_description.DocumentText = test.description;
+        }
+        else
+        {
+          Visible = false;
+          Height = 0;
+        }
       }
-      else if ("\"Story\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
+      catch (Exception ex)
       {
-        var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-        p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
-        wb_description.DocumentText = backlog.description;
-      }
-      else if ("\"Run\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
-      {
-        var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-        p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
-        wb_description.DocumentText = backlog.description;
-      }
-      else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
-      {
-        var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-        p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
-        wb_description.DocumentText = backlog.description;
+        System.Windows.Forms.MessageBox.Show(ex.Message);
+        Visible = false;
+        Height = 0;
       }
     }
 

@@ -189,6 +189,24 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FieldsDetail_Test.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FieldsDetail_Test.Designer.cs">
+      <DependentUpon>FieldsDetail_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FieldsDetail_Run.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FieldsDetail_Run.Designer.cs">
+      <DependentUpon>FieldsDetail_Run.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FieldsDetail_Story.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FieldsDetail_Story.Designer.cs">
+      <DependentUpon>FieldsDetail_Story.cs</DependentUpon>
+    </Compile>
     <Compile Include="FieldsDetail_Defect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,6 +224,15 @@
     </Compile>
     <EmbeddedResource Include="ConfigurationForm.resx">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FieldsDetail_Test.resx">
+      <DependentUpon>FieldsDetail_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FieldsDetail_Run.resx">
+      <DependentUpon>FieldsDetail_Run.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FieldsDetail_Story.resx">
+      <DependentUpon>FieldsDetail_Story.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FieldsDetail_Defect.resx">
       <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
