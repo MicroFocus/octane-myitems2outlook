@@ -6,7 +6,7 @@
         <group id="MyGroup"
                label="Octane My Items">
           <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" getImage="GetButtonIcon"/>
-          <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog item" size="large" getImage="GetButtonIcon"/>
+          <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog" size="large" getImage="GetButtonIcon"/>
           <button id="syncTest" onAction="OnSyncTestPressed" label="Sync Test" size="large" getImage="GetButtonIcon"/>
           <button id="syncRun" onAction="OnSyncRunPressed" label="Sync Run" size="large" getImage="GetButtonIcon" />
           <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" getImage="GetButtonIcon"/>
