@@ -189,11 +189,29 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FieldsDetail_Backlog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FieldsDetail_Backlog.Designer.cs">
+      <DependentUpon>FieldsDetail_Backlog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OctaneTaskDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OctaneTaskDetail.Designer.cs">
+      <DependentUpon>OctaneTaskDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="ConfigurationForm.resx">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FieldsDetail_Backlog.resx">
+      <DependentUpon>FieldsDetail_Backlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OctaneTaskDetail.resx">
+      <DependentUpon>OctaneTaskDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
