@@ -30,8 +30,8 @@
     {
       this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.label1 = new System.Windows.Forms.Label();
       this.tb_parent = new System.Windows.Forms.TextBox();
+      this.label1 = new System.Windows.Forms.Label();
       this.panel2 = new System.Windows.Forms.Panel();
       this.tb_detectedBy = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +47,15 @@
       this.panel6 = new System.Windows.Forms.Panel();
       this.tb_detectedInRelease = new System.Windows.Forms.TextBox();
       this.label6 = new System.Windows.Forms.Label();
+      this.panel7 = new System.Windows.Forms.Panel();
+      this.tb_creationTime = new System.Windows.Forms.TextBox();
+      this.label7 = new System.Windows.Forms.Label();
+      this.panel8 = new System.Windows.Forms.Panel();
+      this.tb_closeOn = new System.Windows.Forms.TextBox();
+      this.label8 = new System.Windows.Forms.Label();
+      this.panel9 = new System.Windows.Forms.Panel();
+      this.tb_fixedOn = new System.Windows.Forms.TextBox();
+      this.label9 = new System.Windows.Forms.Label();
       this.flowLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
@@ -54,6 +63,9 @@
       this.panel4.SuspendLayout();
       this.panel5.SuspendLayout();
       this.panel6.SuspendLayout();
+      this.panel7.SuspendLayout();
+      this.panel8.SuspendLayout();
+      this.panel9.SuspendLayout();
       this.SuspendLayout();
       // 
       // flowLayoutPanel1
@@ -65,11 +77,14 @@
       this.flowLayoutPanel1.Controls.Add(this.panel4);
       this.flowLayoutPanel1.Controls.Add(this.panel5);
       this.flowLayoutPanel1.Controls.Add(this.panel6);
-      this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.flowLayoutPanel1.Controls.Add(this.panel7);
+      this.flowLayoutPanel1.Controls.Add(this.panel8);
+      this.flowLayoutPanel1.Controls.Add(this.panel9);
+      this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-      this.flowLayoutPanel1.Size = new System.Drawing.Size(1052, 50);
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(1268, 276);
       this.flowLayoutPanel1.TabIndex = 0;
       // 
       // panel1
@@ -82,6 +97,15 @@
       this.panel1.Size = new System.Drawing.Size(330, 25);
       this.panel1.TabIndex = 0;
       // 
+      // tb_parent
+      // 
+      this.tb_parent.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_parent.Location = new System.Drawing.Point(110, 3);
+      this.tb_parent.Name = "tb_parent";
+      this.tb_parent.ReadOnly = true;
+      this.tb_parent.Size = new System.Drawing.Size(200, 20);
+      this.tb_parent.TabIndex = 1;
+      // 
       // label1
       // 
       this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -91,15 +115,6 @@
       this.label1.Size = new System.Drawing.Size(41, 13);
       this.label1.TabIndex = 0;
       this.label1.Text = "Parent:";
-      // 
-      // tb_parent
-      // 
-      this.tb_parent.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_parent.Location = new System.Drawing.Point(110, 3);
-      this.tb_parent.Name = "tb_parent";
-      this.tb_parent.ReadOnly = true;
-      this.tb_parent.Size = new System.Drawing.Size(200, 20);
-      this.tb_parent.TabIndex = 1;
       // 
       // panel2
       // 
@@ -246,14 +261,100 @@
       this.label6.TabIndex = 0;
       this.label6.Text = "Detected in release:";
       // 
+      // panel7
+      // 
+      this.panel7.Controls.Add(this.tb_creationTime);
+      this.panel7.Controls.Add(this.label7);
+      this.panel7.Location = new System.Drawing.Point(0, 50);
+      this.panel7.Margin = new System.Windows.Forms.Padding(0);
+      this.panel7.Name = "panel7";
+      this.panel7.Size = new System.Drawing.Size(330, 25);
+      this.panel7.TabIndex = 6;
+      // 
+      // tb_creationTime
+      // 
+      this.tb_creationTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_creationTime.Location = new System.Drawing.Point(110, 3);
+      this.tb_creationTime.Name = "tb_creationTime";
+      this.tb_creationTime.ReadOnly = true;
+      this.tb_creationTime.Size = new System.Drawing.Size(200, 20);
+      this.tb_creationTime.TabIndex = 1;
+      // 
+      // label7
+      // 
+      this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(15, 5);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(71, 13);
+      this.label7.TabIndex = 0;
+      this.label7.Text = "Creation time:";
+      // 
+      // panel8
+      // 
+      this.panel8.Controls.Add(this.tb_closeOn);
+      this.panel8.Controls.Add(this.label8);
+      this.panel8.Location = new System.Drawing.Point(330, 50);
+      this.panel8.Margin = new System.Windows.Forms.Padding(0);
+      this.panel8.Name = "panel8";
+      this.panel8.Size = new System.Drawing.Size(330, 25);
+      this.panel8.TabIndex = 7;
+      // 
+      // tb_closeOn
+      // 
+      this.tb_closeOn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_closeOn.Location = new System.Drawing.Point(110, 3);
+      this.tb_closeOn.Name = "tb_closeOn";
+      this.tb_closeOn.ReadOnly = true;
+      this.tb_closeOn.Size = new System.Drawing.Size(200, 20);
+      this.tb_closeOn.TabIndex = 1;
+      // 
+      // label8
+      // 
+      this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label8.AutoSize = true;
+      this.label8.Location = new System.Drawing.Point(15, 5);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(51, 13);
+      this.label8.TabIndex = 0;
+      this.label8.Text = "Close on:";
+      // 
+      // panel9
+      // 
+      this.panel9.Controls.Add(this.tb_fixedOn);
+      this.panel9.Controls.Add(this.label9);
+      this.panel9.Location = new System.Drawing.Point(660, 50);
+      this.panel9.Margin = new System.Windows.Forms.Padding(0);
+      this.panel9.Name = "panel9";
+      this.panel9.Size = new System.Drawing.Size(330, 25);
+      this.panel9.TabIndex = 8;
+      // 
+      // tb_fixedOn
+      // 
+      this.tb_fixedOn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_fixedOn.Location = new System.Drawing.Point(110, 3);
+      this.tb_fixedOn.Name = "tb_fixedOn";
+      this.tb_fixedOn.ReadOnly = true;
+      this.tb_fixedOn.Size = new System.Drawing.Size(200, 20);
+      this.tb_fixedOn.TabIndex = 1;
+      // 
+      // label9
+      // 
+      this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label9.AutoSize = true;
+      this.label9.Location = new System.Drawing.Point(15, 5);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(50, 13);
+      this.label9.TabIndex = 0;
+      this.label9.Text = "Fixed on:";
+      // 
       // FieldsDetail_Backlog
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.AutoSize = true;
       this.Controls.Add(this.flowLayoutPanel1);
       this.Name = "FieldsDetail_Backlog";
-      this.Size = new System.Drawing.Size(1052, 244);
+      this.Size = new System.Drawing.Size(1268, 276);
       this.flowLayoutPanel1.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
@@ -267,6 +368,12 @@
       this.panel5.PerformLayout();
       this.panel6.ResumeLayout(false);
       this.panel6.PerformLayout();
+      this.panel7.ResumeLayout(false);
+      this.panel7.PerformLayout();
+      this.panel8.ResumeLayout(false);
+      this.panel8.PerformLayout();
+      this.panel9.ResumeLayout(false);
+      this.panel9.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -293,5 +400,14 @@
     private System.Windows.Forms.Panel panel6;
     private System.Windows.Forms.TextBox tb_detectedInRelease;
     private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Panel panel7;
+    private System.Windows.Forms.TextBox tb_creationTime;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Panel panel8;
+    private System.Windows.Forms.TextBox tb_closeOn;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Panel panel9;
+    private System.Windows.Forms.TextBox tb_fixedOn;
+    private System.Windows.Forms.Label label9;
   }
 }

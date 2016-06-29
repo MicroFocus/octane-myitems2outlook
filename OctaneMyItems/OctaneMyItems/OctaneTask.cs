@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using OctaneMyItemsSyncService.Models;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -6,7 +7,7 @@ namespace OctaneMyItems
   public class OctaneTask
   {
     public static Outlook.Application m_outlookApp;
-    public static void CreateTask()
+    public static void CreateTask(object octaneItem)
     {
       m_outlookApp = Globals.ThisAddIn.Application.Application;
       if(m_outlookApp == null)
@@ -14,30 +15,43 @@ namespace OctaneMyItems
         m_outlookApp = new Outlook.Application();
       }
 
-      Outlook.TaskItem oTask = m_outlookApp.CreateItem(Outlook.OlItemType.olTaskItem);
+      var taskList = m_outlookApp.Session.GetDefaultFolder(
+        Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
+      var oTask = taskList.Items.Add("IPM.Task.Octane") as Outlook.TaskItem;
+
       oTask.Categories = "Octane Task";
-      oTask.Subject = "This is my task subject";
-      oTask.DueDate = Convert.ToDateTime("06/28/2016");
-      oTask.StartDate = Convert.ToDateTime("06/30/2016");
-      oTask.ReminderSet = true;
-      oTask.ReminderTime = Convert.ToDateTime("06/28/2016 02:40:00 PM");
-      oTask.Body = "This is the task body";
-      oTask.SchedulePlusPriority = "High";
-      oTask.Status = Microsoft.Office.Interop.Outlook.OlTaskStatus.olTaskInProgress;
-      oTask.Body = "<html><body>this is sample</body></html>";
-      Outlook.UserProperty prop = oTask.UserProperties.Add("my prop", Outlook.OlUserPropertyType.olText);
-      prop.Value = "hello";
-      
+      Outlook.UserProperty octane = oTask.UserProperties.Add("Octane", Outlook.OlUserPropertyType.olText);
+      octane.Value = JsonConvert.SerializeObject(octaneItem);
+
+      if (octaneItem is Backlog)
+      {
+        var backlog = octaneItem as Backlog;
+        oTask.Subject = backlog.name;
+        //Still need check if it is Story
+        octane.ValidationText = "Backlog";
+      }
+      else if(octaneItem is Run)
+      {
+        var run = octaneItem as Run;
+        oTask.Subject = run.name;
+        octane.ValidationText = "Run";
+      }
+      else if(octaneItem is Test)
+      {
+        var test = octaneItem as Test;
+        oTask.Subject = test.name;
+        octane.ValidationText = "Test";
+      }      
       oTask.Save();
       
 
-      Outlook.Recipients oReceipients = oTask.Recipients;
-      Outlook.Recipient oReceipient;
-      oReceipient = oReceipients.Add("xintian@hotmail.com");
-      oReceipient.Type = 1;
-      oReceipients.ResolveAll();
-      oTask.Assign();
-      ((Outlook._TaskItem)oTask).Send();
+      //Outlook.Recipients oReceipients = oTask.Recipients;
+      //Outlook.Recipient oReceipient;
+      //oReceipient = oReceipients.Add("xintian@hotmail.com");
+      //oReceipient.Type = 1;
+      //oReceipients.ResolveAll();
+      //oTask.Assign();
+      //((Outlook._TaskItem)oTask).Send();
     }
   }
 }
