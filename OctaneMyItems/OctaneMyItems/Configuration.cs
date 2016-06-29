@@ -1,10 +1,9 @@
-﻿using System.Windows.Forms;
-using System.Linq;
-using System.Threading.Tasks;
-using OctaneMyItemsSyncService.Models;
+﻿using Microsoft.Office.Interop.Outlook;
 using OctaneMyItemsSyncService.Services;
-using Microsoft.Office.Interop.Outlook;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
 namespace OctaneMyItems
 {
   public class Configuration
