@@ -71,10 +71,10 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     {
       InitializeComponent();
       m_workspaces = new Dictionary<int,Workspace>();
-      ServerUrl = "https://hackathon.almoctane.com";
-      User = "jing-chun.xia@hpe.com";
-      Password = "Mission-Possible";
-      SharedSpaceId = 1001;
+      //ServerUrl = "https://hackathon.almoctane.com";
+      //User = "jing-chun.xia@hpe.com";
+      //Password = "Mission-Possible";
+      //SharedSpaceId = 1001;
       m_octaneService = null;
     }
 

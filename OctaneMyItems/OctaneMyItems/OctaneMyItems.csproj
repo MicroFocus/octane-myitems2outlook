@@ -258,6 +258,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="OctaneMyItems_TemporaryKey.pfx" />
@@ -304,6 +305,7 @@
     <None Include="Resources\SyncRunButtonIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\hpe-logo1.png" />
     <Content Include="Resources\SyncBacklogItemButtonIcon.png" />
     <Content Include="Resources\SyncTestButtonIcon.png" />
   </ItemGroup>

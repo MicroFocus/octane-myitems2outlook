@@ -43,7 +43,9 @@
             this.m_workspacesComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -125,7 +127,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(317, 332);
+            this.buttonOK.Location = new System.Drawing.Point(349, 332);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 31);
             this.buttonOK.TabIndex = 10;
@@ -144,11 +146,11 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // m_workSpaces
+            // m_workspacesComboBox
             // 
             this.m_workspacesComboBox.FormattingEnabled = true;
             this.m_workspacesComboBox.Location = new System.Drawing.Point(136, 238);
-            this.m_workspacesComboBox.Name = "m_workSpaces";
+            this.m_workspacesComboBox.Name = "m_workspacesComboBox";
             this.m_workspacesComboBox.Size = new System.Drawing.Size(341, 24);
             this.m_workspacesComboBox.TabIndex = 9;
             // 
@@ -181,12 +183,22 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Workspaces";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OctaneMyItems.Properties.Resources.hpe_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 318);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 53);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // ConfigurationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(523, 379);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
@@ -199,6 +211,7 @@
             this.Text = "Octane Configuration";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
     }
@@ -219,5 +232,6 @@
     private System.Windows.Forms.ComboBox m_workspacesComboBox;
     private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
