@@ -68,7 +68,7 @@ namespace OctaneMyItems
 
     public void OnConfigurationPressed(Office.IRibbonControl control)
     {
-      ThisAddIn.GetConfiguration();
+      ThisAddIn.ShowConfiguration();
     }
     #endregion
 

@@ -27,32 +27,64 @@ namespace OctaneMyItems
         public static void GetConfiguration()
         {
      
-      m_configuration.Getconfiguration();
+          m_configuration.GetConfiguration();
        }
-public static void SyncAll()
-{/*
-      OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
-      await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
 
-      octaneService.SetDefaultSharespace(1001);
+    public static void ShowConfiguration()
+    {
 
-      var workspaces = await octaneService.GetWorkspace();
-*/
+      m_configuration.ShowConfiguration();
+    }
+    public static async void SyncAll()
+    {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+
+        // sync backlog item
+        OctaneTask.DeleteTask("[Octane]Backlog");
+        var myBacklogs = await octaneService.GetMyBacklogs();
+        foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
+        {
+          OctaneTask.CreateTask(backlog);
+        }
+
+        // sync run
+        OctaneTask.DeleteTask("[Octane]Run");
+        var runs = await octaneService.GetMyRuns();
+        foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+        {
+          OctaneTask.CreateTask(run);
+        }
+
+        // sync test
+        OctaneTask.DeleteTask("[Octane]Test");
+        var tests = await octaneService.GetMyTests();
+        foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+        {
+          OctaneTask.CreateTask(test);
+        }
+
+      }
     }
 
     public static async void SyncBacklogItem()
     {
       if (!m_configuration.IsInitialized)
       {
-        m_configuration.Getconfiguration();
+        m_configuration.GetConfiguration();
       }
       if (m_configuration.IsInitialized)
       {
         OctaneService octaneService = m_configuration.OctaneService;
-        
+        OctaneTask.DeleteTask("[Octane]Backlog");
         var myBacklogs = await octaneService.GetMyBacklogs();
         foreach(OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
-{
+        {
           OctaneTask.CreateTask(backlog);
         }
       }
@@ -60,10 +92,38 @@ public static void SyncAll()
     }
     public static async void SyncTest()
     {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+        OctaneTask.DeleteTask("[Octane]Test");
+        var tests = await octaneService.GetMyTests();
+        foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+        {
+          OctaneTask.CreateTask(test);
+        }
+      }
     }
 
     public static async void SyncRun()
     {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+        OctaneTask.DeleteTask("[Octane]Run");
+        var runs = await octaneService.GetMyRuns();
+        foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+        {
+          OctaneTask.CreateTask(run);
+        }
+      }
     }
 
 

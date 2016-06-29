@@ -11,6 +11,8 @@ namespace OctaneMyItems
   {
     private OctaneMyItemsSyncService.Services.OctaneService m_octaneService;
     private Dictionary<int,Workspace> m_workspaces;
+    private bool m_isDirty = false;
+
     public string ServerUrl
     {
       get{return m_serverUrl.Text;}
@@ -40,9 +42,12 @@ namespace OctaneMyItems
 set { m_sharedSpaceId.Text = value.ToString(); }
     }
 
-    public string WorkSpace
+    public string WorkSpaceName
     {
       get { return m_workspacesComboBox.Text; }
+      set { m_workspacesComboBox.Items.Add(value);
+        m_workspacesComboBox.SelectedIndex = 0 ;
+}
     }
     public int WorkspaceId
     {
@@ -56,6 +61,7 @@ set { m_sharedSpaceId.Text = value.ToString(); }
         }
         return id;
       }
+      
     }
     public OctaneService OctaneService
 {
@@ -75,21 +81,21 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     private async void buttonTestConnection_Click(object sender, EventArgs e)
     {
       //    Task < OctaneMyItemsSyncService.Models.Workspace[] > workspacesTask = TestConnection();
-
-      m_octaneService = new OctaneService(ServerUrl);
+      m_workspacesComboBox.Items.Clear();
+            m_octaneService = new OctaneService(ServerUrl);
       await m_octaneService.Login(User, Password);
       m_octaneService.SetDefaultSharespace(SharedSpaceId);
       var workspaces = await m_octaneService.GetWorkspace();
 
     //  OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
       foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces.data)
-{
+      {
         int i = m_workspacesComboBox.Items.Add(workspace.name);
         m_workspaces.Add(i, workspace);
       }
       m_workspacesComboBox.Focus();
       m_workspacesComboBox.SelectedIndex = 0;
-      
+      m_isDirty = true;
     }
 
     private async Task<OctaneMyItemsSyncService.Models.Workspace[]> TestConnection()
@@ -108,16 +114,23 @@ set { m_sharedSpaceId.Text = value.ToString(); }
 
     private async void buttonOK_Click(object sender, EventArgs e)
     {
-      Workspace workspace;
-      if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
+      if (m_isDirty)
       {
-        await m_octaneService.SetDefaultWorkspace(workspace);
+        Workspace workspace;
+        if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
+        {
+          await m_octaneService.SetDefaultWorkspace(workspace);
+        }
+        else
+        {
+          MessageBox.Show("no default workspace is selected");
+        }
+        this.DialogResult = DialogResult.OK;
       }
-else 
-{
-        MessageBox.Show("no default workspace is selected");
+      else
+      {
+        this.DialogResult = DialogResult.Cancel;
       }
-      this.DialogResult = DialogResult.OK;
       this.Close();
     }
 

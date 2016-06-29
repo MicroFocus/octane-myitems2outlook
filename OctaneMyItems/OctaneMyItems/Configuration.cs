@@ -24,9 +24,9 @@ namespace OctaneMyItems
     {
       m_application = app;
     }
-    public void Getconfiguration()
+    public void GetConfiguration()
     {
-      if(!LoadConfiguration())
+      if(!LoadConfiguration(true))
       { 
       ConfigurationForm form = new ConfigurationForm();
       
@@ -37,7 +37,7 @@ namespace OctaneMyItems
           m_userName = form.User;
           m_password = form.Password;
           m_sharedSpaceId = form.SharedSpaceId;
-          m_workSpaceName = form.WorkSpace;
+          m_workSpaceName = form.WorkSpaceName;
           m_workSpaceId = form.WorkspaceId;
           m_octaneService = form.OctaneService;
           m_initialized = true;
@@ -45,7 +45,40 @@ namespace OctaneMyItems
         SaveConfiguration();
       }
     }
-    private bool LoadConfiguration()
+    public void ShowConfiguration()
+    {
+      ConfigurationForm form = new ConfigurationForm();
+
+      if (LoadConfiguration(false))
+      {
+        form.ServerUrl = m_serverUrl;
+        form.User = m_userName;
+        form.Password = m_password;
+        form.SharedSpaceId = m_sharedSpaceId;
+        if (m_workSpaceName != null)
+        { form.WorkSpaceName = m_workSpaceName; }
+       // form.WorkSpaceId = m_workSpaceId;
+       // form.OctaneService = m_octaneService;
+
+      }
+
+      
+      form.ShowDialog();
+      if (form.DialogResult == DialogResult.OK)
+      {
+        m_serverUrl = form.ServerUrl;
+        m_userName = form.User;
+        m_password = form.Password;
+        m_sharedSpaceId = form.SharedSpaceId;
+        m_workSpaceName = form.WorkSpaceName;
+        m_workSpaceId = form.WorkspaceId;
+        m_octaneService = form.OctaneService;
+        m_initialized = true;
+      }
+      SaveConfiguration();
+
+    }
+    private bool LoadConfiguration(bool connect)
     {
       MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
       try
@@ -63,11 +96,18 @@ namespace OctaneMyItems
           m_password = property.Value;
           property = item.UserProperties.Find("SharedSpaceId");
           m_sharedSpaceId = property.Value;
+          property = item.UserProperties.Find("WorkSpaceName");
+          if (property != null)
+          {
+            m_workSpaceName = property.Value;
+          }
           property = item.UserProperties.Find("WorkSpaceId");
           m_workSpaceId = property.Value;
-
-          ConnectToServer();
-          m_initialized = true;
+          if (connect)
+          {
+            ConnectToServer();
+            m_initialized = true;
+          }
           return true;
         }
       }
@@ -108,6 +148,8 @@ namespace OctaneMyItems
         property.Value = m_sharedSpaceId;
         property = item.UserProperties.Add("WorkSpaceId", OlUserPropertyType.olInteger);
         property.Value = m_workSpaceId;
+        property = item.UserProperties.Add("WorkSpaceName", OlUserPropertyType.olText);
+        property.Value = m_workSpaceName;
       }
       else
       {
@@ -122,6 +164,10 @@ namespace OctaneMyItems
         property.Value = m_sharedSpaceId;
         property = item.UserProperties.Find("WorkSpaceId");
         property.Value = m_workSpaceId;
+        property = item.UserProperties.Find("WorkSpaceName");
+        if (property == null)
+        { property = item.UserProperties.Add("WorkSpaceName", OlUserPropertyType.olText); }
+        property.Value = m_workSpaceName;
       }
       // save
       item.Save();
