@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
+using System.Drawing;
 
 // TODO:  Follow these steps to enable the Ribbon (XML) item:
 
@@ -47,6 +48,36 @@ namespace OctaneMyItems
     {
       this.ribbon = ribbonUI;
 
+    }
+    public Bitmap GetButtonIcon(Office.IRibbonControl button)
+    {
+     // return  (Bitmap)Images.ResourceManager.GetObject(string.Format("{0}Icon", button.Id)));
+       Bitmap bitmap =(Bitmap) Properties.Resources.ResourceManager.GetObject("OptionsButtonIcon");
+      Stream s = this.GetType().Assembly.GetManifestResourceStream("OptionsButtonIcon");
+      //this.GetType().Assembly
+      Bitmap bmp = null;
+      switch (button.Id)
+      {
+        case "configuration":
+          bmp = Images.Resource.OptionsButtonIcon;
+          break;
+        case "syncAll":
+          bmp = Images.Resource.SyncAllButtonIcon;
+          break;
+        case "syncBacklogItem":
+          bmp = Images.Resource.SyncBacklogItemButtonIcon;
+          break;
+        case "syncTest":
+          bmp = Images.Resource.SyncTestButtonIcon;
+          break;
+        case "syncRun":
+          bmp = Images.Resource.SyncRunButtonIcon;
+          break;
+        default:
+          break;
+      }
+      
+      return bmp;
     }
 
     public void OnSyncAllPressed(Office.IRibbonControl control)

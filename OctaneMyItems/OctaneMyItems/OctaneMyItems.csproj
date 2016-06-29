@@ -213,6 +213,11 @@
     <Compile Include="FieldsDetail_Defect.Designer.cs">
       <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Images\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="OctaneTaskDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -237,6 +242,11 @@
     <EmbeddedResource Include="FieldsDetail_Defect.resx">
       <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="OctaneTaskDetail.resx">
       <DependentUpon>OctaneTaskDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,10 +258,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Ribbon1.resx">
-      <DependentUpon>Ribbon1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="OctaneMyItems_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -262,12 +270,6 @@
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Ribbon1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Ribbon1.Designer.cs">
-      <DependentUpon>Ribbon1.cs</DependentUpon>
     </Compile>
     <Compile Include="Ribbon2.cs" />
     <Compile Include="OctaneTask.cs" />
@@ -292,6 +294,20 @@
       <Project>{8e3f675c-7157-458f-bdb3-90e0c54e510e}</Project>
       <Name>OctaneMyItemsSyncService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OptionsButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SyncAllButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SyncRunButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hpe-logo1.png" />
+    <Content Include="Resources\SyncBacklogItemButtonIcon.png" />
+    <Content Include="Resources\SyncTestButtonIcon.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

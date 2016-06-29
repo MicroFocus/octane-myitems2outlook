@@ -27,7 +27,7 @@ namespace OctaneMyItems
       {
         oTask.Categories = "[Octane]Backlog";
         var backlog = octaneItem as Backlog;
-        oTask.Subject = backlog.name;
+        oTask.Subject = "["+ backlog.subtype.ToUpper() + ":"+ backlog.id + "] " + backlog.name;
         if ("Story".Equals(backlog.subtype, System.StringComparison.OrdinalIgnoreCase))
           octane.ValidationText = "Story";
         else
@@ -37,14 +37,14 @@ namespace OctaneMyItems
       {
         oTask.Categories = "[Octane]Run";
         var run = octaneItem as Run;
-        oTask.Subject = run.name;
+        oTask.Subject = "[" + run.id + "] " + run.name;
         octane.ValidationText = "Run";
       }
       else if (octaneItem is Test)
       {
         oTask.Categories = "[Octane]Test";
         var test = octaneItem as Test;
-        oTask.Subject = test.name;
+        oTask.Subject = "[" + test.id + "] " + test.name;
         octane.ValidationText = "Test";
       }
       oTask.Save();
