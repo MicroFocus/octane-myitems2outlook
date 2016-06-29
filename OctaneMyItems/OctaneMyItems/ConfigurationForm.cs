@@ -55,11 +55,17 @@ set { m_sharedSpaceId.Text = value.ToString(); }
       m_octaneService = null;
     }
 
-    private void buttonTestConnection_Click(object sender, EventArgs e)
+    private async void buttonTestConnection_Click(object sender, EventArgs e)
     {
-      Task < OctaneMyItemsSyncService.Models.Workspace[] > workspacesTask = TestConnection();
-      OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
-      foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces)
+      //    Task < OctaneMyItemsSyncService.Models.Workspace[] > workspacesTask = TestConnection();
+
+      m_octaneService = new OctaneService(ServerUrl);
+      await m_octaneService.Login(User, Password);
+      m_octaneService.SetDefaultSharespace(SharedSpaceId);
+      var workspaces = await m_octaneService.GetWorkspace();
+
+    //  OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
+      foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces.data)
 {
         m_workSpaces.Items.Add(workspace.name);
       }
