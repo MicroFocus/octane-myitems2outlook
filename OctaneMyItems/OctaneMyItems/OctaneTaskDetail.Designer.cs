@@ -38,38 +38,40 @@
       this.tabControl1 = new System.Windows.Forms.TabControl();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.wb_description = new System.Windows.Forms.WebBrowser();
+      this.tabPage2 = new System.Windows.Forms.TabPage();
+      this.wb_comments = new System.Windows.Forms.WebBrowser();
       this.tp_testSteps = new System.Windows.Forms.TabPage();
-      this.p_fields = new System.Windows.Forms.Panel();
-      this.splitter1 = new System.Windows.Forms.Splitter();
-      this.tp_runSteps = new System.Windows.Forms.TabPage();
       this.rtb_testSteps = new System.Windows.Forms.RichTextBox();
+      this.tp_runSteps = new System.Windows.Forms.TabPage();
       this.wb_runSteps = new System.Windows.Forms.WebBrowser();
       this.tabControl1.SuspendLayout();
       this.tabPage1.SuspendLayout();
+      this.tabPage2.SuspendLayout();
       this.tp_testSteps.SuspendLayout();
-      this.p_fields.SuspendLayout();
       this.tp_runSteps.SuspendLayout();
       this.SuspendLayout();
       // 
       // tabControl1
       // 
       this.tabControl1.Controls.Add(this.tabPage1);
+      this.tabControl1.Controls.Add(this.tabPage2);
       this.tabControl1.Controls.Add(this.tp_testSteps);
       this.tabControl1.Controls.Add(this.tp_runSteps);
       this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Location = new System.Drawing.Point(0, 150);
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
+      this.tabControl1.Padding = new System.Drawing.Point(6, 6);
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1005, 635);
+      this.tabControl1.Size = new System.Drawing.Size(1005, 785);
       this.tabControl1.TabIndex = 3;
       // 
       // tabPage1
       // 
       this.tabPage1.Controls.Add(this.wb_description);
-      this.tabPage1.Location = new System.Drawing.Point(4, 22);
+      this.tabPage1.Location = new System.Drawing.Point(4, 28);
       this.tabPage1.Name = "tabPage1";
       this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(997, 609);
+      this.tabPage1.Size = new System.Drawing.Size(997, 753);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Description";
       this.tabPage1.UseVisualStyleBackColor = true;
@@ -80,57 +82,58 @@
       this.wb_description.Location = new System.Drawing.Point(3, 3);
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
-      this.wb_description.Size = new System.Drawing.Size(991, 603);
+      this.wb_description.Size = new System.Drawing.Size(991, 747);
       this.wb_description.TabIndex = 0;
+      // 
+      // tabPage2
+      // 
+      this.tabPage2.Controls.Add(this.wb_comments);
+      this.tabPage2.Location = new System.Drawing.Point(4, 28);
+      this.tabPage2.Name = "tabPage2";
+      this.tabPage2.Size = new System.Drawing.Size(997, 753);
+      this.tabPage2.TabIndex = 3;
+      this.tabPage2.Text = "Comments";
+      this.tabPage2.UseVisualStyleBackColor = true;
+      // 
+      // wb_comments
+      // 
+      this.wb_comments.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.wb_comments.Location = new System.Drawing.Point(0, 0);
+      this.wb_comments.MinimumSize = new System.Drawing.Size(20, 20);
+      this.wb_comments.Name = "wb_comments";
+      this.wb_comments.ScrollBarsEnabled = false;
+      this.wb_comments.Size = new System.Drawing.Size(997, 753);
+      this.wb_comments.TabIndex = 0;
       // 
       // tp_testSteps
       // 
       this.tp_testSteps.Controls.Add(this.rtb_testSteps);
-      this.tp_testSteps.Location = new System.Drawing.Point(4, 22);
+      this.tp_testSteps.Location = new System.Drawing.Point(4, 28);
       this.tp_testSteps.Name = "tp_testSteps";
       this.tp_testSteps.Padding = new System.Windows.Forms.Padding(3);
-      this.tp_testSteps.Size = new System.Drawing.Size(997, 609);
+      this.tp_testSteps.Size = new System.Drawing.Size(997, 753);
       this.tp_testSteps.TabIndex = 1;
       this.tp_testSteps.Text = "Steps";
       this.tp_testSteps.UseVisualStyleBackColor = true;
-      // 
-      // p_fields
-      // 
-      this.p_fields.AutoScroll = true;
-      this.p_fields.Controls.Add(this.splitter1);
-      this.p_fields.Dock = System.Windows.Forms.DockStyle.Top;
-      this.p_fields.Location = new System.Drawing.Point(0, 0);
-      this.p_fields.Name = "p_fields";
-      this.p_fields.Size = new System.Drawing.Size(1005, 150);
-      this.p_fields.TabIndex = 2;
-      // 
-      // splitter1
-      // 
-      this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.splitter1.Location = new System.Drawing.Point(0, 147);
-      this.splitter1.Name = "splitter1";
-      this.splitter1.Size = new System.Drawing.Size(1005, 3);
-      this.splitter1.TabIndex = 0;
-      this.splitter1.TabStop = false;
-      // 
-      // tp_runSteps
-      // 
-      this.tp_runSteps.Controls.Add(this.wb_runSteps);
-      this.tp_runSteps.Location = new System.Drawing.Point(4, 22);
-      this.tp_runSteps.Name = "tp_runSteps";
-      this.tp_runSteps.Size = new System.Drawing.Size(997, 609);
-      this.tp_runSteps.TabIndex = 2;
-      this.tp_runSteps.Text = "Steps";
-      this.tp_runSteps.UseVisualStyleBackColor = true;
       // 
       // rtb_testSteps
       // 
       this.rtb_testSteps.Dock = System.Windows.Forms.DockStyle.Fill;
       this.rtb_testSteps.Location = new System.Drawing.Point(3, 3);
       this.rtb_testSteps.Name = "rtb_testSteps";
-      this.rtb_testSteps.Size = new System.Drawing.Size(991, 603);
+      this.rtb_testSteps.Size = new System.Drawing.Size(991, 747);
       this.rtb_testSteps.TabIndex = 0;
       this.rtb_testSteps.Text = "";
+      // 
+      // tp_runSteps
+      // 
+      this.tp_runSteps.Controls.Add(this.wb_runSteps);
+      this.tp_runSteps.Location = new System.Drawing.Point(4, 28);
+      this.tp_runSteps.Name = "tp_runSteps";
+      this.tp_runSteps.Size = new System.Drawing.Size(997, 753);
+      this.tp_runSteps.TabIndex = 2;
+      this.tp_runSteps.Text = "Steps";
+      this.tp_runSteps.UseVisualStyleBackColor = true;
       // 
       // wb_runSteps
       // 
@@ -138,7 +141,7 @@
       this.wb_runSteps.Location = new System.Drawing.Point(0, 0);
       this.wb_runSteps.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_runSteps.Name = "wb_runSteps";
-      this.wb_runSteps.Size = new System.Drawing.Size(997, 609);
+      this.wb_runSteps.Size = new System.Drawing.Size(997, 753);
       this.wb_runSteps.TabIndex = 0;
       // 
       // OctaneTaskDetail
@@ -146,15 +149,14 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tabControl1);
-      this.Controls.Add(this.p_fields);
       this.Name = "OctaneTaskDetail";
       this.Size = new System.Drawing.Size(1005, 785);
       this.FormRegionShowing += new System.EventHandler(this.OctaneTaskDetail_FormRegionShowing);
       this.FormRegionClosed += new System.EventHandler(this.OctaneTaskDetail_FormRegionClosed);
       this.tabControl1.ResumeLayout(false);
       this.tabPage1.ResumeLayout(false);
+      this.tabPage2.ResumeLayout(false);
       this.tp_testSteps.ResumeLayout(false);
-      this.p_fields.ResumeLayout(false);
       this.tp_runSteps.ResumeLayout(false);
       this.ResumeLayout(false);
 
@@ -181,11 +183,11 @@
     private System.Windows.Forms.TabPage tabPage1;
     private System.Windows.Forms.WebBrowser wb_description;
     private System.Windows.Forms.TabPage tp_testSteps;
-    private System.Windows.Forms.Panel p_fields;
-    private System.Windows.Forms.Splitter splitter1;
     private System.Windows.Forms.TabPage tp_runSteps;
     private System.Windows.Forms.RichTextBox rtb_testSteps;
     private System.Windows.Forms.WebBrowser wb_runSteps;
+    private System.Windows.Forms.TabPage tabPage2;
+    private System.Windows.Forms.WebBrowser wb_comments;
 
     public partial class OctaneTaskDetailFactory : Microsoft.Office.Tools.Outlook.IFormRegionFactory
     {

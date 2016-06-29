@@ -99,13 +99,13 @@
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Margin = new System.Windows.Forms.Padding(0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(330, 25);
+      this.panel1.Size = new System.Drawing.Size(330, 40);
       this.panel1.TabIndex = 0;
       // 
       // tb_testName
       // 
       this.tb_testName.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_testName.Location = new System.Drawing.Point(110, 3);
+      this.tb_testName.Location = new System.Drawing.Point(110, 11);
       this.tb_testName.Name = "tb_testName";
       this.tb_testName.ReadOnly = true;
       this.tb_testName.Size = new System.Drawing.Size(200, 20);
@@ -115,7 +115,7 @@
       // 
       this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(15, 5);
+      this.label1.Location = new System.Drawing.Point(15, 13);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(60, 13);
       this.label1.TabIndex = 0;
@@ -128,13 +128,13 @@
       this.panel2.Location = new System.Drawing.Point(330, 0);
       this.panel2.Margin = new System.Windows.Forms.Padding(0);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(330, 25);
+      this.panel2.Size = new System.Drawing.Size(330, 40);
       this.panel2.TabIndex = 1;
       // 
       // tb_nativeStatus
       // 
       this.tb_nativeStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_nativeStatus.Location = new System.Drawing.Point(110, 3);
+      this.tb_nativeStatus.Location = new System.Drawing.Point(110, 11);
       this.tb_nativeStatus.Name = "tb_nativeStatus";
       this.tb_nativeStatus.ReadOnly = true;
       this.tb_nativeStatus.Size = new System.Drawing.Size(200, 20);
@@ -144,7 +144,7 @@
       // 
       this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(15, 5);
+      this.label2.Location = new System.Drawing.Point(15, 13);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(74, 13);
       this.label2.TabIndex = 0;
@@ -157,13 +157,13 @@
       this.panel3.Location = new System.Drawing.Point(660, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(0);
       this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(330, 25);
+      this.panel3.Size = new System.Drawing.Size(330, 40);
       this.panel3.TabIndex = 2;
       // 
       // tb_runBy
       // 
       this.tb_runBy.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_runBy.Location = new System.Drawing.Point(110, 3);
+      this.tb_runBy.Location = new System.Drawing.Point(110, 11);
       this.tb_runBy.Name = "tb_runBy";
       this.tb_runBy.ReadOnly = true;
       this.tb_runBy.Size = new System.Drawing.Size(200, 20);
@@ -173,7 +173,7 @@
       // 
       this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(15, 5);
+      this.label3.Location = new System.Drawing.Point(15, 13);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(44, 13);
       this.label3.TabIndex = 0;
@@ -183,16 +183,16 @@
       // 
       this.panel4.Controls.Add(this.tb_started);
       this.panel4.Controls.Add(this.label4);
-      this.panel4.Location = new System.Drawing.Point(0, 25);
+      this.panel4.Location = new System.Drawing.Point(0, 40);
       this.panel4.Margin = new System.Windows.Forms.Padding(0);
       this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(330, 25);
+      this.panel4.Size = new System.Drawing.Size(330, 40);
       this.panel4.TabIndex = 3;
       // 
       // tb_started
       // 
       this.tb_started.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_started.Location = new System.Drawing.Point(110, 3);
+      this.tb_started.Location = new System.Drawing.Point(110, 11);
       this.tb_started.Name = "tb_started";
       this.tb_started.ReadOnly = true;
       this.tb_started.Size = new System.Drawing.Size(200, 20);
@@ -202,7 +202,7 @@
       // 
       this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(15, 5);
+      this.label4.Location = new System.Drawing.Point(15, 13);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(44, 13);
       this.label4.TabIndex = 0;
@@ -212,16 +212,16 @@
       // 
       this.panel5.Controls.Add(this.tb_duration);
       this.panel5.Controls.Add(this.label5);
-      this.panel5.Location = new System.Drawing.Point(330, 25);
+      this.panel5.Location = new System.Drawing.Point(330, 40);
       this.panel5.Margin = new System.Windows.Forms.Padding(0);
       this.panel5.Name = "panel5";
-      this.panel5.Size = new System.Drawing.Size(330, 25);
+      this.panel5.Size = new System.Drawing.Size(330, 40);
       this.panel5.TabIndex = 4;
       // 
       // tb_duration
       // 
       this.tb_duration.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_duration.Location = new System.Drawing.Point(110, 3);
+      this.tb_duration.Location = new System.Drawing.Point(110, 11);
       this.tb_duration.Name = "tb_duration";
       this.tb_duration.ReadOnly = true;
       this.tb_duration.Size = new System.Drawing.Size(200, 20);
@@ -231,7 +231,7 @@
       // 
       this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(15, 5);
+      this.label5.Location = new System.Drawing.Point(15, 13);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(50, 13);
       this.label5.TabIndex = 0;
@@ -241,16 +241,16 @@
       // 
       this.panel6.Controls.Add(this.tb_content);
       this.panel6.Controls.Add(this.label6);
-      this.panel6.Location = new System.Drawing.Point(660, 25);
+      this.panel6.Location = new System.Drawing.Point(660, 40);
       this.panel6.Margin = new System.Windows.Forms.Padding(0);
       this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(330, 25);
+      this.panel6.Size = new System.Drawing.Size(330, 40);
       this.panel6.TabIndex = 5;
       // 
       // tb_content
       // 
       this.tb_content.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_content.Location = new System.Drawing.Point(110, 3);
+      this.tb_content.Location = new System.Drawing.Point(110, 11);
       this.tb_content.Name = "tb_content";
       this.tb_content.ReadOnly = true;
       this.tb_content.Size = new System.Drawing.Size(200, 20);
@@ -260,7 +260,7 @@
       // 
       this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(15, 5);
+      this.label6.Location = new System.Drawing.Point(15, 13);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(47, 13);
       this.label6.TabIndex = 0;
@@ -270,16 +270,16 @@
       // 
       this.panel7.Controls.Add(this.tb_release);
       this.panel7.Controls.Add(this.label7);
-      this.panel7.Location = new System.Drawing.Point(0, 50);
+      this.panel7.Location = new System.Drawing.Point(0, 80);
       this.panel7.Margin = new System.Windows.Forms.Padding(0);
       this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(330, 25);
+      this.panel7.Size = new System.Drawing.Size(330, 40);
       this.panel7.TabIndex = 6;
       // 
       // tb_release
       // 
       this.tb_release.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_release.Location = new System.Drawing.Point(110, 3);
+      this.tb_release.Location = new System.Drawing.Point(110, 11);
       this.tb_release.Name = "tb_release";
       this.tb_release.ReadOnly = true;
       this.tb_release.Size = new System.Drawing.Size(200, 20);
@@ -289,7 +289,7 @@
       // 
       this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(15, 5);
+      this.label7.Location = new System.Drawing.Point(15, 13);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(49, 13);
       this.label7.TabIndex = 0;
@@ -299,16 +299,16 @@
       // 
       this.panel8.Controls.Add(this.tb_draftRun);
       this.panel8.Controls.Add(this.label8);
-      this.panel8.Location = new System.Drawing.Point(330, 50);
+      this.panel8.Location = new System.Drawing.Point(330, 80);
       this.panel8.Margin = new System.Windows.Forms.Padding(0);
       this.panel8.Name = "panel8";
-      this.panel8.Size = new System.Drawing.Size(330, 25);
+      this.panel8.Size = new System.Drawing.Size(330, 40);
       this.panel8.TabIndex = 7;
       // 
       // tb_draftRun
       // 
       this.tb_draftRun.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_draftRun.Location = new System.Drawing.Point(110, 3);
+      this.tb_draftRun.Location = new System.Drawing.Point(110, 11);
       this.tb_draftRun.Name = "tb_draftRun";
       this.tb_draftRun.ReadOnly = true;
       this.tb_draftRun.Size = new System.Drawing.Size(200, 20);
@@ -318,7 +318,7 @@
       // 
       this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label8.AutoSize = true;
-      this.label8.Location = new System.Drawing.Point(15, 5);
+      this.label8.Location = new System.Drawing.Point(15, 13);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(48, 13);
       this.label8.TabIndex = 0;
@@ -328,16 +328,16 @@
       // 
       this.panel9.Controls.Add(this.tb_lastModified);
       this.panel9.Controls.Add(this.label9);
-      this.panel9.Location = new System.Drawing.Point(660, 50);
+      this.panel9.Location = new System.Drawing.Point(660, 80);
       this.panel9.Margin = new System.Windows.Forms.Padding(0);
       this.panel9.Name = "panel9";
-      this.panel9.Size = new System.Drawing.Size(330, 25);
+      this.panel9.Size = new System.Drawing.Size(330, 40);
       this.panel9.TabIndex = 8;
       // 
       // tb_lastModified
       // 
       this.tb_lastModified.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_lastModified.Location = new System.Drawing.Point(110, 3);
+      this.tb_lastModified.Location = new System.Drawing.Point(110, 11);
       this.tb_lastModified.Name = "tb_lastModified";
       this.tb_lastModified.ReadOnly = true;
       this.tb_lastModified.Size = new System.Drawing.Size(200, 20);
@@ -347,7 +347,7 @@
       // 
       this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label9.AutoSize = true;
-      this.label9.Location = new System.Drawing.Point(15, 5);
+      this.label9.Location = new System.Drawing.Point(15, 13);
       this.label9.Name = "label9";
       this.label9.Size = new System.Drawing.Size(72, 13);
       this.label9.TabIndex = 0;
@@ -357,16 +357,16 @@
       // 
       this.panel17.Controls.Add(this.tb_environment);
       this.panel17.Controls.Add(this.label17);
-      this.panel17.Location = new System.Drawing.Point(0, 75);
+      this.panel17.Location = new System.Drawing.Point(0, 120);
       this.panel17.Margin = new System.Windows.Forms.Padding(0);
       this.panel17.Name = "panel17";
-      this.panel17.Size = new System.Drawing.Size(330, 25);
+      this.panel17.Size = new System.Drawing.Size(330, 40);
       this.panel17.TabIndex = 16;
       // 
       // tb_environment
       // 
       this.tb_environment.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_environment.Location = new System.Drawing.Point(110, 3);
+      this.tb_environment.Location = new System.Drawing.Point(110, 11);
       this.tb_environment.Name = "tb_environment";
       this.tb_environment.ReadOnly = true;
       this.tb_environment.Size = new System.Drawing.Size(200, 20);
@@ -376,7 +376,7 @@
       // 
       this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label17.AutoSize = true;
-      this.label17.Location = new System.Drawing.Point(15, 5);
+      this.label17.Location = new System.Drawing.Point(15, 13);
       this.label17.Name = "label17";
       this.label17.Size = new System.Drawing.Size(69, 13);
       this.label17.TabIndex = 0;

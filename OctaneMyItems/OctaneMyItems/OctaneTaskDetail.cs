@@ -3,6 +3,7 @@ using OctaneMyItemsSyncService.Models;
 using System;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -41,26 +42,28 @@ namespace OctaneMyItems
         if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Backlog backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-          p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
-          wb_description.DocumentText = backlog.description;
+          Controls.Add(GetChildControl(new FieldsDetail_Defect(backlog)));
+          wb_description.DocumentText = GenerateDescriptHtml(backlog.description);
+          wb_comments.DocumentText = GenerateCommentsHtml(backlog.comments);
         }
         else if ("\"Story\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Backlog story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-          p_fields.Controls.Add(new FieldsDetail_Story(story) { Dock = System.Windows.Forms.DockStyle.Fill });
-          wb_description.DocumentText = story.description;
+          Controls.Add(GetChildControl(new FieldsDetail_Story(story)));
+          wb_description.DocumentText = GenerateDescriptHtml(story.description);
+          wb_comments.DocumentText = GenerateCommentsHtml(story.comments);
         }
         else if ("\"Run\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Run run = JsonConvert.DeserializeObject<Run>(octane.Value);
-          p_fields.Controls.Add(new FieldsDetail_Run(run) { Dock = System.Windows.Forms.DockStyle.Fill });
-          wb_description.DocumentText = run.description;
+          Controls.Add(GetChildControl(new FieldsDetail_Run(run)));
+          wb_description.DocumentText = GenerateDescriptHtml(run.description);
+          wb_comments.DocumentText = GenerateCommentsHtml(run.comments);
           tabControl1.TabPages.Add(tp_runSteps);
-          
           if (run.steps != null)
           {
             var html = new StringBuilder();
-            html.Append("<html><body>");
+            html.Append("<html><body style=\"overflow: auto\">");
             foreach (var item in run.steps?.data)
             {
               html.Append($"<div>{item.description}</div>");
@@ -72,8 +75,9 @@ namespace OctaneMyItems
         else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Test test = JsonConvert.DeserializeObject<Test>(octane.Value);
-          p_fields.Controls.Add(new FieldsDetail_Test(test) { Dock = System.Windows.Forms.DockStyle.Fill });
-          wb_description.DocumentText = test.description;
+          Controls.Add(GetChildControl(new FieldsDetail_Test(test)));
+          wb_description.DocumentText = GenerateDescriptHtml(test.description);
+          wb_comments.DocumentText = GenerateCommentsHtml(test.comments);
           tabControl1.TabPages.Add(tp_testSteps);
           rtb_testSteps.Text = test.script;
         }
@@ -89,6 +93,45 @@ namespace OctaneMyItems
         Visible = false;
         Height = 0;
       }
+    }
+
+    private Control GetChildControl(Control parentControl)
+    {
+      var control = parentControl.Controls[0];
+      control.Dock = System.Windows.Forms.DockStyle.Top;
+      control.Padding = new System.Windows.Forms.Padding(5);
+      return control;
+    }
+
+    private string GenerateDescriptHtml(string descript)
+    {
+      if (string.IsNullOrEmpty(descript)) return string.Empty;
+      return descript.Replace("<body>", "<body style=\"overflow: auto\"");
+    }
+
+    private readonly string commentTemplate =
+@"<div style=""margin: 10px;"">		<div style=""background-color: #ededed;height: 30px;"">
+      <span style=""font-size:18px;position:relative;top:4px;color:blue;font-weight:bold;""> name </span>			<span style=""font-size:14px;position:relative;top:4px;""> time </span>
+    </div>
+    <div> comment </div></div>";
+    private string GenerateCommentsHtml(Comments comments)
+    {
+      if (comments == null || comments.data == null || comments.data.Count() == 0)
+        return string.Empty;
+
+      var html = new StringBuilder();
+      html.Append("<!DOCTYPE html><html><body style=\"overflow: auto\">");
+      foreach (Comment item in comments.data)
+      {
+        html.Append(commentTemplate
+          .Replace("name", item.author.name)
+          .Replace("time", item.last_modified.ToString())
+          .Replace("comment", item.text?
+            .Replace("<html>", "").Replace("</html>", "").Replace("<body>", "").Replace("</body>", "")));
+      }
+      html.Append("</body></html>");
+
+      return html.ToString();
     }
 
     // Occurs when the form region is closed.
