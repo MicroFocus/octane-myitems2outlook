@@ -27,8 +27,10 @@ namespace OctaneMyItems
       {
         var backlog = octaneItem as Backlog;
         oTask.Subject = backlog.name;
-        //Still need check if it is Story
-        octane.ValidationText = "Backlog";
+        if("Story".Equals(backlog.subtype, System.StringComparison.OrdinalIgnoreCase))
+          octane.ValidationText = "Story";
+        else
+          octane.ValidationText = "Defect";
       }
       else if(octaneItem is Run)
       {

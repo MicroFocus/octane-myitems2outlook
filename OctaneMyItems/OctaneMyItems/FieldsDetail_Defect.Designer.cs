@@ -1,6 +1,6 @@
 ﻿namespace OctaneMyItems
 {
-  partial class FieldsDetail_Backlog
+  partial class FieldsDetail_Defect
   {
     /// <summary> 
     /// Required designer variable.
@@ -56,6 +56,30 @@
       this.panel9 = new System.Windows.Forms.Panel();
       this.tb_fixedOn = new System.Windows.Forms.TextBox();
       this.label9 = new System.Windows.Forms.Label();
+      this.panel10 = new System.Windows.Forms.Panel();
+      this.tb_priority = new System.Windows.Forms.TextBox();
+      this.label10 = new System.Windows.Forms.Label();
+      this.panel11 = new System.Windows.Forms.Panel();
+      this.tb_applicationModules = new System.Windows.Forms.TextBox();
+      this.label11 = new System.Windows.Forms.Label();
+      this.panel12 = new System.Windows.Forms.Panel();
+      this.tb_storyPoints = new System.Windows.Forms.TextBox();
+      this.label12 = new System.Windows.Forms.Label();
+      this.panel13 = new System.Windows.Forms.Panel();
+      this.tb_release = new System.Windows.Forms.TextBox();
+      this.label13 = new System.Windows.Forms.Label();
+      this.panel14 = new System.Windows.Forms.Panel();
+      this.tb_sprint = new System.Windows.Forms.TextBox();
+      this.label14 = new System.Windows.Forms.Label();
+      this.panel15 = new System.Windows.Forms.Panel();
+      this.tb_itemType = new System.Windows.Forms.TextBox();
+      this.label15 = new System.Windows.Forms.Label();
+      this.panel16 = new System.Windows.Forms.Panel();
+      this.tb_team = new System.Windows.Forms.TextBox();
+      this.label16 = new System.Windows.Forms.Label();
+      this.panel17 = new System.Windows.Forms.Panel();
+      this.tb_environment = new System.Windows.Forms.TextBox();
+      this.label17 = new System.Windows.Forms.Label();
       this.flowLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
@@ -66,6 +90,14 @@
       this.panel7.SuspendLayout();
       this.panel8.SuspendLayout();
       this.panel9.SuspendLayout();
+      this.panel10.SuspendLayout();
+      this.panel11.SuspendLayout();
+      this.panel12.SuspendLayout();
+      this.panel13.SuspendLayout();
+      this.panel14.SuspendLayout();
+      this.panel15.SuspendLayout();
+      this.panel16.SuspendLayout();
+      this.panel17.SuspendLayout();
       this.SuspendLayout();
       // 
       // flowLayoutPanel1
@@ -80,6 +112,14 @@
       this.flowLayoutPanel1.Controls.Add(this.panel7);
       this.flowLayoutPanel1.Controls.Add(this.panel8);
       this.flowLayoutPanel1.Controls.Add(this.panel9);
+      this.flowLayoutPanel1.Controls.Add(this.panel10);
+      this.flowLayoutPanel1.Controls.Add(this.panel11);
+      this.flowLayoutPanel1.Controls.Add(this.panel12);
+      this.flowLayoutPanel1.Controls.Add(this.panel13);
+      this.flowLayoutPanel1.Controls.Add(this.panel14);
+      this.flowLayoutPanel1.Controls.Add(this.panel15);
+      this.flowLayoutPanel1.Controls.Add(this.panel16);
+      this.flowLayoutPanel1.Controls.Add(this.panel17);
       this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -348,12 +388,244 @@
       this.label9.TabIndex = 0;
       this.label9.Text = "Fixed on:";
       // 
-      // FieldsDetail_Backlog
+      // panel10
+      // 
+      this.panel10.Controls.Add(this.tb_priority);
+      this.panel10.Controls.Add(this.label10);
+      this.panel10.Location = new System.Drawing.Point(0, 75);
+      this.panel10.Margin = new System.Windows.Forms.Padding(0);
+      this.panel10.Name = "panel10";
+      this.panel10.Size = new System.Drawing.Size(330, 25);
+      this.panel10.TabIndex = 9;
+      // 
+      // tb_priority
+      // 
+      this.tb_priority.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_priority.Location = new System.Drawing.Point(110, 3);
+      this.tb_priority.Name = "tb_priority";
+      this.tb_priority.ReadOnly = true;
+      this.tb_priority.Size = new System.Drawing.Size(200, 20);
+      this.tb_priority.TabIndex = 1;
+      // 
+      // label10
+      // 
+      this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label10.AutoSize = true;
+      this.label10.Location = new System.Drawing.Point(15, 5);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(41, 13);
+      this.label10.TabIndex = 0;
+      this.label10.Text = "Priority:";
+      // 
+      // panel11
+      // 
+      this.panel11.Controls.Add(this.tb_applicationModules);
+      this.panel11.Controls.Add(this.label11);
+      this.panel11.Location = new System.Drawing.Point(330, 75);
+      this.panel11.Margin = new System.Windows.Forms.Padding(0);
+      this.panel11.Name = "panel11";
+      this.panel11.Size = new System.Drawing.Size(330, 25);
+      this.panel11.TabIndex = 10;
+      // 
+      // tb_applicationModules
+      // 
+      this.tb_applicationModules.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_applicationModules.Location = new System.Drawing.Point(110, 3);
+      this.tb_applicationModules.Name = "tb_applicationModules";
+      this.tb_applicationModules.ReadOnly = true;
+      this.tb_applicationModules.Size = new System.Drawing.Size(200, 20);
+      this.tb_applicationModules.TabIndex = 1;
+      // 
+      // label11
+      // 
+      this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label11.AutoSize = true;
+      this.label11.Location = new System.Drawing.Point(15, 5);
+      this.label11.Name = "label11";
+      this.label11.Size = new System.Drawing.Size(104, 13);
+      this.label11.TabIndex = 0;
+      this.label11.Text = "Application modules:";
+      // 
+      // panel12
+      // 
+      this.panel12.Controls.Add(this.tb_storyPoints);
+      this.panel12.Controls.Add(this.label12);
+      this.panel12.Location = new System.Drawing.Point(660, 75);
+      this.panel12.Margin = new System.Windows.Forms.Padding(0);
+      this.panel12.Name = "panel12";
+      this.panel12.Size = new System.Drawing.Size(330, 25);
+      this.panel12.TabIndex = 11;
+      // 
+      // tb_storyPoints
+      // 
+      this.tb_storyPoints.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_storyPoints.Location = new System.Drawing.Point(110, 3);
+      this.tb_storyPoints.Name = "tb_storyPoints";
+      this.tb_storyPoints.ReadOnly = true;
+      this.tb_storyPoints.Size = new System.Drawing.Size(200, 20);
+      this.tb_storyPoints.TabIndex = 1;
+      // 
+      // label12
+      // 
+      this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label12.AutoSize = true;
+      this.label12.Location = new System.Drawing.Point(15, 5);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(65, 13);
+      this.label12.TabIndex = 0;
+      this.label12.Text = "Story points:";
+      // 
+      // panel13
+      // 
+      this.panel13.Controls.Add(this.tb_release);
+      this.panel13.Controls.Add(this.label13);
+      this.panel13.Location = new System.Drawing.Point(0, 100);
+      this.panel13.Margin = new System.Windows.Forms.Padding(0);
+      this.panel13.Name = "panel13";
+      this.panel13.Size = new System.Drawing.Size(330, 25);
+      this.panel13.TabIndex = 12;
+      // 
+      // tb_release
+      // 
+      this.tb_release.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_release.Location = new System.Drawing.Point(110, 3);
+      this.tb_release.Name = "tb_release";
+      this.tb_release.ReadOnly = true;
+      this.tb_release.Size = new System.Drawing.Size(200, 20);
+      this.tb_release.TabIndex = 1;
+      // 
+      // label13
+      // 
+      this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label13.AutoSize = true;
+      this.label13.Location = new System.Drawing.Point(15, 5);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(49, 13);
+      this.label13.TabIndex = 0;
+      this.label13.Text = "Release:";
+      // 
+      // panel14
+      // 
+      this.panel14.Controls.Add(this.tb_sprint);
+      this.panel14.Controls.Add(this.label14);
+      this.panel14.Location = new System.Drawing.Point(330, 100);
+      this.panel14.Margin = new System.Windows.Forms.Padding(0);
+      this.panel14.Name = "panel14";
+      this.panel14.Size = new System.Drawing.Size(330, 25);
+      this.panel14.TabIndex = 13;
+      // 
+      // tb_sprint
+      // 
+      this.tb_sprint.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_sprint.Location = new System.Drawing.Point(110, 3);
+      this.tb_sprint.Name = "tb_sprint";
+      this.tb_sprint.ReadOnly = true;
+      this.tb_sprint.Size = new System.Drawing.Size(200, 20);
+      this.tb_sprint.TabIndex = 1;
+      // 
+      // label14
+      // 
+      this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label14.AutoSize = true;
+      this.label14.Location = new System.Drawing.Point(15, 5);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(37, 13);
+      this.label14.TabIndex = 0;
+      this.label14.Text = "Sprint:";
+      // 
+      // panel15
+      // 
+      this.panel15.Controls.Add(this.tb_itemType);
+      this.panel15.Controls.Add(this.label15);
+      this.panel15.Location = new System.Drawing.Point(660, 100);
+      this.panel15.Margin = new System.Windows.Forms.Padding(0);
+      this.panel15.Name = "panel15";
+      this.panel15.Size = new System.Drawing.Size(330, 25);
+      this.panel15.TabIndex = 14;
+      // 
+      // tb_itemType
+      // 
+      this.tb_itemType.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_itemType.Location = new System.Drawing.Point(110, 3);
+      this.tb_itemType.Name = "tb_itemType";
+      this.tb_itemType.ReadOnly = true;
+      this.tb_itemType.Size = new System.Drawing.Size(200, 20);
+      this.tb_itemType.TabIndex = 1;
+      // 
+      // label15
+      // 
+      this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label15.AutoSize = true;
+      this.label15.Location = new System.Drawing.Point(15, 5);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(53, 13);
+      this.label15.TabIndex = 0;
+      this.label15.Text = "Item type:";
+      // 
+      // panel16
+      // 
+      this.panel16.Controls.Add(this.tb_team);
+      this.panel16.Controls.Add(this.label16);
+      this.panel16.Location = new System.Drawing.Point(0, 125);
+      this.panel16.Margin = new System.Windows.Forms.Padding(0);
+      this.panel16.Name = "panel16";
+      this.panel16.Size = new System.Drawing.Size(330, 25);
+      this.panel16.TabIndex = 15;
+      // 
+      // tb_team
+      // 
+      this.tb_team.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_team.Location = new System.Drawing.Point(110, 3);
+      this.tb_team.Name = "tb_team";
+      this.tb_team.ReadOnly = true;
+      this.tb_team.Size = new System.Drawing.Size(200, 20);
+      this.tb_team.TabIndex = 1;
+      // 
+      // label16
+      // 
+      this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label16.AutoSize = true;
+      this.label16.Location = new System.Drawing.Point(15, 5);
+      this.label16.Name = "label16";
+      this.label16.Size = new System.Drawing.Size(37, 13);
+      this.label16.TabIndex = 0;
+      this.label16.Text = "Team:";
+      // 
+      // panel17
+      // 
+      this.panel17.Controls.Add(this.tb_environment);
+      this.panel17.Controls.Add(this.label17);
+      this.panel17.Location = new System.Drawing.Point(330, 125);
+      this.panel17.Margin = new System.Windows.Forms.Padding(0);
+      this.panel17.Name = "panel17";
+      this.panel17.Size = new System.Drawing.Size(330, 25);
+      this.panel17.TabIndex = 16;
+      // 
+      // tb_environment
+      // 
+      this.tb_environment.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.tb_environment.Location = new System.Drawing.Point(110, 3);
+      this.tb_environment.Name = "tb_environment";
+      this.tb_environment.ReadOnly = true;
+      this.tb_environment.Size = new System.Drawing.Size(200, 20);
+      this.tb_environment.TabIndex = 1;
+      // 
+      // label17
+      // 
+      this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label17.AutoSize = true;
+      this.label17.Location = new System.Drawing.Point(15, 5);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(69, 13);
+      this.label17.TabIndex = 0;
+      this.label17.Text = "Environment:";
+      // 
+      // FieldsDetail_Defect
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.flowLayoutPanel1);
-      this.Name = "FieldsDetail_Backlog";
+      this.Name = "FieldsDetail_Defect";
       this.Size = new System.Drawing.Size(1268, 276);
       this.flowLayoutPanel1.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
@@ -374,6 +646,22 @@
       this.panel8.PerformLayout();
       this.panel9.ResumeLayout(false);
       this.panel9.PerformLayout();
+      this.panel10.ResumeLayout(false);
+      this.panel10.PerformLayout();
+      this.panel11.ResumeLayout(false);
+      this.panel11.PerformLayout();
+      this.panel12.ResumeLayout(false);
+      this.panel12.PerformLayout();
+      this.panel13.ResumeLayout(false);
+      this.panel13.PerformLayout();
+      this.panel14.ResumeLayout(false);
+      this.panel14.PerformLayout();
+      this.panel15.ResumeLayout(false);
+      this.panel15.PerformLayout();
+      this.panel16.ResumeLayout(false);
+      this.panel16.PerformLayout();
+      this.panel17.ResumeLayout(false);
+      this.panel17.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -409,5 +697,29 @@
     private System.Windows.Forms.Panel panel9;
     private System.Windows.Forms.TextBox tb_fixedOn;
     private System.Windows.Forms.Label label9;
+    private System.Windows.Forms.Panel panel10;
+    private System.Windows.Forms.TextBox tb_priority;
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Panel panel11;
+    private System.Windows.Forms.TextBox tb_applicationModules;
+    private System.Windows.Forms.Label label11;
+    private System.Windows.Forms.Panel panel12;
+    private System.Windows.Forms.TextBox tb_storyPoints;
+    private System.Windows.Forms.Label label12;
+    private System.Windows.Forms.Panel panel13;
+    private System.Windows.Forms.TextBox tb_release;
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.Panel panel14;
+    private System.Windows.Forms.TextBox tb_sprint;
+    private System.Windows.Forms.Label label14;
+    private System.Windows.Forms.Panel panel15;
+    private System.Windows.Forms.TextBox tb_itemType;
+    private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.Panel panel16;
+    private System.Windows.Forms.TextBox tb_team;
+    private System.Windows.Forms.Label label16;
+    private System.Windows.Forms.Panel panel17;
+    private System.Windows.Forms.TextBox tb_environment;
+    private System.Windows.Forms.Label label17;
   }
 }

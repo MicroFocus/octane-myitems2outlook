@@ -36,9 +36,9 @@
     private void InitializeComponent()
     {
       this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.tabPage2 = new System.Windows.Forms.TabPage();
       this.tabPage1 = new System.Windows.Forms.TabPage();
       this.wb_description = new System.Windows.Forms.WebBrowser();
+      this.tabPage2 = new System.Windows.Forms.TabPage();
       this.p_fields = new System.Windows.Forms.Panel();
       this.splitter1 = new System.Windows.Forms.Splitter();
       this.tabControl1.SuspendLayout();
@@ -51,21 +51,11 @@
       this.tabControl1.Controls.Add(this.tabPage1);
       this.tabControl1.Controls.Add(this.tabPage2);
       this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Location = new System.Drawing.Point(0, 100);
+      this.tabControl1.Location = new System.Drawing.Point(0, 150);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1005, 685);
+      this.tabControl1.Size = new System.Drawing.Size(1005, 635);
       this.tabControl1.TabIndex = 3;
-      // 
-      // tabPage2
-      // 
-      this.tabPage2.Location = new System.Drawing.Point(4, 22);
-      this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage2.Size = new System.Drawing.Size(815, 492);
-      this.tabPage2.TabIndex = 1;
-      this.tabPage2.Text = "Comments";
-      this.tabPage2.UseVisualStyleBackColor = true;
       // 
       // tabPage1
       // 
@@ -73,7 +63,7 @@
       this.tabPage1.Location = new System.Drawing.Point(4, 22);
       this.tabPage1.Name = "tabPage1";
       this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(997, 659);
+      this.tabPage1.Size = new System.Drawing.Size(997, 609);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Description";
       this.tabPage1.UseVisualStyleBackColor = true;
@@ -84,8 +74,18 @@
       this.wb_description.Location = new System.Drawing.Point(3, 3);
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
-      this.wb_description.Size = new System.Drawing.Size(991, 653);
+      this.wb_description.Size = new System.Drawing.Size(991, 603);
       this.wb_description.TabIndex = 0;
+      // 
+      // tabPage2
+      // 
+      this.tabPage2.Location = new System.Drawing.Point(4, 22);
+      this.tabPage2.Name = "tabPage2";
+      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPage2.Size = new System.Drawing.Size(997, 659);
+      this.tabPage2.TabIndex = 1;
+      this.tabPage2.Text = "Comments";
+      this.tabPage2.UseVisualStyleBackColor = true;
       // 
       // p_fields
       // 
@@ -94,13 +94,13 @@
       this.p_fields.Dock = System.Windows.Forms.DockStyle.Top;
       this.p_fields.Location = new System.Drawing.Point(0, 0);
       this.p_fields.Name = "p_fields";
-      this.p_fields.Size = new System.Drawing.Size(1005, 100);
+      this.p_fields.Size = new System.Drawing.Size(1005, 150);
       this.p_fields.TabIndex = 2;
       // 
       // splitter1
       // 
       this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.splitter1.Location = new System.Drawing.Point(0, 97);
+      this.splitter1.Location = new System.Drawing.Point(0, 147);
       this.splitter1.Name = "splitter1";
       this.splitter1.Size = new System.Drawing.Size(1005, 3);
       this.splitter1.TabIndex = 0;
