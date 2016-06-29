@@ -239,9 +239,9 @@
       this.label4.AutoSize = true;
       this.label4.Location = new System.Drawing.Point(15, 5);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(45, 13);
+      this.label4.Size = new System.Drawing.Size(48, 13);
       this.label4.TabIndex = 0;
-      this.label4.Text = "Severity";
+      this.label4.Text = "Severity:";
       // 
       // panel5
       // 
