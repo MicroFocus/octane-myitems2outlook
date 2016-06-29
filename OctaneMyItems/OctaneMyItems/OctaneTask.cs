@@ -1,12 +1,12 @@
 ﻿using System;
 using Outlook = Microsoft.Office.Interop.Outlook;
-
+using OctaneMyItemsSyncService.Models;
 namespace OctaneMyItems
 {
   public class OctaneTask
   {
     public static Outlook.Application m_outlookApp;
-    public static void CreateTask()
+    public static void CreateTask(Backlog backlog)
     {
       m_outlookApp = Globals.ThisAddIn.Application.Application;
       if(m_outlookApp == null)

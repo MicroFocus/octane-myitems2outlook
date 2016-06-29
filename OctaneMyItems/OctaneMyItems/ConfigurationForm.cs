@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using OctaneMyItemsSyncService.Services;
+using OctaneMyItemsSyncService.Models;
 
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
     private OctaneMyItemsSyncService.Services.OctaneService m_octaneService;
+    private Dictionary<int,Workspace> m_workspaces;
     public string ServerUrl
     {
       get{return m_serverUrl.Text;}
@@ -39,7 +42,7 @@ set { m_sharedSpaceId.Text = value.ToString(); }
 
     public string WorkSpace
     {
-      get { return m_workSpaces.Text; }
+      get { return m_workspacesComboBox.Text; }
     }
     public OctaneService OctaneService
 {
@@ -48,6 +51,7 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     public ConfigurationForm()
     {
       InitializeComponent();
+      m_workspaces = new Dictionary<int,Workspace>();
       ServerUrl = "https://hackathon.almoctane.com";
       User = "jing-chun.xia@hpe.com";
       Password = "Mission-Possible";
@@ -67,10 +71,11 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     //  OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
       foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces.data)
 {
-        m_workSpaces.Items.Add(workspace.name);
+        int i = m_workspacesComboBox.Items.Add(workspace.name);
+        m_workspaces.Add(i, workspace);
       }
-      m_workSpaces.Focus();
-      m_workSpaces.SelectedIndex = 0;
+      m_workspacesComboBox.Focus();
+      m_workspacesComboBox.SelectedIndex = 0;
       
     }
 
@@ -88,8 +93,17 @@ set { m_sharedSpaceId.Text = value.ToString(); }
 
     }
 
-    private void buttonOK_Click(object sender, EventArgs e)
+    private async void buttonOK_Click(object sender, EventArgs e)
     {
+      Workspace workspace;
+      if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
+      {
+        await m_octaneService.SetDefaultWorkspace(workspace);
+      }
+else 
+{
+        MessageBox.Show("no default workspace is selected");
+      }
       this.Close();
     }
 
