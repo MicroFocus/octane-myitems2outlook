@@ -104,11 +104,13 @@ else
 {
         MessageBox.Show("no default workspace is selected");
       }
+      this.DialogResult = DialogResult.OK;
       this.Close();
     }
 
     private void buttonCancel_Click(object sender, EventArgs e)
     {
+      
       this.Close();
     }
   }
