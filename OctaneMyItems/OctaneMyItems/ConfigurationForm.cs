@@ -70,7 +70,7 @@ set { m_sharedSpaceId.Text = value.ToString(); }
 
     //  OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
       foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces.data)
-{
+      {
         int i = m_workspacesComboBox.Items.Add(workspace.name);
         m_workspaces.Add(i, workspace);
       }
@@ -86,11 +86,6 @@ set { m_sharedSpaceId.Text = value.ToString(); }
       m_octaneService.SetDefaultSharespace(SharedSpaceId);
       var workspaces = await m_octaneService.GetWorkspace();
        return workspaces.data;
-    }
-
-    private void buttonSharedSpace_Click(object sender, EventArgs e)
-    {
-
     }
 
     private async void buttonOK_Click(object sender, EventArgs e)

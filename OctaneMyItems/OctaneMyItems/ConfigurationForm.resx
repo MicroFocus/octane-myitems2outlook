@@ -117,4 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAFBQAAAEAIAC4BgAAFgAAACgAAAAUAAAAKAAAAAEAIAAAAAAAQAYAAAAAAAAAAAAAAAAAAAAA
+        AABaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWodaWlrMWlpazFpaWmNaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloDWlpa81pa
+        Wv9aWlr/WlpatFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaS1pa
+        WqJaWloYWlpaGFpaWpBaWlr/Wlpa/1paWv9aWlr5WlpaflpaWhtaWlpOWlpa1VpaWkJaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWkVaWlr5Wlpa/1paWvNaWlr5Wlpa/1paWv9aWlr/Wlpa/1paWv9aWlr/Wlpa/1pa
+        Wv9aWlr/Wlpa9lpaWkhaWloAWlpaAFpaWgBaWloAWlpa21paWv9aWlr/Wlpa/1paWv9aWlr/Wlpa21pa
+        WqVaWlqoWlpa21paWv9aWlr/Wlpa/1paWv9aWlr/WlpapVpaWgBaWloAWlpaAFpaWgBaWlpRWlpa/1pa
+        Wv9aWlr/Wlpa2FpaWjZaWloAWlpaAFpaWgBaWloAWlpaP1paWttaWlr/Wlpa/1paWvNaWlobWlpaAFpa
+        WgBaWloAWlpaAFpaWidaWlr8Wlpa/1paWttaWloJWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaCVpa
+        WsxaWlr/Wlpa/FpaWiRaWloAWlpaAFpaWgBaWloAWlpakFpaWv9aWlr/WlpaPFpaWgBaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloAWlpaMFpaWv9aWlr/Wlpak1paWgBaWloAWlpaXVpaWrdaWlr5Wlpa/1pa
+        WslaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaw1paWv9aWlr/Wlpa81pa
+        Wo1aWlq6Wlpa/1paWv9aWlr/WlpanFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpa
+        WgBaWlqcWlpa/1paWv9aWlr/WlpatFpaWrRaWlr/Wlpa/1paWv9aWlqcWlpaAFpaWgBaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWpxaWlr/Wlpa/1paWv9aWlq6WlpailpaWvNaWlr/Wlpa/1pa
+        WsZaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpayVpaWv9aWlr2WlpatFpa
+        Wl1aWloAWlpaAFpaWpZaWlr/Wlpa/1paWjBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpa
+        Wj9aWlr/Wlpa/1paWodaWloAWlpaAFpaWgBaWloAWlpaHlpaWvxaWlr/Wlpa0lpaWgxaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloPWlpa21paWv9aWlr8WlpaJ1paWgBaWloAWlpaAFpaWgBaWlobWlpa81pa
+        Wv9aWlr/Wlpa3lpaWj9aWloAWlpaAFpaWgBaWloAWlpaP1paWt5aWlr/Wlpa/1paWv9aWlpLWlpaAFpa
+        WgBaWloAWlpaAFpaWqVaWlr/Wlpa/1paWv9aWlr/Wlpa/1paWttaWlqoWlpamVpaWsxaWlr/Wlpa/1pa
+        Wv9aWlr/Wlpa/1paWttaWloAWlpaAFpaWgBaWloAWlpaSFpaWvZaWlr/Wlpa/1paWv9aWlr/Wlpa/1pa
+        Wv9aWlr/Wlpa/1paWv9aWlr8Wlpa9lpaWv9aWlr2WlpaP1paWgBaWloAWlpaAFpaWgBaWloAWlpaQlpa
+        WtVaWlpOWlpaGFpaWn5aWlr5Wlpa/1paWv9aWlr/WlpajVpaWhhaWloeWlpaolpaWkhaWloAWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWrRaWlr/Wlpa/1paWvNaWloDWlpaAFpa
+        WgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloAWlpaXVpa
+        WsxaWlrAWlpadVpaWgBaWloAWlpaAFpaWgBaWloAWlpaAFpaWgBaWloA/w/wAP4P8ADgAHAAwAAwAMAA
+        MADA8DAAwfgwAMP8MAAH/gAAB/4AAAf+AAAH/gAAw/wwAMH4MADA8DAAwAAwAMAAMADgAHAA/wfwAP8P
+        8AA=
+</value>
+  </data>
 </root>
