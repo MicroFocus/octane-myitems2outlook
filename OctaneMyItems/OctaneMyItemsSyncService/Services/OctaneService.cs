@@ -83,34 +83,71 @@ namespace OctaneMyItemsSyncService.Services
         }
         public async Task<Backlogs> GetMyBacklogs()
         {
-            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name='New'||name='In Progress'||name='In Testing')}};(subtype='defect'||subtype='story'||subtype='quality_story')";            var expand = "$all{fields = name}";
+            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(logical_name EQ 'metaphase.work_item.new'||logical_name EQ 'metaphase.work_item.inprogress'||logical_name EQ 'metaphase.work_item.intesting')}};(subtype EQ 'defect'||subtype EQ 'story'||subtype EQ 'quality_story')";            var expand = "$all{fields = name}";
             return await GetBacklogs(string.Format("query=\"{0}\"&expand={1}", query, expand));
         }
 
-        public async Task<Tests> GetTests(string parameters = null)
+        public async Task<Tests> GetTests(string parameters = null, bool withscript = false)
         {
             var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/tests";
             if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
             var response = await _httpClient.GetAsync(url);
-            return await response.Content.ReadAsAsync<Tests>();
+            Tests tests = await response.Content.ReadAsAsync<Tests>();
+            if (withscript)
+            {
+                //get test script for each test
+                foreach (Test test in tests.data)
+                {
+                    if (!string.IsNullOrEmpty(test.script_path))
+                        test.script = (await GetTestScript(test.id)).script;
+                }
+            }
+            return tests;
         }
         public async Task<Tests> GetMyTests()
         {
-            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name='New'||name='In Design')}};(subtype='test_manual'||subtype='gherkin_test')";            var expand = "$all{fields = name}";
-            return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand));
+            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(logical_name EQ 'metaphase.test.new' ||logical_name EQ 'metaphase.test.indesign')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";            var expand = "$all{fields = name}";
+            return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
         }
 
-        public async Task<Runs> GetRuns(string parameters = null)
+        public async Task<TestScript> GetTestScript(int test_id)
+        {
+            var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
+            var response = await _httpClient.GetAsync(url);
+            return await response.Content.ReadAsAsync<TestScript>();
+        }
+
+
+        public async Task<Runs> GetRuns(string parameters = null, bool withsteps = false)
         {
             var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/runs";
             if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
             var response = await _httpClient.GetAsync(url);
-            return await response.Content.ReadAsAsync<Runs>();
+            Runs runs = await response.Content.ReadAsAsync<Runs>();
+
+            if (withsteps)
+            {
+                //get run steps for each run
+                foreach (Run run in runs.data)
+                {
+                    if (run.steps_num>0)
+                        run.steps = await GetRunSteps(run.id);
+                }
+            }
+            return runs;
         }
         public async Task<Runs> GetMyRuns()
         {
-            var query = "run_by={id=" + _currentUser.id + "};(native_status={id=2946}||native_status={id=2945}||native_status={id=2944});((parent_suite={null};subtype='run_manual')||(subtype='run_suite'))";            var expand = "$all{fields = name}";
-            return await GetRuns(string.Format("query=\"{0}\"&skip_subtype_filter={1}&expand={2}", query, true, expand));
+            var query = "run_by={id=" + _currentUser.id + "};(native_status={logical_name EQ 'list_node.run_native_status.planned' }||native_status={logical_name EQ 'list_node.run_native_status.blocked'}||native_status={logical_name EQ 'list_node.run_native_status.not_completed'});((parent_suite={null};subtype EQ 'run_manual')||(subtype EQ 'run_suite'))";            var expand = "$all{fields = name}";
+            return await GetRuns(string.Format("query=\"{0}\"&skip_subtype_filter={1}&expand={2}", query, true, expand), true);
         }
+
+        public async Task<Run_Steps> GetRunSteps(int run_id)
+        {
+            var url = $"/api/shared_spaces/{_defaultSharespaceId}/workspaces/{_defaultWorkspace.id}/run_steps" + "?query=\"run={id=" + run_id + "}\"";
+            var response = await _httpClient.GetAsync(url);
+            return await response.Content.ReadAsAsync<Run_Steps>();
+        }
+
     }
 }
