@@ -83,7 +83,7 @@ namespace OctaneMyItemsSyncService.Services
         }
         public async Task<Backlogs> GetMyBacklogs()
         {
-            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(logical_name EQ 'metaphase.work_item.new'||logical_name EQ 'metaphase.work_item.inprogress'||logical_name EQ 'metaphase.work_item.intesting')}};(subtype EQ 'defect'||subtype EQ 'story'||subtype EQ 'quality_story')";            var expand = "$all{fields = name}";
+            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New'|| name EQ 'In Progress' || name EQ 'In Testing')}};(subtype EQ 'defect'||subtype EQ 'story'||subtype EQ 'quality_story')";            var expand = "$all{fields = name}";
             return await GetBacklogs(string.Format("query=\"{0}\"&expand={1}", query, expand));
         }
 
@@ -106,7 +106,7 @@ namespace OctaneMyItemsSyncService.Services
         }
         public async Task<Tests> GetMyTests()
         {
-            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(logical_name EQ 'metaphase.test.new' ||logical_name EQ 'metaphase.test.indesign')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";            var expand = "$all{fields = name}";
+            var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";            var expand = "$all{fields = name}";
             return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
         }
 

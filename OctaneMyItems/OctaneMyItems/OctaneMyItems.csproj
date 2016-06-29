@@ -189,11 +189,11 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FieldsDetail_Backlog.cs">
+    <Compile Include="FieldsDetail_Defect.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FieldsDetail_Backlog.Designer.cs">
-      <DependentUpon>FieldsDetail_Backlog.cs</DependentUpon>
+    <Compile Include="FieldsDetail_Defect.Designer.cs">
+      <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
     </Compile>
     <Compile Include="OctaneTaskDetail.cs">
       <SubType>UserControl</SubType>
@@ -207,8 +207,8 @@
     <EmbeddedResource Include="ConfigurationForm.resx">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FieldsDetail_Backlog.resx">
-      <DependentUpon>FieldsDetail_Backlog.cs</DependentUpon>
+    <EmbeddedResource Include="FieldsDetail_Defect.resx">
+      <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OctaneTaskDetail.resx">
       <DependentUpon>OctaneTaskDetail.cs</DependentUpon>
