@@ -58,6 +58,14 @@ public static void SyncAll()
       }
     
     }
+    public static async void SyncTest()
+    {
+    }
+
+    public static async void SyncRun()
+    {
+    }
+
 
     protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
     {
