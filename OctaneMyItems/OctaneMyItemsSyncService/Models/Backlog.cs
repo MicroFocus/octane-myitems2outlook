@@ -49,9 +49,11 @@ namespace OctaneMyItemsSyncService.Models
     public string name { get; set; }
     public string original_id { get; set; }
     public long? detected_in_build { get; set; }
+    public Comments comments { get; set; }
+
   }
 
-  public class Parent
+    public class Parent
   {
     public string type { get; set; }
     public string subtype { get; set; }

@@ -7,8 +7,8 @@
     <ProjectGuid>{8E3F675C-7157-458F-BDB3-90E0C54E510E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OctaneTaskSyncService</RootNamespace>
-    <AssemblyName>OctaneTaskSyncService</AssemblyName>
+    <RootNamespace>OctaneMyItemsSyncService</RootNamespace>
+    <AssemblyName>OctaneMyItemsSyncService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Backlog.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Run.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\User.cs" />
