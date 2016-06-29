@@ -1,4 +1,5 @@
 ﻿using OctaneMyItemsSyncService.Services;
+using System.Threading.Tasks;
 
 namespace OctaneMyItems
 {
@@ -36,7 +37,7 @@ namespace OctaneMyItems
 
             m_configuration.ShowConfiguration();
         }
-        public static async void SyncAll()
+        public static async Task SyncAll()
         {
             if (!m_configuration.IsInitialized)
             {
@@ -74,7 +75,7 @@ namespace OctaneMyItems
             }
         }
 
-        public static async void SyncBacklogItem()
+        public static async Task SyncBacklogItem()
         {
             if (!m_configuration.IsInitialized)
             {
@@ -94,7 +95,7 @@ namespace OctaneMyItems
             }
 
         }
-        public static async void SyncTest()
+        public static async Task SyncTest()
         {
             if (!m_configuration.IsInitialized)
             {
@@ -114,7 +115,7 @@ namespace OctaneMyItems
             }
         }
 
-        public static async void SyncRun()
+        public static async Task SyncRun()
         {
             if (!m_configuration.IsInitialized)
             {

@@ -27,6 +27,11 @@ namespace OctaneMyItems
   public class Ribbon2 : Office.IRibbonExtensibility
   {
     private Office.IRibbonUI ribbon;
+    private const string SyncAllId = "syncAll";
+    private const string SyncBacklogId = "syncBacklogItem";
+    private const string SyncTestId = "syncTest";
+    private const string SyncRunId = "syncRun";
+    private const string ConfigureId = "configuration";
 
     public Ribbon2()
     {
@@ -51,50 +56,88 @@ namespace OctaneMyItems
     }
     public Bitmap GetButtonIcon(Office.IRibbonControl button)
     {
-     // return  (Bitmap)Images.ResourceManager.GetObject(string.Format("{0}Icon", button.Id)));
-       Bitmap bitmap =(Bitmap) Properties.Resources.ResourceManager.GetObject("OptionsButtonIcon");
+      // return  (Bitmap)Images.ResourceManager.GetObject(string.Format("{0}Icon", button.Id)));
+      Bitmap bitmap = (Bitmap)Properties.Resources.ResourceManager.GetObject("OptionsButtonIcon");
       Stream s = this.GetType().Assembly.GetManifestResourceStream("OptionsButtonIcon");
       //this.GetType().Assembly
       Bitmap bmp = null;
       switch (button.Id)
       {
-        case "configuration":
+        case ConfigureId:
           bmp = Images.Resource.OptionsButtonIcon;
           break;
-        case "syncAll":
+        case SyncAllId:
           bmp = Images.Resource.SyncAllButtonIcon;
           break;
-        case "syncBacklogItem":
+        case SyncBacklogId:
           bmp = Images.Resource.SyncBacklogItemButtonIcon;
           break;
-        case "syncTest":
+        case SyncTestId:
           bmp = Images.Resource.SyncTestButtonIcon;
           break;
-        case "syncRun":
+        case SyncRunId:
           bmp = Images.Resource.SyncRunButtonIcon;
           break;
         default:
           break;
       }
-      
+
       return bmp;
     }
 
-    public void OnSyncAllPressed(Office.IRibbonControl control)
+    private bool _isSyncAllEnable = true;
+    private bool _isSyncBacklogEnable = true;
+    private bool _isSyncTestEnable = true;
+    private bool _isSyncRunEnable = true;
+    public bool GetEnable(Office.IRibbonControl control)
     {
-      ThisAddIn.SyncAll();
+      switch (control.Id)
+      {
+        case SyncAllId: return _isSyncAllEnable;
+        case SyncBacklogId: return _isSyncBacklogEnable;
+        case SyncTestId: return _isSyncTestEnable;
+        case SyncRunId: return _isSyncRunEnable;
+        default: return true;
+      }
     }
-    public void OnSyncBacklogItemPressed(Office.IRibbonControl control)
+
+    public async void OnSyncAllPressed(Office.IRibbonControl control)
     {
-      ThisAddIn.SyncBacklogItem();
+      _isSyncAllEnable = false;
+      _isSyncBacklogEnable = false;
+      _isSyncTestEnable = false;
+      _isSyncRunEnable = false;
+      ribbon.Invalidate();
+      await ThisAddIn.SyncAll();
+      _isSyncAllEnable = true;
+      _isSyncBacklogEnable = true;
+      _isSyncTestEnable = true;
+      _isSyncRunEnable = true;
+      ribbon.Invalidate();
     }
-    public void OnSyncTestPressed(Office.IRibbonControl control)
+    public async void OnSyncBacklogItemPressed(Office.IRibbonControl control)
     {
-      ThisAddIn.SyncTest();
+      _isSyncBacklogEnable = false;
+      ribbon.InvalidateControl(SyncBacklogId);
+      await ThisAddIn.SyncBacklogItem();
+      _isSyncBacklogEnable = true;
+      ribbon.InvalidateControl(SyncBacklogId);
     }
-    public void OnSyncRunPressed(Office.IRibbonControl control)
+    public async void OnSyncTestPressed(Office.IRibbonControl control)
     {
-      ThisAddIn.SyncRun();
+      _isSyncTestEnable = false;
+      ribbon.InvalidateControl(SyncTestId);
+      await ThisAddIn.SyncTest();
+      _isSyncTestEnable = true;
+      ribbon.InvalidateControl(SyncTestId);
+    }
+    public async void OnSyncRunPressed(Office.IRibbonControl control)
+    {
+      _isSyncRunEnable = false;
+      ribbon.InvalidateControl(SyncRunId);
+      await ThisAddIn.SyncRun();
+      _isSyncRunEnable = true;
+      ribbon.InvalidateControl(SyncRunId);
     }
 
     public void OnConfigurationPressed(Office.IRibbonControl control)
