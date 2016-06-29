@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Linq;
+using System.Threading.Tasks;
 using OctaneMyItemsSyncService.Services;
 
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
-
+    private OctaneMyItemsSyncService.Services.OctaneService m_octaneService;
     public string ServerUrl
     {
       get{return m_serverUrl.Text;}
@@ -41,24 +41,40 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     {
       get { return m_workSpaces.Text; }
     }
+    public OctaneService OctaneService
+{
+    get { return m_octaneService; }
+    }
     public ConfigurationForm()
     {
       InitializeComponent();
       ServerUrl = "https://hackathon.almoctane.com";
       User = "jing-chun.xia@hpe.com";
       Password = "Mission-Possible";
+      SharedSpaceId = 1001;
+      m_octaneService = null;
     }
 
-    private async void buttonTestConnection_Click(object sender, EventArgs e)
+    private void buttonTestConnection_Click(object sender, EventArgs e)
     {
-      OctaneService octaneService = new OctaneService(ServerUrl);
-      await octaneService.Login(User,Password );
-      octaneService.SetDefaultSharespace(SharedSpaceId);
-      var workspaces = await octaneService.GetWorkspace();
- /*     foreach(var workspace in workspaces)
+      Task < OctaneMyItemsSyncService.Models.Workspace[] > workspacesTask = TestConnection();
+      OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
+      foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces)
 {
-        m_workSpaces.Items.Add(workspace);
-      }*/
+        m_workSpaces.Items.Add(workspace.name);
+      }
+      m_workSpaces.Focus();
+      m_workSpaces.SelectedIndex = 0;
+      
+    }
+
+    private async Task<OctaneMyItemsSyncService.Models.Workspace[]> TestConnection()
+{
+      m_octaneService = new OctaneService(ServerUrl);
+      await m_octaneService.Login(User, Password);
+      m_octaneService.SetDefaultSharespace(SharedSpaceId);
+      var workspaces = await m_octaneService.GetWorkspace();
+       return workspaces.data;
     }
 
     private void buttonSharedSpace_Click(object sender, EventArgs e)

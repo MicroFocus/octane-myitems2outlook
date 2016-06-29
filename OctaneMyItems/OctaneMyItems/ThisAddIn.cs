@@ -39,6 +39,24 @@ public static void SyncAll()
       var workspaces = await octaneService.GetWorkspace();
 */
     }
+
+    public static async void SyncBacklogItem()
+    {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.Getconfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+        OctaneMyItemsSyncService.Models.Workspace workspace = new OctaneMyItemsSyncService.Models.Workspace();
+        workspace.name = m_configuration.WorkSpaceName;
+        await octaneService.SetDefaultWorkspace(workspace);
+        var myBacklogs = await octaneService.GetMyBacklogs();
+      }
+    
+    }
+
     protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
     {
       return new Ribbon2();

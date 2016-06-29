@@ -6,6 +6,7 @@
         <group id="MyGroup"
                label="Octane My Items">
           <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" />
+          <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog item" size="large" />
           <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" />
 
       </group>

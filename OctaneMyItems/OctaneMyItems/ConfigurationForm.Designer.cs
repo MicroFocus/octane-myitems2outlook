@@ -39,9 +39,7 @@
       this.m_sharedSpaceId = new System.Windows.Forms.TextBox();
       this.buttonOK = new System.Windows.Forms.Button();
       this.buttonCancel = new System.Windows.Forms.Button();
-      this.buttonSharedSpace = new System.Windows.Forms.Button();
       this.m_workSpaces = new System.Windows.Forms.ComboBox();
-      this.label5 = new System.Windows.Forms.Label();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.groupBox1.SuspendLayout();
@@ -100,7 +98,7 @@
       // 
       // buttonTestConnection
       // 
-      this.buttonTestConnection.Location = new System.Drawing.Point(308, 157);
+      this.buttonTestConnection.Location = new System.Drawing.Point(172, 202);
       this.buttonTestConnection.Name = "buttonTestConnection";
       this.buttonTestConnection.Size = new System.Drawing.Size(145, 30);
       this.buttonTestConnection.TabIndex = 6;
@@ -111,7 +109,7 @@
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(14, 32);
+      this.label4.Location = new System.Drawing.Point(18, 157);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(121, 17);
       this.label4.TabIndex = 7;
@@ -119,7 +117,7 @@
       // 
       // m_sharedSpaceId
       // 
-      this.m_sharedSpaceId.Location = new System.Drawing.Point(132, 32);
+      this.m_sharedSpaceId.Location = new System.Drawing.Point(136, 154);
       this.m_sharedSpaceId.Name = "m_sharedSpaceId";
       this.m_sharedSpaceId.Size = new System.Drawing.Size(125, 22);
       this.m_sharedSpaceId.TabIndex = 8;
@@ -146,59 +144,38 @@
       this.buttonCancel.UseVisualStyleBackColor = true;
       this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
       // 
-      // buttonSharedSpace
-      // 
-      this.buttonSharedSpace.Location = new System.Drawing.Point(304, 32);
-      this.buttonSharedSpace.Name = "buttonSharedSpace";
-      this.buttonSharedSpace.Size = new System.Drawing.Size(127, 29);
-      this.buttonSharedSpace.TabIndex = 11;
-      this.buttonSharedSpace.Text = "Shared Space";
-      this.buttonSharedSpace.UseVisualStyleBackColor = true;
-      this.buttonSharedSpace.Click += new System.EventHandler(this.buttonSharedSpace_Click);
-      // 
       // m_workSpaces
       // 
       this.m_workSpaces.FormattingEnabled = true;
-      this.m_workSpaces.Location = new System.Drawing.Point(132, 61);
+      this.m_workSpaces.Location = new System.Drawing.Point(86, 31);
       this.m_workSpaces.Name = "m_workSpaces";
-      this.m_workSpaces.Size = new System.Drawing.Size(121, 24);
+      this.m_workSpaces.Size = new System.Drawing.Size(317, 24);
       this.m_workSpaces.TabIndex = 12;
-      // 
-      // label5
-      // 
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(14, 68);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(93, 17);
-      this.label5.TabIndex = 13;
-      this.label5.Text = "Work Space: ";
       // 
       // groupBox1
       // 
       this.groupBox1.Controls.Add(this.buttonTestConnection);
       this.groupBox1.Controls.Add(this.m_password);
       this.groupBox1.Controls.Add(this.label3);
+      this.groupBox1.Controls.Add(this.m_sharedSpaceId);
       this.groupBox1.Controls.Add(this.m_userName);
+      this.groupBox1.Controls.Add(this.label4);
       this.groupBox1.Controls.Add(this.label2);
       this.groupBox1.Controls.Add(this.m_serverUrl);
       this.groupBox1.Controls.Add(this.label1);
       this.groupBox1.Location = new System.Drawing.Point(12, 28);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(493, 206);
+      this.groupBox1.Size = new System.Drawing.Size(493, 238);
       this.groupBox1.TabIndex = 14;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Connect to server: ";
       // 
       // groupBox2
       // 
-      this.groupBox2.Controls.Add(this.label5);
       this.groupBox2.Controls.Add(this.m_workSpaces);
-      this.groupBox2.Controls.Add(this.buttonSharedSpace);
-      this.groupBox2.Controls.Add(this.m_sharedSpaceId);
-      this.groupBox2.Controls.Add(this.label4);
-      this.groupBox2.Location = new System.Drawing.Point(16, 251);
+      this.groupBox2.Location = new System.Drawing.Point(16, 311);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(488, 109);
+      this.groupBox2.Size = new System.Drawing.Size(488, 73);
       this.groupBox2.TabIndex = 15;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Work Space:";
@@ -219,7 +196,6 @@
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.groupBox2.ResumeLayout(false);
-      this.groupBox2.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -237,9 +213,7 @@
     private System.Windows.Forms.TextBox m_sharedSpaceId;
     private System.Windows.Forms.Button buttonOK;
     private System.Windows.Forms.Button buttonCancel;
-    private System.Windows.Forms.Button buttonSharedSpace;
     private System.Windows.Forms.ComboBox m_workSpaces;
-    private System.Windows.Forms.Label label5;
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.GroupBox groupBox2;
   }

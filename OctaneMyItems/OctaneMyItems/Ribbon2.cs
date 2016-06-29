@@ -53,6 +53,12 @@ namespace OctaneMyItems
     {
       ThisAddIn.SyncAll();
     }
+    public void OnSyncBacklogItemPressed(Office.IRibbonControl control)
+    {
+      ThisAddIn.SyncBacklogItem();
+    }
+
+    
     public void OnConfigurationPressed(Office.IRibbonControl control)
     {
       ThisAddIn.GetConfiguration();

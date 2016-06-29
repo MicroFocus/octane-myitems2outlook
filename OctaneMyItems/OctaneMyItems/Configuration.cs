@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using OctaneMyItemsSyncService.Services;
 
 namespace OctaneMyItems
 {
@@ -9,6 +10,9 @@ namespace OctaneMyItems
     private string m_password;
     private int m_sharedSpaceId;
     private string m_workSpace;
+    private OctaneMyItemsSyncService.Services.OctaneService m_service;
+
+    private bool m_initialized = false;
 
     public Configuration()
     {
@@ -19,7 +23,7 @@ namespace OctaneMyItems
       ConfigurationForm form = new ConfigurationForm();
       
 
-      form.Show();
+      form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
         m_serverUrl = form.ServerUrl;
@@ -27,10 +31,16 @@ namespace OctaneMyItems
         m_password = form.Password;
         m_sharedSpaceId = form.SharedSpaceId;
         m_workSpace = form.WorkSpace;
+        m_service = form.OctaneService;
+        m_initialized = true;
       }
 
-    }
 
+    }
+    public bool IsInitialized
+    {
+      get { return m_initialized; }
+    }
     public int SharedSpaceId
     {
       get
@@ -38,9 +48,15 @@ namespace OctaneMyItems
         return m_sharedSpaceId;
       }
     }
-    public string WorkSpace
+    public string WorkSpaceName
     {
       get { return m_workSpace; }
     }
+
+    public OctaneService OctaneService
+    {
+get { return m_service; }
+    }
+
   }
 }
