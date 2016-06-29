@@ -16,7 +16,7 @@ namespace OctaneMyItemsSyncServiceDemo
         static async void Test()
         {
             OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
-            await octaneService.Login("binwen.wu@hpe.com", "Mission-Possible");
+            await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
 
             octaneService.SetDefaultSharespace(1001);
 
@@ -24,13 +24,13 @@ namespace OctaneMyItemsSyncServiceDemo
             await octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.name == "D22438_Aimon_Xia_My_Items_2_Outlook"));
 
             //var backlogs = await octaneService.GetBacklogs();
-            //var myBacklogs = await octaneService.GetMyBacklogs();
+            var myBacklogs = await octaneService.GetMyBacklogs();
 
             //var tests = await octaneService.GetTests();
             var myTests = await octaneService.GetMyTests();
 
             //var runs = await octaneService.GetRuns();
-            var myRuns = await octaneService.GetMyRuns();
+            //var myRuns = await octaneService.GetMyRuns();
 
             ////gherkin test
             //var ts = await octaneService.GetTestScript(1619);
