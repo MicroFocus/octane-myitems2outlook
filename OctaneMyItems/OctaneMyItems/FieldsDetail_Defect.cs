@@ -19,13 +19,13 @@ namespace OctaneMyItems
       tb_closeOn.Text = backlog.closed_on?.ToString();
       tb_fixedOn.Text = backlog.fixed_on?.ToString();
       tb_priority.Text = backlog.priority?.name;
-      tb_applicationModules.Visible = false;
+      //tb_applicationModules.Visible = false;
       tb_storyPoints.Text = backlog.story_points?.ToString();
       tb_release.Text = backlog.release?.name;
       tb_sprint.Text = backlog.sprint;
       tb_itemType.Text = backlog.item_type?.name;
       tb_team.Text = backlog.team;
-      tb_environment.Visible = false;
+      //tb_environment.Visible = false;
     }
   }
 }

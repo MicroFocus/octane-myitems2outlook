@@ -17,7 +17,7 @@ namespace OctaneMyItems
       tb_author.Text = backlog.author?.name;
       tb_itemType.Text = backlog.item_type?.name;
       tb_itemOrigin.Text = backlog.item_origin?.name;
-      tb_lastRuns.Visible = false;
+      //tb_lastRuns.Visible = false;
       tb_parent.Text = backlog.parent?.name;
       tb_release.Text = backlog.release?.name;
       tb_sprint.Text = backlog.sprint;

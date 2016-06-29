@@ -17,8 +17,8 @@ namespace OctaneMyItems
       tb_designer.Text = test.designer?.name;
       tb_created.Text = test.created?.ToString();
       tb_lastModified.Text = test.last_modified?.ToString();
-      tb_converedContent.Visible = false;
-      tb_applicationModules.Visible = false;
+      //tb_converedContent.Visible = false;
+      //tb_applicationModules.Visible = false;
     }
   }
 }
