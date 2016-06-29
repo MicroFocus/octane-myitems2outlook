@@ -51,7 +51,7 @@ namespace OctaneMyItems
 
     public void OnSyncAllPressed(Office.IRibbonControl control)
     {
-      OctaneTask.CreateTask();
+      ThisAddIn.SyncAll();
     }
     public void OnConfigurationPressed(Office.IRibbonControl control)
     {

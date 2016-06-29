@@ -17,6 +17,8 @@ namespace OctaneMyItems
     public void Getconfiguration()
     {
       ConfigurationForm form = new ConfigurationForm();
+      
+
       form.Show();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -28,12 +30,7 @@ namespace OctaneMyItems
       }
 
     }
-    public bool Login()
-    {
-      return false;
-    }
-    public void Logout()
-    { }
+
     public int SharedSpaceId
     {
       get

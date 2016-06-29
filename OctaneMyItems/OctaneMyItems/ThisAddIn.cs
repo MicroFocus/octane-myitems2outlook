@@ -1,4 +1,6 @@
-﻿namespace OctaneMyItems
+﻿using OctaneMyItemsSyncService.Services;
+
+namespace OctaneMyItems
 {
   public partial class ThisAddIn
     {
@@ -24,8 +26,19 @@
 
         public static void GetConfiguration()
         {
+     
       m_configuration.Getconfiguration();
        }
+public static void SyncAll()
+{/*
+      OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
+      await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
+
+      octaneService.SetDefaultSharespace(1001);
+
+      var workspaces = await octaneService.GetWorkspace();
+*/
+    }
     protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
     {
       return new Ribbon2();
