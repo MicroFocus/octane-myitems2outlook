@@ -27,10 +27,10 @@ namespace OctaneMyItemsSyncServiceDemo
             //var myBacklogs = await octaneService.GetMyBacklogs();
 
             //var tests = await octaneService.GetTests();
-            //var myTests = await octaneService.GetMyTests();
+            var myTests = await octaneService.GetMyTests();
 
             //var runs = await octaneService.GetRuns();
-            //var myRuns = await octaneService.GetMyRuns();
+            var myRuns = await octaneService.GetMyRuns();
 
             ////gherkin test
             //var ts = await octaneService.GetTestScript(1619);
@@ -39,7 +39,7 @@ namespace OctaneMyItemsSyncServiceDemo
             //ts = await octaneService.GetTestScript(1602);
             //Console.WriteLine(ts.script);
 
-            var steps = await octaneService.GetRunSteps(5162);
+            //var steps = await octaneService.GetRunSteps(5162);
 
             await octaneService.Logout();
         }

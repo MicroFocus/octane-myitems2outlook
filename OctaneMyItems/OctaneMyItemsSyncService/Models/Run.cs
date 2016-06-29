@@ -57,6 +57,7 @@ namespace OctaneMyItemsSyncService.Models
         public string test_name { get; set; }
         //public object test_framework { get; set; }
         public ListNode status { get; set; }
+        public Run_Steps steps { get; set; }
     }
 
     public class Release

@@ -45,6 +45,8 @@ namespace OctaneMyItemsSyncService.Models
         //public object automation_identifier { get; set; }
         public string name { get; set; }
         //public Automation_Status automation_status { get; set; }
+        //test script of manual or gherkin test
+        public string script { get; set; }
     }
 
     //public class Covered_Content
