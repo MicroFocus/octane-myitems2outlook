@@ -7,6 +7,8 @@
                label="Octane My Items">
           <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" />
           <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog item" size="large" />
+          <button id="syncTest" onAction="OnSyncTestPressed" label="Sync Test" size="large" />
+          <button id="syncRun" onAction="OnSyncRunPressed" label="Sync Run" size="large" />
           <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" />
 
       </group>

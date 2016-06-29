@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Threading.Tasks;
 using OctaneMyItemsSyncService.Services;
 
 namespace OctaneMyItems
@@ -22,7 +23,6 @@ namespace OctaneMyItems
     {
       ConfigurationForm form = new ConfigurationForm();
       
-
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -34,8 +34,6 @@ namespace OctaneMyItems
         m_service = form.OctaneService;
         m_initialized = true;
       }
-
-
     }
     public bool IsInitialized
     {

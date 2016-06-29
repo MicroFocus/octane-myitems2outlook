@@ -49,13 +49,23 @@ public static void SyncAll()
       if (m_configuration.IsInitialized)
       {
         OctaneService octaneService = m_configuration.OctaneService;
-        OctaneMyItemsSyncService.Models.Workspace workspace = new OctaneMyItemsSyncService.Models.Workspace();
-        workspace.name = m_configuration.WorkSpaceName;
-        await octaneService.SetDefaultWorkspace(workspace);
+        
         var myBacklogs = await octaneService.GetMyBacklogs();
+        foreach(OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
+{
+          OctaneTask.CreateTask(backlog);
+        }
       }
     
     }
+    public static async void SyncTest()
+    {
+    }
+
+    public static async void SyncRun()
+    {
+    }
+
 
     protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
     {
