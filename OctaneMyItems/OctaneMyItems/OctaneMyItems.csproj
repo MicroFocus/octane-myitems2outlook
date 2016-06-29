@@ -213,6 +213,11 @@
     <Compile Include="FieldsDetail_Defect.Designer.cs">
       <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Images\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="OctaneTaskDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +241,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FieldsDetail_Defect.resx">
       <DependentUpon>FieldsDetail_Defect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="OctaneTaskDetail.resx">
       <DependentUpon>OctaneTaskDetail.cs</DependentUpon>
@@ -292,6 +302,19 @@
       <Project>{8e3f675c-7157-458f-bdb3-90e0c54e510e}</Project>
       <Name>OctaneMyItemsSyncService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OptionsButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SyncAllButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SyncRunButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SyncBacklogItemButtonIcon.png" />
+    <Content Include="Resources\SyncTestButtonIcon.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
