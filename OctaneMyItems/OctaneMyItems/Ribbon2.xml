@@ -2,7 +2,7 @@
 <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
   <ribbon>
     <tabs>
-      <tab idMso="TabAddIns">
+      <tab id="ALMOctane" label="ALM Octane">
         <group id="MyGroup"
                label="Octane My Items">
           <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" />
