@@ -35,15 +35,41 @@ namespace OctaneMyItems
 
       m_configuration.ShowConfiguration();
     }
-    public static void SyncAll()
-{/*
-      OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
-      await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
+    public static async void SyncAll()
+    {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
 
-      octaneService.SetDefaultSharespace(1001);
+        // sync backlog item
+        OctaneTask.DeleteTask("[Octane]Backlog");
+        var myBacklogs = await octaneService.GetMyBacklogs();
+        foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
+        {
+          OctaneTask.CreateTask(backlog);
+        }
 
-      var workspaces = await octaneService.GetWorkspace();
-*/
+        // sync run
+        OctaneTask.DeleteTask("[Octane]Run");
+        var runs = await octaneService.GetMyRuns();
+        foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+        {
+          OctaneTask.CreateTask(run);
+        }
+
+        // sync test
+        OctaneTask.DeleteTask("[Octane]Test");
+        var tests = await octaneService.GetMyTests();
+        foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+        {
+          OctaneTask.CreateTask(test);
+        }
+
+      }
     }
 
     public static async void SyncBacklogItem()
@@ -55,10 +81,10 @@ namespace OctaneMyItems
       if (m_configuration.IsInitialized)
       {
         OctaneService octaneService = m_configuration.OctaneService;
-        
+        OctaneTask.DeleteTask("[Octane]Backlog");
         var myBacklogs = await octaneService.GetMyBacklogs();
         foreach(OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
-{
+        {
           OctaneTask.CreateTask(backlog);
         }
       }
@@ -66,10 +92,38 @@ namespace OctaneMyItems
     }
     public static async void SyncTest()
     {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+        OctaneTask.DeleteTask("[Octane]Test");
+        var tests = await octaneService.GetMyTests();
+        foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+        {
+          OctaneTask.CreateTask(test);
+        }
+      }
     }
 
     public static async void SyncRun()
     {
+      if (!m_configuration.IsInitialized)
+      {
+        m_configuration.GetConfiguration();
+      }
+      if (m_configuration.IsInitialized)
+      {
+        OctaneService octaneService = m_configuration.OctaneService;
+        OctaneTask.DeleteTask("[Octane]Run");
+        var runs = await octaneService.GetMyRuns();
+        foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+        {
+          OctaneTask.CreateTask(run);
+        }
+      }
     }
 
 
