@@ -27,9 +27,15 @@ namespace OctaneMyItems
         public static void GetConfiguration()
         {
      
-      m_configuration.Getconfiguration();
+          m_configuration.GetConfiguration();
        }
-public static void SyncAll()
+
+    public static void ShowConfiguration()
+    {
+
+      m_configuration.ShowConfiguration();
+    }
+    public static void SyncAll()
 {/*
       OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
       await octaneService.Login("jing-chun.xia@hpe.com", "Mission-Possible");
@@ -44,7 +50,7 @@ public static void SyncAll()
     {
       if (!m_configuration.IsInitialized)
       {
-        m_configuration.Getconfiguration();
+        m_configuration.GetConfiguration();
       }
       if (m_configuration.IsInitialized)
       {
