@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System;
+using System.Linq;
+using System.Text;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -32,31 +34,48 @@ namespace OctaneMyItems
       var octane = octaneTask.UserProperties["Octane"];
       if (octane == null) return;
 
+      tabControl1.TabPages.Remove(tp_runSteps);
+      tabControl1.TabPages.Remove(tp_testSteps);
       try
       {
         if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
-          var backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
+          Backlog backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
           p_fields.Controls.Add(new FieldsDetail_Defect(backlog) { Dock = System.Windows.Forms.DockStyle.Fill });
           wb_description.DocumentText = backlog.description;
         }
         else if ("\"Story\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
-          var story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
+          Backlog story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
           p_fields.Controls.Add(new FieldsDetail_Story(story) { Dock = System.Windows.Forms.DockStyle.Fill });
           wb_description.DocumentText = story.description;
         }
         else if ("\"Run\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
-          var run = JsonConvert.DeserializeObject<Run>(octane.Value);
+          Run run = JsonConvert.DeserializeObject<Run>(octane.Value);
           p_fields.Controls.Add(new FieldsDetail_Run(run) { Dock = System.Windows.Forms.DockStyle.Fill });
           wb_description.DocumentText = run.description;
+          tabControl1.TabPages.Add(tp_runSteps);
+          
+          if (run.steps != null)
+          {
+            var html = new StringBuilder();
+            html.Append("<html><body>");
+            foreach (var item in run.steps?.data)
+            {
+              html.Append($"<div>{item.description}</div>");
+            }
+            html.Append("</body></html>");
+            wb_runSteps.DocumentText = html.ToString();
+          }
         }
         else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
-          var test = JsonConvert.DeserializeObject<Test>(octane.Value);
+          Test test = JsonConvert.DeserializeObject<Test>(octane.Value);
           p_fields.Controls.Add(new FieldsDetail_Test(test) { Dock = System.Windows.Forms.DockStyle.Fill });
           wb_description.DocumentText = test.description;
+          rtb_testSteps.Text = test.script;
+          tabControl1.TabPages.Remove(tp_testSteps);
         }
         else
         {
