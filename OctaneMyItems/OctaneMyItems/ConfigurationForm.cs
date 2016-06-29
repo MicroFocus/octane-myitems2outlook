@@ -44,6 +44,19 @@ set { m_sharedSpaceId.Text = value.ToString(); }
     {
       get { return m_workspacesComboBox.Text; }
     }
+    public int WorkspaceId
+    {
+      get
+      {
+        int id = 0;
+        Workspace workspace;
+        if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
+        {
+          id = (int)workspace.id;
+        }
+        return id;
+      }
+    }
     public OctaneService OctaneService
 {
     get { return m_octaneService; }

@@ -8,7 +8,7 @@ namespace OctaneMyItems
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
  
-        m_configuration = new Configuration();
+        m_configuration = new Configuration(this.Application);
  
     }
 
