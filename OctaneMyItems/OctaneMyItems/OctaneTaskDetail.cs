@@ -74,8 +74,8 @@ namespace OctaneMyItems
           Test test = JsonConvert.DeserializeObject<Test>(octane.Value);
           p_fields.Controls.Add(new FieldsDetail_Test(test) { Dock = System.Windows.Forms.DockStyle.Fill });
           wb_description.DocumentText = test.description;
+          tabControl1.TabPages.Add(tp_testSteps);
           rtb_testSteps.Text = test.script;
-          tabControl1.TabPages.Remove(tp_testSteps);
         }
         else
         {
