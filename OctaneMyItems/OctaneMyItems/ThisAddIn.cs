@@ -9,9 +9,7 @@ namespace OctaneMyItems
     private static Configuration m_configuration;
     private void ThisAddIn_Startup(object sender, System.EventArgs e)
     {
-
       m_configuration = new Configuration(this.Application);
-
     }
 
     private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -59,7 +57,6 @@ namespace OctaneMyItems
         OctaneTask.AddOctaneCategories();
 
         // sync backlog item
-        OctaneTask.DeleteTask(Constants.CategoryOctaneBacklog);
         var myBacklogs = await octaneService.GetMyBacklogs();
         foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
         {
@@ -67,7 +64,6 @@ namespace OctaneMyItems
         }
 
         // sync run
-        OctaneTask.DeleteTask(Constants.CategoryOctaneRun);
         var runs = await octaneService.GetMyRuns();
         foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
         {
@@ -75,7 +71,6 @@ namespace OctaneMyItems
         }
 
         // sync test
-        OctaneTask.DeleteTask(Constants.CategoryOctaneTest);
         var tests = await octaneService.GetMyTests();
         foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
         {
@@ -91,8 +86,7 @@ namespace OctaneMyItems
       {
         OctaneService octaneService = m_configuration.OctaneService;
         OctaneTask.AddOctaneCategories();
-
-        OctaneTask.DeleteTask(Constants.CategoryOctaneBacklog);
+        
         var myBacklogs = await octaneService.GetMyBacklogs();
         foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
         {
@@ -107,8 +101,7 @@ namespace OctaneMyItems
       {
         OctaneService octaneService = m_configuration.OctaneService;
         OctaneTask.AddOctaneCategories();
-
-        OctaneTask.DeleteTask(Constants.CategoryOctaneTest);
+        
         var tests = await octaneService.GetMyTests();
         foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
         {
@@ -123,8 +116,7 @@ namespace OctaneMyItems
       {
         OctaneService octaneService = m_configuration.OctaneService;
         OctaneTask.AddOctaneCategories();
-
-        OctaneTask.DeleteTask(Constants.CategoryOctaneRun);
+        
         var runs = await octaneService.GetMyRuns();
         foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
         {
