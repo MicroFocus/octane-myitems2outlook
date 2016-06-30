@@ -46,7 +46,7 @@ namespace OctaneMyItems
       m_configuration.ShowConfiguration();
     }
 
-    public static Task SyncOne()
+    public static async Task SyncOne()
     {
       OctaneTask.SyncOne();
     }
