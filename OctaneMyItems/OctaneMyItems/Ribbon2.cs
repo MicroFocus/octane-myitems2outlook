@@ -144,6 +144,11 @@ namespace OctaneMyItems
     {
       ThisAddIn.ShowConfiguration();
     }
+
+    public void OnTaskItemRightClick(Office.IRibbonControl control)
+    {
+      ThisAddIn.SyncOne();
+    }
     #endregion
 
     #region Helpers

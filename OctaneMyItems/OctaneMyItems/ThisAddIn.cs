@@ -1,5 +1,6 @@
 ﻿using OctaneMyItemsSyncService.Services;
 using System.Threading.Tasks;
+using Office = Microsoft.Office.Core;
 
 namespace OctaneMyItems
 {
@@ -26,6 +27,8 @@ namespace OctaneMyItems
       }
     }
 
+
+
     public static async Task<bool> GetConfiguration()
     {
       if (!m_configuration.IsInitialized)
@@ -42,6 +45,11 @@ namespace OctaneMyItems
     public static void ShowConfiguration()
     {
       m_configuration.ShowConfiguration();
+    }
+
+    public static async Task SyncOne()
+    {
+      OctaneTask.SyncOne();
     }
     public static async Task SyncAll()
     {

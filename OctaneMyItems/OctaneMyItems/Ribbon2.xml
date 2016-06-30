@@ -14,5 +14,12 @@
       </tab>
     </tabs>
   </ribbon>
+  <contextMenus>
+    <contextMenu idMso="ContextMenuTaskItem">
+      <button id="MyContextMenuTaskItem"
+          label="Sync this Octane Item"
+          onAction="OnTaskItemRightClick"/>
+    </contextMenu>
+  </contextMenus>
 </customUI>
 

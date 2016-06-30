@@ -17,6 +17,11 @@ namespace OctaneMyItems
   {
 
     public static Outlook.Application m_outlookApp;
+public static void SyncOne()
+{
+ 
+    }
+
     public static void CreateTask(object octaneItem)
     {
       m_outlookApp = Globals.ThisAddIn.Application.Application;
