@@ -27,11 +27,18 @@ namespace OctaneMyItems
   public class Ribbon2 : Office.IRibbonExtensibility
   {
     private Office.IRibbonUI ribbon;
+
     private const string SyncAllId = "syncAll";
     private const string SyncBacklogId = "syncBacklogItem";
     private const string SyncTestId = "syncTest";
     private const string SyncRunId = "syncRun";
     private const string ConfigureId = "configuration";
+
+    private bool _isSyncAllEnable = true;
+    private bool _isSyncBacklogEnable = true;
+    private bool _isSyncTestEnable = true;
+    private bool _isSyncRunEnable = true;
+    private bool _isConfigurationEnable = true;
 
     public Ribbon2()
     {
@@ -85,10 +92,6 @@ namespace OctaneMyItems
       return bmp;
     }
 
-    private bool _isSyncAllEnable = true;
-    private bool _isSyncBacklogEnable = true;
-    private bool _isSyncTestEnable = true;
-    private bool _isSyncRunEnable = true;
     public bool GetEnable(Office.IRibbonControl control)
     {
       switch (control.Id)
@@ -97,53 +100,65 @@ namespace OctaneMyItems
         case SyncBacklogId: return _isSyncBacklogEnable;
         case SyncTestId: return _isSyncTestEnable;
         case SyncRunId: return _isSyncRunEnable;
+        case ConfigureId: return _isConfigurationEnable;
         default: return true;
       }
     }
 
     public async void OnSyncAllPressed(Office.IRibbonControl control)
     {
-      _isSyncAllEnable = false;
-      _isSyncBacklogEnable = false;
-      _isSyncTestEnable = false;
-      _isSyncRunEnable = false;
-      ribbon.Invalidate();
+      DisableButtons();
       await ThisAddIn.SyncAll();
-      _isSyncAllEnable = true;
-      _isSyncBacklogEnable = true;
-      _isSyncTestEnable = true;
-      _isSyncRunEnable = true;
-      ribbon.Invalidate();
+      EnableButtons();
     }
     public async void OnSyncBacklogItemPressed(Office.IRibbonControl control)
     {
-      _isSyncBacklogEnable = false;
-      ribbon.InvalidateControl(SyncBacklogId);
+      DisableButtons();
       await ThisAddIn.SyncBacklogItem();
-      _isSyncBacklogEnable = true;
-      ribbon.InvalidateControl(SyncBacklogId);
+      EnableButtons();
     }
     public async void OnSyncTestPressed(Office.IRibbonControl control)
     {
-      _isSyncTestEnable = false;
-      ribbon.InvalidateControl(SyncTestId);
+      DisableButtons();
       await ThisAddIn.SyncTest();
-      _isSyncTestEnable = true;
-      ribbon.InvalidateControl(SyncTestId);
+      EnableButtons();
     }
     public async void OnSyncRunPressed(Office.IRibbonControl control)
     {
-      _isSyncRunEnable = false;
-      ribbon.InvalidateControl(SyncRunId);
+      DisableButtons();
       await ThisAddIn.SyncRun();
-      _isSyncRunEnable = true;
-      ribbon.InvalidateControl(SyncRunId);
+      EnableButtons();
     }
 
     public void OnConfigurationPressed(Office.IRibbonControl control)
     {
       ThisAddIn.ShowConfiguration();
     }
+
+    #endregion
+
+    #region Private methods
+
+    private void DisableButtons()
+    {
+      _isSyncAllEnable = false;
+      _isSyncBacklogEnable = false;
+      _isSyncTestEnable = false;
+      _isSyncRunEnable = false;
+      _isConfigurationEnable = false;
+      ribbon.Invalidate();
+    }
+
+    private void EnableButtons()
+    {
+      _isSyncAllEnable = true;
+      _isSyncBacklogEnable = true;
+      _isSyncTestEnable = true;
+      _isSyncRunEnable = true;
+      _isConfigurationEnable = true;
+      ribbon.Invalidate();
+    } 
+
     #endregion
 
     #region Helpers

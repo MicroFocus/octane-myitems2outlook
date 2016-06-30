@@ -9,7 +9,7 @@
           <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
           <button id="syncTest" onAction="OnSyncTestPressed" label="Sync Test" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
           <button id="syncRun" onAction="OnSyncRunPressed" label="Sync Run" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
-          <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" getImage="GetButtonIcon"/>
+          <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
       </group>
       </tab>
     </tabs>
