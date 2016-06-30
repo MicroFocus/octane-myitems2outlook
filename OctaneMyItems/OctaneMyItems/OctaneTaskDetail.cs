@@ -106,7 +106,7 @@ namespace OctaneMyItems
     private string GenerateDescriptHtml(string descript)
     {
       if (string.IsNullOrEmpty(descript)) return string.Empty;
-      return descript.Replace("<body>", "<body style=\"overflow: auto\"");
+      return descript.Replace("<body>", "<body style=\"overflow: auto\">");
     }
 
     private readonly string commentTemplate =

@@ -25,11 +25,11 @@ namespace OctaneMyItems
     }
     public void GetConfiguration()
     {
-      if(!LoadConfiguration(true))
-      { 
-      ConfigurationForm form = new ConfigurationForm();
-      
-      form.ShowDialog();
+      if (!LoadConfiguration(true))
+      {
+        ConfigurationForm form = new ConfigurationForm();
+
+        form.ShowDialog();
         if (form.DialogResult == DialogResult.OK)
         {
           m_serverUrl = form.ServerUrl;
@@ -56,12 +56,12 @@ namespace OctaneMyItems
         form.SharedSpaceId = m_sharedSpaceId;
         if (m_workSpaceName != null)
         { form.WorkSpaceName = m_workSpaceName; }
-       // form.WorkSpaceId = m_workSpaceId;
-       // form.OctaneService = m_octaneService;
+        // form.WorkSpaceId = m_workSpaceId;
+        // form.OctaneService = m_octaneService;
 
       }
 
-      
+
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -113,7 +113,7 @@ namespace OctaneMyItems
       catch (COMException ex)
       {
       }
-      
+
       return false;
 
     }
@@ -123,14 +123,14 @@ namespace OctaneMyItems
       m_octaneService = new OctaneService(m_serverUrl);
       m_octaneService.Login(m_userName, m_password).Wait();
       m_octaneService.SetDefaultSharespace(m_sharedSpaceId);
-      var workspaces =  m_octaneService.GetWorkspace().Result;
+      var workspaces = m_octaneService.GetWorkspace().Result;
       m_octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.id == m_workSpaceId)).Wait();
 
     }
     private void SaveConfiguration()
     {
       MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-      
+
       StorageItem item = folder.GetStorage(m_storeageName, OlStorageIdentifierType.olIdentifyBySubject);
       // new item
       UserProperty property;
@@ -189,8 +189,7 @@ namespace OctaneMyItems
 
     public OctaneService OctaneService
     {
-get { return m_octaneService; }
+      get { return m_octaneService; }
     }
-
   }
 }

@@ -33,7 +33,7 @@ namespace OctaneMyItemsSyncServiceDemo
 
       //var runs = await octaneService.GetRuns();
       var myRuns = await octaneService.GetMyRuns();
-      var run = await octaneService.GetRun(9564);
+      var run = await octaneService.GetRun(9566);
 
       ////gherkin test
       //var ts = await octaneService.GetTestScript(1619);

@@ -17,23 +17,39 @@ namespace OctaneMyItems
   {
 
     public static Outlook.Application m_outlookApp;
-public static void SyncOne()
-{
+    public async static void SyncOne()
+    {
       m_outlookApp = Globals.ThisAddIn.Application.Application;
       if (m_outlookApp == null)
-      {
         m_outlookApp = new Outlook.Application();
-      }
-      Outlook.Explorer explorer = m_outlookApp.ActiveExplorer();
+      
+      var explorer = m_outlookApp.ActiveExplorer();
       if (explorer.Selection.Count > 0)
       {
-        Outlook.TaskItem taskItem = explorer.Selection[0];
-      if(taskItem != null)
-       {
-          if(taskItem.Categories.Contains("Backlog"))
-{
-        if(taskItem is Backlog)
-{ }
+        var oTask = explorer.Selection[1] as Outlook.TaskItem;
+        if (oTask != null)
+        {
+          var octaneId = oTask.UserProperties["OctaneId"];
+          if (octaneId != null)
+          {
+            string id = octaneId.Value;
+            object item = null;
+            if (await ThisAddIn.GetConfiguration())
+            {
+              if (id.Contains("Backlog"))
+                item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")));
+              if (id.Contains("Run"))
+                item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")));
+              if (id.Contains("Test"))
+                item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")));
+
+              if (item != null)
+              {
+                Outlook.UserProperty octane = oTask.UserProperties["Octane"];
+                octane.Value = JsonConvert.SerializeObject(item);
+                oTask.Save();
+              }
+            }
           }
         }
       }
@@ -41,11 +57,11 @@ public static void SyncOne()
 
     public static void CreateTask(object octaneItem)
     {
+      if (octaneItem == null) return;
+
       m_outlookApp = Globals.ThisAddIn.Application.Application;
       if (m_outlookApp == null)
-      {
         m_outlookApp = new Outlook.Application();
-      }
 
       var taskList = m_outlookApp.Session.GetDefaultFolder(
         Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
