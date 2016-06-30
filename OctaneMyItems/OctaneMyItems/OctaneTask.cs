@@ -27,37 +27,69 @@ namespace OctaneMyItems
 
       var taskList = m_outlookApp.Session.GetDefaultFolder(
         Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
-      var oTask = taskList.Items.Add("IPM.Task.Octane") as Outlook.TaskItem;
 
+      var oTask = GetExistOctaneTaskItem(taskList, octaneItem);
+      var isExist = oTask != null ? true : false;
+      if(!isExist)
+      {
+        oTask = taskList.Items.Add("IPM.Task.Octane") as Outlook.TaskItem;
+        oTask.UserProperties.Add("OctaneId", Outlook.OlUserPropertyType.olText);
+        oTask.UserProperties.Add("Octane", Outlook.OlUserPropertyType.olText);
+      }
 
-      Outlook.UserProperty octane = oTask.UserProperties.Add("Octane", Outlook.OlUserPropertyType.olText);
+      Outlook.UserProperty octaneId = oTask.UserProperties["OctaneId"];
+      Outlook.UserProperty octane = oTask.UserProperties["Octane"];
       octane.Value = JsonConvert.SerializeObject(octaneItem);
+
+      if (isExist) return;
 
       if (octaneItem is Backlog)
       {
+        var item = octaneItem as Backlog;
         oTask.Categories = Constants.CategoryOctaneBacklog;
-        var backlog = octaneItem as Backlog;
-        oTask.Subject = "[" + backlog.subtype.ToUpper() + ":" + backlog.id + "] " + backlog.name;
-        if ("Story".Equals(backlog.subtype, System.StringComparison.OrdinalIgnoreCase))
+        oTask.Subject = "[" + item.subtype.ToUpper() + ":" + item.id + "] " + item.name;
+
+        octaneId.Value = "Backlog" + item.id;
+        if ("Story".Equals(item.subtype, System.StringComparison.OrdinalIgnoreCase))
           octane.ValidationText = "Story";
         else
           octane.ValidationText = "Defect";
       }
       else if (octaneItem is Run)
       {
+        var item = octaneItem as Run;
         oTask.Categories = Constants.CategoryOctaneRun;
-        var run = octaneItem as Run;
-        oTask.Subject = "[" + run.id + "] " + run.name;
+        oTask.Subject = "[" + item.id + "] " + item.name;
+
+        octaneId.Value = "Run" + item.id;
         octane.ValidationText = "Run";
       }
       else if (octaneItem is Test)
       {
+        var item = octaneItem as Test;
         oTask.Categories = Constants.CategoryOctaneTest;
-        var test = octaneItem as Test;
-        oTask.Subject = "[" + test.id + "] " + test.name;
+        oTask.Subject = "[" + item.id + "] " + item.name;
+
+        octaneId.Value = "Test" + item.id;
         octane.ValidationText = "Test";
       }
       oTask.Save();
+    }
+
+    private static Outlook.TaskItem GetExistOctaneTaskItem(Outlook.Folder taskList, object item)
+    {
+      foreach (Outlook.TaskItem task in taskList.Items)
+      {
+        var id = task.UserProperties["OctaneId"];
+        if (id != null)
+        {
+          if (item is Backlog && "Backlog" + ((Backlog)item).id == id.Value) return task;
+          if (item is Run && "Run" + ((Run)item).id == id.Value) return task;
+          if (item is Test && "Test" + ((Test)item).id == id.Value) return task;
+        }
+      }
+
+      return null;
     }
 
     public static void DeleteTask(string category)
