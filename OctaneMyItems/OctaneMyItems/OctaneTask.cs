@@ -19,7 +19,24 @@ namespace OctaneMyItems
     public static Outlook.Application m_outlookApp;
 public static void SyncOne()
 {
- 
+      m_outlookApp = Globals.ThisAddIn.Application.Application;
+      if (m_outlookApp == null)
+      {
+        m_outlookApp = new Outlook.Application();
+      }
+      Outlook.Explorer explorer = m_outlookApp.ActiveExplorer();
+      if (explorer.Selection.Count > 0)
+      {
+        Outlook.TaskItem taskItem = explorer.Selection[0];
+      if(taskItem != null)
+       {
+          if(taskItem.Categories.Contains("Backlog"))
+{
+        if(taskItem is Backlog)
+{ }
+          }
+        }
+      }
     }
 
     public static void CreateTask(object octaneItem)
