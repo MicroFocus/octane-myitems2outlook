@@ -38,16 +38,16 @@ namespace OctaneMyItems
             {
               if (id.Contains("Backlog"))
                 item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")));
-              if (id.Contains("Run"))
+              else if (id.Contains("Run"))
                 item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")));
-              if (id.Contains("Test"))
+              else if (id.Contains("Test"))
                 item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")));
 
               if (item != null)
               {
                 Outlook.UserProperty octane = oTask.UserProperties["Octane"];
                 octane.Value = JsonConvert.SerializeObject(item);
-                oTask.Save();
+                oTask.Close(Outlook.OlInspectorClose.olSave);
               }
             }
           }
@@ -112,6 +112,7 @@ namespace OctaneMyItems
         octane.ValidationText = "Test";
       }
       oTask.Save();
+      oTask.Close(Outlook.OlInspectorClose.olSave);
     }
 
     private static Outlook.TaskItem GetExistOctaneTaskItem(Outlook.Folder taskList, object item)

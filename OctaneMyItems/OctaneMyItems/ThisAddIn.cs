@@ -1,6 +1,7 @@
 ﻿using OctaneMyItemsSyncService.Services;
 using System.Threading.Tasks;
 using Office = Microsoft.Office.Core;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
 {
@@ -45,7 +46,7 @@ namespace OctaneMyItems
       m_configuration.ShowConfiguration();
     }
 
-    public static async Task SyncOne()
+    public static Task SyncOne()
     {
       OctaneTask.SyncOne();
     }
@@ -92,8 +93,8 @@ namespace OctaneMyItems
         {
           OctaneTask.CreateTask(backlog);
         }
+        UpdateCurrentSelection();
       }
-
     }
     public static async Task SyncTest()
     {
@@ -107,9 +108,9 @@ namespace OctaneMyItems
         {
           OctaneTask.CreateTask(test);
         }
+        UpdateCurrentSelection();
       }
     }
-
     public static async Task SyncRun()
     {
       if (await GetConfiguration())
@@ -122,6 +123,17 @@ namespace OctaneMyItems
         {
           OctaneTask.CreateTask(run);
         }
+        UpdateCurrentSelection();
+      }
+    }
+
+    private static void UpdateCurrentSelection()
+    {
+      var explorer = Globals.ThisAddIn.Application.Application.ActiveExplorer();
+      if (explorer.Selection.Count == 1)
+      {
+        if (explorer.Selection[1] is Outlook.TaskItem)
+          ((Outlook.TaskItem)explorer.Selection[1]).Close(Outlook.OlInspectorClose.olSave);
       }
     }
 
