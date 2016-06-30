@@ -62,7 +62,7 @@
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.Padding = new System.Drawing.Point(6, 6);
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1005, 785);
+      this.tabControl1.Size = new System.Drawing.Size(1005, 400);
       this.tabControl1.TabIndex = 3;
       // 
       // tabPage1
@@ -82,6 +82,7 @@
       this.wb_description.Location = new System.Drawing.Point(3, 3);
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
+      this.wb_description.ScrollBarsEnabled = false;
       this.wb_description.Size = new System.Drawing.Size(991, 747);
       this.wb_description.TabIndex = 0;
       // 
@@ -90,7 +91,7 @@
       this.tabPage2.Controls.Add(this.wb_comments);
       this.tabPage2.Location = new System.Drawing.Point(4, 28);
       this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Size = new System.Drawing.Size(997, 753);
+      this.tabPage2.Size = new System.Drawing.Size(997, 368);
       this.tabPage2.TabIndex = 3;
       this.tabPage2.Text = "Comments";
       this.tabPage2.UseVisualStyleBackColor = true;
@@ -102,7 +103,7 @@
       this.wb_comments.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_comments.Name = "wb_comments";
       this.wb_comments.ScrollBarsEnabled = false;
-      this.wb_comments.Size = new System.Drawing.Size(997, 753);
+      this.wb_comments.Size = new System.Drawing.Size(997, 368);
       this.wb_comments.TabIndex = 0;
       // 
       // tp_testSteps
@@ -118,9 +119,11 @@
       // 
       // rtb_testSteps
       // 
+      this.rtb_testSteps.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.rtb_testSteps.Dock = System.Windows.Forms.DockStyle.Fill;
       this.rtb_testSteps.Location = new System.Drawing.Point(3, 3);
       this.rtb_testSteps.Name = "rtb_testSteps";
+      this.rtb_testSteps.ReadOnly = true;
       this.rtb_testSteps.Size = new System.Drawing.Size(991, 747);
       this.rtb_testSteps.TabIndex = 0;
       this.rtb_testSteps.Text = "";
@@ -141,6 +144,7 @@
       this.wb_runSteps.Location = new System.Drawing.Point(0, 0);
       this.wb_runSteps.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_runSteps.Name = "wb_runSteps";
+      this.wb_runSteps.ScrollBarsEnabled = false;
       this.wb_runSteps.Size = new System.Drawing.Size(997, 753);
       this.wb_runSteps.TabIndex = 0;
       // 
@@ -150,7 +154,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.tabControl1);
       this.Name = "OctaneTaskDetail";
-      this.Size = new System.Drawing.Size(1005, 785);
+      this.Size = new System.Drawing.Size(1005, 400);
       this.FormRegionShowing += new System.EventHandler(this.OctaneTaskDetail_FormRegionShowing);
       this.FormRegionClosed += new System.EventHandler(this.OctaneTaskDetail_FormRegionClosed);
       this.tabControl1.ResumeLayout(false);
@@ -172,8 +176,9 @@
     /// </summary>
     private static void InitializeManifest(Microsoft.Office.Tools.Outlook.FormRegionManifest manifest, Microsoft.Office.Tools.Outlook.Factory factory)
     {
-      manifest.FormRegionName = "OctaneTaskDetail";
+      manifest.FormRegionName = "Octane";
       manifest.FormRegionType = Microsoft.Office.Tools.Outlook.FormRegionType.Adjoining;
+      manifest.Title = "Octane";
 
     }
 
