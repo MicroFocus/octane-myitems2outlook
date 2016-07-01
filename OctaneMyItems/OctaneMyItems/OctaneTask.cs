@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -15,9 +17,9 @@ namespace OctaneMyItems
   }
   public class OctaneTask
   {
-
     public static Outlook.Application m_outlookApp;
-    public async static void SyncOne()
+
+    public async static Task SyncOne()
     {
       m_outlookApp = Globals.ThisAddIn.Application.Application;
       if (m_outlookApp == null)
@@ -33,21 +35,22 @@ namespace OctaneMyItems
           if (octaneId != null)
           {
             string id = octaneId.Value;
-            object item = null;
             if (await ThisAddIn.GetConfiguration())
             {
               if (id.Contains("Backlog"))
-                item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")));
-              else if (id.Contains("Run"))
-                item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")));
-              else if (id.Contains("Test"))
-                item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")));
-
-              if (item != null)
               {
-                Outlook.UserProperty octane = oTask.UserProperties["Octane"];
-                octane.Value = JsonConvert.SerializeObject(item);
-                oTask.Close(Outlook.OlInspectorClose.olSave);
+                var item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")));
+                UpdateTaskItem(item, oTask);
+              }
+              else if (id.Contains("Run"))
+              {
+                var item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")));
+                UpdateTaskItem(item, oTask);
+              }
+              else if (id.Contains("Test"))
+              {
+                var item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")));
+                UpdateTaskItem(item, oTask);
               }
             }
           }
@@ -55,7 +58,7 @@ namespace OctaneMyItems
       }
     }
 
-    public static void CreateTask(object octaneItem)
+    public async static Task CreateTask(object octaneItem)
     {
       if (octaneItem == null) return;
 
@@ -68,18 +71,89 @@ namespace OctaneMyItems
 
       var oTask = GetExistOctaneTaskItem(taskList, octaneItem);
       var isExist = oTask != null ? true : false;
-      if(!isExist)
+      if (!isExist)
       {
         oTask = taskList.Items.Add("IPM.Task.Octane") as Outlook.TaskItem;
         oTask.UserProperties.Add("OctaneId", Outlook.OlUserPropertyType.olText);
         oTask.UserProperties.Add("Octane", Outlook.OlUserPropertyType.olText);
       }
+      
+      UpdateTaskItem(octaneItem, oTask);
+    }
 
+    public async static Task ClearOldTaskItem(object[] newOctaneItems, string category)
+    {
+      m_outlookApp = Globals.ThisAddIn.Application.Application;
+      if (m_outlookApp == null)
+        m_outlookApp = new Outlook.Application();
+
+      var taskList = m_outlookApp.Session.GetDefaultFolder(
+        Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
+
+      var needClearList = new List<Outlook.TaskItem>();
+
+      foreach (Outlook.TaskItem oldTask in taskList.Items)
+      {
+        if (oldTask.Categories != category) continue;
+        var oldOctaneId = oldTask.UserProperties["OctaneId"];
+        if (oldOctaneId == null) continue;
+
+        bool isExist = false;
+        foreach (var newTask in newOctaneItems)
+        {
+          var id = "";
+          if (newTask is Backlog) id = "Backlog" + ((Backlog)newTask).id.ToString();
+          if (newTask is Run) id = "Run" + ((Run)newTask).id.ToString();
+          if (newTask is Test) id = "Test" + ((Test)newTask).id.ToString();
+
+          if (id == oldOctaneId.Value.ToString())
+          {
+            isExist = true;
+            break;
+          }
+        }
+        if (!isExist) needClearList.Add(oldTask);
+      }
+      needClearList.ForEach(x => x.Delete());
+    }
+
+    public static void AddOctaneCategories()
+    {
+      m_outlookApp = Globals.ThisAddIn.Application.Application;
+      if (m_outlookApp == null)
+      {
+        m_outlookApp = new Outlook.Application();
+      }
+
+      Outlook.Categories categories =
+          m_outlookApp.Session.Categories;
+
+      string categoryName = Constants.CategoryOctaneBacklog;
+      if (!CategoryExists(categories, categoryName))
+      {
+        Outlook.Category category = categories.Add(categoryName,
+            Outlook.OlCategoryColor.olCategoryColorDarkBlue);
+      }
+      categoryName = Constants.CategoryOctaneTest;
+      if (!CategoryExists(categories, categoryName))
+      {
+        Outlook.Category category = categories.Add(categoryName,
+            Outlook.OlCategoryColor.olCategoryColorDarkGreen);
+      }
+      categoryName = Constants.CategoryOctaneRun;
+      if (!CategoryExists(categories, categoryName))
+      {
+        Outlook.Category category = categories.Add(categoryName,
+            Outlook.OlCategoryColor.olCategoryColorYellow);
+      }
+    }
+
+
+    private static void UpdateTaskItem(object octaneItem, Outlook.TaskItem oTask)
+    {
       Outlook.UserProperty octaneId = oTask.UserProperties["OctaneId"];
       Outlook.UserProperty octane = oTask.UserProperties["Octane"];
       octane.Value = JsonConvert.SerializeObject(octaneItem);
-
-      if (isExist) return;
 
       if (octaneItem is Backlog)
       {
@@ -131,57 +205,6 @@ namespace OctaneMyItems
       return null;
     }
 
-    public static void DeleteTask(string category)
-    {
-      m_outlookApp = Globals.ThisAddIn.Application.Application;
-      if (m_outlookApp == null)
-      {
-        m_outlookApp = new Outlook.Application();
-      }
-
-      var taskList = m_outlookApp.Session.GetDefaultFolder(
-        Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
-      var oTasks = taskList.Items;
-      var deleteList = new List<Outlook.TaskItem>();
-      foreach (Outlook.TaskItem task in oTasks)
-      {
-        if (task.Categories == category)
-          deleteList.Add(task);
-      }
-      deleteList.ForEach(x => x.Delete());
-    }
-
-    public static void AddOctaneCategories()
-    {
-      m_outlookApp = Globals.ThisAddIn.Application.Application;
-      if (m_outlookApp == null)
-      {
-        m_outlookApp = new Outlook.Application();
-      }
-
-      Outlook.Categories categories =
-          m_outlookApp.Session.Categories;
-
-      string categoryName = Constants.CategoryOctaneBacklog;
-      if (!CategoryExists(categories, categoryName))
-      {
-        Outlook.Category category = categories.Add(categoryName,
-            Outlook.OlCategoryColor.olCategoryColorDarkBlue);
-      }
-      categoryName = Constants.CategoryOctaneTest;
-      if (!CategoryExists(categories, categoryName))
-      {
-        Outlook.Category category = categories.Add(categoryName,
-            Outlook.OlCategoryColor.olCategoryColorDarkGreen);
-      }
-      categoryName = Constants.CategoryOctaneRun;
-      if (!CategoryExists(categories, categoryName))
-      {
-        Outlook.Category category = categories.Add(categoryName,
-            Outlook.OlCategoryColor.olCategoryColorYellow);
-      }
-    }
-
     private static bool CategoryExists(Outlook.Categories categories, string categoryName)
     {
       try
@@ -198,6 +221,13 @@ namespace OctaneMyItems
         }
       }
       catch { return false; }
+    }
+
+    private static void SaveOctaneToTaskItem(Outlook.TaskItem oTask, object item)
+    {
+      Outlook.UserProperty octane = oTask.UserProperties["Octane"];
+      octane.Value = JsonConvert.SerializeObject(item);
+      oTask.Close(Outlook.OlInspectorClose.olSave);
     }
   }
 }
