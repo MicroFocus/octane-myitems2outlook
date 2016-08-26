@@ -43,7 +43,7 @@ namespace OctaneMyItemsSyncService.Models
     public bool has_attachments { get; set; }
     public object epic_type { get; set; }
     public Author author { get; set; }
-    public int story_points { get; set; }
+    public long? story_points { get; set; }
     public Product_Areas product_areas { get; set; }
     public string team { get; set; }
     public Priority priority { get; set; }
