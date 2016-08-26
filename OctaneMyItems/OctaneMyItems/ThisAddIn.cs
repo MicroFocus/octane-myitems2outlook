@@ -60,34 +60,44 @@ namespace OctaneMyItems
     }
     public static async Task SyncAll()
     {
-      if (await GetConfiguration())
-      {
-        OctaneService octaneService = m_configuration.OctaneService;
-        OctaneTask.AddOctaneCategories();
+            try {
+                if (await GetConfiguration())
+                {
+                    OctaneService octaneService = m_configuration.OctaneService;
+                    OctaneTask.AddOctaneCategories();
 
-        // sync backlog item
-        var myBacklogs = await octaneService.GetMyBacklogs();
-        foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
-        {
-          OctaneTask.CreateTask(backlog);
+                    // sync backlog item
+                    var myBacklogs = await octaneService.GetMyBacklogs();
+                    await OctaneTask.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
+
+                    foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
+                    {
+                        OctaneTask.CreateTask(backlog);
+                    }
+
+                    // sync run
+                    var runs = await octaneService.GetMyRuns();
+                    await OctaneTask.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
+                    foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+                    {
+                        OctaneTask.CreateTask(run);
+                    }
+
+                    // sync test
+                    var tests = await octaneService.GetMyTests();
+                    await OctaneTask.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
+                    foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+                    {
+                        OctaneTask.CreateTask(test);
+                    }
+                    UpdateCurrentSelection();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
-
-        // sync run
-        var runs = await octaneService.GetMyRuns();
-        foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
-        {
-          OctaneTask.CreateTask(run);
-        }
-
-        // sync test
-        var tests = await octaneService.GetMyTests();
-        foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
-        {
-          OctaneTask.CreateTask(test);
-        }
-
-      }
-    }
 
     public static async Task SyncBacklogItem()
     {
