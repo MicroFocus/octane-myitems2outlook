@@ -60,6 +60,7 @@
     <Compile Include="Models\Backlog.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Run.cs" />
+    <Compile Include="Models\SharedSpace.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Workspace.cs" />

@@ -15,12 +15,13 @@ namespace OctaneMyItemsSyncServiceDemo
 
     static async void Test()
     {
-      OctaneService octaneService = new OctaneService("https://hackathon.almoctane.com");
-      await octaneService.Login("binwen.wu@hpe.com", "Mission-Possible");
+      OctaneService octaneService = new OctaneService("http://myd-vm12624.hpeswlab.net:8081/");
+      await octaneService.Login("sa@nga", "Welcome1");
 
-      octaneService.SetDefaultSharespace(1001);
+      var sharedSpaces = await octaneService.GetSharedSpaces();
+      octaneService.SetDefaultSharespace(sharedSpaces.data[0]);
 
-      var workspaces = await octaneService.GetWorkspace();
+      var workspaces = await octaneService.GetWorkspaces();
       await octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.name == "D22438_Aimon_Xia_My_Items_2_Outlook"));
 
       //var backlogs = await octaneService.GetBacklogs();

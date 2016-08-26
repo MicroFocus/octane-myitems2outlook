@@ -1,143 +1,163 @@
-﻿using System;
+﻿using OctaneMyItemsSyncService.Models;
+using OctaneMyItemsSyncService.Services;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Threading.Tasks;
-using OctaneMyItemsSyncService.Services;
-using OctaneMyItemsSyncService.Models;
 
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
-    private OctaneMyItemsSyncService.Services.OctaneService m_octaneService;
-    private Dictionary<int,Workspace> m_workspaces;
-    private bool m_isDirty = false;
+    #region Public Properties
 
-    public string ServerUrl
-    {
-      get{return m_serverUrl.Text;}
-      set { m_serverUrl.Text = value; }
-    }
-    public string User
-    {
-      get { return m_userName.Text; }
-      set { m_userName.Text = value; }
-    }
-    public string Password
-    {
-      get { return m_password.Text; } 
-      set { m_password.Text = value; }
-    }
-    public int SharedSpaceId
-    {
-      get
-      {
-        int id;
-        if (int.TryParse(m_sharedSpaceId.Text, out id))
-        {
-          return id;
-        }
-        return 0;
-      }
-set { m_sharedSpaceId.Text = value.ToString(); }
-    }
+    public string ServerUrl { get { return m_tbServerUrl.Text; } }
+    public string User { get { return m_tbUserName.Text; } }
+    public string Password { get { return m_tbPassword.Text; } }
+    public int? SharedpaceId { get; private set; }
+    public int? WorkspaceId { get; private set; }
 
-    public string WorkSpaceName
-    {
-      get { return m_workspacesComboBox.Text; }
-      set { m_workspacesComboBox.Items.Add(value);
-        m_workspacesComboBox.SelectedIndex = 0 ;
-}
-    }
-    public int WorkspaceId
-    {
-      get
-      {
-        int id = 0;
-        Workspace workspace;
-        if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
-        {
-          id = (int)workspace.id;
-        }
-        return id;
-      }
-      
-    }
-    public OctaneService OctaneService
-{
-    get { return m_octaneService; }
-    }
-    public ConfigurationForm()
+    public OctaneService OctaneService { get; private set; }
+
+    #endregion
+
+    #region Constructor
+
+    public ConfigurationForm(string defaultServerUrl, string defaultUser, string defaultPassword, int defaultSharedspaceId, int defaultWorkspaceId)
     {
       InitializeComponent();
-      m_workspaces = new Dictionary<int,Workspace>();
-      //ServerUrl = "https://hackathon.almoctane.com";
-      //User = "jing-chun.xia@hpe.com";
-      //Password = "Mission-Possible";
-      //SharedSpaceId = 1001;
-      m_octaneService = null;
+
+      m_tbServerUrl.Text = defaultServerUrl;
+      m_tbUserName.Text = defaultUser;
+      m_tbPassword.Text = defaultPassword;
+      SharedpaceId = defaultSharedspaceId;
+      WorkspaceId = defaultWorkspaceId;
     }
 
-    private async void buttonTestConnection_Click(object sender, EventArgs e)
+    #endregion
+
+    #region Private Methods
+
+    private void m_tbServerUrl_TextChanged(object sender, EventArgs e)
     {
-      //    Task < OctaneMyItemsSyncService.Models.Workspace[] > workspacesTask = TestConnection();
-      m_workspacesComboBox.Items.Clear();
-            m_octaneService = new OctaneService(ServerUrl);
-      await m_octaneService.Login(User, Password);
-      m_octaneService.SetDefaultSharespace(SharedSpaceId);
-      var workspaces = await m_octaneService.GetWorkspace();
-
-    //  OctaneMyItemsSyncService.Models.Workspace[] workspaces = workspacesTask.Result;
-      foreach (OctaneMyItemsSyncService.Models.Workspace workspace in workspaces.data)
-      {
-        int i = m_workspacesComboBox.Items.Add(workspace.name);
-        m_workspaces.Add(i, workspace);
-      }
-      m_workspacesComboBox.Focus();
-      m_workspacesComboBox.SelectedIndex = 0;
-      m_isDirty = true;
-    }
-
-    private async Task<OctaneMyItemsSyncService.Models.Workspace[]> TestConnection()
-{
-      m_octaneService = new OctaneService(ServerUrl);
-      await m_octaneService.Login(User, Password);
-      m_octaneService.SetDefaultSharespace(SharedSpaceId);
-      var workspaces = await m_octaneService.GetWorkspace();
-       return workspaces.data;
-    }
-
-    private void buttonSharedSpace_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private async void buttonOK_Click(object sender, EventArgs e)
-    {
-      if (m_isDirty)
-      {
-        Workspace workspace;
-        if (m_workspaces.TryGetValue(m_workspacesComboBox.SelectedIndex, out workspace))
-        {
-          await m_octaneService.SetDefaultWorkspace(workspace);
-        }
-        else
-        {
-          MessageBox.Show("no default workspace is selected");
-        }
-        this.DialogResult = DialogResult.OK;
-      }
+      if (!string.IsNullOrEmpty(m_tbServerUrl.Text))
+        m_btnAuthenticate.Enabled = true;
       else
-      {
-        this.DialogResult = DialogResult.Cancel;
-      }
-      this.Close();
+        m_btnAuthenticate.Enabled = false;
     }
 
-    private void buttonCancel_Click(object sender, EventArgs e)
+    private async void m_btnAuthenticate_Click(object sender, EventArgs e)
     {
+      m_btnAuthenticate.Enabled = false;
+      m_cbSharedspaces.Enabled = false;
+      m_cbWorkspaces.Enabled = false;
+      m_btnOK.Enabled = false;
       
-      this.Close();
+      m_cbSharedspaces.Items.Clear();
+      m_cbWorkspaces.Items.Clear();
+
+      try
+      {
+        OctaneService = new OctaneService(ServerUrl);
+        await OctaneService.Login(User, Password);
+
+        var sharedSpaces = await OctaneService.GetSharedSpaces();
+        if (sharedSpaces.total_count <= 0)
+        {
+          MessageBox.Show("There is no Sharedspaces");
+          return;
+        }
+
+        m_cbSharedspaces.Items.AddRange(sharedSpaces.data);
+
+        //Set default Sharedspace
+        var defaultSharedspace = sharedSpaces.data[0];
+        if (SharedpaceId.HasValue)
+        {
+          var temp = sharedSpaces.data.FirstOrDefault(x => x.id == SharedpaceId);
+          if (temp != null)
+            defaultSharedspace = temp;
+        }
+        m_cbSharedspaces.SelectedItem = defaultSharedspace;
+
+        m_cbSharedspaces.Enabled = true;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      finally
+      {
+        m_btnAuthenticate.Enabled = true;
+      }
     }
+
+    private async void m_cbSharedpaces_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (m_cbSharedspaces.SelectedIndex == -1) return;
+
+      try
+      {
+        var sharedSpace = m_cbSharedspaces.SelectedItem as SharedSpace;
+        OctaneService.SetDefaultSharespace(sharedSpace);
+        SharedpaceId = sharedSpace.id;
+
+        var workspaces = await OctaneService.GetWorkspaces();
+        if (workspaces.total_count <= 0)
+        {
+          MessageBox.Show("There is no Workspaces");
+          return;
+        }
+
+        m_cbWorkspaces.Items.Clear();
+        m_cbWorkspaces.Items.AddRange(workspaces.data);
+
+        //Set feault Worksapce
+        var defaultWorkspace = workspaces.data[0];
+        if (WorkspaceId.HasValue)
+        {
+          var temp = workspaces.data.FirstOrDefault(x => x.id == WorkspaceId);
+          if (temp != null)
+            defaultWorkspace = temp;
+        }
+        m_cbWorkspaces.SelectedItem = defaultWorkspace;
+
+        m_cbWorkspaces.Enabled = true;
+        m_btnOK.Enabled = true;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+    }
+
+    private async void m_cbWorkspaces_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      if (m_cbWorkspaces.SelectedIndex == -1) return;
+
+      try
+      {
+        var workspace = m_cbWorkspaces.SelectedItem as Workspace;
+        await OctaneService.SetDefaultWorkspace(workspace);
+        WorkspaceId = workspace.id;
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+    }
+
+    private void m_btnOK_Click(object sender, EventArgs e)
+    {
+      DialogResult = DialogResult.OK;
+      Close();
+    }
+
+    private void m_btnCancel_Click(object sender, EventArgs e)
+    {
+      Close();
+    }
+
+    #endregion
   }
 }

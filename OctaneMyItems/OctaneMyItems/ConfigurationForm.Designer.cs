@@ -30,18 +30,18 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigurationForm));
       this.label1 = new System.Windows.Forms.Label();
-      this.m_serverUrl = new System.Windows.Forms.TextBox();
+      this.m_tbServerUrl = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
-      this.m_userName = new System.Windows.Forms.TextBox();
+      this.m_tbUserName = new System.Windows.Forms.TextBox();
       this.label3 = new System.Windows.Forms.Label();
-      this.m_password = new System.Windows.Forms.TextBox();
-      this.buttonTestConnection = new System.Windows.Forms.Button();
+      this.m_tbPassword = new System.Windows.Forms.TextBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.m_sharedSpaceId = new System.Windows.Forms.TextBox();
-      this.buttonOK = new System.Windows.Forms.Button();
-      this.buttonCancel = new System.Windows.Forms.Button();
-      this.m_workspacesComboBox = new System.Windows.Forms.ComboBox();
+      this.m_btnOK = new System.Windows.Forms.Button();
+      this.m_btnCancel = new System.Windows.Forms.Button();
+      this.m_cbWorkspaces = new System.Windows.Forms.ComboBox();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.m_cbSharedspaces = new System.Windows.Forms.ComboBox();
+      this.m_btnAuthenticate = new System.Windows.Forms.Button();
       this.label5 = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.groupBox1.SuspendLayout();
@@ -58,13 +58,14 @@
       this.label1.TabIndex = 0;
       this.label1.Text = "Server Url:";
       // 
-      // m_serverUrl
+      // m_tbServerUrl
       // 
-      this.m_serverUrl.Location = new System.Drawing.Point(102, 24);
-      this.m_serverUrl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.m_serverUrl.Name = "m_serverUrl";
-      this.m_serverUrl.Size = new System.Drawing.Size(257, 20);
-      this.m_serverUrl.TabIndex = 1;
+      this.m_tbServerUrl.Location = new System.Drawing.Point(102, 24);
+      this.m_tbServerUrl.Margin = new System.Windows.Forms.Padding(2);
+      this.m_tbServerUrl.Name = "m_tbServerUrl";
+      this.m_tbServerUrl.Size = new System.Drawing.Size(257, 20);
+      this.m_tbServerUrl.TabIndex = 1;
+      this.m_tbServerUrl.TextChanged += new System.EventHandler(this.m_tbServerUrl_TextChanged);
       // 
       // label2
       // 
@@ -76,13 +77,13 @@
       this.label2.TabIndex = 2;
       this.label2.Text = "User Name: ";
       // 
-      // m_userName
+      // m_tbUserName
       // 
-      this.m_userName.Location = new System.Drawing.Point(102, 58);
-      this.m_userName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.m_userName.Name = "m_userName";
-      this.m_userName.Size = new System.Drawing.Size(257, 20);
-      this.m_userName.TabIndex = 3;
+      this.m_tbUserName.Location = new System.Drawing.Point(102, 58);
+      this.m_tbUserName.Margin = new System.Windows.Forms.Padding(2);
+      this.m_tbUserName.Name = "m_tbUserName";
+      this.m_tbUserName.Size = new System.Drawing.Size(257, 20);
+      this.m_tbUserName.TabIndex = 3;
       // 
       // label3
       // 
@@ -94,99 +95,105 @@
       this.label3.TabIndex = 4;
       this.label3.Text = "Password:";
       // 
-      // m_password
+      // m_tbPassword
       // 
-      this.m_password.Location = new System.Drawing.Point(102, 91);
-      this.m_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.m_password.Name = "m_password";
-      this.m_password.PasswordChar = '*';
-      this.m_password.Size = new System.Drawing.Size(257, 20);
-      this.m_password.TabIndex = 5;
-      this.m_password.UseSystemPasswordChar = true;
-      // 
-      // buttonTestConnection
-      // 
-      this.buttonTestConnection.Location = new System.Drawing.Point(102, 155);
-      this.buttonTestConnection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.buttonTestConnection.Name = "buttonTestConnection";
-      this.buttonTestConnection.Size = new System.Drawing.Size(122, 24);
-      this.buttonTestConnection.TabIndex = 8;
-      this.buttonTestConnection.Text = "Get workspaces ...";
-      this.buttonTestConnection.UseVisualStyleBackColor = true;
-      this.buttonTestConnection.Click += new System.EventHandler(this.buttonTestConnection_Click);
+      this.m_tbPassword.Location = new System.Drawing.Point(102, 91);
+      this.m_tbPassword.Margin = new System.Windows.Forms.Padding(2);
+      this.m_tbPassword.Name = "m_tbPassword";
+      this.m_tbPassword.PasswordChar = '*';
+      this.m_tbPassword.Size = new System.Drawing.Size(257, 20);
+      this.m_tbPassword.TabIndex = 5;
+      this.m_tbPassword.UseSystemPasswordChar = true;
       // 
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(11, 126);
+      this.label4.Location = new System.Drawing.Point(11, 171);
       this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(93, 13);
+      this.label4.Size = new System.Drawing.Size(78, 13);
       this.label4.TabIndex = 7;
-      this.label4.Text = "Shared Space Id: ";
+      this.label4.Text = "Sharedspaces:";
       // 
-      // m_sharedSpaceId
+      // m_btnOK
       // 
-      this.m_sharedSpaceId.Location = new System.Drawing.Point(102, 124);
-      this.m_sharedSpaceId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.m_sharedSpaceId.Name = "m_sharedSpaceId";
-      this.m_sharedSpaceId.Size = new System.Drawing.Size(257, 20);
-      this.m_sharedSpaceId.TabIndex = 6;
+      this.m_btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.m_btnOK.Enabled = false;
+      this.m_btnOK.Location = new System.Drawing.Point(247, 270);
+      this.m_btnOK.Margin = new System.Windows.Forms.Padding(2);
+      this.m_btnOK.Name = "m_btnOK";
+      this.m_btnOK.Size = new System.Drawing.Size(56, 25);
+      this.m_btnOK.TabIndex = 10;
+      this.m_btnOK.Text = "&OK";
+      this.m_btnOK.UseVisualStyleBackColor = true;
+      this.m_btnOK.Click += new System.EventHandler(this.m_btnOK_Click);
       // 
-      // buttonOK
+      // m_btnCancel
       // 
-      this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.buttonOK.Location = new System.Drawing.Point(262, 270);
-      this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.buttonOK.Name = "buttonOK";
-      this.buttonOK.Size = new System.Drawing.Size(56, 25);
-      this.buttonOK.TabIndex = 10;
-      this.buttonOK.Text = "&OK";
-      this.buttonOK.UseVisualStyleBackColor = true;
-      this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+      this.m_btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.m_btnCancel.Location = new System.Drawing.Point(312, 270);
+      this.m_btnCancel.Margin = new System.Windows.Forms.Padding(2);
+      this.m_btnCancel.Name = "m_btnCancel";
+      this.m_btnCancel.Size = new System.Drawing.Size(56, 25);
+      this.m_btnCancel.TabIndex = 11;
+      this.m_btnCancel.Text = "&Cancel";
+      this.m_btnCancel.UseVisualStyleBackColor = true;
+      this.m_btnCancel.Click += new System.EventHandler(this.m_btnCancel_Click);
       // 
-      // buttonCancel
+      // m_cbWorkspaces
       // 
-      this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.buttonCancel.Location = new System.Drawing.Point(322, 270);
-      this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.buttonCancel.Name = "buttonCancel";
-      this.buttonCancel.Size = new System.Drawing.Size(56, 25);
-      this.buttonCancel.TabIndex = 11;
-      this.buttonCancel.Text = "&Cancel";
-      this.buttonCancel.UseVisualStyleBackColor = true;
-      this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-      // 
-      // m_workspacesComboBox
-      // 
-      this.m_workspacesComboBox.FormattingEnabled = true;
-      this.m_workspacesComboBox.Location = new System.Drawing.Point(102, 193);
-      this.m_workspacesComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-      this.m_workspacesComboBox.Name = "m_workspacesComboBox";
-      this.m_workspacesComboBox.Size = new System.Drawing.Size(257, 21);
-      this.m_workspacesComboBox.TabIndex = 9;
+      this.m_cbWorkspaces.DisplayMember = "name";
+      this.m_cbWorkspaces.Enabled = false;
+      this.m_cbWorkspaces.FormattingEnabled = true;
+      this.m_cbWorkspaces.Location = new System.Drawing.Point(102, 193);
+      this.m_cbWorkspaces.Margin = new System.Windows.Forms.Padding(2);
+      this.m_cbWorkspaces.Name = "m_cbWorkspaces";
+      this.m_cbWorkspaces.Size = new System.Drawing.Size(257, 21);
+      this.m_cbWorkspaces.TabIndex = 9;
+      this.m_cbWorkspaces.SelectedIndexChanged += new System.EventHandler(this.m_cbWorkspaces_SelectedIndexChanged);
       // 
       // groupBox1
       // 
+      this.groupBox1.Controls.Add(this.m_cbSharedspaces);
+      this.groupBox1.Controls.Add(this.m_btnAuthenticate);
       this.groupBox1.Controls.Add(this.label5);
-      this.groupBox1.Controls.Add(this.m_workspacesComboBox);
-      this.groupBox1.Controls.Add(this.buttonTestConnection);
-      this.groupBox1.Controls.Add(this.m_password);
+      this.groupBox1.Controls.Add(this.m_cbWorkspaces);
+      this.groupBox1.Controls.Add(this.m_tbPassword);
       this.groupBox1.Controls.Add(this.label3);
-      this.groupBox1.Controls.Add(this.m_sharedSpaceId);
-      this.groupBox1.Controls.Add(this.m_userName);
+      this.groupBox1.Controls.Add(this.m_tbUserName);
       this.groupBox1.Controls.Add(this.label4);
       this.groupBox1.Controls.Add(this.label2);
-      this.groupBox1.Controls.Add(this.m_serverUrl);
+      this.groupBox1.Controls.Add(this.m_tbServerUrl);
       this.groupBox1.Controls.Add(this.label1);
       this.groupBox1.Location = new System.Drawing.Point(9, 23);
-      this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
       this.groupBox1.Size = new System.Drawing.Size(370, 231);
       this.groupBox1.TabIndex = 14;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Connect to Octane:";
+      // 
+      // m_cbSharedspaces
+      // 
+      this.m_cbSharedspaces.DisplayMember = "name";
+      this.m_cbSharedspaces.Enabled = false;
+      this.m_cbSharedspaces.FormattingEnabled = true;
+      this.m_cbSharedspaces.Location = new System.Drawing.Point(102, 167);
+      this.m_cbSharedspaces.Name = "m_cbSharedspaces";
+      this.m_cbSharedspaces.Size = new System.Drawing.Size(257, 21);
+      this.m_cbSharedspaces.TabIndex = 15;
+      this.m_cbSharedspaces.SelectedIndexChanged += new System.EventHandler(this.m_cbSharedpaces_SelectedIndexChanged);
+      // 
+      // m_btnAuthenticate
+      // 
+      this.m_btnAuthenticate.Location = new System.Drawing.Point(238, 125);
+      this.m_btnAuthenticate.Name = "m_btnAuthenticate";
+      this.m_btnAuthenticate.Size = new System.Drawing.Size(121, 24);
+      this.m_btnAuthenticate.TabIndex = 14;
+      this.m_btnAuthenticate.Text = "&Authenticate";
+      this.m_btnAuthenticate.UseVisualStyleBackColor = true;
+      this.m_btnAuthenticate.Click += new System.EventHandler(this.m_btnAuthenticate_Click);
       // 
       // label5
       // 
@@ -194,15 +201,15 @@
       this.label5.Location = new System.Drawing.Point(11, 196);
       this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(67, 13);
+      this.label5.Size = new System.Drawing.Size(70, 13);
       this.label5.TabIndex = 13;
-      this.label5.Text = "Workspaces";
+      this.label5.Text = "Workspaces:";
       // 
       // pictureBox1
       // 
       this.pictureBox1.Image = global::OctaneMyItems.Properties.Resources.hpe_logo;
       this.pictureBox1.Location = new System.Drawing.Point(9, 258);
-      this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
       this.pictureBox1.Name = "pictureBox1";
       this.pictureBox1.Size = new System.Drawing.Size(110, 56);
       this.pictureBox1.TabIndex = 15;
@@ -212,14 +219,14 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.CancelButton = this.buttonCancel;
+      this.CancelButton = this.m_btnCancel;
       this.ClientSize = new System.Drawing.Size(384, 311);
       this.Controls.Add(this.pictureBox1);
       this.Controls.Add(this.groupBox1);
-      this.Controls.Add(this.buttonCancel);
-      this.Controls.Add(this.buttonOK);
+      this.Controls.Add(this.m_btnCancel);
+      this.Controls.Add(this.m_btnOK);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "ConfigurationForm";
@@ -236,19 +243,19 @@
     #endregion
 
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox m_serverUrl;
+    private System.Windows.Forms.TextBox m_tbServerUrl;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox m_userName;
+    private System.Windows.Forms.TextBox m_tbUserName;
     private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.TextBox m_password;
-    private System.Windows.Forms.Button buttonTestConnection;
+    private System.Windows.Forms.TextBox m_tbPassword;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.TextBox m_sharedSpaceId;
-    private System.Windows.Forms.Button buttonOK;
-    private System.Windows.Forms.Button buttonCancel;
-    private System.Windows.Forms.ComboBox m_workspacesComboBox;
+    private System.Windows.Forms.Button m_btnOK;
+    private System.Windows.Forms.Button m_btnCancel;
+    private System.Windows.Forms.ComboBox m_cbWorkspaces;
     private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-    }
+    private System.Windows.Forms.ComboBox m_cbSharedspaces;
+    private System.Windows.Forms.Button m_btnAuthenticate;
+  }
 }
