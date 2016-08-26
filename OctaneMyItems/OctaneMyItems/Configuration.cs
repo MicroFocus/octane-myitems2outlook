@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Outlook;
 using OctaneMyItemsSyncService.Services;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OctaneMyItems
@@ -28,6 +29,8 @@ namespace OctaneMyItems
     public Configuration(Microsoft.Office.Interop.Outlook.Application app)
     {
       m_application = app;
+
+      Task.Run(() => { GetConfiguration(); });
     }
 
     public void GetConfiguration()
@@ -60,6 +63,21 @@ namespace OctaneMyItems
       get { return m_initialized; }
     }
 
+    public string ServerUrl
+    {
+      get { return m_serverUrl; }
+    }
+
+    public int SharedspaceId
+    {
+      get { return m_sharedspaceId; }
+    }
+
+    public int WorkspaceId
+    {
+      get { return m_workspaceId; }
+    }
+
     #endregion
 
     #region Private Methods
@@ -70,7 +88,10 @@ namespace OctaneMyItems
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
-        m_serverUrl = form.ServerUrl;
+        if (form.ServerUrl[form.ServerUrl.Length - 1] == '\\' || form.ServerUrl[form.ServerUrl.Length - 1] == '/')
+          m_serverUrl = form.ServerUrl.Substring(0, m_serverUrl.Length - 1);
+        else
+          m_serverUrl = form.ServerUrl;
         m_userName = form.User;
         m_password = form.Password;
         m_sharedspaceId = form.SharedpaceId.Value;

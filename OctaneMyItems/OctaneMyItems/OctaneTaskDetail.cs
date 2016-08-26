@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -26,6 +28,8 @@ namespace OctaneMyItems
 
     #endregion
 
+    private readonly Color ThemeColor = Color.FromArgb(0, 179, 136);
+
     // Occurs before the form region is displayed.
     // Use this.OutlookItem to get a reference to the current Outlook item.
     // Use this.OutlookFormRegion to get a reference to the form region.
@@ -39,24 +43,31 @@ namespace OctaneMyItems
       tabControl1.TabPages.Remove(tp_testSteps);
       try
       {
+        var url = $"{ThisAddIn.Configuration.ServerUrl}/ui/entity-navigation?p={ThisAddIn.Configuration.SharedspaceId}/{ThisAddIn.Configuration.WorkspaceId}";
         if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Backlog backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-          Controls.Add(GetChildControl(new FieldsDetail_Defect(backlog)));
+          InsertDetailControl(new FieldsDetail_Defect(backlog));
+          InsertLinkLabel(url + "&entityType=work_item&id=" + backlog.id);
+
           wb_description.DocumentText = GenerateDescriptHtml(backlog.description);
           wb_comments.DocumentText = GenerateCommentsHtml(backlog.comments);
         }
         else if ("\"Story\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Backlog story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
-          Controls.Add(GetChildControl(new FieldsDetail_Story(story)));
+          InsertDetailControl(new FieldsDetail_Story(story));
+          InsertLinkLabel(url + "&entityType=work_item&id=" + story.id);
+
           wb_description.DocumentText = GenerateDescriptHtml(story.description);
           wb_comments.DocumentText = GenerateCommentsHtml(story.comments);
         }
         else if ("\"Run\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Run run = JsonConvert.DeserializeObject<Run>(octane.Value);
-          Controls.Add(GetChildControl(new FieldsDetail_Run(run)));
+          InsertDetailControl(new FieldsDetail_Run(run));
+          InsertLinkLabel(url + "&entityType=run&id=" + run.id);
+
           wb_description.DocumentText = GenerateDescriptHtml(run.description);
           wb_comments.DocumentText = GenerateCommentsHtml(run.comments);
           tabControl1.TabPages.Add(tp_runSteps);
@@ -75,7 +86,9 @@ namespace OctaneMyItems
         else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Test test = JsonConvert.DeserializeObject<Test>(octane.Value);
-          Controls.Add(GetChildControl(new FieldsDetail_Test(test)));
+          InsertDetailControl(new FieldsDetail_Test(test));
+          InsertLinkLabel(url + "&entityType=test&id=" + test.id);
+
           wb_description.DocumentText = GenerateDescriptHtml(test.description);
           wb_comments.DocumentText = GenerateCommentsHtml(test.comments);
           tabControl1.TabPages.Add(tp_testSteps);
@@ -95,12 +108,32 @@ namespace OctaneMyItems
       }
     }
 
-    private Control GetChildControl(Control parentControl)
+    private void InsertLinkLabel(string url)
+    {
+      var linkLabel = new LinkLabel()
+      {
+        UseMnemonic = false,
+        Text = url,
+        Dock = DockStyle.Top,
+        Padding = new Padding(5, 5, 5, 0),
+        LinkColor = ThemeColor,
+      };
+
+      linkLabel.Links.Add(new LinkLabel.Link(0, url.Length, url));
+      linkLabel.LinkClicked += (s, e) =>
+      {
+        Process.Start(url);
+      };
+
+      Controls.Add(linkLabel);
+    }
+
+    private void InsertDetailControl(Control parentControl)
     {
       var control = parentControl.Controls[0];
-      control.Dock = System.Windows.Forms.DockStyle.Top;
-      control.Padding = new System.Windows.Forms.Padding(5);
-      return control;
+      control.Dock = DockStyle.Top;
+      control.Padding = new Padding(5, 0, 5, 5);
+      Controls.Add(control);
     }
 
     private string GenerateDescriptHtml(string descript)
