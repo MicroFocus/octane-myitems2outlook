@@ -59,9 +59,9 @@ namespace OctaneMyItemsSyncService.Models
     public Run_Steps steps { get; set; }
     public Comments comments { get; set; }
 
-    }
+  }
 
-    public class Release
+  public class Release
   {
     public string type { get; set; }
     public string name { get; set; }
@@ -93,5 +93,14 @@ namespace OctaneMyItemsSyncService.Models
     public int? order { get; set; }
     public int? version_stamp { get; set; }
     public ListNode step_type { get; set; }
+  }
+
+  public class ListNode
+  {
+    public string type { get; set; }
+    public string logical_name { get; set; }
+    public string name { get; set; }
+    public int id { get; set; }
+    public int index { get; set; }
   }
 }

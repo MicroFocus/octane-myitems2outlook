@@ -87,9 +87,16 @@ namespace OctaneMyItemsSyncService.Models
     public string sha { get; set; }
   }
 
-  //public class Automation_Status
-  //{
-  //    public string type { get; set; }
-  //    public int id { get; set; }
-  //}
+  public class User_Tags
+  {
+    public int total_count { get; set; }
+    public User_Tag[] data { get; set; }
+  }
+
+  public class User_Tag
+  {
+    public string type { get; set; }
+    public string name { get; set; }
+    public int id { get; set; }
+  }
 }
