@@ -28,4 +28,14 @@
 		</TaggedOutputs> -->
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\OctaneMyItems\OctaneMyItems.csproj">
+			<Name>OctaneMyItems</Name>
+			<Project>{16A00554-20E3-4CA5-8EA1-4CD418E21317}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\OctaneMyItemsSyncService\OctaneMyItemsSyncService.csproj">
+			<Name>OctaneMyItemsSyncService</Name>
+			<Project>{8E3F675C-7157-458F-BDB3-90E0C54E510E}</Project>
+		</ProjectReference>
+	</ItemGroup>
 </Project>

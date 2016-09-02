@@ -252,6 +252,7 @@
 		<col key="yes" def="s72">Name</col>
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
+		<row><td>ISSELFREG.DLL</td><td/><td>&lt;ISRedistPlatformDependentFolder&gt;\isregsvr.dll</td></row>
 		<row><td>NewBinary1</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\banner.jpg</td></row>
 		<row><td>NewBinary10</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\CompleteSetupIco.ibd</td></row>
 		<row><td>NewBinary11</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\CustomSetupIco.ibd</td></row>
@@ -338,6 +339,11 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
+		<row><td>ISRegistryComponent</td><td>{99C9C9D8-9EE9-4ED5-BB77-F99BD76A345E}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{B9F32C1B-3B83-469C-B98D-BB9D3855C32D}</td><td>INSTALLDIR</td><td>8</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItems.Primary_output</td><td>{F92788B0-37FF-4B79-B607-9F6F2CDA8B95}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitems.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItemsSyncService.Primary_output</td><td>{05AB2B9E-2B4C-499E-B974-1B7C7CBD02F8}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitemssyncservice.pri</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Net.Http.Formatting.dll</td><td>{92A76D6E-77C3-49E2-9824-8CB1AA61733A}</td><td>INSTALLDIR</td><td>8</td><td/><td>system.net.http.formatting.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1004,6 +1010,11 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>ISRegistryComponent</td></row>
+		<row><td>INSTALLDIR</td><td>Newtonsoft.Json.dll</td></row>
+		<row><td>INSTALLDIR</td><td>OctaneMyItems.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>OctaneMyItemsSyncService.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>System.Net.Http.Formatting.dll</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1015,6 +1026,10 @@
 		<col def="S255">ISComments</col>
 		<row><td>ISPreventDowngrade</td><td>19</td><td/><td>[IS_PREVENT_DOWNGRADE_EXIT]</td><td/><td>Exits install when a newer version of this product is found</td></row>
 		<row><td>ISPrint</td><td>1</td><td>SetAllUsers.dll</td><td>PrintScrollableText</td><td/><td>Prints the contents of a ScrollableText control on a dialog.</td></row>
+		<row><td>ISSelfRegisterCosting</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterCosting</td><td/><td/></row>
+		<row><td>ISSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFiles</td><td/><td/></row>
+		<row><td>ISSelfRegisterFinalize</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFinalize</td><td/><td/></row>
+		<row><td>ISUnSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISUnSelfRegisterFiles</td><td/><td/></row>
 		<row><td>SetARPINSTALLLOCATION</td><td>51</td><td>ARPINSTALLLOCATION</td><td>[INSTALLDIR]</td><td/><td/></row>
 		<row><td>SetAllUsersProfileNT</td><td>51</td><td>ALLUSERSPROFILE</td><td>[%SystemRoot]\Profiles\All Users</td><td/><td/></row>
 		<row><td>ShowMsiLog</td><td>226</td><td>SystemFolder</td><td>[SystemFolder]notepad.exe "[MsiLogFileLocation]"</td><td/><td>Shows Property-driven MSI Log</td></row>
@@ -1087,13 +1102,15 @@
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>ISMyProductDir</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>HPE</td><td>ProgramFilesFolder</td><td>HPE</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>OCTANEMYITEMS_PLUGIN</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
+		<row><td>OCTANEMYITEMS_PLUGIN</td><td>HPE</td><td>OCTANE~1|OctaneMyItems Plugin</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
 		<row><td>ProgramFiles64Folder</td><td>TARGETDIR</td><td>.:Prog64~1|Program Files 64</td><td/><td>0</td><td/></row>
@@ -1796,11 +1813,15 @@
 		<col def="S255">ISComments</col>
 		<col def="S255">ISFeatureCabName</col>
 		<col def="S255">ISProFeatureName</col>
+		<row><td>SyncService</td><td/><td>##ID_STRING1##</td><td/><td>2</td><td>1</td><td>INSTALLDIR</td><td>0</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>SyncService</td><td>ISRegistryComponent</td></row>
+		<row><td>SyncService</td><td>Newtonsoft.Json.dll</td></row>
+		<row><td>SyncService</td><td>System.Net.Http.Formatting.dll</td></row>
 	</table>
 
 	<table name="File">
@@ -1815,6 +1836,10 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
+		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
+		<row><td>octanemyitems.primary_output</td><td>OctaneMyItems.Primary_output</td><td>OctaneMyItems.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItems&gt;|Built</td><td>3</td><td/></row>
+		<row><td>octanemyitemssyncservice.pri</td><td>OctaneMyItemsSyncService.Primary_output</td><td>OctaneMyItemsSyncService.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItemsSyncService&gt;|Built</td><td>3</td><td/></row>
+		<row><td>system.net.http.formatting.d</td><td>System.Net.Http.Formatting.dll</td><td>System.Net.Http.Formatting.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\System.Net.Http.Formatting.dll</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -1956,6 +1981,11 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
+		<row><td>ISRegistryComponent</td><td/><td/><td>_F5056FFE_74CD_4DD9_BE33_9EF3A54D7F5A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_BE050F6E_5ED9_4234_8524_6CC628764878_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OctaneMyItems.Primary_output</td><td/><td/><td>_DB42F385_EFDE_4E4E_81DD_858DF91304F2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OctaneMyItemsSyncService.Primary_output</td><td/><td/><td>_0D2E9E41_908C_4FE1_8DB8_E54E423259CA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Net.Http.Formatting.dll</td><td/><td/><td>_2BF4021C_217A_4DBA_826D_D6EE6F69A7DB_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2260,6 +2290,8 @@
 		<row><td>ISProductFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISProjectDataFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISProjectFolder</td><td/><td/><td>1</td></row>
+		<row><td>OctaneMyItems</td><td>OctaneMyItems\OctaneMyItems.csproj</td><td/><td>2</td></row>
+		<row><td>OctaneMyItemsSyncService</td><td>OctaneMyItemsSyncService\OctaneMyItemsSyncService.csproj</td><td/><td>2</td></row>
 		<row><td>ProgramFilesFolder</td><td/><td/><td>1</td></row>
 		<row><td>SystemFolder</td><td/><td/><td>1</td></row>
 		<row><td>WindowsFolder</td><td/><td/><td>1</td></row>
@@ -2577,7 +2609,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Your Company Name</td><td>0</td><td/><td>1126393376</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Hewlett Packard Enterprise</td><td>0</td><td/><td>346304622</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1126393376</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1126393376</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1126393376</td></row>
@@ -3677,6 +3709,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1126393376</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1126393376</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1126393376</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>SyncService</td><td>0</td><td/><td>346318154</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>www.hpe.com</td><td>0</td><td/><td>346320942</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1126393376</td></row>
 	</table>
 
@@ -3832,6 +3866,10 @@
 		<row><td>FileCost</td><td/><td>900</td><td>FileCost</td><td/></row>
 		<row><td>FindRelatedProducts</td><td>NOT ISSETUPDRIVEN</td><td>420</td><td>FindRelatedProducts</td><td/></row>
 		<row><td>ISPreventDowngrade</td><td>ISFOUNDNEWERPRODUCTVERSION</td><td>450</td><td>ISPreventDowngrade</td><td/></row>
+		<row><td>ISSelfRegisterCosting</td><td/><td>2201</td><td/><td/></row>
+		<row><td>ISSelfRegisterFiles</td><td/><td>5601</td><td/><td/></row>
+		<row><td>ISSelfRegisterFinalize</td><td/><td>6601</td><td/><td/></row>
+		<row><td>ISUnSelfRegisterFiles</td><td/><td>2202</td><td/><td/></row>
 		<row><td>InstallFiles</td><td/><td>4000</td><td>InstallFiles</td><td/></row>
 		<row><td>InstallFinalize</td><td/><td>6600</td><td>InstallFinalize</td><td/></row>
 		<row><td>InstallInitialize</td><td/><td>1501</td><td>InstallInitialize</td><td/></row>
@@ -4222,6 +4260,7 @@ UgBlAGwAZQBhAHMAZQABAEQAZQBmAGEAdQBsAHQAIABDAG8AbgBmAGkAZwB1AHIAYQB0AGkAbwBuAA==
 		<col def="S255">ISComments</col>
 		<row><td>ALLUSERS</td><td>1</td><td/></row>
 		<row><td>ARPPRODUCTICON</td><td>ARPPRODUCTICON.exe</td><td/></row>
+		<row><td>ARPURLINFOABOUT</td><td>##ID_STRING2##</td><td/></row>
 		<row><td>AgreeToLicense</td><td>No</td><td/></row>
 		<row><td>ApplicationUsers</td><td>AllUsers</td><td/></row>
 		<row><td>DWUSINTERVAL</td><td>30</td><td/></row>
@@ -4293,7 +4332,7 @@ UgBlAGwAZQBhAHMAZQABAEQAZQBmAGEAdQBsAHQAIABDAG8AbgBmAGkAZwB1AHIAYQB0AGkAbwBuAA==
 		<row><td>RebootYesNo</td><td>Yes</td><td/></row>
 		<row><td>ReinstallModeText</td><td>omus</td><td/></row>
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;INSTALLDIR</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{7EDE211F-BF70-463F-9C46-7D2132EF74A8}</td><td/></row>
 		<row><td>_IsMaintenance</td><td>Change</td><td/></row>
@@ -4348,6 +4387,11 @@ UgBlAGwAZQBhAHMAZQABAEQAZQBmAGEAdQBsAHQAIABDAG8AbgBmAGkAZwB1AHIAYQB0AGkAbwBuAA==
 		<col def="S0">Value</col>
 		<col def="s72">Component_</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>Registry1</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td/><td/><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry2</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>Description</td><td>OctaneMyItems</td><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry3</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>FriendlyName</td><td>OctaneMyItems</td><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry4</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>LoadBehavior</td><td>#3</td><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry5</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>Manifest</td><td>file:///C:/Users/xitian/Source/Repos/D22438_My_Items_2_Outlook/OctaneMyItems/OctaneMyItems/bin/Debug/OctaneMyItems.vsto|vstolocal</td><td>ISRegistryComponent</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
