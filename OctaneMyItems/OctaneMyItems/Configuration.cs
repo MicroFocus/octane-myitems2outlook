@@ -53,7 +53,7 @@ namespace OctaneMyItems
 
     #region Public Properties
 
-    public OctaneService OctaneService
+    public IOctaneService OctaneService
     {
       get { return m_octaneService; }
     }

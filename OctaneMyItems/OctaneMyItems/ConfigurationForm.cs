@@ -17,7 +17,7 @@ namespace OctaneMyItems
     public int? SharedpaceId { get; private set; }
     public int? WorkspaceId { get; private set; }
 
-    public OctaneService OctaneService { get; private set; }
+    public IOctaneService OctaneService { get; private set; }
 
     #endregion
 

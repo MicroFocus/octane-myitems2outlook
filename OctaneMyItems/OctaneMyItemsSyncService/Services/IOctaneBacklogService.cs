@@ -8,6 +8,7 @@ namespace OctaneMyItemsSyncService.Services
     Task<Backlog> GetBacklog(int id, bool byCurrentOwner);
     Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false);
     Task<Backlogs> GetMyBacklogs();
+    Task<Backlog> GetMyBacklog(int id);
     Task<Comments> GetBacklogComments(int id);
   }
 }

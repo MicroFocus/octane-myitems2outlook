@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Services
 {
-  public class OctaneService : 
-    IOctaneGeneralService, IOctaneBacklogService, IOctaneTestService, IOctaneRunService
+  public class OctaneService : IOctaneService
   {
     #region Private Fields
 
@@ -20,6 +19,8 @@ namespace OctaneMyItemsSyncService.Services
     private User _currentUser;
     private SharedSpace _defaultSharespace;
     private Workspace _defaultWorkspace;
+
+    private const string EXPAND_ALL = "expand=$all{{fields = name}}";
 
     #endregion
 
@@ -67,6 +68,8 @@ namespace OctaneMyItemsSyncService.Services
 
       _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_MQM_UI");
       _currentUserName = user;
+
+      ResetQuery();
     }
     public async Task Logout()
     {
@@ -99,6 +102,8 @@ namespace OctaneMyItemsSyncService.Services
 
       _defaultSharespace = sharespace;
       _defaultWorkspace = workspace;
+
+      ResetQuery();
     }
 
     #endregion
@@ -107,14 +112,13 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<Backlog> GetBacklog(int id, bool byCurrentOwner)
     {
-      var result = await GetBacklogs($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
-      if (result == null || result.data == null || result.data.Count() == 0)
-        return null;
-      return result.data[0];
+      var result = await GetBacklogs($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{EXPAND_ALL}", true);
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false)
     {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/work_items";
+      var url = $"{QueryUrl}/work_items";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
       var response = await _httpClient.GetAsync(url);
       var backlogs = await response.Content.ReadAsAsync<Backlogs>();
@@ -132,9 +136,13 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task<Backlogs> GetMyBacklogs()
     {
-      var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New'|| name EQ 'In Progress' || name EQ 'In Testing')}};(subtype EQ 'defect'||subtype EQ 'story'||subtype EQ 'quality_story')";
-      var expand = "$all{fields = name}";
-      return await GetBacklogs(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
+      return await GetBacklogs($"query=\"{QueryMyBacklogs}\"&{EXPAND_ALL}", true);
+    }
+    public async Task<Backlog> GetMyBacklog(int id)
+    {
+      var result = await GetBacklogs($"query=\"{QueryMyBacklogs};id={id}\"&{EXPAND_ALL}", true);
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Comments> GetBacklogComments(int id)
     {
@@ -147,14 +155,13 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<Run> GetRun(int id, bool byCurrentOwner)
     {
-      var result = await GetRuns($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
-      if (result == null || result.data == null || result.data.Count() == 0)
-        return null;
-      return result.data[0];
+      var result = await GetRuns($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{EXPAND_ALL}", true);
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Runs> GetRuns(string parameters = null, bool indetail = false)
     {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/runs";
+      var url = $"{QueryUrl}/runs";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
       var response = await _httpClient.GetAsync(url);
       Runs runs = await response.Content.ReadAsAsync<Runs>();
@@ -175,9 +182,13 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task<Runs> GetMyRuns()
     {
-      var query = "run_by={id=" + _currentUser.id + "};(native_status={logical_name EQ 'list_node.run_native_status.planned' }||native_status={logical_name EQ 'list_node.run_native_status.blocked'}||native_status={logical_name EQ 'list_node.run_native_status.not_completed'});((parent_suite={null};subtype EQ 'run_manual')||(subtype EQ 'run_suite'))";
-      var expand = "$all{fields = name}";
-      return await GetRuns(string.Format("query=\"{0}\"&skip_subtype_filter={1}&expand={2}", query, true, expand), true);
+      return await GetRuns($"query=\"{QueryMyRuns}\"&skip_subtype_filter={true}&{EXPAND_ALL}", true);
+    }
+    public async Task<Run> GetMyRun(int id)
+    {
+      var result = await GetRuns($"query=\"{QueryMyRuns}\"&skip_subtype_filter={true}&{EXPAND_ALL}", true);
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Comments> GetRunComments(int id)
     {
@@ -185,7 +196,7 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task<Run_Steps> GetRunSteps(int run_id)
     {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/run_steps" + "?query=\"run={id=" + run_id + "}\"";
+      var url = $"{QueryUrl}/run_steps?query=\"run={{id={run_id}}}\"";
       var response = await _httpClient.GetAsync(url);
       return await response.Content.ReadAsAsync<Run_Steps>();
     }
@@ -197,9 +208,8 @@ namespace OctaneMyItemsSyncService.Services
     public async Task<Test> GetTest(int id, bool byCurrentOwner)
     {
       var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
-      if (result == null || result.data == null || result.data.Count() == 0)
-        return null;
-      return result.data[0];
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Tests> GetTests(string parameters = null, bool indetail = false)
     {
@@ -222,9 +232,13 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task<Tests> GetMyTests()
     {
-      var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";
-      var expand = "$all{fields = name}";
-      return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
+      return await GetTests($"query=\"{QueryMyTests}\"&{EXPAND_ALL}", true);
+    }
+    public async Task<Test> GetMyTest(int id)
+    {
+      var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{EXPAND_ALL}", true);
+      if (result?.data?.Count() > 0) return result.data[0];
+      return null;
     }
     public async Task<Comments> GetTestComments(int id)
     {
@@ -239,12 +253,60 @@ namespace OctaneMyItemsSyncService.Services
 
     #endregion
 
+    #region Properties
+
+    private string queryUrl;
+    public string QueryUrl
+    {
+      get { return queryUrl ??
+          (queryUrl = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}"); }
+    }
+
+    private string queryMyBacklogs;
+    public string QueryMyBacklogs
+    {
+      get
+      {
+        return queryMyBacklogs ??
+      (queryMyBacklogs = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New'|| name EQ 'In Progress' || name EQ 'In Testing')}};(subtype EQ 'defect'||subtype EQ 'story'||subtype EQ 'quality_story')");
+      }
+    }
+
+    private string queryMyTests;
+    public string QueryMyTests
+    {
+      get
+      {
+        return queryMyTests ??
+      (queryMyTests = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')");
+      }
+    }
+
+    private string queryMyRuns;
+    public string QueryMyRuns
+    {
+      get
+      {
+        return queryMyRuns ??
+      (queryMyRuns = "run_by={id=" + _currentUser.id + "};(native_status={logical_name EQ 'list_node.run_native_status.planned' }||native_status={logical_name EQ 'list_node.run_native_status.blocked'}||native_status={logical_name EQ 'list_node.run_native_status.not_completed'});((parent_suite={null};subtype EQ 'run_manual')||(subtype EQ 'run_suite'))");
+      }
+    }
+
+    #endregion
 
     #region Private methods
 
+    private void ResetQuery()
+    {
+      queryUrl = null;
+      queryMyBacklogs = null;
+      queryMyTests = null;
+      queryMyRuns = null;
+    }
+
     private async Task<Comments> GetComments(string owner_type, int owner_id)
     {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/comments";
+      var url = $"{QueryUrl}/comments";
       url += "?fields=id,author,text,last_modified,creation_time";
       url += "&expand=author{fields=name,full_name}";
       url += "&query=\"owner_" + owner_type + "={id=" + owner_id + "}\"";

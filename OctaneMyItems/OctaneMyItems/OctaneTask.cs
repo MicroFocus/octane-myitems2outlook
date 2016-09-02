@@ -2,6 +2,7 @@
 using OctaneMyItemsSyncService.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems
@@ -42,17 +43,17 @@ namespace OctaneMyItems
             {
               if (id.Contains("Backlog"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")), false);
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyBacklog(int.Parse(id.Replace("Backlog", "")));
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains("Run"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")), false);
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyRun(int.Parse(id.Replace("Run", "")));
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains("Test"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")), false);
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyTest(int.Parse(id.Replace("Test", "")));
                 UpdateTaskItem(item, oTask);
               }
             }
@@ -156,10 +157,11 @@ namespace OctaneMyItems
     {
       if (octaneItem == null)
       {
-        if (oTask.Subject.Substring(0, Constants.Deleted.Length) == Constants.Deleted) return;
-        oTask.Subject = oTask.Subject.Insert(0, Constants.Deleted);
-        oTask.Save();
-        oTask.Close(Outlook.OlInspectorClose.olSave);
+        var result = MessageBox.Show(
+          "Current Octane item is Deleted/Reassigned/Mark as Done.\n\rDo you want to delete it?", 
+          "Info", MessageBoxButtons.OKCancel);
+        if (result == DialogResult.OK)
+          oTask.Delete();
         return;
       }
 
