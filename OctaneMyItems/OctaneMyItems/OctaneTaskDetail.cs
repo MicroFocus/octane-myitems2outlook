@@ -48,7 +48,7 @@ namespace OctaneMyItems
         {
           Backlog backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
           InsertDetailControl(new FieldsDetail_Defect(backlog));
-          InsertLinkLabel(url + "&entityType=work_item&id=" + backlog.id);
+          InsertLinkLabelWithStatus(backlog.id.ToString(), url + "&entityType=work_item&id=" + backlog.id, backlog.phase?.name);
 
           wb_description.DocumentText = GenerateDescriptHtml(backlog.description);
           wb_comments.DocumentText = GenerateCommentsHtml(backlog.comments);
@@ -57,7 +57,7 @@ namespace OctaneMyItems
         {
           Backlog story = JsonConvert.DeserializeObject<Backlog>(octane.Value);
           InsertDetailControl(new FieldsDetail_Story(story));
-          InsertLinkLabel(url + "&entityType=work_item&id=" + story.id);
+          InsertLinkLabelWithStatus(story.id.ToString(), url + "&entityType=work_item&id=" + story.id, story.phase?.name);
 
           wb_description.DocumentText = GenerateDescriptHtml(story.description);
           wb_comments.DocumentText = GenerateCommentsHtml(story.comments);
@@ -66,7 +66,7 @@ namespace OctaneMyItems
         {
           Run run = JsonConvert.DeserializeObject<Run>(octane.Value);
           InsertDetailControl(new FieldsDetail_Run(run));
-          InsertLinkLabel(url + "&entityType=run&id=" + run.id);
+          InsertLinkLabelWithStatus(run.id.ToString(), url + "&entityType=run&id=" + run.id, run.status?.name);
 
           wb_description.DocumentText = GenerateDescriptHtml(run.description);
           wb_comments.DocumentText = GenerateCommentsHtml(run.comments);
@@ -87,7 +87,7 @@ namespace OctaneMyItems
         {
           Test test = JsonConvert.DeserializeObject<Test>(octane.Value);
           InsertDetailControl(new FieldsDetail_Test(test));
-          InsertLinkLabel(url + "&entityType=test&id=" + test.id);
+          InsertLinkLabelWithStatus(test.id.ToString(), url + "&entityType=test&id=" + test.id, test.phase?.name);
 
           wb_description.DocumentText = GenerateDescriptHtml(test.description);
           wb_comments.DocumentText = GenerateCommentsHtml(test.comments);
@@ -108,26 +108,57 @@ namespace OctaneMyItems
       }
     }
 
-    private void InsertLinkLabel(string url)
-    {
+    private void InsertLinkLabelWithStatus(string urlReplace, string url, string status)
+    {      
       var linkLabel = new LinkLabel()
       {
         UseMnemonic = false,
-        Text = url,
-        Dock = DockStyle.Top,
-        Padding = new Padding(5, 5, 5, 0),
-        LinkColor = ThemeColor,
+        Text = $"ID: {urlReplace}",
+        Dock = DockStyle.Left,
+        AutoSize = true,
+        TextAlign = ContentAlignment.MiddleLeft,
         ContextMenu = new ContextMenu(new MenuItem[] {
-          new MenuItem("Copy", (s, e) => Clipboard.SetText(url)) })
+          new MenuItem("Copy", (s, e) => Clipboard.SetText(url)) }),
       };
-
       linkLabel.Links.Add(new LinkLabel.Link(0, url.Length, url));
       linkLabel.LinkClicked += (s, e) =>
       {
         Process.Start(url);
       };
 
-      Controls.Add(linkLabel);
+      var panel = new Panel()
+      {
+        Padding = new Padding(20, 5, 5, 0),
+        Dock = DockStyle.Top,
+        AutoSize = true
+      };
+      if (!string.IsNullOrEmpty(status))
+      {
+        var statusLabel = new Label()
+        {
+          Text = $"Status: {status}",
+          Dock = DockStyle.Fill,
+          TextAlign = ContentAlignment.MiddleLeft,
+          AutoSize = true,
+        };
+
+        var spliter = new Label()
+        {
+          Text = "  /  ",
+          Dock = DockStyle.Left,
+          ForeColor = Color.Gray,
+          TextAlign = ContentAlignment.MiddleLeft,
+          AutoSize = true,
+        };
+
+        panel.Controls.Add(statusLabel);
+        panel.Controls.Add(spliter);
+      }
+      else
+        linkLabel.Dock = DockStyle.Fill;
+      panel.Controls.Add(linkLabel);
+
+      Controls.Add(panel);
     }
 
     private void InsertDetailControl(Control parentControl)
