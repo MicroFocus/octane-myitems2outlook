@@ -114,7 +114,7 @@ namespace OctaneMyItems
     public async void OnSyncBacklogItemPressed(Office.IRibbonControl control)
     {
       DisableButtons();
-      await ThisAddIn.SyncBacklogItem();
+      await ThisAddIn.SyncBacklog();
       EnableButtons();
     }
     public async void OnSyncTestPressed(Office.IRibbonControl control)

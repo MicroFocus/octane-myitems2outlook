@@ -117,6 +117,8 @@ namespace OctaneMyItems
         Dock = DockStyle.Top,
         Padding = new Padding(5, 5, 5, 0),
         LinkColor = ThemeColor,
+        ContextMenu = new ContextMenu(new MenuItem[] {
+          new MenuItem("Copy", (s, e) => Clipboard.SetText(url)) })
       };
 
       linkLabel.Links.Add(new LinkLabel.Link(0, url.Length, url));
