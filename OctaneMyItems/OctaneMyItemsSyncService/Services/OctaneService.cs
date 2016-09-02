@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Services
 {
-  public class OctaneService
+  public class OctaneService : IOctaneService
   {
     #region Private Fields
 
@@ -76,21 +76,20 @@ namespace OctaneMyItemsSyncService.Services
       var response = await _httpClient.GetAsync("api/shared_spaces");
       return await response.Content.ReadAsAsync<SharedSpaces>();
     }
-    public void SetDefaultSharespace(SharedSpace sharespace)
+    public async Task<Workspaces> GetWorkspaces(int sharespaceId)
     {
-      _defaultSharespace = sharespace;
-    }
-    public async Task<Workspaces> GetWorkspaces()
-    {
-      var response = await _httpClient.GetAsync($"/api/shared_spaces/{_defaultSharespace.id}/workspaces");
+      var response = await _httpClient.GetAsync($"/api/shared_spaces/{sharespaceId}/workspaces");
       return await response.Content.ReadAsAsync<Workspaces>();
     }
-    public async Task SetDefaultWorkspace(Workspace workspace)
+    
+    public async Task SetDefaultSpace(SharedSpace sharespace, Workspace workspace)
     {
-      _defaultWorkspace = workspace;
-      var response = await _httpClient.GetAsync($"api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
+      var response = await _httpClient.GetAsync($"api/shared_spaces/{sharespace.id}/workspaces/{workspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
       var result = await response.Content.ReadAsAsync<Users>();
       _currentUser = result.data[0];
+
+      _defaultSharespace = sharespace;
+      _defaultWorkspace = workspace;
     }
 
     public async Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false)

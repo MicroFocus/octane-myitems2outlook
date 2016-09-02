@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -13,8 +12,8 @@ namespace OctaneMyItems
     public const string CategoryOctaneBacklog = "[Octane]Backlog";
     public const string CategoryOctaneTest = "[Octane]Test";
     public const string CategoryOctaneRun = "[Octane]Run";
-
   }
+
   public class OctaneTask
   {
     public static Outlook.Application m_outlookApp;

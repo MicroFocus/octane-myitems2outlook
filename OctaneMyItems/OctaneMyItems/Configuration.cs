@@ -30,14 +30,14 @@ namespace OctaneMyItems
     {
       m_application = app;
 
-      Task.Run(() => { GetConfiguration(); });
+      GetConfiguration();
     }
 
-    public void GetConfiguration()
+    public async Task GetConfiguration()
     {
       LoadConfiguration();
 
-      if (ConnectToServer())
+      if (await ConnectToServer())
         m_initialized = true;
       else
         ShowConfigurationForm();
@@ -171,16 +171,16 @@ namespace OctaneMyItems
       item.Save();
     }
 
-    private bool ConnectToServer()
+    private async Task<bool> ConnectToServer()
     {
       try
       {
         m_octaneService = new OctaneService(m_serverUrl);
         m_octaneService.Login(m_userName, m_password).Wait();
-        var sharedSpaces = m_octaneService.GetSharedSpaces().Result;
-        m_octaneService.SetDefaultSharespace(sharedSpaces.data.FirstOrDefault(x => x.id == m_sharedspaceId));
-        var workspaces = m_octaneService.GetWorkspaces().Result;
-        m_octaneService.SetDefaultWorkspace(workspaces.data.First(x => x.id == m_workspaceId)).Wait();
+        var sharedSpaces = await m_octaneService.GetSharedSpaces();
+        var sharedspace = sharedSpaces.data.FirstOrDefault(x => x.id == m_sharedspaceId);
+        var workspaces = await m_octaneService.GetWorkspaces(sharedspace.id.Value);
+        await m_octaneService.SetDefaultSpace(sharedspace, workspaces.data.First(x => x.id == m_workspaceId));
         return true;
       }
       catch (System.Exception)

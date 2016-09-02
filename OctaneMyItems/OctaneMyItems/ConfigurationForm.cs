@@ -99,10 +99,9 @@ namespace OctaneMyItems
       try
       {
         var sharedSpace = m_cbSharedspaces.SelectedItem as SharedSpace;
-        OctaneService.SetDefaultSharespace(sharedSpace);
         SharedpaceId = sharedSpace.id;
 
-        var workspaces = await OctaneService.GetWorkspaces();
+        var workspaces = await OctaneService.GetWorkspaces(SharedpaceId.Value);
         if (workspaces.total_count <= 0)
         {
           MessageBox.Show("There is no Workspaces");
@@ -138,7 +137,7 @@ namespace OctaneMyItems
       try
       {
         var workspace = m_cbWorkspaces.SelectedItem as Workspace;
-        await OctaneService.SetDefaultWorkspace(workspace);
+        await OctaneService.SetDefaultSpace(m_cbSharedspaces.SelectedItem as SharedSpace, workspace);
         WorkspaceId = workspace.id;
       }
       catch (Exception ex)
