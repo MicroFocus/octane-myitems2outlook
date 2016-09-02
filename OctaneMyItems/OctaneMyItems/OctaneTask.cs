@@ -158,7 +158,7 @@ namespace OctaneMyItems
       if (octaneItem == null)
       {
         var result = MessageBox.Show(
-          "Current Octane item is Deleted/Reassigned/Mark as Done.\n\rDo you want to delete it?", 
+          "Current Octane item is Deleted, Reassigned or Moved as Done.\n\rDo you want to delete it?", 
           "Info", MessageBoxButtons.OKCancel);
         if (result == DialogResult.OK)
           oTask.Delete();

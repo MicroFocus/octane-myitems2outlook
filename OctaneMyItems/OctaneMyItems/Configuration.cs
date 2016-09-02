@@ -16,7 +16,7 @@ namespace OctaneMyItems
     private int m_sharedspaceId;
     private int m_workspaceId;
 
-    private OctaneService m_octaneService;
+    private IOctaneService m_octaneService;
     private Microsoft.Office.Interop.Outlook.Application m_application;
     private bool m_initialized;
 
