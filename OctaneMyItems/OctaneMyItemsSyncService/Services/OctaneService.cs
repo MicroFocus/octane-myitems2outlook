@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Services
 {
-  public class OctaneService : IOctaneService
+  public class OctaneService : 
+    IOctaneGeneralService, IOctaneBacklogService, IOctaneTestService, IOctaneRunService
   {
     #region Private Fields
 
@@ -27,9 +28,17 @@ namespace OctaneMyItemsSyncService.Services
     public OctaneService(string octaneServer)
     {
       _octaneServer = octaneServer;
-    } 
+    }
 
     #endregion
+
+
+    #region IOctaneGeneralService
+
+    public User CurrentUser
+    {
+      get { return _currentUser; }
+    }
 
     public async Task Login(string user, string password)
     {
@@ -81,7 +90,7 @@ namespace OctaneMyItemsSyncService.Services
       var response = await _httpClient.GetAsync($"/api/shared_spaces/{sharespaceId}/workspaces");
       return await response.Content.ReadAsAsync<Workspaces>();
     }
-    
+
     public async Task SetDefaultSpace(SharedSpace sharespace, Workspace workspace)
     {
       var response = await _httpClient.GetAsync($"api/shared_spaces/{sharespace.id}/workspaces/{workspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
@@ -92,6 +101,17 @@ namespace OctaneMyItemsSyncService.Services
       _defaultWorkspace = workspace;
     }
 
+    #endregion
+
+    #region IOctaneBacklogService
+
+    public async Task<Backlog> GetBacklog(int id, bool byCurrentOwner)
+    {
+      var result = await GetBacklogs($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
+      if (result == null || result.data == null || result.data.Count() == 0)
+        return null;
+      return result.data[0];
+    }
     public async Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false)
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/work_items";
@@ -116,53 +136,22 @@ namespace OctaneMyItemsSyncService.Services
       var expand = "$all{fields = name}";
       return await GetBacklogs(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
     }
-    public async Task<Backlog> GetBacklog(int id)
+    public async Task<Comments> GetBacklogComments(int id)
     {
-      var result = await GetBacklogs($"query=\"id={id}\"&expand=$all{{fields = name}}", true);
+      return await GetComments("work_item", id);
+    }
+
+    #endregion
+
+    #region IOctaneRunService
+
+    public async Task<Run> GetRun(int id, bool byCurrentOwner)
+    {
+      var result = await GetRuns($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
       if (result == null || result.data == null || result.data.Count() == 0)
         return null;
       return result.data[0];
     }
-
-    public async Task<Tests> GetTests(string parameters = null, bool indetail = false)
-    {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests";
-      if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
-      var response = await _httpClient.GetAsync(url);
-      Tests tests = await response.Content.ReadAsAsync<Tests>();
-      if (indetail)
-      {
-        //get test script for each test
-        foreach (Test test in tests.data)
-        {
-          if (!string.IsNullOrEmpty(test.script_path))
-            test.script = (await GetTestScript(test.id)).script;
-          if (test.has_comments)
-            test.comments = await GetTestComments(test.id);
-        }
-      }
-      return tests;
-    }
-    public async Task<Tests> GetMyTests()
-    {
-      var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";
-      var expand = "$all{fields = name}";
-      return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
-    }
-    public async Task<Test> GetTest(int id)
-    {
-      var result = await GetTests($"query=\"id={id}\"&expand=$all{{fields = name}}", true);
-      if (result == null || result.data == null || result.data.Count() == 0)
-        return null;
-      return result.data[0];
-    }
-    public async Task<TestScript> GetTestScript(int test_id)
-    {
-      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
-      var response = await _httpClient.GetAsync(url);
-      return await response.Content.ReadAsAsync<TestScript>();
-    }
-
     public async Task<Runs> GetRuns(string parameters = null, bool indetail = false)
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/runs";
@@ -190,20 +179,68 @@ namespace OctaneMyItemsSyncService.Services
       var expand = "$all{fields = name}";
       return await GetRuns(string.Format("query=\"{0}\"&skip_subtype_filter={1}&expand={2}", query, true, expand), true);
     }
-    public async Task<Run> GetRun(int id)
+    public async Task<Comments> GetRunComments(int id)
     {
-      var result = await GetRuns($"query=\"id={id}\"&expand=$all{{fields = name}}", true);
-      if (result == null || result.data == null || result.data.Count() == 0)
-        return null;
-      return result.data[0];
+      return await GetComments("run", id);
     }
-
     public async Task<Run_Steps> GetRunSteps(int run_id)
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/run_steps" + "?query=\"run={id=" + run_id + "}\"";
       var response = await _httpClient.GetAsync(url);
       return await response.Content.ReadAsAsync<Run_Steps>();
     }
+
+    #endregion
+
+    #region IOctaneTestService
+
+    public async Task<Test> GetTest(int id, bool byCurrentOwner)
+    {
+      var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
+      if (result == null || result.data == null || result.data.Count() == 0)
+        return null;
+      return result.data[0];
+    }
+    public async Task<Tests> GetTests(string parameters = null, bool indetail = false)
+    {
+      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests";
+      if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
+      var response = await _httpClient.GetAsync(url);
+      Tests tests = await response.Content.ReadAsAsync<Tests>();
+      if (indetail)
+      {
+        //get test script for each test
+        foreach (Test test in tests.data)
+        {
+          if (!string.IsNullOrEmpty(test.script_path))
+            test.script = (await GetTestScript(test.id)).script;
+          if (test.has_comments)
+            test.comments = await GetTestComments(test.id);
+        }
+      }
+      return tests;
+    }
+    public async Task<Tests> GetMyTests()
+    {
+      var query = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')";
+      var expand = "$all{fields = name}";
+      return await GetTests(string.Format("query=\"{0}\"&expand={1}", query, expand), true);
+    }
+    public async Task<Comments> GetTestComments(int id)
+    {
+      return await GetComments("test", id);
+    }
+    public async Task<TestScript> GetTestScript(int test_id)
+    {
+      var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
+      var response = await _httpClient.GetAsync(url);
+      return await response.Content.ReadAsAsync<TestScript>();
+    }
+
+    #endregion
+
+
+    #region Private methods
 
     private async Task<Comments> GetComments(string owner_type, int owner_id)
     {
@@ -216,17 +253,13 @@ namespace OctaneMyItemsSyncService.Services
       return await response.Content.ReadAsAsync<Comments>();
     }
 
-    public async Task<Comments> GetBacklogComments(int id)
+    private string GenerateIDQuery(int id, bool byCurrentOwner)
     {
-      return await GetComments("work_item", id);
+      var query = $"id={id}";
+      if (byCurrentOwner) query += $";owner={{id={_currentUser.id}}}";
+      return query;
     }
-    public async Task<Comments> GetTestComments(int id)
-    {
-      return await GetComments("test", id);
-    }
-    public async Task<Comments> GetRunComments(int id)
-    {
-      return await GetComments("run", id);
-    }
+
+    #endregion
   }
 }

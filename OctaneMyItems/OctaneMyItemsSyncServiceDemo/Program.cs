@@ -25,15 +25,15 @@ namespace OctaneMyItemsSyncServiceDemo
 
       //var backlogs = await octaneService.GetBacklogs();
       var myBacklogs = await octaneService.GetMyBacklogs();
-      var backlog = await octaneService.GetBacklog(2504);
+      var backlog = await octaneService.GetBacklog(2504, true);
 
       //var tests = await octaneService.GetTests();
       var myTests = await octaneService.GetMyTests();
-      var test = await octaneService.GetTest(1656);
+      var test = await octaneService.GetTest(1656, true);
 
       //var runs = await octaneService.GetRuns();
       var myRuns = await octaneService.GetMyRuns();
-      var run = await octaneService.GetRun(9566);
+      var run = await octaneService.GetRun(9566, true);
 
       ////gherkin test
       //var ts = await octaneService.GetTestScript(1619);

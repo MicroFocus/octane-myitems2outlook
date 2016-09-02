@@ -12,6 +12,10 @@ namespace OctaneMyItems
     public const string CategoryOctaneBacklog = "[Octane]Backlog";
     public const string CategoryOctaneTest = "[Octane]Test";
     public const string CategoryOctaneRun = "[Octane]Run";
+
+    public const string Deleted = "[DELETED]";
+    public const string Reassigned = "[REASSIGNED]";
+    public const string Done = "[DONE]";
   }
 
   public class OctaneTask
@@ -38,17 +42,17 @@ namespace OctaneMyItems
             {
               if (id.Contains("Backlog"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetBacklog(int.Parse(id.Replace("Backlog", "")), false);
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains("Run"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetRun(int.Parse(id.Replace("Run", "")), false);
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains("Test"))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetTest(int.Parse(id.Replace("Test", "")), false);
                 UpdateTaskItem(item, oTask);
               }
             }
@@ -150,10 +154,19 @@ namespace OctaneMyItems
 
     private static void UpdateTaskItem(object octaneItem, Outlook.TaskItem oTask)
     {
+      if (octaneItem == null)
+      {
+        if (oTask.Subject.Substring(0, Constants.Deleted.Length) == Constants.Deleted) return;
+        oTask.Subject = oTask.Subject.Insert(0, Constants.Deleted);
+        oTask.Save();
+        oTask.Close(Outlook.OlInspectorClose.olSave);
+        return;
+      }
+
       Outlook.UserProperty octaneId = oTask.UserProperties["OctaneId"];
       Outlook.UserProperty octane = oTask.UserProperties["Octane"];
       octane.Value = JsonConvert.SerializeObject(octaneItem);
-
+      
       if (octaneItem is Backlog)
       {
         var item = octaneItem as Backlog;
@@ -165,6 +178,11 @@ namespace OctaneMyItems
           octane.ValidationText = "Story";
         else
           octane.ValidationText = "Defect";
+
+        if(item.owner?.id != ThisAddIn.Configuration.OctaneService.CurrentUser.id)
+          oTask.Subject = oTask.Subject.Insert(0, Constants.Reassigned);
+        else if (item.closed_on.HasValue)
+          oTask.Subject = oTask.Subject.Insert(0, Constants.Done);
       }
       else if (octaneItem is Run)
       {
@@ -174,6 +192,9 @@ namespace OctaneMyItems
 
         octaneId.Value = "Run" + item.id;
         octane.ValidationText = "Run";
+
+        //Check reassigned
+        //Check done
       }
       else if (octaneItem is Test)
       {
@@ -183,6 +204,11 @@ namespace OctaneMyItems
 
         octaneId.Value = "Test" + item.id;
         octane.ValidationText = "Test";
+        
+        if (item.owner?.id != ThisAddIn.Configuration.OctaneService.CurrentUser.id)
+          oTask.Subject = oTask.Subject.Insert(0, Constants.Reassigned);
+
+        //Check done
       }
       oTask.Save();
       oTask.Close(Outlook.OlInspectorClose.olSave);

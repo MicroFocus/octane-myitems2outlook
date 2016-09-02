@@ -36,7 +36,7 @@ namespace OctaneMyItemsSyncService.Models
     public DateTime last_modified { get; set; }
     public Defect_Type defect_type { get; set; }
     public Phase phase { get; set; }
-    public Owner owner { get; set; }
+    public User owner { get; set; }
     public Severity severity { get; set; }
     public object rroe { get; set; }
     public DateTime? fixed_on { get; set; }
@@ -131,14 +131,6 @@ namespace OctaneMyItemsSyncService.Models
     public string type { get; set; }
     public string name { get; set; }
     public int index { get; set; }
-    public string id { get; set; }
-  }
-
-  public class Owner
-  {
-    public string type { get; set; }
-    public string full_name { get; set; }
-    public string name { get; set; }
     public string id { get; set; }
   }
 

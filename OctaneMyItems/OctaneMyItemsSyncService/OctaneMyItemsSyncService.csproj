@@ -65,7 +65,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IOctaneService.cs" />
+    <Compile Include="Services\IOctaneBacklogService.cs" />
+    <Compile Include="Services\IOctaneRunService.cs" />
+    <Compile Include="Services\IOctaneGeneralService.cs" />
+    <Compile Include="Services\IOctaneTestService.cs" />
     <Compile Include="Services\OctaneService.cs" />
     <Compile Include="Services\CacheRepository.cs" />
   </ItemGroup>
