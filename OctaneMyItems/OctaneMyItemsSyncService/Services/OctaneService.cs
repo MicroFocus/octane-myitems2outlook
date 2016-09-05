@@ -66,7 +66,7 @@ namespace OctaneMyItemsSyncService.Services
         }
       }
 
-      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_MQM_UI");
+      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_REST_API_TECH_PREVIEW");
       _currentUserName = user;
 
       ResetQuery();
