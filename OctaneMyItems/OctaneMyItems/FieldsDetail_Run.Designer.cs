@@ -41,12 +41,6 @@
       this.panel4 = new System.Windows.Forms.Panel();
       this.tb_started = new System.Windows.Forms.TextBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.panel5 = new System.Windows.Forms.Panel();
-      this.tb_duration = new System.Windows.Forms.TextBox();
-      this.label5 = new System.Windows.Forms.Label();
-      this.panel6 = new System.Windows.Forms.Panel();
-      this.tb_content = new System.Windows.Forms.TextBox();
-      this.label6 = new System.Windows.Forms.Label();
       this.panel7 = new System.Windows.Forms.Panel();
       this.tb_release = new System.Windows.Forms.TextBox();
       this.label7 = new System.Windows.Forms.Label();
@@ -64,8 +58,6 @@
       this.panel2.SuspendLayout();
       this.panel3.SuspendLayout();
       this.panel4.SuspendLayout();
-      this.panel5.SuspendLayout();
-      this.panel6.SuspendLayout();
       this.panel7.SuspendLayout();
       this.panel8.SuspendLayout();
       this.panel9.SuspendLayout();
@@ -79,8 +71,6 @@
       this.flowLayoutPanel1.Controls.Add(this.panel2);
       this.flowLayoutPanel1.Controls.Add(this.panel3);
       this.flowLayoutPanel1.Controls.Add(this.panel4);
-      this.flowLayoutPanel1.Controls.Add(this.panel5);
-      this.flowLayoutPanel1.Controls.Add(this.panel6);
       this.flowLayoutPanel1.Controls.Add(this.panel7);
       this.flowLayoutPanel1.Controls.Add(this.panel8);
       this.flowLayoutPanel1.Controls.Add(this.panel9);
@@ -212,72 +202,12 @@
       this.label4.TabIndex = 0;
       this.label4.Text = "Started:";
       // 
-      // panel5
-      // 
-      this.panel5.AutoSize = true;
-      this.panel5.Controls.Add(this.tb_duration);
-      this.panel5.Controls.Add(this.label5);
-      this.panel5.Location = new System.Drawing.Point(330, 28);
-      this.panel5.Margin = new System.Windows.Forms.Padding(0);
-      this.panel5.Name = "panel5";
-      this.panel5.Size = new System.Drawing.Size(330, 28);
-      this.panel5.TabIndex = 4;
-      // 
-      // tb_duration
-      // 
-      this.tb_duration.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_duration.Location = new System.Drawing.Point(110, 5);
-      this.tb_duration.Name = "tb_duration";
-      this.tb_duration.ReadOnly = true;
-      this.tb_duration.Size = new System.Drawing.Size(200, 20);
-      this.tb_duration.TabIndex = 1;
-      // 
-      // label5
-      // 
-      this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(15, 7);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(50, 13);
-      this.label5.TabIndex = 0;
-      this.label5.Text = "Duration:";
-      // 
-      // panel6
-      // 
-      this.panel6.AutoSize = true;
-      this.panel6.Controls.Add(this.tb_content);
-      this.panel6.Controls.Add(this.label6);
-      this.panel6.Location = new System.Drawing.Point(660, 28);
-      this.panel6.Margin = new System.Windows.Forms.Padding(0);
-      this.panel6.Name = "panel6";
-      this.panel6.Size = new System.Drawing.Size(330, 28);
-      this.panel6.TabIndex = 5;
-      // 
-      // tb_content
-      // 
-      this.tb_content.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_content.Location = new System.Drawing.Point(110, 5);
-      this.tb_content.Name = "tb_content";
-      this.tb_content.ReadOnly = true;
-      this.tb_content.Size = new System.Drawing.Size(200, 20);
-      this.tb_content.TabIndex = 1;
-      // 
-      // label6
-      // 
-      this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(15, 7);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(47, 13);
-      this.label6.TabIndex = 0;
-      this.label6.Text = "Content:";
-      // 
       // panel7
       // 
       this.panel7.AutoSize = true;
       this.panel7.Controls.Add(this.tb_release);
       this.panel7.Controls.Add(this.label7);
-      this.panel7.Location = new System.Drawing.Point(0, 56);
+      this.panel7.Location = new System.Drawing.Point(330, 28);
       this.panel7.Margin = new System.Windows.Forms.Padding(0);
       this.panel7.Name = "panel7";
       this.panel7.Size = new System.Drawing.Size(330, 28);
@@ -307,7 +237,7 @@
       this.panel8.AutoSize = true;
       this.panel8.Controls.Add(this.tb_draftRun);
       this.panel8.Controls.Add(this.label8);
-      this.panel8.Location = new System.Drawing.Point(330, 56);
+      this.panel8.Location = new System.Drawing.Point(660, 28);
       this.panel8.Margin = new System.Windows.Forms.Padding(0);
       this.panel8.Name = "panel8";
       this.panel8.Size = new System.Drawing.Size(330, 28);
@@ -337,7 +267,7 @@
       this.panel9.AutoSize = true;
       this.panel9.Controls.Add(this.tb_lastModified);
       this.panel9.Controls.Add(this.label9);
-      this.panel9.Location = new System.Drawing.Point(660, 56);
+      this.panel9.Location = new System.Drawing.Point(0, 56);
       this.panel9.Margin = new System.Windows.Forms.Padding(0);
       this.panel9.Name = "panel9";
       this.panel9.Size = new System.Drawing.Size(330, 28);
@@ -367,10 +297,10 @@
       this.panel17.AutoSize = true;
       this.panel17.Controls.Add(this.tb_environment);
       this.panel17.Controls.Add(this.label17);
-      this.panel17.Location = new System.Drawing.Point(0, 84);
+      this.panel17.Location = new System.Drawing.Point(330, 56);
       this.panel17.Margin = new System.Windows.Forms.Padding(0);
       this.panel17.Name = "panel17";
-      this.panel17.Size = new System.Drawing.Size(330, 29);
+      this.panel17.Size = new System.Drawing.Size(330, 28);
       this.panel17.TabIndex = 16;
       // 
       // tb_environment
@@ -409,10 +339,6 @@
       this.panel3.PerformLayout();
       this.panel4.ResumeLayout(false);
       this.panel4.PerformLayout();
-      this.panel5.ResumeLayout(false);
-      this.panel5.PerformLayout();
-      this.panel6.ResumeLayout(false);
-      this.panel6.PerformLayout();
       this.panel7.ResumeLayout(false);
       this.panel7.PerformLayout();
       this.panel8.ResumeLayout(false);
@@ -441,12 +367,6 @@
     private System.Windows.Forms.Panel panel4;
     private System.Windows.Forms.TextBox tb_started;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Panel panel5;
-    private System.Windows.Forms.TextBox tb_duration;
-    private System.Windows.Forms.Label label5;
-    private System.Windows.Forms.Panel panel6;
-    private System.Windows.Forms.TextBox tb_content;
-    private System.Windows.Forms.Label label6;
     private System.Windows.Forms.Panel panel7;
     private System.Windows.Forms.TextBox tb_release;
     private System.Windows.Forms.Label label7;

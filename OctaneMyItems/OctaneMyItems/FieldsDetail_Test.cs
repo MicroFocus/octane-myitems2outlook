@@ -17,8 +17,28 @@ namespace OctaneMyItems
       tb_designer.Text = test.designer?.name;
       tb_created.Text = test.created?.ToString();
       tb_lastModified.Text = test.last_modified?.ToString();
-      //tb_converedContent.Visible = false;
-      //tb_applicationModules.Visible = false;
+      if(test.covered_content?.data.Count() > 0)
+      {
+        tb_converedContent.Text = "";
+        foreach (var item in test.covered_content.data)
+        {
+          if (tb_converedContent.Text == "")
+            tb_converedContent.Text = item.name;
+          else
+            tb_converedContent.Text += item.name;
+        }
+      }
+      if (test.product_areas?.data.Count() > 0)
+      {
+        tb_applicationModules.Text = "";
+        foreach (var item in test.product_areas.data)
+        {
+          if (tb_applicationModules.Text == "")
+            tb_applicationModules.Text += item.name;
+          else
+            tb_applicationModules.Text += "; " + item.name;
+        }
+      }
     }
   }
 }
