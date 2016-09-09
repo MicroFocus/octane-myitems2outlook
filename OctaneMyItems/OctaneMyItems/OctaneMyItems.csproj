@@ -296,18 +296,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\OptionsButtonIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SyncAllButtonIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SyncRunButtonIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\hpe-logo1.png" />
-    <Content Include="Resources\SyncBacklogItemButtonIcon.png" />
-    <Content Include="Resources\SyncTestButtonIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\configuration-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-all-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-backlog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-backlog-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-run-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sync-test-off.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

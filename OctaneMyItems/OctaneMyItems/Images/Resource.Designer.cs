@@ -59,55 +59,5 @@ namespace OctaneMyItems.Images {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OptionsButtonIcon {
-            get {
-                object obj = ResourceManager.GetObject("OptionsButtonIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SyncAllButtonIcon {
-            get {
-                object obj = ResourceManager.GetObject("SyncAllButtonIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SyncBacklogItemButtonIcon {
-            get {
-                object obj = ResourceManager.GetObject("SyncBacklogItemButtonIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SyncRunButtonIcon {
-            get {
-                object obj = ResourceManager.GetObject("SyncRunButtonIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SyncTestButtonIcon {
-            get {
-                object obj = ResourceManager.GetObject("SyncTestButtonIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
