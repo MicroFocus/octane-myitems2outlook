@@ -177,7 +177,7 @@ namespace OctaneMyItems
 
     private readonly string commentTemplate =
 @"<div style=""margin: 10px;"">		<div style=""background-color: #ededed;height: 30px;"">
-      <span style=""font-size:18px;position:relative;top:4px;color:blue;font-weight:bold;""> name </span>			<span style=""font-size:14px;position:relative;top:4px;""> time </span>
+      <span style=""font-size:16px;position:relative;top:4px;color:#01a982;font-weight:bold;""> name </span>			<span style=""font-size:10px;position:relative;top:4px;color:#555555;""> time </span>
     </div>
     <div> comment </div></div>";
     private string GenerateCommentsHtml(Comments comments)
