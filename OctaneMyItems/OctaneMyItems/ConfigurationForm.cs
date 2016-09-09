@@ -4,11 +4,23 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
+    #region Private Fileds
+
+    private Point? m_startLocation;
+
+    private readonly Color EnabledBackColor = Color.FromArgb(1, 169, 130);
+    private readonly Color EnabledForeColor = Color.White;
+    private readonly Color DisabledBackColor = Color.FromArgb(228, 228, 228);
+    private readonly Color DisabledForeColor = Color.FromArgb(191, 191, 191); 
+
+    #endregion
+
     #region Public Properties
 
     public string ServerUrl { get { return m_tbServerUrl.Text; } }
@@ -32,6 +44,8 @@ namespace OctaneMyItems
       m_tbPassword.Text = defaultPassword;
       SharedpaceId = defaultSharedspaceId;
       WorkspaceId = defaultWorkspaceId;
+
+      SetButtonState(m_btnOK, false);
     }
 
     #endregion
@@ -41,18 +55,18 @@ namespace OctaneMyItems
     private void m_tbServerUrl_TextChanged(object sender, EventArgs e)
     {
       if (!string.IsNullOrEmpty(m_tbServerUrl.Text))
-        m_btnAuthenticate.Enabled = true;
+        SetButtonState(m_btnAuthenticate, true);
       else
-        m_btnAuthenticate.Enabled = false;
+        SetButtonState(m_btnAuthenticate, false);
     }
 
     private async void m_btnAuthenticate_Click(object sender, EventArgs e)
     {
-      m_btnAuthenticate.Enabled = false;
+      SetButtonState(m_btnAuthenticate, false);
+      SetButtonState(m_btnOK, false);
       m_cbSharedspaces.Enabled = false;
       m_cbWorkspaces.Enabled = false;
-      m_btnOK.Enabled = false;
-      
+
       m_cbSharedspaces.Items.Clear();
       m_cbWorkspaces.Items.Clear();
 
@@ -88,7 +102,7 @@ namespace OctaneMyItems
       }
       finally
       {
-        m_btnAuthenticate.Enabled = true;
+        SetButtonState(m_btnAuthenticate, true);
       }
     }
 
@@ -122,7 +136,7 @@ namespace OctaneMyItems
         m_cbWorkspaces.SelectedItem = defaultWorkspace;
 
         m_cbWorkspaces.Enabled = true;
-        m_btnOK.Enabled = true;
+        SetButtonState(m_btnOK, true);
       }
       catch (Exception ex)
       {
@@ -157,6 +171,53 @@ namespace OctaneMyItems
       Close();
     }
 
+    private const int CS_DROPSHADOW = 0x00020000;
+    protected override CreateParams CreateParams
+    {
+      get
+      {
+        CreateParams cp = base.CreateParams;
+        cp.ClassStyle |= CS_DROPSHADOW;
+        return cp;
+      }
+    }
+
+    private void m_mainPanel_MouseDown(object sender, MouseEventArgs e)
+    {
+      m_startLocation = e.Location;
+    }
+
+    private void m_mainPanel_MouseMove(object sender, MouseEventArgs e)
+    {
+      if (m_startLocation.HasValue)
+      {
+        var currentLocation = e.Location;
+        Location = new Point(
+          Location.X + currentLocation.X - m_startLocation.Value.X,
+          Location.Y + currentLocation.Y - m_startLocation.Value.Y);
+      }
+    }
+
+    private void m_mainPanel_MouseUp(object sender, MouseEventArgs e)
+    {
+      m_startLocation = null;
+    }
+
+    private void SetButtonState(Button button, bool isEnabled)
+    {
+      if (isEnabled)
+      {
+        button.BackColor = EnabledBackColor;
+        button.ForeColor = EnabledForeColor;
+        button.Enabled = true;
+      }
+      else
+      {
+        button.BackColor = DisabledBackColor;
+        button.ForeColor = DisabledForeColor;
+        button.Enabled = false;
+      }
+    }
     #endregion
   }
 }
