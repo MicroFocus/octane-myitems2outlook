@@ -21,7 +21,7 @@ namespace OctaneMyItems
       tb_parent.Text = backlog.parent?.name;
       tb_release.Text = backlog.release?.name;
       tb_sprint.Text = backlog.sprint?.name;
-      tb_team.Text = backlog.team;
+      tb_team.Text = backlog.team?.name;
     }
   }
 }

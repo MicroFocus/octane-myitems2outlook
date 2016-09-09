@@ -45,7 +45,7 @@ namespace OctaneMyItemsSyncService.Models
     public Author author { get; set; }
     public long? story_points { get; set; }
     public Product_Areas product_areas { get; set; }
-    public string team { get; set; }
+    public Team team { get; set; }
     public Priority priority { get; set; }
     public object feature_type { get; set; }
     public bool has_comments { get; set; }

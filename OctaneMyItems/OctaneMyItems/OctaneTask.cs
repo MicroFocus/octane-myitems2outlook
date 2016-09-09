@@ -13,10 +13,6 @@ namespace OctaneMyItems
     public const string CategoryOctaneBacklog = "[Octane]Backlog";
     public const string CategoryOctaneTest = "[Octane]Test";
     public const string CategoryOctaneRun = "[Octane]Run";
-
-    public const string Deleted = "[DELETED]";
-    public const string Reassigned = "[REASSIGNED]";
-    public const string Done = "[DONE]";
   }
 
   public class OctaneTask
@@ -180,11 +176,6 @@ namespace OctaneMyItems
           octane.ValidationText = "Story";
         else
           octane.ValidationText = "Defect";
-
-        if(item.owner?.id != ThisAddIn.Configuration.OctaneService.CurrentUser.id)
-          oTask.Subject = oTask.Subject.Insert(0, Constants.Reassigned);
-        else if (item.closed_on.HasValue)
-          oTask.Subject = oTask.Subject.Insert(0, Constants.Done);
       }
       else if (octaneItem is Run)
       {
@@ -206,11 +197,6 @@ namespace OctaneMyItems
 
         octaneId.Value = "Test" + item.id;
         octane.ValidationText = "Test";
-        
-        if (item.owner?.id != ThisAddIn.Configuration.OctaneService.CurrentUser.id)
-          oTask.Subject = oTask.Subject.Insert(0, Constants.Reassigned);
-
-        //Check done
       }
       oTask.Save();
       oTask.Close(Outlook.OlInspectorClose.olSave);
