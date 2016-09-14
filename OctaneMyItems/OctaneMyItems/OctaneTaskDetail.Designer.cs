@@ -57,21 +57,24 @@
       this.tabControl1.Controls.Add(this.tabPage2);
       this.tabControl1.Controls.Add(this.tp_testSteps);
       this.tabControl1.Controls.Add(this.tp_runSteps);
-      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.tabControl1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
       this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.Padding = new System.Drawing.Point(6, 6);
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1005, 400);
+      this.tabControl1.Size = new System.Drawing.Size(1005, 150);
       this.tabControl1.TabIndex = 3;
+      this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
       // 
       // tabPage1
       // 
       this.tabPage1.Controls.Add(this.wb_description);
-      this.tabPage1.Location = new System.Drawing.Point(4, 28);
+      this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+      this.tabPage1.Location = new System.Drawing.Point(4, 31);
       this.tabPage1.Name = "tabPage1";
       this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(997, 753);
+      this.tabPage1.Size = new System.Drawing.Size(997, 115);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Description";
       this.tabPage1.UseVisualStyleBackColor = true;
@@ -83,15 +86,16 @@
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
       this.wb_description.ScrollBarsEnabled = false;
-      this.wb_description.Size = new System.Drawing.Size(991, 747);
+      this.wb_description.Size = new System.Drawing.Size(991, 109);
       this.wb_description.TabIndex = 0;
       // 
       // tabPage2
       // 
       this.tabPage2.Controls.Add(this.wb_comments);
-      this.tabPage2.Location = new System.Drawing.Point(4, 28);
+      this.tabPage2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+      this.tabPage2.Location = new System.Drawing.Point(4, 31);
       this.tabPage2.Name = "tabPage2";
-      this.tabPage2.Size = new System.Drawing.Size(997, 368);
+      this.tabPage2.Size = new System.Drawing.Size(997, 115);
       this.tabPage2.TabIndex = 3;
       this.tabPage2.Text = "Comments";
       this.tabPage2.UseVisualStyleBackColor = true;
@@ -103,37 +107,40 @@
       this.wb_comments.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_comments.Name = "wb_comments";
       this.wb_comments.ScrollBarsEnabled = false;
-      this.wb_comments.Size = new System.Drawing.Size(997, 368);
+      this.wb_comments.Size = new System.Drawing.Size(997, 115);
       this.wb_comments.TabIndex = 0;
       // 
       // tp_testSteps
       // 
       this.tp_testSteps.Controls.Add(this.rtb_testSteps);
-      this.tp_testSteps.Location = new System.Drawing.Point(4, 28);
+      this.tp_testSteps.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+      this.tp_testSteps.Location = new System.Drawing.Point(4, 31);
       this.tp_testSteps.Name = "tp_testSteps";
       this.tp_testSteps.Padding = new System.Windows.Forms.Padding(3);
-      this.tp_testSteps.Size = new System.Drawing.Size(997, 753);
+      this.tp_testSteps.Size = new System.Drawing.Size(997, 115);
       this.tp_testSteps.TabIndex = 1;
       this.tp_testSteps.Text = "Steps";
       this.tp_testSteps.UseVisualStyleBackColor = true;
       // 
       // rtb_testSteps
       // 
+      this.rtb_testSteps.BackColor = System.Drawing.Color.White;
       this.rtb_testSteps.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.rtb_testSteps.Dock = System.Windows.Forms.DockStyle.Fill;
       this.rtb_testSteps.Location = new System.Drawing.Point(3, 3);
       this.rtb_testSteps.Name = "rtb_testSteps";
       this.rtb_testSteps.ReadOnly = true;
-      this.rtb_testSteps.Size = new System.Drawing.Size(991, 747);
+      this.rtb_testSteps.Size = new System.Drawing.Size(991, 109);
       this.rtb_testSteps.TabIndex = 0;
       this.rtb_testSteps.Text = "";
       // 
       // tp_runSteps
       // 
       this.tp_runSteps.Controls.Add(this.wb_runSteps);
-      this.tp_runSteps.Location = new System.Drawing.Point(4, 28);
+      this.tp_runSteps.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+      this.tp_runSteps.Location = new System.Drawing.Point(4, 31);
       this.tp_runSteps.Name = "tp_runSteps";
-      this.tp_runSteps.Size = new System.Drawing.Size(997, 753);
+      this.tp_runSteps.Size = new System.Drawing.Size(997, 115);
       this.tp_runSteps.TabIndex = 2;
       this.tp_runSteps.Text = "Steps";
       this.tp_runSteps.UseVisualStyleBackColor = true;
@@ -145,14 +152,16 @@
       this.wb_runSteps.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_runSteps.Name = "wb_runSteps";
       this.wb_runSteps.ScrollBarsEnabled = false;
-      this.wb_runSteps.Size = new System.Drawing.Size(997, 753);
+      this.wb_runSteps.Size = new System.Drawing.Size(997, 115);
       this.wb_runSteps.TabIndex = 0;
       // 
       // OctaneTaskDetail
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.tabControl1);
+      this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Name = "OctaneTaskDetail";
       this.Size = new System.Drawing.Size(1005, 400);
       this.FormRegionShowing += new System.EventHandler(this.OctaneTaskDetail_FormRegionShowing);

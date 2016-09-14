@@ -53,6 +53,14 @@
       this.panel17 = new System.Windows.Forms.Panel();
       this.tb_environment = new System.Windows.Forms.TextBox();
       this.label17 = new System.Windows.Forms.Label();
+      this.label18 = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.label6 = new System.Windows.Forms.Label();
+      this.label10 = new System.Windows.Forms.Label();
+      this.label11 = new System.Windows.Forms.Label();
+      this.label12 = new System.Windows.Forms.Label();
+      this.label13 = new System.Windows.Forms.Label();
+      this.label14 = new System.Windows.Forms.Label();
       this.flowLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
@@ -67,6 +75,7 @@
       // flowLayoutPanel1
       // 
       this.flowLayoutPanel1.AutoSize = true;
+      this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
       this.flowLayoutPanel1.Controls.Add(this.panel1);
       this.flowLayoutPanel1.Controls.Add(this.panel2);
       this.flowLayoutPanel1.Controls.Add(this.panel3);
@@ -85,242 +94,386 @@
       // panel1
       // 
       this.panel1.AutoSize = true;
+      this.panel1.Controls.Add(this.label18);
       this.panel1.Controls.Add(this.tb_testName);
       this.panel1.Controls.Add(this.label1);
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Margin = new System.Windows.Forms.Padding(0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(330, 28);
+      this.panel1.Size = new System.Drawing.Size(350, 42);
       this.panel1.TabIndex = 0;
       // 
       // tb_testName
       // 
-      this.tb_testName.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_testName.Location = new System.Drawing.Point(110, 5);
+      this.tb_testName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_testName.BackColor = System.Drawing.Color.White;
+      this.tb_testName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_testName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_testName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_testName.Location = new System.Drawing.Point(125, 14);
+      this.tb_testName.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_testName.Multiline = true;
       this.tb_testName.Name = "tb_testName";
       this.tb_testName.ReadOnly = true;
-      this.tb_testName.Size = new System.Drawing.Size(200, 20);
+      this.tb_testName.Size = new System.Drawing.Size(180, 20);
       this.tb_testName.TabIndex = 1;
       // 
       // label1
       // 
       this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(15, 7);
+      this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label1.Location = new System.Drawing.Point(15, 14);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(60, 13);
+      this.label1.Size = new System.Drawing.Size(68, 15);
       this.label1.TabIndex = 0;
       this.label1.Text = "Test name:";
       // 
       // panel2
       // 
       this.panel2.AutoSize = true;
+      this.panel2.Controls.Add(this.label5);
       this.panel2.Controls.Add(this.tb_nativeStatus);
       this.panel2.Controls.Add(this.label2);
-      this.panel2.Location = new System.Drawing.Point(330, 0);
+      this.panel2.Location = new System.Drawing.Point(350, 0);
       this.panel2.Margin = new System.Windows.Forms.Padding(0);
       this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(330, 28);
+      this.panel2.Size = new System.Drawing.Size(350, 42);
       this.panel2.TabIndex = 1;
       // 
       // tb_nativeStatus
       // 
-      this.tb_nativeStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_nativeStatus.Location = new System.Drawing.Point(110, 5);
+      this.tb_nativeStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_nativeStatus.BackColor = System.Drawing.Color.White;
+      this.tb_nativeStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_nativeStatus.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_nativeStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_nativeStatus.Location = new System.Drawing.Point(125, 14);
+      this.tb_nativeStatus.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_nativeStatus.Multiline = true;
       this.tb_nativeStatus.Name = "tb_nativeStatus";
       this.tb_nativeStatus.ReadOnly = true;
-      this.tb_nativeStatus.Size = new System.Drawing.Size(200, 20);
+      this.tb_nativeStatus.Size = new System.Drawing.Size(180, 20);
       this.tb_nativeStatus.TabIndex = 1;
       // 
       // label2
       // 
       this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(15, 7);
+      this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label2.Location = new System.Drawing.Point(15, 14);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(74, 13);
+      this.label2.Size = new System.Drawing.Size(82, 15);
       this.label2.TabIndex = 0;
       this.label2.Text = "Native Status:";
       // 
       // panel3
       // 
       this.panel3.AutoSize = true;
+      this.panel3.Controls.Add(this.label6);
       this.panel3.Controls.Add(this.tb_runBy);
       this.panel3.Controls.Add(this.label3);
-      this.panel3.Location = new System.Drawing.Point(660, 0);
+      this.panel3.Location = new System.Drawing.Point(700, 0);
       this.panel3.Margin = new System.Windows.Forms.Padding(0);
       this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(330, 28);
+      this.panel3.Size = new System.Drawing.Size(350, 42);
       this.panel3.TabIndex = 2;
       // 
       // tb_runBy
       // 
-      this.tb_runBy.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_runBy.Location = new System.Drawing.Point(110, 5);
+      this.tb_runBy.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_runBy.BackColor = System.Drawing.Color.White;
+      this.tb_runBy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_runBy.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_runBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_runBy.Location = new System.Drawing.Point(125, 14);
+      this.tb_runBy.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_runBy.Multiline = true;
       this.tb_runBy.Name = "tb_runBy";
       this.tb_runBy.ReadOnly = true;
-      this.tb_runBy.Size = new System.Drawing.Size(200, 20);
+      this.tb_runBy.Size = new System.Drawing.Size(180, 16);
       this.tb_runBy.TabIndex = 1;
       // 
       // label3
       // 
       this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(15, 7);
+      this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label3.Location = new System.Drawing.Point(15, 15);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(44, 13);
+      this.label3.Size = new System.Drawing.Size(48, 15);
       this.label3.TabIndex = 0;
       this.label3.Text = "Run by:";
       // 
       // panel4
       // 
       this.panel4.AutoSize = true;
+      this.panel4.Controls.Add(this.label12);
       this.panel4.Controls.Add(this.tb_started);
       this.panel4.Controls.Add(this.label4);
-      this.panel4.Location = new System.Drawing.Point(0, 28);
+      this.panel4.Location = new System.Drawing.Point(0, 42);
       this.panel4.Margin = new System.Windows.Forms.Padding(0);
       this.panel4.Name = "panel4";
-      this.panel4.Size = new System.Drawing.Size(330, 28);
+      this.panel4.Size = new System.Drawing.Size(350, 42);
       this.panel4.TabIndex = 3;
       // 
       // tb_started
       // 
-      this.tb_started.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_started.Location = new System.Drawing.Point(110, 5);
+      this.tb_started.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_started.BackColor = System.Drawing.Color.White;
+      this.tb_started.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_started.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_started.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_started.Location = new System.Drawing.Point(125, 14);
+      this.tb_started.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_started.Multiline = true;
       this.tb_started.Name = "tb_started";
       this.tb_started.ReadOnly = true;
-      this.tb_started.Size = new System.Drawing.Size(200, 20);
+      this.tb_started.Size = new System.Drawing.Size(180, 20);
       this.tb_started.TabIndex = 1;
       // 
       // label4
       // 
       this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(15, 7);
+      this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label4.Location = new System.Drawing.Point(15, 14);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(44, 13);
+      this.label4.Size = new System.Drawing.Size(49, 15);
       this.label4.TabIndex = 0;
       this.label4.Text = "Started:";
       // 
       // panel7
       // 
       this.panel7.AutoSize = true;
+      this.panel7.Controls.Add(this.label10);
       this.panel7.Controls.Add(this.tb_release);
       this.panel7.Controls.Add(this.label7);
-      this.panel7.Location = new System.Drawing.Point(330, 28);
+      this.panel7.Location = new System.Drawing.Point(350, 42);
       this.panel7.Margin = new System.Windows.Forms.Padding(0);
       this.panel7.Name = "panel7";
-      this.panel7.Size = new System.Drawing.Size(330, 28);
+      this.panel7.Size = new System.Drawing.Size(350, 42);
       this.panel7.TabIndex = 6;
       // 
       // tb_release
       // 
-      this.tb_release.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_release.Location = new System.Drawing.Point(110, 5);
+      this.tb_release.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_release.BackColor = System.Drawing.Color.White;
+      this.tb_release.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_release.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_release.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_release.Location = new System.Drawing.Point(125, 14);
+      this.tb_release.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_release.Multiline = true;
       this.tb_release.Name = "tb_release";
       this.tb_release.ReadOnly = true;
-      this.tb_release.Size = new System.Drawing.Size(200, 20);
+      this.tb_release.Size = new System.Drawing.Size(180, 20);
       this.tb_release.TabIndex = 1;
       // 
       // label7
       // 
       this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(15, 7);
+      this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label7.Location = new System.Drawing.Point(15, 14);
       this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(49, 13);
+      this.label7.Size = new System.Drawing.Size(57, 15);
       this.label7.TabIndex = 0;
       this.label7.Text = "Release:";
       // 
       // panel8
       // 
       this.panel8.AutoSize = true;
+      this.panel8.Controls.Add(this.label11);
       this.panel8.Controls.Add(this.tb_draftRun);
       this.panel8.Controls.Add(this.label8);
-      this.panel8.Location = new System.Drawing.Point(660, 28);
+      this.panel8.Location = new System.Drawing.Point(700, 42);
       this.panel8.Margin = new System.Windows.Forms.Padding(0);
       this.panel8.Name = "panel8";
-      this.panel8.Size = new System.Drawing.Size(330, 28);
+      this.panel8.Size = new System.Drawing.Size(350, 42);
       this.panel8.TabIndex = 7;
       // 
       // tb_draftRun
       // 
-      this.tb_draftRun.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_draftRun.Location = new System.Drawing.Point(110, 5);
+      this.tb_draftRun.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_draftRun.BackColor = System.Drawing.Color.White;
+      this.tb_draftRun.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_draftRun.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_draftRun.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_draftRun.Location = new System.Drawing.Point(125, 14);
+      this.tb_draftRun.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_draftRun.Multiline = true;
       this.tb_draftRun.Name = "tb_draftRun";
       this.tb_draftRun.ReadOnly = true;
-      this.tb_draftRun.Size = new System.Drawing.Size(200, 20);
+      this.tb_draftRun.Size = new System.Drawing.Size(180, 20);
       this.tb_draftRun.TabIndex = 1;
       // 
       // label8
       // 
       this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label8.AutoSize = true;
-      this.label8.Location = new System.Drawing.Point(15, 7);
+      this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label8.Location = new System.Drawing.Point(15, 14);
       this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(48, 13);
+      this.label8.Size = new System.Drawing.Size(54, 15);
       this.label8.TabIndex = 0;
       this.label8.Text = "Draf run:";
       // 
       // panel9
       // 
       this.panel9.AutoSize = true;
+      this.panel9.Controls.Add(this.label13);
       this.panel9.Controls.Add(this.tb_lastModified);
       this.panel9.Controls.Add(this.label9);
-      this.panel9.Location = new System.Drawing.Point(0, 56);
+      this.panel9.Location = new System.Drawing.Point(0, 84);
       this.panel9.Margin = new System.Windows.Forms.Padding(0);
       this.panel9.Name = "panel9";
-      this.panel9.Size = new System.Drawing.Size(330, 28);
+      this.panel9.Size = new System.Drawing.Size(350, 42);
       this.panel9.TabIndex = 8;
       // 
       // tb_lastModified
       // 
-      this.tb_lastModified.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_lastModified.Location = new System.Drawing.Point(110, 5);
+      this.tb_lastModified.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_lastModified.BackColor = System.Drawing.Color.White;
+      this.tb_lastModified.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_lastModified.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_lastModified.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_lastModified.Location = new System.Drawing.Point(125, 14);
+      this.tb_lastModified.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_lastModified.Multiline = true;
       this.tb_lastModified.Name = "tb_lastModified";
       this.tb_lastModified.ReadOnly = true;
-      this.tb_lastModified.Size = new System.Drawing.Size(200, 20);
+      this.tb_lastModified.Size = new System.Drawing.Size(180, 20);
       this.tb_lastModified.TabIndex = 1;
       // 
       // label9
       // 
       this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label9.AutoSize = true;
-      this.label9.Location = new System.Drawing.Point(15, 7);
+      this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label9.Location = new System.Drawing.Point(15, 14);
       this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(72, 13);
+      this.label9.Size = new System.Drawing.Size(85, 15);
       this.label9.TabIndex = 0;
       this.label9.Text = "Last modified:";
       // 
       // panel17
       // 
       this.panel17.AutoSize = true;
+      this.panel17.Controls.Add(this.label14);
       this.panel17.Controls.Add(this.tb_environment);
       this.panel17.Controls.Add(this.label17);
-      this.panel17.Location = new System.Drawing.Point(330, 56);
+      this.panel17.Location = new System.Drawing.Point(350, 84);
       this.panel17.Margin = new System.Windows.Forms.Padding(0);
       this.panel17.Name = "panel17";
-      this.panel17.Size = new System.Drawing.Size(330, 28);
+      this.panel17.Size = new System.Drawing.Size(350, 42);
       this.panel17.TabIndex = 16;
       // 
       // tb_environment
       // 
-      this.tb_environment.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_environment.Location = new System.Drawing.Point(110, 5);
+      this.tb_environment.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.tb_environment.BackColor = System.Drawing.Color.White;
+      this.tb_environment.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      this.tb_environment.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_environment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+      this.tb_environment.Location = new System.Drawing.Point(125, 14);
+      this.tb_environment.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
+      this.tb_environment.Multiline = true;
       this.tb_environment.Name = "tb_environment";
       this.tb_environment.ReadOnly = true;
-      this.tb_environment.Size = new System.Drawing.Size(200, 20);
+      this.tb_environment.Size = new System.Drawing.Size(180, 20);
       this.tb_environment.TabIndex = 1;
       // 
       // label17
       // 
       this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label17.AutoSize = true;
-      this.label17.Location = new System.Drawing.Point(15, 7);
+      this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label17.Location = new System.Drawing.Point(15, 14);
       this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(69, 13);
+      this.label17.Size = new System.Drawing.Size(79, 15);
       this.label17.TabIndex = 0;
       this.label17.Text = "Environment:";
+      // 
+      // label18
+      // 
+      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label18.Location = new System.Drawing.Point(115, 34);
+      this.label18.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(200, 1);
+      this.label18.TabIndex = 3;
+      // 
+      // label5
+      // 
+      this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label5.Location = new System.Drawing.Point(115, 34);
+      this.label5.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(200, 1);
+      this.label5.TabIndex = 3;
+      // 
+      // label6
+      // 
+      this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label6.Location = new System.Drawing.Point(115, 34);
+      this.label6.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(200, 1);
+      this.label6.TabIndex = 3;
+      // 
+      // label10
+      // 
+      this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label10.Location = new System.Drawing.Point(115, 34);
+      this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(200, 1);
+      this.label10.TabIndex = 3;
+      // 
+      // label11
+      // 
+      this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label11.Location = new System.Drawing.Point(115, 34);
+      this.label11.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label11.Name = "label11";
+      this.label11.Size = new System.Drawing.Size(200, 1);
+      this.label11.TabIndex = 3;
+      // 
+      // label12
+      // 
+      this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label12.Location = new System.Drawing.Point(115, 34);
+      this.label12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(200, 1);
+      this.label12.TabIndex = 3;
+      // 
+      // label13
+      // 
+      this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label13.Location = new System.Drawing.Point(115, 34);
+      this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(200, 1);
+      this.label13.TabIndex = 3;
+      // 
+      // label14
+      // 
+      this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label14.Location = new System.Drawing.Point(115, 34);
+      this.label14.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(200, 1);
+      this.label14.TabIndex = 3;
       // 
       // FieldsDetail_Run
       // 
@@ -379,5 +532,13 @@
     private System.Windows.Forms.Panel panel17;
     private System.Windows.Forms.TextBox tb_environment;
     private System.Windows.Forms.Label label17;
+    private System.Windows.Forms.Label label18;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label label12;
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label label11;
+    private System.Windows.Forms.Label label13;
+    private System.Windows.Forms.Label label14;
   }
 }

@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -39,6 +41,7 @@ namespace OctaneMyItems
       var octane = octaneTask.UserProperties["Octane"];
       if (octane == null) return;
 
+      tabControl1.BackColor = Color.White;
       tabControl1.TabPages.Remove(tp_runSteps);
       tabControl1.TabPages.Remove(tp_testSteps);
       try
@@ -98,6 +101,7 @@ namespace OctaneMyItems
         {
           Visible = false;
           Height = 0;
+          return;
         }
       }
       catch (Exception ex)
@@ -105,30 +109,40 @@ namespace OctaneMyItems
         System.Windows.Forms.MessageBox.Show(ex.Message);
         Visible = false;
         Height = 0;
+        return;
       }
+      
+      int actualHeight = 0;
+      foreach (Control item in Controls)
+      {
+        actualHeight += item.Height;
+      }
+      Height = actualHeight;
     }
 
     private void InsertLinkLabelWithStatus(string urlReplace, string url, string status)
-    {      
-      var linkLabel = new LinkLabel()
+    {
+      var linkLabel = new Label()
       {
         UseMnemonic = false,
         Text = $"ID: {urlReplace}",
+        Cursor = Cursors.Hand,
+        ForeColor = Color.FromArgb(14, 111, 154),
+        Font = new Font("Arial", 14, FontStyle.Underline, GraphicsUnit.Pixel),
         Dock = DockStyle.Left,
         AutoSize = true,
         TextAlign = ContentAlignment.MiddleLeft,
         ContextMenu = new ContextMenu(new MenuItem[] {
           new MenuItem("Copy", (s, e) => Clipboard.SetText(url)) }),
       };
-      linkLabel.Links.Add(new LinkLabel.Link(0, url.Length, url));
-      linkLabel.LinkClicked += (s, e) =>
+      linkLabel.Click += (s, e) =>
       {
         Process.Start(url);
       };
 
       var panel = new Panel()
       {
-        Padding = new Padding(20, 5, 5, 0),
+        Padding = new Padding(15, 5, 5, 0),
         Dock = DockStyle.Top,
         AutoSize = true
       };
@@ -137,6 +151,8 @@ namespace OctaneMyItems
         var statusLabel = new Label()
         {
           Text = $"Status: {status}",
+          Font = new Font("Arial", 14, GraphicsUnit.Pixel),
+          ForeColor = Color.FromArgb(85, 85, 85),
           Dock = DockStyle.Fill,
           TextAlign = ContentAlignment.MiddleLeft,
           AutoSize = true,
@@ -145,8 +161,9 @@ namespace OctaneMyItems
         var spliter = new Label()
         {
           Text = "  /  ",
+          Font = new Font("Arial", 14, GraphicsUnit.Pixel),
+          ForeColor = Color.FromArgb(85, 85, 85),
           Dock = DockStyle.Left,
-          ForeColor = Color.Gray,
           TextAlign = ContentAlignment.MiddleLeft,
           AutoSize = true,
         };
@@ -165,19 +182,19 @@ namespace OctaneMyItems
     {
       var control = parentControl.Controls[0];
       control.Dock = DockStyle.Top;
-      control.Padding = new Padding(5, 0, 5, 5);
+      control.Padding = new Padding(0, 0, 5, 5);
       Controls.Add(control);
     }
 
     private string GenerateDescriptHtml(string descript)
     {
       if (string.IsNullOrEmpty(descript)) return string.Empty;
-      return descript.Replace("<body>", "<body style=\"overflow: auto\">");
+      return descript.Replace("<body>", "<body style=\"overflow: auto; font-family:Arial; font-size=12px; color:#555555;\">");
     }
 
     private readonly string commentTemplate =
-@"<div style=""margin: 10px;"">		<div style=""background-color: #ededed;height: 30px;"">
-      <span style=""font-size:16px;position:relative;top:4px;color:#01a982;font-weight:bold;""> name </span>			<span style=""font-size:10px;position:relative;top:4px;color:#555555;""> time </span>
+@"<div style=""margin: 2px; font-family:Arial; font-size=12px; color:#555555;"">		<div style=""background-color: #ededed;height: 20px;"">
+      <span style=""font-family:Arial;font-size:12px;position:relative;color:#01a982;""> name </span>			<span style=""font-family:Arial;font-size:10px;position:relative;color:#777777;""> time </span>
     </div>
     <div> comment </div></div>";
     private string GenerateCommentsHtml(Comments comments)
@@ -193,7 +210,7 @@ namespace OctaneMyItems
           .Replace("name", item.author.name)
           .Replace("time", item.last_modified.ToString())
           .Replace("comment", item.text?
-            .Replace("<html>", "").Replace("</html>", "").Replace("<body>", "").Replace("</body>", "")));
+            .Replace("<html><body>\n", "").Replace("\n</body></html>", "")));
       }
       html.Append("</body></html>");
 
@@ -205,6 +222,33 @@ namespace OctaneMyItems
     // Use this.OutlookFormRegion to get a reference to the form region.
     private void OctaneTaskDetail_FormRegionClosed(object sender, System.EventArgs e)
     {
+    }
+
+    private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+    {
+      //this eventhandler is called only if:
+      //DrawMode = OwnerDrawFixed
+      Rectangle tab_rect = tabControl1.GetTabRect(e.Index);
+      tab_rect.X -= 2;
+      tab_rect.Y -= 2;
+      tab_rect.Width += 4;
+      tab_rect.Height += 4;
+
+      e.Graphics.FillRectangle(Brushes.White, e.Bounds);
+
+      if (e.Index == tabControl1.SelectedIndex)
+      {
+        var indicator = new Rectangle(e.Bounds.X, e.Bounds.Y + 24, e.Bounds.Width, 4);
+        e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(1, 169, 130)), indicator);
+      }
+      
+      //also draw the text
+      var fntTab = new Font("Arial", 14, GraphicsUnit.Pixel);
+      var bshFore = new SolidBrush(Color.FromArgb(34, 34, 34));
+      string tabName = this.tabControl1.TabPages[e.Index].Text;
+      var sftTab = new StringFormat() { Alignment = StringAlignment.Center };
+      var recTab = new Rectangle(e.Bounds.X + 5, e.Bounds.Y + 4, e.Bounds.Width - 10, e.Bounds.Height - 4);
+      e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
     }
   }
 }
