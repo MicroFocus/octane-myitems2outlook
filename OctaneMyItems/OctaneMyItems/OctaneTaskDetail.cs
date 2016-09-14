@@ -203,7 +203,7 @@ namespace OctaneMyItems
         return string.Empty;
 
       var html = new StringBuilder();
-      html.Append("<!DOCTYPE html><html><body style=\"overflow: auto\">");
+      html.Append("<!DOCTYPE html><html><body style=\"overflow: auto; font-family:Arial; font-size=12px; color:#555555;\">");
       foreach (Comment item in comments.data)
       {
         html.Append(commentTemplate

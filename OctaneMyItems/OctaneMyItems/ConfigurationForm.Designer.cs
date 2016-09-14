@@ -149,12 +149,13 @@
       this.m_cbWorkspaces.Cursor = System.Windows.Forms.Cursors.IBeam;
       this.m_cbWorkspaces.DisplayMember = "name";
       this.m_cbWorkspaces.Enabled = false;
-      this.m_cbWorkspaces.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.m_cbWorkspaces.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.m_cbWorkspaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.m_cbWorkspaces.FormattingEnabled = true;
       this.m_cbWorkspaces.Location = new System.Drawing.Point(148, 400);
       this.m_cbWorkspaces.Margin = new System.Windows.Forms.Padding(2);
       this.m_cbWorkspaces.Name = "m_cbWorkspaces";
-      this.m_cbWorkspaces.Size = new System.Drawing.Size(230, 21);
+      this.m_cbWorkspaces.Size = new System.Drawing.Size(230, 23);
       this.m_cbWorkspaces.TabIndex = 9;
       this.m_cbWorkspaces.SelectedIndexChanged += new System.EventHandler(this.m_cbWorkspaces_SelectedIndexChanged);
       // 
@@ -164,11 +165,12 @@
       this.m_cbSharedspaces.Cursor = System.Windows.Forms.Cursors.IBeam;
       this.m_cbSharedspaces.DisplayMember = "name";
       this.m_cbSharedspaces.Enabled = false;
-      this.m_cbSharedspaces.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.m_cbSharedspaces.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.m_cbSharedspaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.m_cbSharedspaces.FormattingEnabled = true;
       this.m_cbSharedspaces.Location = new System.Drawing.Point(148, 360);
       this.m_cbSharedspaces.Name = "m_cbSharedspaces";
-      this.m_cbSharedspaces.Size = new System.Drawing.Size(230, 21);
+      this.m_cbSharedspaces.Size = new System.Drawing.Size(230, 23);
       this.m_cbSharedspaces.TabIndex = 15;
       this.m_cbSharedspaces.SelectedIndexChanged += new System.EventHandler(this.m_cbSharedpaces_SelectedIndexChanged);
       // 
