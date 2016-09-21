@@ -13,8 +13,6 @@ namespace OctaneMyItems
       tb_nativeStatus.Text = run.native_status?.name;
       tb_runBy.Text = run.run_by?.name;
       tb_started.Text = run.started?.ToString();
-      tb_duration.Text = run.duration;
-      //tb_content.Visible = false;
       tb_release.Text = run.release?.name;
       tb_draftRun.Text = run.draft_run ? "Yes" : "No";
       tb_lastModified.Text = run.last_modified?.ToString();

@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
 using System.Drawing;
+using OctaneMyItems.Properties;
 
 // TODO:  Follow these steps to enable the Ribbon (XML) item:
 
@@ -33,6 +34,7 @@ namespace OctaneMyItems
     private const string SyncTestId = "syncTest";
     private const string SyncRunId = "syncRun";
     private const string ConfigureId = "configuration";
+    private const string MyContextMenuTaskItemId = "MyContextMenuTaskItem";
 
     private bool _isSyncAllEnable = true;
     private bool _isSyncBacklogEnable = true;
@@ -61,35 +63,30 @@ namespace OctaneMyItems
       this.ribbon = ribbonUI;
 
     }
+
     public Bitmap GetButtonIcon(Office.IRibbonControl button)
     {
-      // return  (Bitmap)Images.ResourceManager.GetObject(string.Format("{0}Icon", button.Id)));
-      Bitmap bitmap = (Bitmap)Properties.Resources.ResourceManager.GetObject("OptionsButtonIcon");
-      Stream s = this.GetType().Assembly.GetManifestResourceStream("OptionsButtonIcon");
-      //this.GetType().Assembly
-      Bitmap bmp = null;
+      //switch (button.Id)
+      //{
+      //  case ConfigureId: return _isConfigurationEnable ? Resources.configuration : Resources.configuration_off;
+      //  case SyncAllId: return _isSyncAllEnable ? Resources.sync_all : Resources.sync_all_off;
+      //  case SyncBacklogId: return _isSyncBacklogEnable ? Resources.sync_backlog : Resources.sync_backlog_off;
+      //  case SyncTestId: return _isSyncTestEnable ? Resources.sync_test : Resources.sync_test_off;
+      //  case SyncRunId: return _isSyncRunEnable ? Resources.sync_run : Resources.sync_run_off;
+      //  case MyContextMenuTaskItemId: return Resources.sync_all;
+      //  default: break;
+      //}
       switch (button.Id)
       {
-        case ConfigureId:
-          bmp = Images.Resource.OptionsButtonIcon;
-          break;
-        case SyncAllId:
-          bmp = Images.Resource.SyncAllButtonIcon;
-          break;
-        case SyncBacklogId:
-          bmp = Images.Resource.SyncBacklogItemButtonIcon;
-          break;
-        case SyncTestId:
-          bmp = Images.Resource.SyncTestButtonIcon;
-          break;
-        case SyncRunId:
-          bmp = Images.Resource.SyncRunButtonIcon;
-          break;
-        default:
-          break;
+        case ConfigureId: return Resources.configuration;
+        case SyncAllId: return Resources.sync_all;
+        case SyncBacklogId: return Resources.sync_backlog;
+        case SyncTestId: return Resources.sync_test;
+        case SyncRunId: return Resources.sync_run;
+        case MyContextMenuTaskItemId: return Resources.sync_all;
+        default: break;
       }
-
-      return bmp;
+      return null;
     }
 
     public bool GetEnable(Office.IRibbonControl control)

@@ -15,13 +15,11 @@ namespace OctaneMyItems
       tb_lastModified.Text = backlog.last_modified.ToString();
       tb_storyPoints.Text = backlog.story_points?.ToString();
       tb_author.Text = backlog.author?.name;
-      tb_itemType.Text = backlog.item_type?.name;
       tb_itemOrigin.Text = backlog.item_origin?.name;
-      //tb_lastRuns.Visible = false;
       tb_parent.Text = backlog.parent?.name;
       tb_release.Text = backlog.release?.name;
       tb_sprint.Text = backlog.sprint?.name;
-      tb_team.Text = backlog.team;
+      tb_team.Text = backlog.team?.name;
     }
   }
 }

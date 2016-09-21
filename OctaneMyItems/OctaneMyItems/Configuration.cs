@@ -18,7 +18,7 @@ namespace OctaneMyItems
     private int m_workspaceId;
     private Cookie m_cookie;
 
-    private OctaneService m_octaneService;
+    private IOctaneService m_octaneService;
     private Microsoft.Office.Interop.Outlook.Application m_application;
     private bool m_initialized;
 
@@ -55,7 +55,7 @@ namespace OctaneMyItems
 
     #region Public Properties
 
-    public OctaneService OctaneService
+    public IOctaneService OctaneService
     {
       get { return m_octaneService; }
     }

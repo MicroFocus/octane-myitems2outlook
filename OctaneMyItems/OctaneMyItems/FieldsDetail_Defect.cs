@@ -1,5 +1,6 @@
 ﻿using OctaneMyItemsSyncService.Models;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace OctaneMyItems
 {
@@ -19,13 +20,33 @@ namespace OctaneMyItems
       tb_closeOn.Text = backlog.closed_on?.ToString();
       tb_fixedOn.Text = backlog.fixed_on?.ToString();
       tb_priority.Text = backlog.priority?.name;
-      //tb_applicationModules.Visible = false;
+      if (backlog.product_areas?.data.Count() > 0)
+      {
+        tb_applicationModules.Text = "";
+        foreach (var item in backlog.product_areas.data)
+        {
+          if (tb_applicationModules.Text == "")
+            tb_applicationModules.Text += item.name;
+          else
+            tb_applicationModules.Text += "; " + item.name;
+        }
+      }
       tb_storyPoints.Text = backlog.story_points?.ToString();
       tb_release.Text = backlog.release?.name;
       tb_sprint.Text = backlog.sprint?.name;
-      tb_itemType.Text = backlog.item_type?.name;
-      tb_team.Text = backlog.team;
-      //tb_environment.Visible = false;
+      tb_itemType.Text = backlog.defect_type?.name;
+      tb_team.Text = backlog.team?.name;
+      if (backlog.taxonomies?.data.Count() > 0)
+      {
+        tb_environment.Text = "";
+        foreach (var item in backlog.taxonomies.data)
+        {
+          if (tb_environment.Text == "")
+            tb_environment.Text += item.name;
+          else
+            tb_environment.Text += "; " + item.name;
+        }
+      }
     }
   }
 }

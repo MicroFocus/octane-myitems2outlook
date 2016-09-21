@@ -45,7 +45,7 @@ namespace OctaneMyItemsSyncService.Models
     public Author author { get; set; }
     public long? story_points { get; set; }
     public Product_Areas product_areas { get; set; }
-    public string team { get; set; }
+    public Team team { get; set; }
     public Priority priority { get; set; }
     public object feature_type { get; set; }
     public bool has_comments { get; set; }
@@ -154,10 +154,10 @@ namespace OctaneMyItemsSyncService.Models
   public class Product_Areas
   {
     public int total_count { get; set; }
-    public Datum1[] data { get; set; }
+    public Product_Area[] data { get; set; }
   }
 
-  public class Datum1
+  public class Product_Area
   {
     public string type { get; set; }
     public string name { get; set; }
@@ -176,10 +176,10 @@ namespace OctaneMyItemsSyncService.Models
   public class Taxonomies
   {
     public int total_count { get; set; }
-    public Datum2[] data { get; set; }
+    public Taxonomy[] data { get; set; }
   }
 
-  public class Datum2
+  public class Taxonomy
   {
     public string type { get; set; }
     public string logical_name { get; set; }

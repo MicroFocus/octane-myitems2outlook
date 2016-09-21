@@ -57,7 +57,7 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneService octaneService = m_configuration.OctaneService;
+          var octaneService = m_configuration.OctaneService;
           OctaneTask.AddOctaneCategories();
 
           // sync backlog item
@@ -98,10 +98,9 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneService octaneService = m_configuration.OctaneService;
           OctaneTask.AddOctaneCategories();
 
-          var myBacklogs = await octaneService.GetMyBacklogs();
+          var myBacklogs = await m_configuration.OctaneService.GetMyBacklogs();
           await OctaneTask.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
           foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
             OctaneTask.CreateTask(backlog).ConfigureAwait(false);
@@ -119,10 +118,9 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneService octaneService = m_configuration.OctaneService;
           OctaneTask.AddOctaneCategories();
 
-          var tests = await octaneService.GetMyTests();
+          var tests = await m_configuration.OctaneService.GetMyTests();
           await OctaneTask.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
           foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
             OctaneTask.CreateTask(test).ConfigureAwait(false);
@@ -140,10 +138,9 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneService octaneService = m_configuration.OctaneService;
           OctaneTask.AddOctaneCategories();
 
-          var runs = await octaneService.GetMyRuns();
+          var runs = await m_configuration.OctaneService.GetMyRuns();
           await OctaneTask.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
           foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
             OctaneTask.CreateTask(run).ConfigureAwait(false);

@@ -13,7 +13,7 @@ namespace OctaneMyItemsSyncService.Models
   {
     public string type { get; set; }
     public DateTime? creation_time { get; set; }
-    //public Covered_Content covered_content { get; set; }
+    public Covered_Contents covered_content { get; set; }
     public int? version_stamp { get; set; }
     public string description { get; set; }
     public string script_path { get; set; }
@@ -51,17 +51,19 @@ namespace OctaneMyItemsSyncService.Models
     public Comments comments { get; set; }
   }
 
-  //public class Covered_Content
-  //{
-  //    public int total_count { get; set; }
-  //    public Covered_Content_Datum[] data { get; set; }
-  //}
+  public class Covered_Contents
+  {
+    public int total_count { get; set; }
+    public Covered_Content[] data { get; set; }
+  }
 
-  //public class Covered_Content_Datum
-  //{
-  //    public string type { get; set; }
-  //    public int id { get; set; }
-  //}
+  public class Covered_Content
+  {
+    public string type { get; set; }
+    public string subtype { get; set; }
+    public string name { get; set; }
+    public string id { get; set; }
+  }
 
 
   public class Test_Type

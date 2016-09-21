@@ -61,6 +61,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Run.cs" />
     <Compile Include="Models\SharedSpace.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Workspace.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Services\IOctaneBacklogService.cs" />
     <Compile Include="Services\IOctaneRunService.cs" />
     <Compile Include="Services\IOctaneGeneralService.cs" />
+    <Compile Include="Services\IOctaneService.cs" />
     <Compile Include="Services\IOctaneTestService.cs" />
     <Compile Include="Services\OctaneService.cs" />
     <Compile Include="Services\CacheRepository.cs" />
