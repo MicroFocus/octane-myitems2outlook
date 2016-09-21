@@ -1,21 +1,15 @@
 ﻿using OctaneMyItemsSyncService.Models;
 using OctaneMyItemsSyncService.Services;
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
-
-using System.Net;
+using System.Linq;
+using System.Windows.Forms;
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
-    #region private fields
-    private Cookie m_cookie;
-    #endregion
     #region Private Fileds
-
+    
     private Point? m_startLocation;
 
     private readonly Color EnabledBackColor = Color.FromArgb(1, 169, 130);
@@ -29,17 +23,10 @@ namespace OctaneMyItems
 
     public string ServerUrl { get { return m_tbServerUrl.Text; } }
     public string User { get { return m_tbUserName.Text; } }
-    private string Password { get { return m_tbPassword.Text; } }
+    public string Token { get; private set; }
     public int? SharedpaceId { get; private set; }
     public int? WorkspaceId { get; private set; }
-
-    public Cookie LoginCookie
-    {
-      get { return m_cookie; }
-      set { m_cookie = value; }
-    }
-
-    public OctaneService OctaneService { get; private set; }
+    
     public IOctaneService OctaneService { get; private set; }
 
     #endregion
@@ -56,6 +43,8 @@ namespace OctaneMyItems
       WorkspaceId = defaultWorkspaceId;
 
       SetButtonState(m_btnOK, false);
+
+      KeyPreview = true;
     }
 
     #endregion
@@ -82,28 +71,9 @@ namespace OctaneMyItems
 
       try
       {
-        OctaneService = new OctaneService(ServerUrl);
-        bool loginWithCookie = false;
-        if(m_cookie != null)
-        {
-          loginWithCookie = true;
-          try
-          {
-            await OctaneService.Login(m_cookie);
-          }
-          catch(Exception ex)
-          {
-            m_cookie = null;
-            loginWithCookie = false;
-            MessageBox.Show(ex.Message);
-          }
-        }
+        OctaneService = new OctaneService(m_tbServerUrl.Text);
+        Token = await OctaneService.Login(m_tbUserName.Text, m_tbPassword.Text);
 
-        if (!loginWithCookie)
-        {
-          m_cookie = await OctaneService.Login(User, Password);
-        }
-        
         var sharedSpaces = await OctaneService.GetSharedSpaces();
         if (sharedSpaces.total_count <= 0)
         {
@@ -247,6 +217,17 @@ namespace OctaneMyItems
         button.Enabled = false;
       }
     }
+
+    protected override void OnKeyDown(KeyEventArgs e)
+    {
+      base.OnKeyDown(e);
+      if (e.KeyCode == Keys.Enter)
+      {
+        if (m_btnOK.Enabled) m_btnOK_Click(null, null);
+        else if (m_btnAuthenticate.Enabled) m_btnAuthenticate_Click(null, null);
+      }
+    }
+
     #endregion
   }
 }
