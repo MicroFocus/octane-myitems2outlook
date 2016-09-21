@@ -4,18 +4,27 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using System.Net;
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
   {
+    #region private fields
+    private Cookie m_cookie;
+    #endregion
     #region Public Properties
 
     public string ServerUrl { get { return m_tbServerUrl.Text; } }
     public string User { get { return m_tbUserName.Text; } }
-    public string Password { get { return m_tbPassword.Text; } }
+    private string Password { get { return m_tbPassword.Text; } }
     public int? SharedpaceId { get; private set; }
     public int? WorkspaceId { get; private set; }
+
+    public Cookie LoginCookie
+    {
+      get { return m_cookie; }
+      set { m_cookie = value; }
+    }
 
     public OctaneService OctaneService { get; private set; }
 
@@ -23,13 +32,12 @@ namespace OctaneMyItems
 
     #region Constructor
 
-    public ConfigurationForm(string defaultServerUrl, string defaultUser, string defaultPassword, int defaultSharedspaceId, int defaultWorkspaceId)
+    public ConfigurationForm(string defaultServerUrl, string defaultUser,  int defaultSharedspaceId, int defaultWorkspaceId)
     {
       InitializeComponent();
 
       m_tbServerUrl.Text = defaultServerUrl;
       m_tbUserName.Text = defaultUser;
-      m_tbPassword.Text = defaultPassword;
       SharedpaceId = defaultSharedspaceId;
       WorkspaceId = defaultWorkspaceId;
     }
@@ -59,8 +67,27 @@ namespace OctaneMyItems
       try
       {
         OctaneService = new OctaneService(ServerUrl);
-        await OctaneService.Login(User, Password);
+        bool loginWithCookie = false;
+        if(m_cookie != null)
+        {
+          loginWithCookie = true;
+          try
+          {
+            await OctaneService.Login(m_cookie);
+          }
+          catch(Exception ex)
+          {
+            m_cookie = null;
+            loginWithCookie = false;
+            MessageBox.Show(ex.Message);
+          }
+        }
 
+        if (!loginWithCookie)
+        {
+          m_cookie = await OctaneService.Login(User, Password);
+        }
+        
         var sharedSpaces = await OctaneService.GetSharedSpaces();
         if (sharedSpaces.total_count <= 0)
         {

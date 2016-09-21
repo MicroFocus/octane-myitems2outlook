@@ -16,7 +16,7 @@ namespace OctaneMyItemsSyncServiceDemo
     static async void Test()
     {
       OctaneService octaneService = new OctaneService("http://myd-vm12624.hpeswlab.net:8081/");
-      await octaneService.Login("sa@nga", "Welcome1");
+      System.Net.Cookie loginCookie = await octaneService.Login("sa@nga", "Welcome1");
 
       var sharedSpaces = await octaneService.GetSharedSpaces();
 
