@@ -39,7 +39,6 @@ namespace OctaneMyItems
       set { m_cookie = value; }
     }
 
-    public OctaneService OctaneService { get; private set; }
     public IOctaneService OctaneService { get; private set; }
 
     #endregion

@@ -339,6 +339,7 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
+		<row><td>AllOtherFiles</td><td>{01B34FBD-C08F-4850-9947-0FBE62972DD7}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISRegistryComponent</td><td>{99C9C9D8-9EE9-4ED5-BB77-F99BD76A345E}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Newtonsoft.Json.dll</td><td>{B9F32C1B-3B83-469C-B98D-BB9D3855C32D}</td><td>INSTALLDIR</td><td>8</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OctaneMyItems.Primary_output</td><td>{F92788B0-37FF-4B79-B607-9F6F2CDA8B95}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitems.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -1010,6 +1011,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>AllOtherFiles</td></row>
 		<row><td>INSTALLDIR</td><td>ISRegistryComponent</td></row>
 		<row><td>INSTALLDIR</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>INSTALLDIR</td><td>OctaneMyItems.Primary_output</td></row>
@@ -1819,6 +1821,7 @@
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>SyncService</td><td>AllOtherFiles</td></row>
 		<row><td>SyncService</td><td>ISRegistryComponent</td></row>
 		<row><td>SyncService</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>SyncService</td><td>System.Net.Http.Formatting.dll</td></row>
@@ -1838,6 +1841,7 @@
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
 		<row><td>octanemyitems.primary_output</td><td>OctaneMyItems.Primary_output</td><td>OctaneMyItems.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItems&gt;|Built</td><td>3</td><td/></row>
+		<row><td>octanemyitems.vsto</td><td>AllOtherFiles</td><td>OctaneMyItems.vsto</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\OctaneMyItems.vsto</td><td>1</td><td/></row>
 		<row><td>octanemyitemssyncservice.pri</td><td>OctaneMyItemsSyncService.Primary_output</td><td>OctaneMyItemsSyncService.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItemsSyncService&gt;|Built</td><td>3</td><td/></row>
 		<row><td>system.net.http.formatting.d</td><td>System.Net.Http.Formatting.dll</td><td>System.Net.Http.Formatting.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\System.Net.Http.Formatting.dll</td><td>1</td><td/></row>
 	</table>
@@ -1981,6 +1985,7 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
+		<row><td>AllOtherFiles</td><td/><td/><td>_0132BDDA_76A0_4CFF_8C11_E76A370E5276_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISRegistryComponent</td><td/><td/><td>_F5056FFE_74CD_4DD9_BE33_9EF3A54D7F5A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_BE050F6E_5ED9_4234_8524_6CC628764878_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OctaneMyItems.Primary_output</td><td/><td/><td>_DB42F385_EFDE_4E4E_81DD_858DF91304F2_FILTER</td><td/><td/><td/><td/></row>
@@ -2350,8 +2355,8 @@
 		<col def="S255">DotNetBuildConfiguration</col>
 		<col def="S255">MsiCommandLine</col>
 		<col def="I4">ISSetupPrerequisiteLocation</col>
-		<row><td>Debug</td><td>Default Configuration</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>2</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>8464397</td><td/><td/><td/><td/></row>
-		<row><td>Release</td><td>Default Configuration</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>2</td><td>2</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>8464397</td><td/><td/><td/><td/></row>
+		<row><td>Debug</td><td>Default Configuration</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>8464397</td><td/><td/><td/><td/></row>
+		<row><td>Release</td><td>Default Configuration</td><td>&lt;ISProjectDataFolder&gt;</td><td>PackageName</td><td>1</td><td>1033</td><td>2</td><td>1</td><td>Intel</td><td/><td>1033</td><td>0</td><td>0</td><td>0</td><td>0</td><td/><td>0</td><td/><td>MediaLocation</td><td/><td>http://</td><td/><td/><td/><td/><td>8464397</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISReleaseASPublishInfo">
@@ -2392,8 +2397,8 @@
 		<col def="I4">MsiEngineVersion</col>
 		<col def="S255">WinMsi30Url</col>
 		<col def="S255">CertPassword</col>
-		<row><td>Debug</td><td>Default Configuration</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td/><td>http://www.installengine.com/cert05/isengine</td><td/><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>16</td><td>3</td><td>16</td><td>http://www.installengine.com/Msiengine30</td><td/></row>
-		<row><td>Release</td><td>Default Configuration</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>0</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td/><td>http://www.installengine.com/cert05/isengine</td><td/><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>16</td><td>3</td><td>16</td><td>http://www.installengine.com/Msiengine30</td><td/></row>
+		<row><td>Debug</td><td>Default Configuration</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>1</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td/><td>http://www.installengine.com/cert05/isengine</td><td/><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>16</td><td>3</td><td>16</td><td>http://www.installengine.com/Msiengine30</td><td/></row>
+		<row><td>Release</td><td>Default Configuration</td><td>0</td><td>http://</td><td>0</td><td>install</td><td>install</td><td>[LocalAppDataFolder]Downloaded Installations</td><td>1</td><td>http://www.installengine.com/Msiengine20</td><td>http://www.installengine.com/Msiengine20</td><td/><td>http://www.installengine.com/cert05/isengine</td><td/><td/><td/><td/><td>3</td><td>http://www.installengine.com/cert05/dotnetfx</td><td>0</td><td>1033</td><td/><td/><td/><td/><td>16</td><td>3</td><td>16</td><td>http://www.installengine.com/Msiengine30</td><td/></row>
 	</table>
 
 	<table name="ISReleaseProperty">
@@ -3938,8 +3943,8 @@
 		<col def="S0">Value</col>
 		<row><td>ActiveLanguage</td><td>1033</td></row>
 		<row><td>Comments</td><td/></row>
-		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="4b00b795ba16b41c1637c4298a4cc781">
-UgBlAGwAZQBhAHMAZQABAEQAZQBmAGEAdQBsAHQAIABDAG8AbgBmAGkAZwB1AHIAYQB0AGkAbwBuAA==
+		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="8c50a525cdd9ef5e5a339c7b7706c506">
+RABlAGIAdQBnAAEARABlAGYAYQB1AGwAdAAgAEMAbwBuAGYAaQBnAHUAcgBhAHQAaQBvAG4A
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Default Configuration</td></row>
 		<row><td>EnableSwidtag</td><td>1</td></row>
