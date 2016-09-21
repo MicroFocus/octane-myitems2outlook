@@ -1,10 +1,8 @@
 ﻿using Microsoft.Office.Interop.Outlook;
 using OctaneMyItemsSyncService.Services;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace OctaneMyItems
 {
@@ -14,9 +12,9 @@ namespace OctaneMyItems
 
     private string m_serverUrl;
     private string m_userName;
+    private string m_token;
     private int m_sharedspaceId;
     private int m_workspaceId;
-    private Cookie m_cookie;
 
     private IOctaneService m_octaneService;
     private Microsoft.Office.Interop.Outlook.Application m_application;
@@ -87,20 +85,15 @@ namespace OctaneMyItems
     private void ShowConfigurationForm()
     {
       ConfigurationForm form = new ConfigurationForm(m_serverUrl, m_userName, m_sharedspaceId, m_workspaceId);
-      if(m_cookie != null)
-      {
-        form.LoginCookie = m_cookie;
-      }
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
-
         if (form.ServerUrl[form.ServerUrl.Length - 1] == '\\' || form.ServerUrl[form.ServerUrl.Length - 1] == '/')
           m_serverUrl = form.ServerUrl.Substring(0, m_serverUrl.Length - 1);
         else
           m_serverUrl = form.ServerUrl;
         m_userName = form.User;
-        m_cookie = form.LoginCookie;
+        m_token = form.Token;
         m_sharedspaceId = form.SharedpaceId.Value;
         m_workspaceId = form.WorkspaceId.Value;
         m_octaneService = form.OctaneService;
@@ -119,57 +112,12 @@ namespace OctaneMyItems
         StorageItem item = folder.GetStorage(m_storeageName, OlStorageIdentifierType.olIdentifyBySubject);
         if (item.Size > 0)
         {
-          UserProperty property;
-          property = item.UserProperties.Find("ServerUrl");
-          if (property != null)
-          {
-            m_serverUrl = property.Value;
-          }
-          property = item.UserProperties.Find("User");
-          if (property != null)
-          {
-            m_userName = property.Value;
-          }
+          m_serverUrl = item.UserProperties.Find("ServerUrl")?.Value;
+          m_userName = item.UserProperties.Find("User")?.Value;
+          m_token = item.UserProperties.Find("Token")?.Value;
 
-          
-          string cookieName, cookieValue, cookiePath, cookieDomain;
-          cookieName = cookieValue = cookiePath = cookieDomain = string.Empty;
-
-          property = item.UserProperties.Find("CookieName");
-          if (property != null)
-          {
-            cookieName = property.Value;
-          }
-          property = item.UserProperties.Find("CookieValue");
-          if (property != null)
-          {
-            cookieValue = property.Value;
-          }
-          property = item.UserProperties.Find("CookiePath");
-          if (property != null)
-          {
-            cookiePath = property.Value;
-          }
-          property = item.UserProperties.Find("CookieDomain");
-          if (property != null)
-          {
-            cookieDomain = property.Value;
-          }
-          // construct cookie
-          if (!string.IsNullOrWhiteSpace(cookieName))
-          {
-            m_cookie = new Cookie(cookieName, cookieValue, cookiePath, cookieDomain);
-          }
-          property = item.UserProperties.Find("SharedSpaceId");
-          if (property != null)
-          {
-            m_sharedspaceId = property.Value;
-          }
-          property = item.UserProperties.Find("WorkSpaceId");
-          if (property != null)
-          {
-            m_workspaceId = property.Value;
-          }
+          m_sharedspaceId = item.UserProperties.Find("SharedSpaceId")?.Value;
+          m_workspaceId = item.UserProperties.Find("WorkSpaceId")?.Value;
         }
         return true;
       }
@@ -187,10 +135,7 @@ namespace OctaneMyItems
       // new item
       SafeAddProperty(item,"ServerUrl", m_serverUrl);
       SafeAddProperty(item, "User", m_userName);
-      SafeAddProperty(item, "CookieName", m_cookie.Name);        
-      SafeAddProperty(item, "CookieValue", m_cookie.Value);
-      SafeAddProperty(item, "CookiePath", m_cookie.Path);
-      SafeAddProperty(item, "CookieDomain", m_cookie.Domain);
+      SafeAddProperty(item, "Token", m_token);
       SafeAddProperty(item, "SharedSpaceId", m_sharedspaceId.ToString());
       SafeAddProperty(item, "WorkSpaceId", m_workspaceId.ToString());
       // save
@@ -213,17 +158,14 @@ namespace OctaneMyItems
     /// <returns></returns>
     private async Task<bool> ConnectToServer()
     {
-      if(m_cookie == null)
-      {
+      if (string.IsNullOrEmpty(m_token))
         return false;
-      }
 
       try
       {
         m_octaneService = new OctaneService(m_serverUrl);
-
-        // refresh cookie
-        m_cookie = await m_octaneService.Login(m_cookie);
+        
+        await m_octaneService.TryReLogin(m_userName, m_token);
 
         var sharedSpaces = await m_octaneService.GetSharedSpaces();
         var sharedspace = sharedSpaces.data.FirstOrDefault(x => x.id == m_sharedspaceId);

@@ -1,6 +1,5 @@
-﻿using System.Net;
+﻿using OctaneMyItemsSyncService.Models;
 using System.Threading.Tasks;
-using OctaneMyItemsSyncService.Models;
 
 namespace OctaneMyItemsSyncService.Services
 {
@@ -8,8 +7,8 @@ namespace OctaneMyItemsSyncService.Services
   {
     User CurrentUser { get; }
 
-    Task<Cookie> Login(string user, string password);
-    Task<Cookie> Login(Cookie cookie);
+    Task<string> Login(string user, string password);
+    Task TryReLogin(string user, string token);
     Task Logout();
 
     Task<SharedSpaces> GetSharedSpaces();

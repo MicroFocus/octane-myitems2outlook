@@ -1,7 +1,5 @@
-﻿using OctaneMyItemsSyncService.Services;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Forms;
-using Office = Microsoft.Office.Core;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OctaneMyItems

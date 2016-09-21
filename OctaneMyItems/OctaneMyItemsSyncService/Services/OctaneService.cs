@@ -41,36 +41,7 @@ namespace OctaneMyItemsSyncService.Services
       get { return _currentUser; }
     }
 
-    public async Task<Cookie> Login(Cookie inputCookie)
-    {
-      var cookieContainer = new CookieContainer();
-      cookieContainer.Add(inputCookie);
-      var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
-      _httpClient = new HttpClient(handler);
-      _httpClient.BaseAddress = new Uri(_octaneServer);
-      var content = new StringContent("", Encoding.UTF8, "application/json");
-      var result = await _httpClient.PostAsync("/authentication/sign_in", content);
-      result.EnsureSuccessStatusCode();
-
-      Cookie loginCookie = null;
-      foreach (Cookie cookie in cookieContainer.GetCookies(result.RequestMessage.RequestUri))
-      {
-        if (cookie.Name == "HPSSO_COOKIE_CSRF")
-        {
-          _httpClient.DefaultRequestHeaders.Add("HPSSO_HEADER_CSRF", cookie.Value);
-          _httpClient.DefaultRequestHeaders.Add("HPSSO-HEADER-CSRF", cookie.Value);
-        }
-        else if (cookie.Name == "LWSSO_COOKIE_KEY")
-        {
-          _httpClient.DefaultRequestHeaders.Add("LWSSO_COOKIE_KEY", cookie.Value);
-          loginCookie = cookie;
-        }
-      }
-
-      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_MQM_UI");
-      return loginCookie;
-    }
-    public async Task<Cookie> Login(string user, string password)
+    public async Task<string> Login(string user, string password)
     {
       var cookieContainer = new CookieContainer();
       var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
@@ -82,7 +53,7 @@ namespace OctaneMyItemsSyncService.Services
       var result = await _httpClient.PostAsync("/authentication/sign_in", content);
       result.EnsureSuccessStatusCode();
 
-      Cookie loginCookie = null;
+      string token = "";
       foreach (Cookie cookie in cookieContainer.GetCookies(result.RequestMessage.RequestUri))
       {
         if (cookie.Name == "HPSSO_COOKIE_CSRF")
@@ -93,14 +64,30 @@ namespace OctaneMyItemsSyncService.Services
         else if (cookie.Name == "LWSSO_COOKIE_KEY")
         {
           _httpClient.DefaultRequestHeaders.Add("LWSSO_COOKIE_KEY", cookie.Value);
-          loginCookie = cookie;
+          token = cookie.Value;
         }
       }
 
       _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_REST_API_TECH_PREVIEW");
       _currentUserName = user;
-      return loginCookie;
 
+      return token;
+    }
+    public async Task TryReLogin(string user, string token)
+    {
+      var cookieContainer = new CookieContainer();
+      cookieContainer.Add(new Uri(_octaneServer), new Cookie("OCTANE_USER", user));
+      cookieContainer.Add(new Uri(_octaneServer), new Cookie("LWSSO_COOKIE_KEY", token));
+
+      _httpClient = new HttpClient(new HttpClientHandler() { CookieContainer = cookieContainer });
+      _httpClient.BaseAddress = new Uri(_octaneServer);
+      _httpClient.DefaultRequestHeaders.Add("LWSSO_COOKIE_KEY", token);
+      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_REST_API_TECH_PREVIEW");
+
+      //Try to get some data to test if the tooken is expired
+      await GetSharedSpaces();
+
+      _currentUserName = user;
     }
     public async Task Logout()
     {
