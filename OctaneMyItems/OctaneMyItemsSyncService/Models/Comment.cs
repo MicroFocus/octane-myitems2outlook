@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Models
 {
 
-    public class Comments
+  public class Comments
     {
         public int total_count { get; set; }
         public Comment[] data { get; set; }

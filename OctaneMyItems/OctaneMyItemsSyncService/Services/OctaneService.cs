@@ -28,11 +28,13 @@ namespace OctaneMyItemsSyncService.Services
 
     public OctaneService(string octaneServer)
     {
-      _octaneServer = octaneServer;
+      if (octaneServer[octaneServer.Length - 1] == '\\' || octaneServer[octaneServer.Length - 1] == '/')
+        _octaneServer = octaneServer.Substring(0, octaneServer.Length - 1);
+      else
+        _octaneServer = octaneServer;
     }
 
     #endregion
-
 
     #region IOctaneGeneralService
 

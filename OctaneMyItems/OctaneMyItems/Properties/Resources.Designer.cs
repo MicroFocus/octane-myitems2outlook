@@ -85,7 +85,7 @@ namespace OctaneMyItems.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap hpe_logo {
             get {
-                object obj = ResourceManager.GetObject("hpe-logo", resourceCulture);
+                object obj = ResourceManager.GetObject("hpe_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+
 namespace OctaneMyItems
 {
   public partial class ConfigurationForm : Form
@@ -49,7 +50,7 @@ namespace OctaneMyItems
 
     #endregion
 
-    #region Private Methods
+    #region Event Handlers
 
     private void m_tbServerUrl_TextChanged(object sender, EventArgs e)
     {
@@ -169,18 +170,7 @@ namespace OctaneMyItems
     {
       Close();
     }
-
-    private const int CS_DROPSHADOW = 0x00020000;
-    protected override CreateParams CreateParams
-    {
-      get
-      {
-        CreateParams cp = base.CreateParams;
-        cp.ClassStyle |= CS_DROPSHADOW;
-        return cp;
-      }
-    }
-
+    
     private void m_mainPanel_MouseDown(object sender, MouseEventArgs e)
     {
       m_startLocation = e.Location;
@@ -202,6 +192,10 @@ namespace OctaneMyItems
       m_startLocation = null;
     }
 
+    #endregion
+
+    #region Private Methods
+
     private void SetButtonState(Button button, bool isEnabled)
     {
       if (isEnabled)
@@ -216,6 +210,20 @@ namespace OctaneMyItems
         button.ForeColor = DisabledForeColor;
         button.Enabled = false;
       }
+    } 
+
+    #endregion
+
+    #region Overrides
+
+    protected override CreateParams CreateParams
+    {
+      get
+      {
+        var cp = base.CreateParams;
+        cp.ClassStyle |= 0x00020000;
+        return cp;
+      }
     }
 
     protected override void OnKeyDown(KeyEventArgs e)
@@ -226,7 +234,7 @@ namespace OctaneMyItems
         if (m_btnOK.Enabled) m_btnOK_Click(null, null);
         else if (m_btnAuthenticate.Enabled) m_btnAuthenticate_Click(null, null);
       }
-    }
+    } 
 
     #endregion
   }

@@ -7,11 +7,11 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OctaneMyItems")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sync Octane My Items to Outlook Tasks")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("HPE")]
 [assembly: AssemblyProduct("OctaneMyItems")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
+[assembly: AssemblyCopyright("Copyright © HPE 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

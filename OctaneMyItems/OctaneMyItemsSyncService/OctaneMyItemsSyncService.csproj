@@ -72,7 +72,6 @@
     <Compile Include="Services\IOctaneService.cs" />
     <Compile Include="Services\IOctaneTestService.cs" />
     <Compile Include="Services\OctaneService.cs" />
-    <Compile Include="Services\CacheRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

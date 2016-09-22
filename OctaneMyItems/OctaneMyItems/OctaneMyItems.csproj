@@ -189,6 +189,7 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="FieldsDetail_Test.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -271,8 +272,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Ribbon2.cs" />
-    <Compile Include="OctaneTask.cs" />
+    <Compile Include="OctaneSyncRibbon.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -285,7 +286,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ribbon2.xml">
+    <EmbeddedResource Include="OctaneSyncRibbon.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -296,7 +297,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hpe-logo1.png" />
+    <None Include="Resources\hpe-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\configuration.png" />

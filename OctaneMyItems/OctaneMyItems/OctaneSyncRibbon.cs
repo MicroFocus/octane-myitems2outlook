@@ -1,32 +1,18 @@
-﻿using System;
+﻿using OctaneMyItems.Properties;
+using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
-using System.Drawing;
-using OctaneMyItems.Properties;
-
-// TODO:  Follow these steps to enable the Ribbon (XML) item:
-
-// 1: Copy the following code block into the ThisAddin, ThisWorkbook, or ThisDocument class.
-
-
-
-// 2. Create callback methods in the "Ribbon Callbacks" region of this class to handle user
-//    actions, such as clicking a button. Note: if you have exported this Ribbon from the Ribbon designer,
-//    move your code from the event handlers to the callback methods and modify the code to work with the
-//    Ribbon extensibility (RibbonX) programming model.
-
-// 3. Assign attributes to the control tags in the Ribbon XML file to identify the appropriate callback methods in your code.  
-
-// For more information, see the Ribbon XML documentation in the Visual Studio Tools for Office Help.
-
 
 namespace OctaneMyItems
 {
   [ComVisible(true)]
-  public class Ribbon2 : Office.IRibbonExtensibility
+  public class OctaneSyncRibbon : Office.IRibbonExtensibility
   {
+    #region Private Fields
+
     private Office.IRibbonUI ribbon;
 
     private const string SyncAllId = "syncAll";
@@ -34,23 +20,21 @@ namespace OctaneMyItems
     private const string SyncTestId = "syncTest";
     private const string SyncRunId = "syncRun";
     private const string ConfigureId = "configuration";
-    private const string MyContextMenuTaskItemId = "MyContextMenuTaskItem";
+    private const string SyncOneOctaneItemContextMenuId = "syncOneOctaneItemContextMenu";
 
     private bool _isSyncAllEnable = true;
     private bool _isSyncBacklogEnable = true;
     private bool _isSyncTestEnable = true;
     private bool _isSyncRunEnable = true;
-    private bool _isConfigurationEnable = true;
+    private bool _isConfigurationEnable = true; 
 
-    public Ribbon2()
-    {
-    }
+    #endregion
 
     #region IRibbonExtensibility Members
 
     public string GetCustomUI(string ribbonID)
     {
-      return GetResourceText("OctaneMyItems.Ribbon2.xml");
+      return GetResourceText("OctaneMyItems.OctaneSyncRibbon.xml");
     }
 
     #endregion
@@ -60,22 +44,11 @@ namespace OctaneMyItems
 
     public void Ribbon_Load(Office.IRibbonUI ribbonUI)
     {
-      this.ribbon = ribbonUI;
-
+      ribbon = ribbonUI;
     }
 
     public Bitmap GetButtonIcon(Office.IRibbonControl button)
     {
-      //switch (button.Id)
-      //{
-      //  case ConfigureId: return _isConfigurationEnable ? Resources.configuration : Resources.configuration_off;
-      //  case SyncAllId: return _isSyncAllEnable ? Resources.sync_all : Resources.sync_all_off;
-      //  case SyncBacklogId: return _isSyncBacklogEnable ? Resources.sync_backlog : Resources.sync_backlog_off;
-      //  case SyncTestId: return _isSyncTestEnable ? Resources.sync_test : Resources.sync_test_off;
-      //  case SyncRunId: return _isSyncRunEnable ? Resources.sync_run : Resources.sync_run_off;
-      //  case MyContextMenuTaskItemId: return Resources.sync_all;
-      //  default: break;
-      //}
       switch (button.Id)
       {
         case ConfigureId: return Resources.configuration;
@@ -83,7 +56,7 @@ namespace OctaneMyItems
         case SyncBacklogId: return Resources.sync_backlog;
         case SyncTestId: return Resources.sync_test;
         case SyncRunId: return Resources.sync_run;
-        case MyContextMenuTaskItemId: return Resources.sync_all;
+        case SyncOneOctaneItemContextMenuId: return Resources.sync_all;
         default: break;
       }
       return null;
@@ -131,7 +104,8 @@ namespace OctaneMyItems
     {
       ThisAddIn.ShowConfiguration();
     }
-    public async void OnTaskItemRightClick(Office.IRibbonControl control)
+
+    public async void OnSyncOneOctaneItemClicked(Office.IRibbonControl control)
     {
       await ThisAddIn.SyncOne();
     }
@@ -147,6 +121,7 @@ namespace OctaneMyItems
       _isSyncTestEnable = false;
       _isSyncRunEnable = false;
       _isConfigurationEnable = false;
+
       ribbon.Invalidate();
     }
 
@@ -157,12 +132,9 @@ namespace OctaneMyItems
       _isSyncTestEnable = true;
       _isSyncRunEnable = true;
       _isConfigurationEnable = true;
+
       ribbon.Invalidate();
-    } 
-
-    #endregion
-
-    #region Helpers
+    }
 
     private static string GetResourceText(string resourceName)
     {

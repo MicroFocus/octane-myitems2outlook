@@ -38,7 +38,6 @@
       this.m_cbWorkspaces = new System.Windows.Forms.ComboBox();
       this.m_cbSharedspaces = new System.Windows.Forms.ComboBox();
       this.m_btnAuthenticate = new System.Windows.Forms.Button();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.label6 = new System.Windows.Forms.Label();
       this.label7 = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
@@ -57,8 +56,9 @@
       this.label14 = new System.Windows.Forms.Label();
       this.label15 = new System.Windows.Forms.Label();
       this.m_mainPanel = new System.Windows.Forms.Panel();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.m_mainPanel.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
       // 
       // label1
@@ -187,16 +187,6 @@
       this.m_btnAuthenticate.Text = "&Authenticate";
       this.m_btnAuthenticate.UseVisualStyleBackColor = false;
       this.m_btnAuthenticate.Click += new System.EventHandler(this.m_btnAuthenticate_Click);
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Image = global::OctaneMyItems.Properties.Resources.hpe_logo;
-      this.pictureBox1.Location = new System.Drawing.Point(20, 581);
-      this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(110, 56);
-      this.pictureBox1.TabIndex = 15;
-      this.pictureBox1.TabStop = false;
       // 
       // label6
       // 
@@ -380,6 +370,7 @@
       // m_mainPanel
       // 
       this.m_mainPanel.BackColor = System.Drawing.Color.White;
+      this.m_mainPanel.Controls.Add(this.pictureBox1);
       this.m_mainPanel.Controls.Add(this.label6);
       this.m_mainPanel.Controls.Add(this.label7);
       this.m_mainPanel.Controls.Add(this.label15);
@@ -399,7 +390,6 @@
       this.m_mainPanel.Controls.Add(this.label10);
       this.m_mainPanel.Controls.Add(this.m_btnAuthenticate);
       this.m_mainPanel.Controls.Add(this.label3);
-      this.m_mainPanel.Controls.Add(this.pictureBox1);
       this.m_mainPanel.Controls.Add(this.button3);
       this.m_mainPanel.Controls.Add(this.m_cbSharedspaces);
       this.m_mainPanel.Controls.Add(this.label2);
@@ -414,6 +404,15 @@
       this.m_mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.m_mainPanel_MouseDown);
       this.m_mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.m_mainPanel_MouseMove);
       this.m_mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.m_mainPanel_MouseUp);
+      // 
+      // pictureBox1
+      // 
+      this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+      this.pictureBox1.Location = new System.Drawing.Point(20, 577);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(156, 57);
+      this.pictureBox1.TabIndex = 35;
+      this.pictureBox1.TabStop = false;
       // 
       // ConfigurationForm
       // 
@@ -432,9 +431,9 @@
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Octane Configuration";
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.m_mainPanel.ResumeLayout(false);
       this.m_mainPanel.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -448,7 +447,6 @@
     private System.Windows.Forms.Button m_btnOK;
     private System.Windows.Forms.Button m_btnCancel;
     private System.Windows.Forms.ComboBox m_cbWorkspaces;
-        private System.Windows.Forms.PictureBox pictureBox1;
     private System.Windows.Forms.ComboBox m_cbSharedspaces;
     private System.Windows.Forms.Button m_btnAuthenticate;
     private System.Windows.Forms.Label label6;
@@ -469,5 +467,6 @@
     private System.Windows.Forms.Label label14;
     private System.Windows.Forms.Label label15;
     private System.Windows.Forms.Panel m_mainPanel;
+    private System.Windows.Forms.PictureBox pictureBox1;
   }
 }

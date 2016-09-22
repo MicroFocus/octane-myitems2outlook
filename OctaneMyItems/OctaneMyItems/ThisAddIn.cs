@@ -17,6 +17,9 @@ namespace OctaneMyItems
       // Note: Outlook no longer raises this event. If you have code that 
       //    must run when Outlook shuts down, see http://go.microsoft.com/fwlink/?LinkId=506785
     }
+
+    #region Public Members
+
     public static Configuration Configuration
     {
       get
@@ -42,7 +45,7 @@ namespace OctaneMyItems
     {
       try
       {
-        await OctaneTask.SyncOne();
+        await Utilities.SyncOne();
       }
       catch (System.Exception ex)
       {
@@ -56,30 +59,30 @@ namespace OctaneMyItems
         if (await GetConfiguration())
         {
           var octaneService = m_configuration.OctaneService;
-          OctaneTask.AddOctaneCategories();
+          Utilities.AddOctaneCategories();
 
           // sync backlog item
           var myBacklogs = await octaneService.GetMyBacklogs();
-          await OctaneTask.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
+          await Utilities.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
           foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
           {
-            OctaneTask.CreateTask(backlog).ConfigureAwait(false);
+            await Utilities.CreateTask(backlog).ConfigureAwait(false);
           }
 
           // sync run
           var runs = await octaneService.GetMyRuns();
-          await OctaneTask.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
+          await Utilities.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
           foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
           {
-            OctaneTask.CreateTask(run).ConfigureAwait(false);
+            await Utilities.CreateTask(run).ConfigureAwait(false);
           }
 
           // sync test
           var tests = await octaneService.GetMyTests();
-          await OctaneTask.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
+          await Utilities.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
           foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
           {
-            OctaneTask.CreateTask(test).ConfigureAwait(false);
+            await Utilities.CreateTask(test).ConfigureAwait(false);
           }
           UpdateCurrentSelection();
         }
@@ -96,12 +99,12 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneTask.AddOctaneCategories();
+          Utilities.AddOctaneCategories();
 
           var myBacklogs = await m_configuration.OctaneService.GetMyBacklogs();
-          await OctaneTask.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
+          await Utilities.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
           foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
-            OctaneTask.CreateTask(backlog).ConfigureAwait(false);
+            await Utilities.CreateTask(backlog).ConfigureAwait(false);
           UpdateCurrentSelection();
         }
       }
@@ -116,12 +119,12 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneTask.AddOctaneCategories();
+          Utilities.AddOctaneCategories();
 
           var tests = await m_configuration.OctaneService.GetMyTests();
-          await OctaneTask.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
+          await Utilities.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
           foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
-            OctaneTask.CreateTask(test).ConfigureAwait(false);
+            await Utilities.CreateTask(test).ConfigureAwait(false);
           UpdateCurrentSelection();
         }
       }
@@ -136,12 +139,12 @@ namespace OctaneMyItems
       {
         if (await GetConfiguration())
         {
-          OctaneTask.AddOctaneCategories();
+          Utilities.AddOctaneCategories();
 
           var runs = await m_configuration.OctaneService.GetMyRuns();
-          await OctaneTask.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
+          await Utilities.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
           foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
-            OctaneTask.CreateTask(run).ConfigureAwait(false);
+            await Utilities.CreateTask(run).ConfigureAwait(false);
           UpdateCurrentSelection();
         }
       }
@@ -149,7 +152,9 @@ namespace OctaneMyItems
       {
         MessageBox.Show(ex.ToString());
       }
-    }
+    } 
+
+    #endregion
 
     private static void UpdateCurrentSelection()
     {
@@ -166,7 +171,7 @@ namespace OctaneMyItems
 
     protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
     {
-      return new Ribbon2();
+      return new OctaneSyncRibbon();
     }
     #region VSTO generated code
 
