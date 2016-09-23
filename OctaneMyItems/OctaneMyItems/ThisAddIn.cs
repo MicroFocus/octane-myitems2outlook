@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
@@ -47,7 +49,15 @@ namespace OctaneMyItems
       {
         await Utilities.SyncOne();
       }
-      catch (System.Exception ex)
+      catch (HttpRequestException ex)
+      {
+        if(ex.Message.Contains("401"))
+        {
+          MessageBox.Show("You need reenter your credential");
+          ShowConfiguration();
+        }
+      }
+      catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
@@ -87,7 +97,15 @@ namespace OctaneMyItems
           UpdateCurrentSelection();
         }
       }
-      catch (System.Exception ex)
+      catch (HttpRequestException ex)
+      {
+        if (ex.Message.Contains("401"))
+        {
+          MessageBox.Show("You need reenter your credential");
+          ShowConfiguration();
+        }
+      }
+      catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
@@ -108,7 +126,15 @@ namespace OctaneMyItems
           UpdateCurrentSelection();
         }
       }
-      catch (System.Exception ex)
+      catch (HttpRequestException ex)
+      {
+        if (ex.Message.Contains("401"))
+        {
+          MessageBox.Show("You need reenter your credential");
+          ShowConfiguration();
+        }
+      }
+      catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
@@ -128,7 +154,15 @@ namespace OctaneMyItems
           UpdateCurrentSelection();
         }
       }
-      catch (System.Exception ex)
+      catch (HttpRequestException ex)
+      {
+        if (ex.Message.Contains("401"))
+        {
+          MessageBox.Show("You need reenter your credential");
+          ShowConfiguration();
+        }
+      }
+      catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
@@ -148,7 +182,15 @@ namespace OctaneMyItems
           UpdateCurrentSelection();
         }
       }
-      catch (System.Exception ex)
+      catch (HttpRequestException ex)
+      {
+        if (ex.Message.Contains("401"))
+        {
+          MessageBox.Show("You need reenter your credential");
+          ShowConfiguration();
+        }
+      }
+      catch (Exception ex)
       {
         MessageBox.Show(ex.ToString());
       }
