@@ -106,17 +106,20 @@ namespace OctaneMyItemsSyncService.Services
     public async Task<SharedSpaces> GetSharedSpaces()
     {
       var response = await _httpClient.GetAsync("api/shared_spaces");
+      response.EnsureSuccessStatusCode();
       return await response.Content.ReadAsAsync<SharedSpaces>();
     }
     public async Task<Workspaces> GetWorkspaces(int sharespaceId)
     {
       var response = await _httpClient.GetAsync($"/api/shared_spaces/{sharespaceId}/workspaces");
+      response.EnsureSuccessStatusCode();
       return await response.Content.ReadAsAsync<Workspaces>();
     }
 
     public async Task SetDefaultSpace(SharedSpace sharespace, Workspace workspace)
     {
       var response = await _httpClient.GetAsync($"api/shared_spaces/{sharespace.id}/workspaces/{workspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
+      response.EnsureSuccessStatusCode();
       var result = await response.Content.ReadAsAsync<Users>();
       _currentUser = result.data[0];
 
@@ -141,6 +144,7 @@ namespace OctaneMyItemsSyncService.Services
       var url = $"{QueryUrl}/work_items";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       var backlogs = await response.Content.ReadAsAsync<Backlogs>();
 
       if (indetail)
@@ -148,7 +152,7 @@ namespace OctaneMyItemsSyncService.Services
         //get test script for each test
         foreach (Backlog backlog in backlogs.data)
         {
-          if (backlog.has_comments)
+          //if (backlog.has_comments)//comment out this line because cannot retrive has_comments by the old way
             backlog.comments = await GetBacklogComments(backlog.id);
         }
       }
@@ -184,6 +188,7 @@ namespace OctaneMyItemsSyncService.Services
       var url = $"{QueryUrl}/runs";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       Runs runs = await response.Content.ReadAsAsync<Runs>();
 
       if (indetail)
@@ -194,8 +199,8 @@ namespace OctaneMyItemsSyncService.Services
           if (run.steps_num > 0)
             run.steps = await GetRunSteps(run.id);
 
-          if (run.has_comments)
-            run.comments = await GetRunComments(run.id);
+          //if (run.has_comments)//comment out this line because cannot retrive has_comments by the old way
+          run.comments = await GetRunComments(run.id);
         }
       }
       return runs;
@@ -218,6 +223,7 @@ namespace OctaneMyItemsSyncService.Services
     {
       var url = $"{QueryUrl}/run_steps?query=\"run={{id={run_id}}}\"";
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       return await response.Content.ReadAsAsync<Run_Steps>();
     }
 
@@ -236,6 +242,7 @@ namespace OctaneMyItemsSyncService.Services
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       Tests tests = await response.Content.ReadAsAsync<Tests>();
       if (indetail)
       {
@@ -244,8 +251,8 @@ namespace OctaneMyItemsSyncService.Services
         {
           if (!string.IsNullOrEmpty(test.script_path))
             test.script = (await GetTestScript(test.id)).script;
-          if (test.has_comments)
-            test.comments = await GetTestComments(test.id);
+          //if (test.has_comments)//comment out this line because cannot retrive has_comments by the old way
+          test.comments = await GetTestComments(test.id);
         }
       }
       return tests;
@@ -268,6 +275,7 @@ namespace OctaneMyItemsSyncService.Services
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       return await response.Content.ReadAsAsync<TestScript>();
     }
 
@@ -332,6 +340,7 @@ namespace OctaneMyItemsSyncService.Services
       url += "&query=\"owner_" + owner_type + "={id=" + owner_id + "}\"";
 
       var response = await _httpClient.GetAsync(url);
+      response.EnsureSuccessStatusCode();
       return await response.Content.ReadAsAsync<Comments>();
     }
 
