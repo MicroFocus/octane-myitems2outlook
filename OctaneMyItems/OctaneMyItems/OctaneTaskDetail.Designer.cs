@@ -58,7 +58,7 @@
       this.tabControl1.Controls.Add(this.tp_testSteps);
       this.tabControl1.Controls.Add(this.tp_runSteps);
       this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tabControl1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tabControl1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.Padding = new System.Drawing.Point(6, 6);

@@ -31,40 +31,40 @@
       this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
       this.panel1 = new System.Windows.Forms.Panel();
       this.tb_testType = new System.Windows.Forms.TextBox();
+      this.label18 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.panel2 = new System.Windows.Forms.Panel();
       this.tb_testingToolType = new System.Windows.Forms.TextBox();
+      this.label9 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.panel3 = new System.Windows.Forms.Panel();
       this.tb_owner = new System.Windows.Forms.TextBox();
+      this.label10 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.panel4 = new System.Windows.Forms.Panel();
       this.tb_estimatedDuration = new System.Windows.Forms.TextBox();
+      this.label14 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.panel5 = new System.Windows.Forms.Panel();
       this.tb_designer = new System.Windows.Forms.TextBox();
+      this.label13 = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.panel6 = new System.Windows.Forms.Panel();
       this.tb_created = new System.Windows.Forms.TextBox();
+      this.label12 = new System.Windows.Forms.Label();
       this.label6 = new System.Windows.Forms.Label();
       this.panel7 = new System.Windows.Forms.Panel();
       this.tb_lastModified = new System.Windows.Forms.TextBox();
+      this.label15 = new System.Windows.Forms.Label();
       this.label7 = new System.Windows.Forms.Label();
       this.panel8 = new System.Windows.Forms.Panel();
       this.tb_converedContent = new System.Windows.Forms.TextBox();
+      this.label16 = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
       this.panel11 = new System.Windows.Forms.Panel();
       this.tb_applicationModules = new System.Windows.Forms.TextBox();
-      this.label11 = new System.Windows.Forms.Label();
-      this.label18 = new System.Windows.Forms.Label();
-      this.label9 = new System.Windows.Forms.Label();
-      this.label10 = new System.Windows.Forms.Label();
-      this.label12 = new System.Windows.Forms.Label();
-      this.label13 = new System.Windows.Forms.Label();
-      this.label14 = new System.Windows.Forms.Label();
-      this.label15 = new System.Windows.Forms.Label();
-      this.label16 = new System.Windows.Forms.Label();
       this.label17 = new System.Windows.Forms.Label();
+      this.label11 = new System.Windows.Forms.Label();
       this.flowLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
@@ -114,7 +114,7 @@
       this.tb_testType.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_testType.BackColor = System.Drawing.Color.White;
       this.tb_testType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_testType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_testType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_testType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_testType.Location = new System.Drawing.Point(155, 14);
       this.tb_testType.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -124,11 +124,20 @@
       this.tb_testType.Size = new System.Drawing.Size(180, 20);
       this.tb_testType.TabIndex = 1;
       // 
+      // label18
+      // 
+      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label18.Location = new System.Drawing.Point(145, 34);
+      this.label18.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(200, 1);
+      this.label18.TabIndex = 3;
+      // 
       // label1
       // 
       this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label1.Location = new System.Drawing.Point(15, 14);
       this.label1.Name = "label1";
@@ -153,7 +162,7 @@
       this.tb_testingToolType.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_testingToolType.BackColor = System.Drawing.Color.White;
       this.tb_testingToolType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_testingToolType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_testingToolType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_testingToolType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_testingToolType.Location = new System.Drawing.Point(155, 14);
       this.tb_testingToolType.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -163,11 +172,20 @@
       this.tb_testingToolType.Size = new System.Drawing.Size(180, 20);
       this.tb_testingToolType.TabIndex = 1;
       // 
+      // label9
+      // 
+      this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label9.Location = new System.Drawing.Point(145, 34);
+      this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(200, 1);
+      this.label9.TabIndex = 3;
+      // 
       // label2
       // 
       this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label2.AutoSize = true;
-      this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label2.Location = new System.Drawing.Point(15, 14);
       this.label2.Name = "label2";
@@ -192,7 +210,7 @@
       this.tb_owner.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_owner.BackColor = System.Drawing.Color.White;
       this.tb_owner.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_owner.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_owner.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_owner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_owner.Location = new System.Drawing.Point(155, 14);
       this.tb_owner.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -202,11 +220,20 @@
       this.tb_owner.Size = new System.Drawing.Size(180, 20);
       this.tb_owner.TabIndex = 1;
       // 
+      // label10
+      // 
+      this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label10.Location = new System.Drawing.Point(145, 34);
+      this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(200, 1);
+      this.label10.TabIndex = 3;
+      // 
       // label3
       // 
       this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label3.AutoSize = true;
-      this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label3.Location = new System.Drawing.Point(15, 14);
       this.label3.Name = "label3";
@@ -231,7 +258,7 @@
       this.tb_estimatedDuration.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_estimatedDuration.BackColor = System.Drawing.Color.White;
       this.tb_estimatedDuration.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_estimatedDuration.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_estimatedDuration.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_estimatedDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_estimatedDuration.Location = new System.Drawing.Point(155, 14);
       this.tb_estimatedDuration.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -241,11 +268,20 @@
       this.tb_estimatedDuration.Size = new System.Drawing.Size(180, 20);
       this.tb_estimatedDuration.TabIndex = 1;
       // 
+      // label14
+      // 
+      this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label14.Location = new System.Drawing.Point(145, 34);
+      this.label14.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(200, 1);
+      this.label14.TabIndex = 3;
+      // 
       // label4
       // 
       this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label4.AutoSize = true;
-      this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label4.Location = new System.Drawing.Point(15, 14);
       this.label4.Name = "label4";
@@ -270,7 +306,7 @@
       this.tb_designer.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_designer.BackColor = System.Drawing.Color.White;
       this.tb_designer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_designer.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_designer.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_designer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_designer.Location = new System.Drawing.Point(155, 14);
       this.tb_designer.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -280,11 +316,20 @@
       this.tb_designer.Size = new System.Drawing.Size(180, 20);
       this.tb_designer.TabIndex = 1;
       // 
+      // label13
+      // 
+      this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label13.Location = new System.Drawing.Point(145, 34);
+      this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label13.Name = "label13";
+      this.label13.Size = new System.Drawing.Size(200, 1);
+      this.label13.TabIndex = 3;
+      // 
       // label5
       // 
       this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label5.AutoSize = true;
-      this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label5.Location = new System.Drawing.Point(15, 14);
       this.label5.Name = "label5";
@@ -309,7 +354,7 @@
       this.tb_created.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_created.BackColor = System.Drawing.Color.White;
       this.tb_created.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_created.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_created.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_created.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_created.Location = new System.Drawing.Point(155, 14);
       this.tb_created.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -319,11 +364,20 @@
       this.tb_created.Size = new System.Drawing.Size(180, 20);
       this.tb_created.TabIndex = 1;
       // 
+      // label12
+      // 
+      this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label12.Location = new System.Drawing.Point(145, 34);
+      this.label12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(200, 1);
+      this.label12.TabIndex = 3;
+      // 
       // label6
       // 
       this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label6.AutoSize = true;
-      this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label6.Location = new System.Drawing.Point(15, 14);
       this.label6.Name = "label6";
@@ -348,7 +402,7 @@
       this.tb_lastModified.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_lastModified.BackColor = System.Drawing.Color.White;
       this.tb_lastModified.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_lastModified.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_lastModified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_lastModified.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_lastModified.Location = new System.Drawing.Point(155, 14);
       this.tb_lastModified.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -358,11 +412,20 @@
       this.tb_lastModified.Size = new System.Drawing.Size(180, 20);
       this.tb_lastModified.TabIndex = 1;
       // 
+      // label15
+      // 
+      this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label15.Location = new System.Drawing.Point(145, 34);
+      this.label15.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(200, 1);
+      this.label15.TabIndex = 3;
+      // 
       // label7
       // 
       this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label7.AutoSize = true;
-      this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label7.Location = new System.Drawing.Point(15, 14);
       this.label7.Name = "label7";
@@ -387,7 +450,7 @@
       this.tb_converedContent.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_converedContent.BackColor = System.Drawing.Color.White;
       this.tb_converedContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_converedContent.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_converedContent.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_converedContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_converedContent.Location = new System.Drawing.Point(155, 14);
       this.tb_converedContent.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -397,11 +460,20 @@
       this.tb_converedContent.Size = new System.Drawing.Size(180, 20);
       this.tb_converedContent.TabIndex = 1;
       // 
+      // label16
+      // 
+      this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.label16.Location = new System.Drawing.Point(145, 34);
+      this.label16.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
+      this.label16.Name = "label16";
+      this.label16.Size = new System.Drawing.Size(200, 1);
+      this.label16.TabIndex = 3;
+      // 
       // label8
       // 
       this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.label8.AutoSize = true;
-      this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
       this.label8.Location = new System.Drawing.Point(15, 14);
       this.label8.Name = "label8";
@@ -426,7 +498,7 @@
       this.tb_applicationModules.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.tb_applicationModules.BackColor = System.Drawing.Color.White;
       this.tb_applicationModules.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_applicationModules.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+      this.tb_applicationModules.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_applicationModules.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_applicationModules.Location = new System.Drawing.Point(155, 14);
       this.tb_applicationModules.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
@@ -436,90 +508,6 @@
       this.tb_applicationModules.Size = new System.Drawing.Size(180, 20);
       this.tb_applicationModules.TabIndex = 1;
       // 
-      // label11
-      // 
-      this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.label11.AutoSize = true;
-      this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-      this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label11.Location = new System.Drawing.Point(15, 14);
-      this.label11.Name = "label11";
-      this.label11.Size = new System.Drawing.Size(122, 15);
-      this.label11.TabIndex = 0;
-      this.label11.Text = "Application modules:";
-      // 
-      // label18
-      // 
-      this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label18.Location = new System.Drawing.Point(145, 34);
-      this.label18.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label18.Name = "label18";
-      this.label18.Size = new System.Drawing.Size(200, 1);
-      this.label18.TabIndex = 3;
-      // 
-      // label9
-      // 
-      this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label9.Location = new System.Drawing.Point(145, 34);
-      this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(200, 1);
-      this.label9.TabIndex = 3;
-      // 
-      // label10
-      // 
-      this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label10.Location = new System.Drawing.Point(145, 34);
-      this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(200, 1);
-      this.label10.TabIndex = 3;
-      // 
-      // label12
-      // 
-      this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label12.Location = new System.Drawing.Point(145, 34);
-      this.label12.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(200, 1);
-      this.label12.TabIndex = 3;
-      // 
-      // label13
-      // 
-      this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label13.Location = new System.Drawing.Point(145, 34);
-      this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label13.Name = "label13";
-      this.label13.Size = new System.Drawing.Size(200, 1);
-      this.label13.TabIndex = 3;
-      // 
-      // label14
-      // 
-      this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label14.Location = new System.Drawing.Point(145, 34);
-      this.label14.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(200, 1);
-      this.label14.TabIndex = 3;
-      // 
-      // label15
-      // 
-      this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label15.Location = new System.Drawing.Point(145, 34);
-      this.label15.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label15.Name = "label15";
-      this.label15.Size = new System.Drawing.Size(200, 1);
-      this.label15.TabIndex = 3;
-      // 
-      // label16
-      // 
-      this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label16.Location = new System.Drawing.Point(145, 34);
-      this.label16.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label16.Name = "label16";
-      this.label16.Size = new System.Drawing.Size(200, 1);
-      this.label16.TabIndex = 3;
-      // 
       // label17
       // 
       this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -528,6 +516,18 @@
       this.label17.Name = "label17";
       this.label17.Size = new System.Drawing.Size(200, 1);
       this.label17.TabIndex = 3;
+      // 
+      // label11
+      // 
+      this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.label11.AutoSize = true;
+      this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+      this.label11.Location = new System.Drawing.Point(15, 14);
+      this.label11.Name = "label11";
+      this.label11.Size = new System.Drawing.Size(122, 15);
+      this.label11.TabIndex = 0;
+      this.label11.Text = "Application modules:";
       // 
       // FieldsDetail_Test
       // 
