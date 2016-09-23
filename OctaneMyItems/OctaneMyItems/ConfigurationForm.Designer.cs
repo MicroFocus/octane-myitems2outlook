@@ -66,7 +66,7 @@
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label1.Location = new System.Drawing.Point(27, 87);
+      this.label1.Location = new System.Drawing.Point(28, 87);
       this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(72, 19);
@@ -204,7 +204,7 @@
       this.label7.AutoSize = true;
       this.label7.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-      this.label7.Location = new System.Drawing.Point(15, 6);
+      this.label7.Location = new System.Drawing.Point(16, 6);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(194, 25);
       this.label7.TabIndex = 17;
@@ -215,7 +215,7 @@
       this.label8.AutoSize = true;
       this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-      this.label8.Location = new System.Drawing.Point(16, 47);
+      this.label8.Location = new System.Drawing.Point(17, 47);
       this.label8.Name = "label8";
       this.label8.Size = new System.Drawing.Size(148, 21);
       this.label8.TabIndex = 18;
@@ -226,7 +226,7 @@
       this.button1.BackColor = System.Drawing.Color.Red;
       this.button1.FlatAppearance.BorderSize = 0;
       this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.button1.Location = new System.Drawing.Point(21, 91);
+      this.button1.Location = new System.Drawing.Point(22, 91);
       this.button1.Name = "button1";
       this.button1.Size = new System.Drawing.Size(5, 5);
       this.button1.TabIndex = 19;
@@ -237,7 +237,7 @@
       this.button2.BackColor = System.Drawing.Color.Red;
       this.button2.FlatAppearance.BorderSize = 0;
       this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.button2.Location = new System.Drawing.Point(21, 131);
+      this.button2.Location = new System.Drawing.Point(22, 131);
       this.button2.Name = "button2";
       this.button2.Size = new System.Drawing.Size(5, 5);
       this.button2.TabIndex = 20;
@@ -248,7 +248,7 @@
       this.label9.AutoSize = true;
       this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label9.Location = new System.Drawing.Point(27, 127);
+      this.label9.Location = new System.Drawing.Point(28, 127);
       this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label9.Name = "label9";
       this.label9.Size = new System.Drawing.Size(80, 19);
@@ -260,7 +260,7 @@
       this.label2.AutoSize = true;
       this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label2.Location = new System.Drawing.Point(27, 167);
+      this.label2.Location = new System.Drawing.Point(28, 167);
       this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(70, 19);
@@ -272,7 +272,7 @@
       this.button3.BackColor = System.Drawing.Color.Red;
       this.button3.FlatAppearance.BorderSize = 0;
       this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.button3.Location = new System.Drawing.Point(21, 171);
+      this.button3.Location = new System.Drawing.Point(22, 171);
       this.button3.Name = "button3";
       this.button3.Size = new System.Drawing.Size(5, 5);
       this.button3.TabIndex = 23;
@@ -283,7 +283,7 @@
       this.label3.AutoSize = true;
       this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-      this.label3.Location = new System.Drawing.Point(16, 320);
+      this.label3.Location = new System.Drawing.Point(17, 320);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(137, 21);
       this.label3.TabIndex = 24;
@@ -294,7 +294,7 @@
       this.button4.BackColor = System.Drawing.Color.Red;
       this.button4.FlatAppearance.BorderSize = 0;
       this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.button4.Location = new System.Drawing.Point(21, 364);
+      this.button4.Location = new System.Drawing.Point(22, 364);
       this.button4.Name = "button4";
       this.button4.Size = new System.Drawing.Size(5, 5);
       this.button4.TabIndex = 26;
@@ -305,7 +305,7 @@
       this.label10.AutoSize = true;
       this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label10.Location = new System.Drawing.Point(27, 360);
+      this.label10.Location = new System.Drawing.Point(28, 360);
       this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label10.Name = "label10";
       this.label10.Size = new System.Drawing.Size(94, 19);
@@ -317,7 +317,7 @@
       this.button5.BackColor = System.Drawing.Color.Red;
       this.button5.FlatAppearance.BorderSize = 0;
       this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.button5.Location = new System.Drawing.Point(21, 404);
+      this.button5.Location = new System.Drawing.Point(22, 404);
       this.button5.Name = "button5";
       this.button5.Size = new System.Drawing.Size(5, 5);
       this.button5.TabIndex = 28;
@@ -328,7 +328,7 @@
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label4.Location = new System.Drawing.Point(27, 400);
+      this.label4.Location = new System.Drawing.Point(28, 400);
       this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(84, 19);

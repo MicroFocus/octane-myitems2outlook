@@ -20,6 +20,8 @@ namespace OctaneMyItems
     private Microsoft.Office.Interop.Outlook.Application m_application;
     private bool m_initialized;
 
+    private bool m_isConfigurationFormOpen;
+
     #endregion
 
     #region Public Methods
@@ -82,7 +84,10 @@ namespace OctaneMyItems
 
     private void ShowConfigurationForm()
     {
-      ConfigurationForm form = new ConfigurationForm(m_serverUrl, m_userName, m_sharedspaceId, m_workspaceId);
+      if (m_isConfigurationFormOpen) return;
+      m_isConfigurationFormOpen = true;
+
+      var form = new ConfigurationForm(m_serverUrl, m_userName, m_sharedspaceId, m_workspaceId);
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -97,6 +102,8 @@ namespace OctaneMyItems
 
         SaveConfiguration();
       }
+
+      m_isConfigurationFormOpen = false;
     }
 
     private bool LoadConfiguration()
