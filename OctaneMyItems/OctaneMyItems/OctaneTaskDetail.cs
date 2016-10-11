@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using OctaneMyItemsSyncService.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,7 +14,7 @@ namespace OctaneMyItems
   {
     #region Form Region Factory 
 
-    [Microsoft.Office.Tools.Outlook.FormRegionMessageClass("IPM.Task.Octane")]
+    [Microsoft.Office.Tools.Outlook.FormRegionMessageClass(Constants.OctaneTask)]
     [Microsoft.Office.Tools.Outlook.FormRegionName("OctaneMyItems.OctaneTaskDetail")]
     public partial class OctaneTaskDetailFactory
     {
