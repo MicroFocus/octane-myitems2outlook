@@ -11,8 +11,8 @@ namespace OctaneMyItems
 
       tb_id.Text = backlog.id.ToString();
       tb_owner.Text = backlog.owner?.name;
-      tb_creationTime.Text = backlog.creation_time.ToString();
-      tb_lastModified.Text = backlog.last_modified.ToString();
+      tb_creationTime.Text = backlog.creation_time.ToLocalTime().ToString();
+      tb_lastModified.Text = backlog.last_modified.ToLocalTime().ToString();
       tb_storyPoints.Text = backlog.story_points?.ToString();
       tb_author.Text = backlog.author?.name;
       tb_itemOrigin.Text = backlog.item_origin?.name;

@@ -1,9 +1,11 @@
 ﻿using OctaneMyItemsSyncService.Models;
 using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Services
@@ -153,7 +155,8 @@ namespace OctaneMyItemsSyncService.Services
         foreach (Backlog backlog in backlogs.data)
         {
           //if (backlog.has_comments)//comment out this line because cannot retrive has_comments by the old way
-            backlog.comments = await GetBacklogComments(backlog.id);
+          backlog.comments = await GetBacklogComments(backlog.id);
+          backlog.description = await CacheImage(backlog.description);
         }
       }
       return backlogs;
@@ -201,6 +204,7 @@ namespace OctaneMyItemsSyncService.Services
 
           //if (run.has_comments)//comment out this line because cannot retrive has_comments by the old way
           run.comments = await GetRunComments(run.id);
+          run.description = await CacheImage(run.description);
         }
       }
       return runs;
@@ -233,7 +237,7 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<Test> GetTest(int id, bool byCurrentOwner)
     {
-      var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
+      var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
@@ -253,17 +257,18 @@ namespace OctaneMyItemsSyncService.Services
             test.script = (await GetTestScript(test.id)).script;
           //if (test.has_comments)//comment out this line because cannot retrive has_comments by the old way
           test.comments = await GetTestComments(test.id);
+          test.description = await CacheImage(test.description);
         }
       }
       return tests;
     }
     public async Task<Tests> GetMyTests()
     {
-      return await GetTests($"query=\"{QueryMyTests}\"&{EXPAND_ALL}", true);
+      return await GetTests($"query=\"{QueryMyTests}\"&{QueryTestsExpand}", true);
     }
     public async Task<Test> GetMyTest(int id)
     {
-      var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{EXPAND_ALL}", true);
+      var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
@@ -310,6 +315,8 @@ namespace OctaneMyItemsSyncService.Services
       }
     }
 
+    public string QueryTestsExpand { get; } = @"expand=$all{fields = name},author{fields=full_name},my_new_items_owner{fields=full_name},owner{fields=full_name},designer{fields=full_name},modified_by{fields=full_name},covered_content{fields=subtype}&fields=creation_time,covered_content,version_stamp,script_path,num_comments,pipelines,builds,last_modified,approved_version,phase,test_status,package,author,created,product_areas,estimated_duration,sha,user_tags,testing_tool_type,my_new_items_owner,has_comments,automation_identifier,name,automation_status,run_in_releases,description,manual,requirement_coverage,latest_version,subtype,steps_num,class_name,owner,has_attachments,global_text_search_result,test_level,designer,test_type,identity_hash,component,framework,modified_by";
+
     private string queryMyRuns;
     public string QueryMyRuns
     {
@@ -319,6 +326,10 @@ namespace OctaneMyItemsSyncService.Services
       (queryMyRuns = "run_by={id=" + _currentUser.id + "};(native_status={logical_name EQ 'list_node.run_native_status.planned' }||native_status={logical_name EQ 'list_node.run_native_status.blocked'}||native_status={logical_name EQ 'list_node.run_native_status.not_completed'});((parent_suite={null};subtype EQ 'run_manual')||(subtype EQ 'run_suite'))");
       }
     }
+
+    private string CacheImageDirectory { get; } = Path.GetTempPath() + "OctaneMyItems\\";
+    private string ImageTag { get; } = "file://[IMAGE_BASE_PATH_PLACEHOLDER]";
+    private string ImageMatchPattern { get; } = @"file:\/\/\[IMAGE_BASE_PATH_PLACEHOLDER\]([^""]*)((.jpg)|(.png))";
 
     #endregion
 
@@ -349,6 +360,38 @@ namespace OctaneMyItemsSyncService.Services
       var query = $"id={id}";
       if (byCurrentOwner) query += $";owner={{id={_currentUser.id}}}";
       return query;
+    }
+
+    private async Task<string> CacheImage(string content)
+    {
+      if (string.IsNullOrEmpty(content)) return "";
+
+      string processedContent = "";
+      await Task.Run(async ()=>
+      {
+        var matches = Regex.Matches(content, ImageMatchPattern);
+        foreach (Match item in matches)
+        {
+          var url = item.Value.Replace(ImageTag, $"{QueryUrl}/attachments/");
+          try
+          {
+            var result = await _httpClient.GetStreamAsync(url);
+            var filePath = item.Value.Replace(ImageTag, CacheImageDirectory);
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+              Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            using (var file = File.Create(filePath))
+            {
+              await result.CopyToAsync(file);
+            }
+          }
+          catch (Exception ex)
+          {
+          }
+        }
+        processedContent = content.Replace(ImageTag, CacheImageDirectory);
+      });
+
+      return processedContent;
     }
 
     #endregion
