@@ -40,8 +40,8 @@ namespace OctaneMyItems
       if (octane == null) return;
 
       tabControl1.BackColor = Color.White;
-      tabControl1.TabPages.Remove(tp_runSteps);
-      tabControl1.TabPages.Remove(tp_testSteps);
+  //    tabControl1.TabPages.Remove(tp_runSteps);
+  //    tabControl1.TabPages.Remove(tp_testSteps);
       try
       {
         var url = $"{ThisAddIn.Configuration.ServerUrl}/ui/entity-navigation?p={ThisAddIn.Configuration.SharedspaceId}/{ThisAddIn.Configuration.WorkspaceId}";
@@ -71,7 +71,8 @@ namespace OctaneMyItems
 
           wb_description.DocumentText = GenerateDescriptHtml(run.description);
           wb_comments.DocumentText = GenerateCommentsHtml(run.comments);
-          tabControl1.TabPages.Add(tp_runSteps);
+ //         tabControl1.TabPages.Add(tp_runSteps);
+/*
           if (run.steps != null)
           {
             var html = new StringBuilder();
@@ -83,6 +84,7 @@ namespace OctaneMyItems
             html.Append("</body></html>");
             wb_runSteps.DocumentText = html.ToString();
           }
+*/
         }
         else if ("\"Test\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
@@ -92,7 +94,7 @@ namespace OctaneMyItems
 
           wb_description.DocumentText = GenerateDescriptHtml(test.description);
           wb_comments.DocumentText = GenerateCommentsHtml(test.comments);
-          tabControl1.TabPages.Add(tp_testSteps);
+//          tabControl1.TabPages.Add(tp_testSteps);
           rtb_testSteps.Text = test.script;
         }
         else
