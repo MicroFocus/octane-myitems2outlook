@@ -13,10 +13,10 @@ namespace OctaneMyItems
       tb_testName.Text = run.test_name;
       tb_nativeStatus.Text = run.native_status?.name;
       tb_runBy.Text = run.run_by?.name;
-      tb_started.Text = run.started?.ToString();
+      tb_started.Text = run.started?.ToLocalTime().ToString();
       tb_release.Text = run.release?.name;
       tb_draftRun.Text = run.draft_run ? "Yes" : "No";
-      tb_lastModified.Text = run.last_modified?.ToString();
+      tb_lastModified.Text = run.last_modified?.ToLocalTime().ToString();
       if(run.taxonomies?.data.Count() > 0)
       {
         tb_environment.Text = "";

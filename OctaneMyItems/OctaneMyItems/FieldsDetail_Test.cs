@@ -25,8 +25,8 @@ namespace OctaneMyItems
       tb_owner.Text = test.owner?.name;
       tb_estimatedDuration.Text = test.estimated_duration;
       tb_designer.Text = test.designer?.name;
-      tb_created.Text = test.created?.ToString();
-      tb_lastModified.Text = test.last_modified?.ToString();
+      tb_created.Text = test.created?.ToLocalTime().ToString();
+      tb_lastModified.Text = test.last_modified?.ToLocalTime().ToString();
       if(test.covered_content?.data.Count() > 0)
       {
         tb_converedContent.Text = "";

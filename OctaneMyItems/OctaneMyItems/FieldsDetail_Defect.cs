@@ -14,10 +14,10 @@ namespace OctaneMyItems
       tb_detectedBy.Text = backlog.detected_by?.name;
       tb_owner.Text = backlog.owner?.name;
       tb_severity.Text = backlog.severity?.name;
-      tb_lastModified.Text = backlog.last_modified.ToString();
+      tb_lastModified.Text = backlog.last_modified.ToLocalTime().ToString();
       tb_detectedInRelease.Text = backlog.detected_in_release?.name;
-      tb_creationTime.Text = backlog.creation_time.ToString();
-      tb_closeOn.Text = backlog.closed_on?.ToString();
+      tb_creationTime.Text = backlog.creation_time.ToLocalTime().ToString();
+      tb_closeOn.Text = backlog.closed_on?.ToLocalTime().ToString();
       tb_priority.Text = backlog.priority?.name;
       if (backlog.product_areas?.data.Count() > 0)
       {
