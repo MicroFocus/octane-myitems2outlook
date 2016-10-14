@@ -29,7 +29,6 @@ namespace OctaneMyItems
             tb_environment.Text += "; " + temp;
         }
       }
-      tb_environment.Text = run.environment_hash;
     }
   }
 }
