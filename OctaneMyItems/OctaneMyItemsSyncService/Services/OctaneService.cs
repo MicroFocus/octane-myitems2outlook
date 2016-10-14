@@ -1,9 +1,11 @@
 ﻿using OctaneMyItemsSyncService.Models;
 using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OctaneMyItemsSyncService.Services
@@ -153,7 +155,8 @@ namespace OctaneMyItemsSyncService.Services
         foreach (Backlog backlog in backlogs.data)
         {
           //if (backlog.has_comments)//comment out this line because cannot retrive has_comments by the old way
-            backlog.comments = await GetBacklogComments(backlog.id);
+          backlog.comments = await GetBacklogComments(backlog.id);
+          backlog.description = await CacheImage(backlog.description);
         }
       }
       return backlogs;
@@ -201,6 +204,7 @@ namespace OctaneMyItemsSyncService.Services
 
           //if (run.has_comments)//comment out this line because cannot retrive has_comments by the old way
           run.comments = await GetRunComments(run.id);
+          run.description = await CacheImage(run.description);
         }
       }
       return runs;
@@ -253,6 +257,7 @@ namespace OctaneMyItemsSyncService.Services
             test.script = (await GetTestScript(test.id)).script;
           //if (test.has_comments)//comment out this line because cannot retrive has_comments by the old way
           test.comments = await GetTestComments(test.id);
+          test.description = await CacheImage(test.description);
         }
       }
       return tests;
@@ -320,6 +325,10 @@ namespace OctaneMyItemsSyncService.Services
       }
     }
 
+    private string CacheImageDirectory { get; } = Path.GetTempPath() + "OctaneMyItems\\";
+    private string ImageTag { get; } = "file://[IMAGE_BASE_PATH_PLACEHOLDER]";
+    private string ImageMatchPattern { get; } = @"file:\/\/\[IMAGE_BASE_PATH_PLACEHOLDER\]([^""]*)((.jpg)|(.png))";
+
     #endregion
 
     #region Private methods
@@ -349,6 +358,32 @@ namespace OctaneMyItemsSyncService.Services
       var query = $"id={id}";
       if (byCurrentOwner) query += $";owner={{id={_currentUser.id}}}";
       return query;
+    }
+
+    private async Task<string> CacheImage(string content)
+    {
+      if (string.IsNullOrEmpty(content)) return "";
+
+      var matches = Regex.Matches(content, ImageMatchPattern);
+      foreach (Match item in matches)
+      {
+        var url = item.Value.Replace(ImageTag, $"{QueryUrl}/attachments/");
+        try
+        {
+          var result = await _httpClient.GetStreamAsync(url);
+          var filePath = item.Value.Replace(ImageTag, CacheImageDirectory);
+          if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+          using (var file = File.Create(filePath))
+          {
+            await result.CopyToAsync(file);
+          }
+        }
+        catch (Exception ex)
+        {
+        }
+      }
+      return content.Replace(ImageTag, CacheImageDirectory);
     }
 
     #endregion
