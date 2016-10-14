@@ -133,9 +133,10 @@ namespace OctaneMyItems
         ContextMenu = new ContextMenu(new MenuItem[] {
           new MenuItem("Copy", (s, e) => Clipboard.SetText(url)) }),
       };
-      linkLabel.Click += (s, e) =>
+      linkLabel.MouseClick += (s, e) =>
       {
-        Process.Start(url);
+        if (e.Button == MouseButtons.Left)
+          Process.Start(url);
       };
 
       var panel = new Panel()
