@@ -62,10 +62,6 @@
       this.tb_closeOn = new System.Windows.Forms.TextBox();
       this.label25 = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
-      this.panel9 = new System.Windows.Forms.Panel();
-      this.tb_fixedOn = new System.Windows.Forms.TextBox();
-      this.label26 = new System.Windows.Forms.Label();
-      this.label9 = new System.Windows.Forms.Label();
       this.panel10 = new System.Windows.Forms.Panel();
       this.tb_priority = new System.Windows.Forms.TextBox();
       this.label27 = new System.Windows.Forms.Label();
@@ -108,7 +104,6 @@
       this.panel6.SuspendLayout();
       this.panel7.SuspendLayout();
       this.panel8.SuspendLayout();
-      this.panel9.SuspendLayout();
       this.panel10.SuspendLayout();
       this.panel11.SuspendLayout();
       this.panel12.SuspendLayout();
@@ -131,7 +126,6 @@
       this.flowLayoutPanel1.Controls.Add(this.panel6);
       this.flowLayoutPanel1.Controls.Add(this.panel7);
       this.flowLayoutPanel1.Controls.Add(this.panel8);
-      this.flowLayoutPanel1.Controls.Add(this.panel9);
       this.flowLayoutPanel1.Controls.Add(this.panel10);
       this.flowLayoutPanel1.Controls.Add(this.panel11);
       this.flowLayoutPanel1.Controls.Add(this.panel12);
@@ -532,61 +526,13 @@
       this.label8.TabIndex = 0;
       this.label8.Text = "Close on:";
       // 
-      // panel9
-      // 
-      this.panel9.AutoSize = true;
-      this.panel9.Controls.Add(this.tb_fixedOn);
-      this.panel9.Controls.Add(this.label26);
-      this.panel9.Controls.Add(this.label9);
-      this.panel9.Location = new System.Drawing.Point(760, 84);
-      this.panel9.Margin = new System.Windows.Forms.Padding(0);
-      this.panel9.Name = "panel9";
-      this.panel9.Size = new System.Drawing.Size(380, 42);
-      this.panel9.TabIndex = 8;
-      // 
-      // tb_fixedOn
-      // 
-      this.tb_fixedOn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.tb_fixedOn.BackColor = System.Drawing.Color.White;
-      this.tb_fixedOn.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      this.tb_fixedOn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_fixedOn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-      this.tb_fixedOn.Location = new System.Drawing.Point(155, 14);
-      this.tb_fixedOn.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_fixedOn.Multiline = true;
-      this.tb_fixedOn.Name = "tb_fixedOn";
-      this.tb_fixedOn.ReadOnly = true;
-      this.tb_fixedOn.Size = new System.Drawing.Size(180, 20);
-      this.tb_fixedOn.TabIndex = 1;
-      // 
-      // label26
-      // 
-      this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.label26.Location = new System.Drawing.Point(145, 34);
-      this.label26.Margin = new System.Windows.Forms.Padding(0, 0, 0, 7);
-      this.label26.Name = "label26";
-      this.label26.Size = new System.Drawing.Size(200, 1);
-      this.label26.TabIndex = 3;
-      // 
-      // label9
-      // 
-      this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.label9.AutoSize = true;
-      this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-      this.label9.Location = new System.Drawing.Point(15, 14);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(56, 15);
-      this.label9.TabIndex = 0;
-      this.label9.Text = "Fixed on:";
-      // 
       // panel10
       // 
       this.panel10.AutoSize = true;
       this.panel10.Controls.Add(this.tb_priority);
       this.panel10.Controls.Add(this.label27);
       this.panel10.Controls.Add(this.label10);
-      this.panel10.Location = new System.Drawing.Point(0, 126);
+      this.panel10.Location = new System.Drawing.Point(760, 84);
       this.panel10.Margin = new System.Windows.Forms.Padding(0);
       this.panel10.Name = "panel10";
       this.panel10.Size = new System.Drawing.Size(380, 42);
@@ -634,7 +580,7 @@
       this.panel11.Controls.Add(this.tb_applicationModules);
       this.panel11.Controls.Add(this.label28);
       this.panel11.Controls.Add(this.label11);
-      this.panel11.Location = new System.Drawing.Point(380, 126);
+      this.panel11.Location = new System.Drawing.Point(0, 126);
       this.panel11.Margin = new System.Windows.Forms.Padding(0);
       this.panel11.Name = "panel11";
       this.panel11.Size = new System.Drawing.Size(380, 42);
@@ -683,7 +629,7 @@
       this.panel12.Controls.Add(this.tb_storyPoints);
       this.panel12.Controls.Add(this.label29);
       this.panel12.Controls.Add(this.label12);
-      this.panel12.Location = new System.Drawing.Point(760, 126);
+      this.panel12.Location = new System.Drawing.Point(380, 126);
       this.panel12.Margin = new System.Windows.Forms.Padding(0);
       this.panel12.Name = "panel12";
       this.panel12.Size = new System.Drawing.Size(380, 42);
@@ -731,7 +677,7 @@
       this.panel13.Controls.Add(this.tb_release);
       this.panel13.Controls.Add(this.label30);
       this.panel13.Controls.Add(this.label13);
-      this.panel13.Location = new System.Drawing.Point(0, 168);
+      this.panel13.Location = new System.Drawing.Point(760, 126);
       this.panel13.Margin = new System.Windows.Forms.Padding(0);
       this.panel13.Name = "panel13";
       this.panel13.Size = new System.Drawing.Size(380, 42);
@@ -779,7 +725,7 @@
       this.panel14.Controls.Add(this.tb_sprint);
       this.panel14.Controls.Add(this.label31);
       this.panel14.Controls.Add(this.label14);
-      this.panel14.Location = new System.Drawing.Point(380, 168);
+      this.panel14.Location = new System.Drawing.Point(0, 168);
       this.panel14.Margin = new System.Windows.Forms.Padding(0);
       this.panel14.Name = "panel14";
       this.panel14.Size = new System.Drawing.Size(380, 42);
@@ -827,7 +773,7 @@
       this.panel15.Controls.Add(this.tb_itemType);
       this.panel15.Controls.Add(this.label32);
       this.panel15.Controls.Add(this.label15);
-      this.panel15.Location = new System.Drawing.Point(760, 168);
+      this.panel15.Location = new System.Drawing.Point(380, 168);
       this.panel15.Margin = new System.Windows.Forms.Padding(0);
       this.panel15.Name = "panel15";
       this.panel15.Size = new System.Drawing.Size(380, 42);
@@ -875,7 +821,7 @@
       this.panel16.Controls.Add(this.tb_team);
       this.panel16.Controls.Add(this.label33);
       this.panel16.Controls.Add(this.label16);
-      this.panel16.Location = new System.Drawing.Point(0, 210);
+      this.panel16.Location = new System.Drawing.Point(760, 168);
       this.panel16.Margin = new System.Windows.Forms.Padding(0);
       this.panel16.Name = "panel16";
       this.panel16.Size = new System.Drawing.Size(380, 42);
@@ -923,7 +869,7 @@
       this.panel17.Controls.Add(this.tb_environment);
       this.panel17.Controls.Add(this.label34);
       this.panel17.Controls.Add(this.label17);
-      this.panel17.Location = new System.Drawing.Point(380, 210);
+      this.panel17.Location = new System.Drawing.Point(0, 210);
       this.panel17.Margin = new System.Windows.Forms.Padding(0);
       this.panel17.Name = "panel17";
       this.panel17.Size = new System.Drawing.Size(380, 42);
@@ -990,8 +936,6 @@
       this.panel7.PerformLayout();
       this.panel8.ResumeLayout(false);
       this.panel8.PerformLayout();
-      this.panel9.ResumeLayout(false);
-      this.panel9.PerformLayout();
       this.panel10.ResumeLayout(false);
       this.panel10.PerformLayout();
       this.panel11.ResumeLayout(false);
@@ -1040,9 +984,6 @@
     private System.Windows.Forms.Panel panel8;
     private System.Windows.Forms.TextBox tb_closeOn;
     private System.Windows.Forms.Label label8;
-    private System.Windows.Forms.Panel panel9;
-    private System.Windows.Forms.TextBox tb_fixedOn;
-    private System.Windows.Forms.Label label9;
     private System.Windows.Forms.Panel panel10;
     private System.Windows.Forms.TextBox tb_priority;
     private System.Windows.Forms.Label label10;
@@ -1075,7 +1016,6 @@
     private System.Windows.Forms.Label label23;
     private System.Windows.Forms.Label label24;
     private System.Windows.Forms.Label label25;
-    private System.Windows.Forms.Label label26;
     private System.Windows.Forms.Label label27;
     private System.Windows.Forms.Label label28;
     private System.Windows.Forms.Label label29;

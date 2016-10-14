@@ -18,7 +18,6 @@ namespace OctaneMyItems
       tb_detectedInRelease.Text = backlog.detected_in_release?.name;
       tb_creationTime.Text = backlog.creation_time.ToString();
       tb_closeOn.Text = backlog.closed_on?.ToString();
-      tb_fixedOn.Text = backlog.fixed_on?.ToString();
       tb_priority.Text = backlog.priority?.name;
       if (backlog.product_areas?.data.Count() > 0)
       {
