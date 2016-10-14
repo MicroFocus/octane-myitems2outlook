@@ -85,7 +85,6 @@
       this.wb_description.Location = new System.Drawing.Point(3, 3);
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
-      this.wb_description.ScrollBarsEnabled = false;
       this.wb_description.Size = new System.Drawing.Size(991, 109);
       this.wb_description.TabIndex = 0;
       // 
@@ -106,7 +105,6 @@
       this.wb_comments.Location = new System.Drawing.Point(0, 0);
       this.wb_comments.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_comments.Name = "wb_comments";
-      this.wb_comments.ScrollBarsEnabled = false;
       this.wb_comments.Size = new System.Drawing.Size(997, 115);
       this.wb_comments.TabIndex = 0;
       // 
@@ -151,7 +149,6 @@
       this.wb_runSteps.Location = new System.Drawing.Point(0, 0);
       this.wb_runSteps.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_runSteps.Name = "wb_runSteps";
-      this.wb_runSteps.ScrollBarsEnabled = false;
       this.wb_runSteps.Size = new System.Drawing.Size(997, 115);
       this.wb_runSteps.TabIndex = 0;
       // 
