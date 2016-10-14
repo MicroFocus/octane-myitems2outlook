@@ -130,10 +130,9 @@
       this.tb_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_id.Location = new System.Drawing.Point(125, 14);
       this.tb_id.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_id.Multiline = true;
       this.tb_id.Name = "tb_id";
       this.tb_id.ReadOnly = true;
-      this.tb_id.Size = new System.Drawing.Size(180, 20);
+      this.tb_id.Size = new System.Drawing.Size(180, 14);
       this.tb_id.TabIndex = 1;
       // 
       // label18
@@ -178,10 +177,9 @@
       this.tb_owner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_owner.Location = new System.Drawing.Point(125, 14);
       this.tb_owner.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_owner.Multiline = true;
       this.tb_owner.Name = "tb_owner";
       this.tb_owner.ReadOnly = true;
-      this.tb_owner.Size = new System.Drawing.Size(180, 20);
+      this.tb_owner.Size = new System.Drawing.Size(180, 14);
       this.tb_owner.TabIndex = 1;
       // 
       // label14
@@ -226,10 +224,9 @@
       this.tb_creationTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_creationTime.Location = new System.Drawing.Point(125, 14);
       this.tb_creationTime.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_creationTime.Multiline = true;
       this.tb_creationTime.Name = "tb_creationTime";
       this.tb_creationTime.ReadOnly = true;
-      this.tb_creationTime.Size = new System.Drawing.Size(180, 20);
+      this.tb_creationTime.Size = new System.Drawing.Size(180, 14);
       this.tb_creationTime.TabIndex = 1;
       // 
       // label15
@@ -274,10 +271,9 @@
       this.tb_lastModified.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_lastModified.Location = new System.Drawing.Point(125, 14);
       this.tb_lastModified.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_lastModified.Multiline = true;
       this.tb_lastModified.Name = "tb_lastModified";
       this.tb_lastModified.ReadOnly = true;
-      this.tb_lastModified.Size = new System.Drawing.Size(180, 20);
+      this.tb_lastModified.Size = new System.Drawing.Size(180, 14);
       this.tb_lastModified.TabIndex = 1;
       // 
       // label11
@@ -322,10 +318,9 @@
       this.tb_storyPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_storyPoints.Location = new System.Drawing.Point(125, 14);
       this.tb_storyPoints.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_storyPoints.Multiline = true;
       this.tb_storyPoints.Name = "tb_storyPoints";
       this.tb_storyPoints.ReadOnly = true;
-      this.tb_storyPoints.Size = new System.Drawing.Size(180, 20);
+      this.tb_storyPoints.Size = new System.Drawing.Size(180, 14);
       this.tb_storyPoints.TabIndex = 1;
       // 
       // label20
@@ -370,10 +365,9 @@
       this.tb_author.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_author.Location = new System.Drawing.Point(125, 14);
       this.tb_author.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_author.Multiline = true;
       this.tb_author.Name = "tb_author";
       this.tb_author.ReadOnly = true;
-      this.tb_author.Size = new System.Drawing.Size(180, 20);
+      this.tb_author.Size = new System.Drawing.Size(180, 14);
       this.tb_author.TabIndex = 1;
       // 
       // label17
@@ -418,10 +412,9 @@
       this.tb_itemOrigin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_itemOrigin.Location = new System.Drawing.Point(125, 14);
       this.tb_itemOrigin.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_itemOrigin.Multiline = true;
       this.tb_itemOrigin.Name = "tb_itemOrigin";
       this.tb_itemOrigin.ReadOnly = true;
-      this.tb_itemOrigin.Size = new System.Drawing.Size(180, 20);
+      this.tb_itemOrigin.Size = new System.Drawing.Size(180, 14);
       this.tb_itemOrigin.TabIndex = 1;
       // 
       // label12
@@ -466,10 +459,9 @@
       this.tb_parent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_parent.Location = new System.Drawing.Point(125, 14);
       this.tb_parent.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_parent.Multiline = true;
       this.tb_parent.Name = "tb_parent";
       this.tb_parent.ReadOnly = true;
-      this.tb_parent.Size = new System.Drawing.Size(180, 20);
+      this.tb_parent.Size = new System.Drawing.Size(180, 14);
       this.tb_parent.TabIndex = 1;
       // 
       // label21
@@ -514,10 +506,9 @@
       this.tb_release.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_release.Location = new System.Drawing.Point(125, 14);
       this.tb_release.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_release.Multiline = true;
       this.tb_release.Name = "tb_release";
       this.tb_release.ReadOnly = true;
-      this.tb_release.Size = new System.Drawing.Size(180, 20);
+      this.tb_release.Size = new System.Drawing.Size(180, 14);
       this.tb_release.TabIndex = 1;
       // 
       // label19
@@ -562,10 +553,9 @@
       this.tb_sprint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_sprint.Location = new System.Drawing.Point(125, 14);
       this.tb_sprint.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_sprint.Multiline = true;
       this.tb_sprint.Name = "tb_sprint";
       this.tb_sprint.ReadOnly = true;
-      this.tb_sprint.Size = new System.Drawing.Size(180, 20);
+      this.tb_sprint.Size = new System.Drawing.Size(180, 14);
       this.tb_sprint.TabIndex = 1;
       // 
       // label13
@@ -610,10 +600,9 @@
       this.tb_team.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
       this.tb_team.Location = new System.Drawing.Point(125, 14);
       this.tb_team.Margin = new System.Windows.Forms.Padding(0, 0, 45, 0);
-      this.tb_team.Multiline = true;
       this.tb_team.Name = "tb_team";
       this.tb_team.ReadOnly = true;
-      this.tb_team.Size = new System.Drawing.Size(180, 20);
+      this.tb_team.Size = new System.Drawing.Size(180, 14);
       this.tb_team.TabIndex = 1;
       // 
       // label22
