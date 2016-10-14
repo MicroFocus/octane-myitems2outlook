@@ -10,7 +10,17 @@ namespace OctaneMyItems
     {
       InitializeComponent();
 
-      tb_testType.Text = test.test_type?.data?.ToString();
+      if(test.test_type?.data.Count() > 0)
+      {
+        tb_testType.Text = "";
+        foreach (var item in test.test_type.data)
+        {
+          if (tb_testType.Text == "")
+            tb_testType.Text = item.name;
+          else
+            tb_testType.Text += "; " + item.name;
+        }
+      }
       tb_testingToolType.Text = test.testing_tool_type?.name;
       tb_owner.Text = test.owner?.name;
       tb_estimatedDuration.Text = test.estimated_duration;
@@ -25,7 +35,7 @@ namespace OctaneMyItems
           if (tb_converedContent.Text == "")
             tb_converedContent.Text = item.name;
           else
-            tb_converedContent.Text += item.name;
+            tb_converedContent.Text += "; " + item.name;
         }
       }
       if (test.product_areas?.data.Count() > 0)
