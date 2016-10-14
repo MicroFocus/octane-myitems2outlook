@@ -237,7 +237,7 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<Test> GetTest(int id, bool byCurrentOwner)
     {
-      var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&expand=$all{{fields = name}}", true);
+      var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
@@ -264,11 +264,11 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task<Tests> GetMyTests()
     {
-      return await GetTests($"query=\"{QueryMyTests}\"&{EXPAND_ALL}", true);
+      return await GetTests($"query=\"{QueryMyTests}\"&{QueryTestsExpand}", true);
     }
     public async Task<Test> GetMyTest(int id)
     {
-      var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{EXPAND_ALL}", true);
+      var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
@@ -314,6 +314,8 @@ namespace OctaneMyItemsSyncService.Services
       (queryMyTests = "owner={id=" + _currentUser.id + "};phase={metaphase={(name EQ 'New' || name EQ 'In Design')}};(subtype EQ 'test_manual'||subtype EQ 'gherkin_test')");
       }
     }
+
+    public string QueryTestsExpand { get; } = @"expand=$all{fields = name},author{fields=full_name},my_new_items_owner{fields=full_name},owner{fields=full_name},designer{fields=full_name},modified_by{fields=full_name},covered_content{fields=subtype}&fields=creation_time,covered_content,version_stamp,script_path,num_comments,pipelines,builds,last_modified,approved_version,phase,test_status,package,author,created,product_areas,estimated_duration,sha,user_tags,testing_tool_type,my_new_items_owner,has_comments,automation_identifier,name,automation_status,run_in_releases,description,manual,requirement_coverage,latest_version,subtype,steps_num,class_name,owner,has_attachments,global_text_search_result,test_level,designer,test_type,identity_hash,component,framework,modified_by";
 
     private string queryMyRuns;
     public string QueryMyRuns
@@ -364,26 +366,32 @@ namespace OctaneMyItemsSyncService.Services
     {
       if (string.IsNullOrEmpty(content)) return "";
 
-      var matches = Regex.Matches(content, ImageMatchPattern);
-      foreach (Match item in matches)
+      string processedContent = "";
+      await Task.Run(async ()=>
       {
-        var url = item.Value.Replace(ImageTag, $"{QueryUrl}/attachments/");
-        try
+        var matches = Regex.Matches(content, ImageMatchPattern);
+        foreach (Match item in matches)
         {
-          var result = await _httpClient.GetStreamAsync(url);
-          var filePath = item.Value.Replace(ImageTag, CacheImageDirectory);
-          if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-          using (var file = File.Create(filePath))
+          var url = item.Value.Replace(ImageTag, $"{QueryUrl}/attachments/");
+          try
           {
-            await result.CopyToAsync(file);
+            var result = await _httpClient.GetStreamAsync(url);
+            var filePath = item.Value.Replace(ImageTag, CacheImageDirectory);
+            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+              Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            using (var file = File.Create(filePath))
+            {
+              await result.CopyToAsync(file);
+            }
+          }
+          catch (Exception ex)
+          {
           }
         }
-        catch (Exception ex)
-        {
-        }
-      }
-      return content.Replace(ImageTag, CacheImageDirectory);
+        processedContent = content.Replace(ImageTag, CacheImageDirectory);
+      });
+
+      return processedContent;
     }
 
     #endregion
