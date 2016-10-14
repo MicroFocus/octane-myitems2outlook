@@ -340,11 +340,17 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>AllOtherFiles</td><td>{01B34FBD-C08F-4850-9947-0FBE62972DD7}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ExcelAddIn1.Primary_output</td><td>{363EA66B-0257-4C3C-84F4-80766A031A7D}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISRegistryComponent</td><td>{99C9C9D8-9EE9-4ED5-BB77-F99BD76A345E}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Newtonsoft.Json.dll</td><td>{B9F32C1B-3B83-469C-B98D-BB9D3855C32D}</td><td>INSTALLDIR</td><td>8</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OctaneMyItems.Primary_output</td><td>{F92788B0-37FF-4B79-B607-9F6F2CDA8B95}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitems.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OctaneMyItemsSyncService.Primary_output</td><td>{05AB2B9E-2B4C-499E-B974-1B7C7CBD02F8}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitemssyncservice.pri</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Net.Http.Formatting.dll</td><td>{92A76D6E-77C3-49E2-9824-8CB1AA61733A}</td><td>INSTALLDIR</td><td>8</td><td/><td>system.net.http.formatting.d</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Office.Tools.Common.dll</td><td>{E10C3704-F44D-443C-9ED3-D836C6589F61}</td><td>INSTALLDIR</td><td>8</td><td/><td>microsoft.office.tools.commo</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Office.Tools.Outlook.dll</td><td>{BBC52DC8-88F1-4805-95EA-3F2D6FD3B336}</td><td>INSTALLDIR</td><td>8</td><td/><td>microsoft.office.tools.outlo</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td><td>{E3C6F4EB-10C2-4EB8-B1FA-B932E2B8A97D}</td><td>INSTALLDIR</td><td>8</td><td/><td>microsoft.visualstudio.tools</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{B9F32C1B-3B83-469C-B98D-BB9D3855C32D}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItems.Primary_output</td><td>{F92788B0-37FF-4B79-B607-9F6F2CDA8B95}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItems.Primary_output1</td><td>{6B3EBAB4-832E-454A-A086-31DE543E579C}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitems.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItemsSyncService.Primary_output</td><td>{05AB2B9E-2B4C-499E-B974-1B7C7CBD02F8}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OctaneMyItemsSyncService.Primary_output1</td><td>{505A5D45-8540-46E5-A3AC-F266263474FB}</td><td>INSTALLDIR</td><td>8</td><td/><td>octanemyitemssyncservice.pri</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Net.Http.Formatting.dll</td><td>{92A76D6E-77C3-49E2-9824-8CB1AA61733A}</td><td>INSTALLDIR</td><td>8</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1012,10 +1018,16 @@
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>INSTALLDIR</td><td>AllOtherFiles</td></row>
+		<row><td>INSTALLDIR</td><td>ExcelAddIn1.Primary_output</td></row>
 		<row><td>INSTALLDIR</td><td>ISRegistryComponent</td></row>
+		<row><td>INSTALLDIR</td><td>Microsoft.Office.Tools.Common.dll</td></row>
+		<row><td>INSTALLDIR</td><td>Microsoft.Office.Tools.Outlook.dll</td></row>
+		<row><td>INSTALLDIR</td><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td></row>
 		<row><td>INSTALLDIR</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>INSTALLDIR</td><td>OctaneMyItems.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>OctaneMyItems.Primary_output1</td></row>
 		<row><td>INSTALLDIR</td><td>OctaneMyItemsSyncService.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>OctaneMyItemsSyncService.Primary_output1</td></row>
 		<row><td>INSTALLDIR</td><td>System.Net.Http.Formatting.dll</td></row>
 	</table>
 
@@ -1822,8 +1834,14 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>SyncService</td><td>AllOtherFiles</td></row>
+		<row><td>SyncService</td><td>ExcelAddIn1.Primary_output</td></row>
 		<row><td>SyncService</td><td>ISRegistryComponent</td></row>
+		<row><td>SyncService</td><td>Microsoft.Office.Tools.Common.dll</td></row>
+		<row><td>SyncService</td><td>Microsoft.Office.Tools.Outlook.dll</td></row>
+		<row><td>SyncService</td><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td></row>
 		<row><td>SyncService</td><td>Newtonsoft.Json.dll</td></row>
+		<row><td>SyncService</td><td>OctaneMyItems.Primary_output1</td></row>
+		<row><td>SyncService</td><td>OctaneMyItemsSyncService.Primary_output1</td></row>
 		<row><td>SyncService</td><td>System.Net.Http.Formatting.dll</td></row>
 	</table>
 
@@ -1839,11 +1857,13 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Newtonsoft.Json.dll</td><td>1</td><td/></row>
-		<row><td>octanemyitems.primary_output</td><td>OctaneMyItems.Primary_output</td><td>OctaneMyItems.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItems&gt;|Built</td><td>3</td><td/></row>
+		<row><td>microsoft.office.tools.commo</td><td>Microsoft.Office.Tools.Common.dll</td><td>Microsoft.Office.Tools.Common.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Microsoft.Office.Tools.Common.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.office.tools.outlo</td><td>Microsoft.Office.Tools.Outlook.dll</td><td>Microsoft.Office.Tools.Outlook.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Microsoft.Office.Tools.Outlook.dll</td><td>1</td><td/></row>
+		<row><td>microsoft.visualstudio.tools</td><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td><td>1</td><td/></row>
+		<row><td>octanemyitems.dll.manifest</td><td>AllOtherFiles</td><td>OctaneMyItems.dll.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\OctaneMyItems.dll.manifest</td><td>1</td><td/></row>
+		<row><td>octanemyitems.primary_output</td><td>OctaneMyItems.Primary_output1</td><td>OctaneMyItems.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItems&gt;|Built</td><td>3</td><td/></row>
 		<row><td>octanemyitems.vsto</td><td>AllOtherFiles</td><td>OctaneMyItems.vsto</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\OctaneMyItems.vsto</td><td>1</td><td/></row>
-		<row><td>octanemyitemssyncservice.pri</td><td>OctaneMyItemsSyncService.Primary_output</td><td>OctaneMyItemsSyncService.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItemsSyncService&gt;|Built</td><td>3</td><td/></row>
-		<row><td>system.net.http.formatting.d</td><td>System.Net.Http.Formatting.dll</td><td>System.Net.Http.Formatting.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;VSSolutionFolder&gt;\OctaneMyItems\bin\Debug\System.Net.Http.Formatting.dll</td><td>1</td><td/></row>
+		<row><td>octanemyitemssyncservice.pri</td><td>OctaneMyItemsSyncService.Primary_output1</td><td>OctaneMyItemsSyncService.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OctaneMyItemsSyncService&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -1859,6 +1879,7 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>SyncService</td></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -1986,10 +2007,16 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>AllOtherFiles</td><td/><td/><td>_0132BDDA_76A0_4CFF_8C11_E76A370E5276_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ExcelAddIn1.Primary_output</td><td/><td/><td>_8F282797_CDF2_4A54_A1F2_D5420889F0E2_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISRegistryComponent</td><td/><td/><td>_F5056FFE_74CD_4DD9_BE33_9EF3A54D7F5A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Office.Tools.Common.dll</td><td/><td/><td>_F10AEF7B_77A8_4113_9493_43722EAEFD93_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Office.Tools.Outlook.dll</td><td/><td/><td>_E46462C4_96E0_4467_B689_02E9E468CBD6_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.VisualStudio.Tools.Applications.Runtime.dll</td><td/><td/><td>_DE61809A_0049_4916_82E1_209FC1BFFCE4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_BE050F6E_5ED9_4234_8524_6CC628764878_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OctaneMyItems.Primary_output</td><td/><td/><td>_DB42F385_EFDE_4E4E_81DD_858DF91304F2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OctaneMyItems.Primary_output1</td><td/><td/><td>_36748470_2BF7_4875_A619_A180DC781D7F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OctaneMyItemsSyncService.Primary_output</td><td/><td/><td>_0D2E9E41_908C_4FE1_8DB8_E54E423259CA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OctaneMyItemsSyncService.Primary_output1</td><td/><td/><td>_7001046F_160F_4441_83A3_A071AD679637_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Net.Http.Formatting.dll</td><td/><td/><td>_2BF4021C_217A_4DBA_826D_D6EE6F69A7DB_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -2291,6 +2318,7 @@
 		<col def="S255">TestValue</col>
 		<col def="i4">Type</col>
 		<row><td>CommonFilesFolder</td><td/><td/><td>1</td></row>
+		<row><td>ExcelAddIn1</td><td>ExcelAddIn1\ExcelAddIn1.csproj</td><td/><td>2</td></row>
 		<row><td>ISPROJECTDIR</td><td/><td/><td>1</td></row>
 		<row><td>ISProductFolder</td><td/><td/><td>1</td></row>
 		<row><td>ISProjectDataFolder</td><td/><td/><td>1</td></row>
@@ -4396,7 +4424,9 @@ RABlAGIAdQBnAAEARABlAGYAYQB1AGwAdAAgAEMAbwBuAGYAaQBnAHUAcgBhAHQAaQBvAG4A
 		<row><td>Registry2</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>Description</td><td>OctaneMyItems</td><td>ISRegistryComponent</td><td>0</td></row>
 		<row><td>Registry3</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>FriendlyName</td><td>OctaneMyItems</td><td>ISRegistryComponent</td><td>0</td></row>
 		<row><td>Registry4</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>LoadBehavior</td><td>#3</td><td>ISRegistryComponent</td><td>0</td></row>
-		<row><td>Registry5</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>Manifest</td><td>file:///C:/Users/xitian/Source/Repos/D22438_My_Items_2_Outlook/OctaneMyItems/OctaneMyItems/bin/Debug/OctaneMyItems.vsto|vstolocal</td><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry5</td><td>1</td><td>Software\Microsoft\Office\Outlook\Addins\OctaneMyItems</td><td>Manifest</td><td>file:///[INSTALLDIR]OctaneMyItems.vsto|vstolocal</td><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry8</td><td>1</td><td>Software\Microsoft\Office\Outlook\FormRegions\IPM.Task.Octane</td><td/><td/><td>ISRegistryComponent</td><td>0</td></row>
+		<row><td>Registry9</td><td>1</td><td>Software\Microsoft\Office\Outlook\FormRegions\IPM.Task.Octane</td><td>OctaneMyItems.OctaneTaskDetail</td><td>=OctaneMyItems</td><td>ISRegistryComponent</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
