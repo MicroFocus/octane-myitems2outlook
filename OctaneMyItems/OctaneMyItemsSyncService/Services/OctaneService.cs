@@ -40,9 +40,23 @@ namespace OctaneMyItemsSyncService.Services
 
     #region IOctaneGeneralService
 
+    public string OctaneServerUrl
+    {
+      get { return _octaneServer; }
+    }
+
     public User CurrentUser
     {
       get { return _currentUser; }
+    }
+
+    public int DefaultSharedspaceId
+    {
+      get { return _defaultSharespace.id.Value; }
+    }
+    public int DefaultWorkspaceId
+    {
+      get { return _defaultWorkspace.id.Value; }
     }
 
     public async Task<string> Login(string user, string password)
