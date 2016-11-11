@@ -111,13 +111,6 @@ namespace OctaneMyItems
         Height = 0;
         return;
       }
-      
-      int actualHeight = 0;
-      foreach (Control item in Controls)
-      {
-        actualHeight += item.Height;
-      }
-      Height = actualHeight;
     }
 
     private void InsertLinkLabelWithStatus(string urlReplace, string url, string status)

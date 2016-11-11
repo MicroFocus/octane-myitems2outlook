@@ -55,15 +55,13 @@
       // 
       this.tabControl1.Controls.Add(this.tabPage1);
       this.tabControl1.Controls.Add(this.tabPage2);
-      //this.tabControl1.Controls.Add(this.tp_testSteps);
-      //this.tabControl1.Controls.Add(this.tp_runSteps);
-      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tabControl1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabControl1.Location = new System.Drawing.Point(0, 0);
       this.tabControl1.Name = "tabControl1";
       this.tabControl1.Padding = new System.Drawing.Point(6, 6);
       this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(1005, 150);
+      this.tabControl1.Size = new System.Drawing.Size(1005, 800);
       this.tabControl1.TabIndex = 3;
       this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
       // 
@@ -74,7 +72,7 @@
       this.tabPage1.Location = new System.Drawing.Point(4, 31);
       this.tabPage1.Name = "tabPage1";
       this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPage1.Size = new System.Drawing.Size(997, 115);
+      this.tabPage1.Size = new System.Drawing.Size(997, 765);
       this.tabPage1.TabIndex = 0;
       this.tabPage1.Text = "Description";
       this.tabPage1.UseVisualStyleBackColor = true;
@@ -85,7 +83,7 @@
       this.wb_description.Location = new System.Drawing.Point(3, 3);
       this.wb_description.MinimumSize = new System.Drawing.Size(20, 20);
       this.wb_description.Name = "wb_description";
-      this.wb_description.Size = new System.Drawing.Size(991, 109);
+      this.wb_description.Size = new System.Drawing.Size(991, 759);
       this.wb_description.TabIndex = 0;
       // 
       // tabPage2
@@ -160,7 +158,7 @@
       this.Controls.Add(this.tabControl1);
       this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Name = "OctaneTaskDetail";
-      this.Size = new System.Drawing.Size(1005, 400);
+      this.Size = new System.Drawing.Size(1005, 800);
       this.FormRegionShowing += new System.EventHandler(this.OctaneTaskDetail_FormRegionShowing);
       this.FormRegionClosed += new System.EventHandler(this.OctaneTaskDetail_FormRegionClosed);
       this.tabControl1.ResumeLayout(false);
