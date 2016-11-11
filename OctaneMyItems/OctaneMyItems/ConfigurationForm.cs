@@ -36,8 +36,6 @@ namespace OctaneMyItems
 
     #region Public Properties
 
-    public string ServerUrl { get { return m_tbServerUrl.Text; } }
-    public string User { get { return m_tbUserName.Text; } }
     public string Token { get; private set; }
     public int? SharedpaceId { get; private set; }
     public int? WorkspaceId { get; private set; }

@@ -58,7 +58,7 @@ namespace OctaneMyItems
   //    tabControl1.TabPages.Remove(tp_testSteps);
       try
       {
-        var url = $"{ThisAddIn.Configuration.ServerUrl}/ui/entity-navigation?p={ThisAddIn.Configuration.SharedspaceId}/{ThisAddIn.Configuration.WorkspaceId}";
+        var url = $"{ThisAddIn.Configuration.OctaneService.OctaneServerUrl}/ui/entity-navigation?p={ThisAddIn.Configuration.OctaneService.DefaultSharedspaceId}/{ThisAddIn.Configuration.OctaneService.DefaultWorkspaceId}";
         if ("\"Defect\"".Equals(octane.ValidationText, StringComparison.OrdinalIgnoreCase))
         {
           Backlog backlog = JsonConvert.DeserializeObject<Backlog>(octane.Value);
@@ -125,13 +125,6 @@ namespace OctaneMyItems
         Height = 0;
         return;
       }
-      
-      int actualHeight = 0;
-      foreach (Control item in Controls)
-      {
-        actualHeight += item.Height;
-      }
-      Height = actualHeight;
     }
 
     private void InsertLinkLabelWithStatus(string urlReplace, string url, string status)

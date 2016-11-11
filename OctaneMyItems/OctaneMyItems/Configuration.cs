@@ -77,21 +77,6 @@ namespace OctaneMyItems
       get { return m_initialized; }
     }
 
-    public string ServerUrl
-    {
-      get { return m_serverUrl; }
-    }
-
-    public int SharedspaceId
-    {
-      get { return m_sharedspaceId; }
-    }
-
-    public int WorkspaceId
-    {
-      get { return m_workspaceId; }
-    }
-
     #endregion
 
     #region Private Methods
@@ -105,8 +90,8 @@ namespace OctaneMyItems
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
-        m_serverUrl = form.ServerUrl;
-        m_userName = form.User;
+        m_serverUrl = form.OctaneService.OctaneServerUrl;
+        m_userName = form.OctaneService.CurrentUser.name;
         m_token = form.Token;
         m_sharedspaceId = form.SharedpaceId.Value;
         m_workspaceId = form.WorkspaceId.Value;

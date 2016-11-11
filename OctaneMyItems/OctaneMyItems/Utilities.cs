@@ -32,6 +32,16 @@ namespace OctaneMyItems
           ?? (m_outlookApp = new Outlook.Application()); }
     }
 
+    private static Outlook.Folder tasksList;
+    private static Outlook.Folder TasksList
+    {
+      get
+      {
+        return tasksList ??
+            (tasksList = OutlookApp.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder);
+      }
+    }
+
     #endregion
 
     #region Public Methods
@@ -77,14 +87,11 @@ namespace OctaneMyItems
 
       await Task.Run(() =>
       {
-        var taskList = OutlookApp.Session.GetDefaultFolder(
-          Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
-
-        var oTask = GetExistOctaneTaskItem(taskList, octaneItem);
+        var oTask = GetExistOctaneTaskItem(TasksList, octaneItem);
         var isExist = oTask != null ? true : false;
         if (!isExist)
         {
-          oTask = taskList.Items.Add(Constants.OctaneTask) as Outlook.TaskItem;
+          oTask = TasksList.Items.Add(Constants.OctaneTask) as Outlook.TaskItem;
           oTask.UserProperties.Add(Constants.OctaneId, Outlook.OlUserPropertyType.olText);
           oTask.UserProperties.Add(Constants.Octane, Outlook.OlUserPropertyType.olText);
         }
@@ -97,12 +104,9 @@ namespace OctaneMyItems
     {
       await Task.Run(() =>
       {
-        var taskList = OutlookApp.Session.GetDefaultFolder(
-          Outlook.OlDefaultFolders.olFolderTasks) as Outlook.Folder;
-
         var needClearList = new List<Outlook.TaskItem>();
 
-        foreach (Outlook.TaskItem oldTask in taskList.Items)
+        foreach (Outlook.TaskItem oldTask in TasksList.Items)
         {
           if (oldTask.Categories != category) continue;
           var oldOctaneId = oldTask.UserProperties[Constants.OctaneId];

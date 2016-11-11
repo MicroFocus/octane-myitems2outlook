@@ -5,7 +5,10 @@ namespace OctaneMyItemsSyncService.Services
 {
   public interface IOctaneGeneralService
   {
+    string OctaneServerUrl { get; }
     User CurrentUser { get; }
+    int DefaultSharedspaceId { get; }
+    int DefaultWorkspaceId { get; }
 
     Task<string> Login(string user, string password);
     Task TryReLogin(string user, string token);
