@@ -71,29 +71,32 @@ namespace OctaneMyItems
           var octaneService = m_configuration.OctaneService;
           Utilities.AddOctaneCategories();
 
-          // sync backlog item
-          var myBacklogs = await octaneService.GetMyBacklogs();
-          await Utilities.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog);
-          foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
-          {
-            await Utilities.CreateTask(backlog).ConfigureAwait(false);
-          }
+          var task1 = Task.Factory.StartNew(() =>
+          { // sync backlog item
+            var myBacklogs = octaneService.GetMyBacklogs().Result;
+            Utilities.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog).Wait();
+            foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
+              Utilities.CreateTask(backlog).Wait();
+          });
 
-          // sync run
-          var runs = await octaneService.GetMyRuns();
-          await Utilities.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun);
-          foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
-          {
-            await Utilities.CreateTask(run).ConfigureAwait(false);
-          }
+          var task2 = Task.Factory.StartNew(() =>
+          { // sync run
+            var runs = octaneService.GetMyRuns().Result;
+            Utilities.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun).Wait();
+            foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
+              Utilities.CreateTask(run).Wait();
+          });
 
-          // sync test
-          var tests = await octaneService.GetMyTests();
-          await Utilities.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest);
-          foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
-          {
-            await Utilities.CreateTask(test).ConfigureAwait(false);
-          }
+          var task3 = Task.Factory.StartNew(() =>
+          { // sync test
+            var tests = octaneService.GetMyTests().Result;
+            Utilities.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest).Wait();
+            foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
+              Utilities.CreateTask(test).Wait();
+          });
+
+          await Task.WhenAll(new Task[] { task1, task2, task3 });
+
           UpdateCurrentSelection();
         }
       }
