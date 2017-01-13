@@ -67,7 +67,7 @@ namespace OctaneMyItems
       {
         if(ex.Message.Contains("401"))
         {
-          MessageBox.Show("You need reenter your credential");
+          MessageBox.Show(Messages.NeedEnterCredential);
           ShowConfiguration();
         }
       }
@@ -118,7 +118,7 @@ namespace OctaneMyItems
       {
         if (ex.Message.Contains("401"))
         {
-          MessageBox.Show("You need reenter your credential");
+          MessageBox.Show(Messages.NeedEnterCredential);
           ShowConfiguration();
         }
       }
@@ -147,7 +147,7 @@ namespace OctaneMyItems
       {
         if (ex.Message.Contains("401"))
         {
-          MessageBox.Show("You need reenter your credential");
+          MessageBox.Show(Messages.NeedEnterCredential);
           ShowConfiguration();
         }
       }
@@ -175,7 +175,7 @@ namespace OctaneMyItems
       {
         if (ex.Message.Contains("401"))
         {
-          MessageBox.Show("You need reenter your credential");
+          MessageBox.Show(Messages.NeedEnterCredential);
           ShowConfiguration();
         }
       }
@@ -203,7 +203,7 @@ namespace OctaneMyItems
       {
         if (ex.Message.Contains("401"))
         {
-          MessageBox.Show("You need reenter your credential");
+          MessageBox.Show(Messages.NeedEnterCredential);
           ShowConfiguration();
         }
       }
