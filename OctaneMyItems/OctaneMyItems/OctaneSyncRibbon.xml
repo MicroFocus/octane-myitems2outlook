@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+  (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+
+  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+ See the License for the specific language governing permissions and limitations under the License.
+
+-->
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="ALMOctane" label="ALM Octane">
+        <group id="OctaneMyItems" label="Octane My Items">
+          <button id="syncAll" onAction="OnSyncAllPressed" label="Sync All" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
+          <button id="syncBacklogItem" onAction="OnSyncBacklogItemPressed" label="Sync Backlog" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
+          <button id="syncTest" onAction="OnSyncTestPressed" label="Sync Test" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
+          <button id="syncRun" onAction="OnSyncRunPressed" label="Sync Run" size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
+          <button id="configuration" onAction="OnConfigurationPressed" label="Configuration ..." size="large" getImage="GetButtonIcon" getEnabled="GetEnable"/>
+      </group>
+      </tab>
+    </tabs>
+  </ribbon>
+  
+  <contextMenus>
+    <contextMenu idMso="ContextMenuTaskItem">
+      <button id="syncOneOctaneItemContextMenu" onAction="OnSyncOneOctaneItemClicked" getImage="GetButtonIcon" label="Sync this Octane Item"/>
+    </contextMenu>
+  </contextMenus>
+</customUI>
+
