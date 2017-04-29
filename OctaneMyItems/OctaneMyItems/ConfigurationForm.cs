@@ -130,7 +130,7 @@ namespace OctaneMyItems
         var workspaces = await OctaneService.GetWorkspaces(SharedpaceId.Value);
         if (workspaces.total_count <= 0)
         {
-          MessageBox.Show("There is no Workspaces");
+          MessageBox.Show(Messages.NoWorkspace);
           return;
         }
 
