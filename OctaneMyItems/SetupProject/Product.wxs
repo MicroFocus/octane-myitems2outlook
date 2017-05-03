@@ -30,8 +30,14 @@
       <Component Id="ProductComponent1">
         <File Source="$(var.OctaneMyItems.TargetPath)" />
       </Component>
+      <Component Id="ProductComponent1Config">
+        <File Source="$(var.OctaneMyItems.TargetPath).config" />
+      </Component>
       <Component Id="ProductComponent2">
         <File Source="$(var.OctaneMyItemsSyncService.TargetPath)" />
+      </Component>
+      <Component Id="License">
+        <File Source="$(var.OctaneMyItems.ProjectDir)License.txt" />
       </Component>
       <Component Id="RegistryEntries">
         <RegistryKey Root="HKCU"
@@ -52,6 +58,17 @@
       <Component Id ="Microsoft.Office.Tools.Commmon.dll">
         <File Id ="Microsoft.Office.Tools.Common.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.Common.dll"/>
       </Component>
+      <Component Id ="Microsoft.Office.Tools.Common.v4.0.Utilities.dll">
+        <File Id ="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.Common.v4.0.Utilities.dll"/>
+      </Component>
+      
+      <Component Id ="Microsoft.Office.Tools.v4.0.Framework.dll">
+        <File Id ="Microsoft.Office.Tools.v4.0.Framework.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.v4.0.Framework.dll"/>
+      </Component>
+      <Component Id ="Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll">
+        <File Id ="Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll"/>
+      </Component>
+      
       <Component Id="OctaneMyItems.dll.manifest">
         <File Id="OctaneMyItems.dll.manifest" Source="$(var.OctaneMyItems.TargetDir)OctaneMyItems.dll.Manifest"  Checksum="yes"/>
       </Component>
@@ -70,7 +87,7 @@
       <Component Id="System.Net.Http.Formatting.dll">
         <File Id="System.Net.Http.Formatting.dll" Source="$(var.OctaneMyItems.TargetDir)System.Net.Http.Formatting.dll"  Checksum="yes"/>
       </Component>
-      
+        
     </ComponentGroup>
 	</Fragment>
 </Wix>
