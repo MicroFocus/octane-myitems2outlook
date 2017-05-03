@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="OctaneMyItems Plugin" Language="1033" Version="1.0.0.0" Manufacturer="HPE" UpgradeCode="8ae4edef-3a99-48d3-8e6f-158e87e49964">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="OctaneMyItems Plugin" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="PRODUCTFOLDER" Name="HPE" >
+          <Directory Id="INSTALLFOLDER" Name="OctaneMyItems Plugin" />
+        </Directory>
+			</Directory>
+		</Directory>
+
+  <!--  <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTFOLDER" />
+    <UIRef Id="WixUI_InstallDir" />-->
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <Component Id="ProductComponent1">
+        <File Source="$(var.OctaneMyItems.TargetPath)" />
+      </Component>
+      <Component Id="ProductComponent2">
+        <File Source="$(var.OctaneMyItemsSyncService.TargetPath)" />
+      </Component>
+      <Component Id="RegistryEntries">
+        <RegistryKey Root="HKCU"
+              Key="Software\Microsoft\Office\Outlook\Addins\OctaneMyItems"
+              Action="createAndRemoveOnUninstall">
+          <RegistryValue Type="string" Name="Description" Value="OctaneMyItems" KeyPath="yes"/>
+          <RegistryValue Type="string" Name="FriendlyName" Value="OctaneMyItems" />
+          <RegistryValue Type="integer" Name="LoadBehavior" Value="3" />
+          <RegistryValue Type="string" Name="Manifest" Value="[INSTALLFOLDER]OctaneMyItems.vsto|vstolocal" />
+          </RegistryKey>
+        <RegistryKey Root="HKCU"
+                   Key="Software\Microsoft\Office\Outlook\FormRegions\IPM.Task.Octane"
+                   Action="createAndRemoveOnUninstall">
+
+          <RegistryValue Type="string" Name="OctaneMyItems.OctaneTaskDetail" Value="=OctaneMyItems" />
+        </RegistryKey>
+        </Component>
+      <Component Id ="Microsoft.Office.Tools.Commmon.dll">
+        <File Id ="Microsoft.Office.Tools.Common.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.Common.dll"/>
+      </Component>
+      <Component Id="OctaneMyItems.dll.manifest">
+        <File Id="OctaneMyItems.dll.manifest" Source="$(var.OctaneMyItems.TargetDir)OctaneMyItems.dll.Manifest"  Checksum="yes"/>
+      </Component>
+      <Component Id="Outlook.dll">
+        <File Id="Microsoft.Office.Tools.Outlook.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.Office.Tools.Outlook.dll"  Checksum="yes"/>
+      </Component>
+      <Component Id="Runtime.dll">
+        <File Id="Microsoft.VisualStudio.Tools.Applications.Runtime.dll" Source="$(var.OctaneMyItems.TargetDir)Microsoft.VisualStudio.Tools.Applications.Runtime.dll"  Checksum="yes"/>
+      </Component>
+      <Component Id="vsto">
+        <File Id="OctaneMyItems.vsto" Source="$(var.OctaneMyItems.TargetDir)OctaneMyItems.vsto"  Checksum="yes"/>
+      </Component>
+      <Component Id="json">
+        <File Id="Newtonsoft.Json.dll" Source="$(var.OctaneMyItems.TargetDir)Newtonsoft.Json.dll"  Checksum="yes"/>
+      </Component>
+      <Component Id="System.Net.Http.Formatting.dll">
+        <File Id="System.Net.Http.Formatting.dll" Source="$(var.OctaneMyItems.TargetDir)System.Net.Http.Formatting.dll"  Checksum="yes"/>
+      </Component>
+      
+    </ComponentGroup>
+	</Fragment>
+</Wix>
