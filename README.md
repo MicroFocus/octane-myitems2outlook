@@ -1,3 +1,4 @@
+
 # Overview
 This plugin utilizes the ALM Octane REST API to integrate with Microsoft Outlook. Using the plugin, you can import any ALM Octane items assigned to you into Microsoft Outlook and manage the items there, as tasks.
 
@@ -15,3 +16,8 @@ App/Plugin | Version
 This plugin | 1.0
 ALM Octane | 12.53.00 and later
 Microsoft Outlook | 2010 and later
+
+# How to build
+if you want to build this solution and generate a MSI by yourself, you need below things:
+1. Visual Studio 2015 or higher version
+2. Install WiX Toolset build tools and related extension for Visual Studio. You can download from http://wixtoolset.org/releases/
