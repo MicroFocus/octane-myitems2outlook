@@ -51,7 +51,7 @@ namespace OctaneMyItemsSyncService.Models
     //public object error_message { get; set; }
     //public object package { get; set; }
     //public Test test { get; set; }
-    public ListNode native_status { get; set; }
+    public StepType native_status { get; set; }
     public User run_by { get; set; }
     //public object test_level { get; set; }
     public DateTime? started { get; set; }
@@ -69,7 +69,7 @@ namespace OctaneMyItemsSyncService.Models
     public string name { get; set; }
     public string test_name { get; set; }
     //public object test_framework { get; set; }
-    public ListNode status { get; set; }
+    public StepType status { get; set; }
     public Run_Steps steps { get; set; }
     public Comments comments { get; set; }
 
@@ -100,16 +100,26 @@ namespace OctaneMyItemsSyncService.Models
     public string type { get; set; }
     public DateTime? creation_time { get; set; }
     public DateTime? last_modified { get; set; }
-    public string result { get; set; }
+    public RunStepResult result { get; set; }
     public string actual { get; set; }
     public string description { get; set; }
     public long id { get; set; }
     public int? order { get; set; }
     public int? version_stamp { get; set; }
-    public ListNode step_type { get; set; }
+    public StepType step_type { get; set; }
   }
 
-  public class ListNode
+  public class RunStepResult
+  {
+    public string type { get; set; }
+    public object activity_level { get; set; }
+    public string logical_name { get; set; }
+    public string name { get; set; }
+    public int? index { get; set; }
+    public int id { get; set; }
+  }
+
+  public class StepType
   {
     public string type { get; set; }
     public string logical_name { get; set; }

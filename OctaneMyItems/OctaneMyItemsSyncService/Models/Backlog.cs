@@ -31,7 +31,7 @@ namespace OctaneMyItemsSyncService.Models
     public string logical_name { get; set; }
     public object initial_estimate { get; set; }
     public int version_stamp { get; set; }
-    public ListNode item_type { get; set; }
+    public StepType item_type { get; set; }
     public Defect_Root_Level defect_root_level { get; set; }
     public Release release { get; set; }
     public Sprint sprint { get; set; }

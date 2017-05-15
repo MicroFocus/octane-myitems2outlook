@@ -83,7 +83,7 @@ namespace OctaneMyItemsSyncService.Models
   public class Test_Type
   {
     public int total_count { get; set; }
-    public ListNode[] data { get; set; }
+    public StepType[] data { get; set; }
   }
 
 

@@ -172,7 +172,7 @@ namespace OctaneMyItemsSyncService.Services
     public async Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false)
     {
       var url = $"{QueryUrl}/work_items";
-      if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
+      if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       var backlogs = await response.Content.ReadAsAsync<Backlogs>();
@@ -217,7 +217,7 @@ namespace OctaneMyItemsSyncService.Services
     public async Task<Runs> GetRuns(string parameters = null, bool indetail = false)
     {
       var url = $"{QueryUrl}/runs";
-      if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
+      if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       Runs runs = await response.Content.ReadAsAsync<Runs>();
@@ -272,7 +272,7 @@ namespace OctaneMyItemsSyncService.Services
     public async Task<Tests> GetTests(string parameters = null, bool indetail = false)
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests";
-      if (!string.IsNullOrEmpty(parameters)) url += "?" + parameters;
+      if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       Tests tests = await response.Content.ReadAsAsync<Tests>();
@@ -343,7 +343,7 @@ namespace OctaneMyItemsSyncService.Services
       }
     }
 
-    public string QueryTestsExpand { get; } = @"expand=$all{fields = name},author{fields=full_name},my_new_items_owner{fields=full_name},owner{fields=full_name},designer{fields=full_name},modified_by{fields=full_name},covered_content{fields=subtype}&fields=creation_time,covered_content,version_stamp,script_path,num_comments,pipelines,builds,last_modified,approved_version,phase,test_status,package,author,created,product_areas,estimated_duration,sha,user_tags,testing_tool_type,my_new_items_owner,has_comments,automation_identifier,name,automation_status,run_in_releases,description,manual,requirement_coverage,latest_version,subtype,steps_num,class_name,owner,has_attachments,global_text_search_result,test_level,designer,test_type,identity_hash,component,framework,modified_by";
+    public string QueryTestsExpand { get; } = @"expand=$all{fields = name},author{fields=full_name},owner{fields=full_name},designer{fields=full_name},modified_by{fields=full_name},covered_content{fields=subtype}&fields=creation_time,covered_content,version_stamp,script_path,num_comments,pipelines,builds,last_modified,approved_version,phase,test_status,package,author,created,product_areas,estimated_duration,sha,user_tags,testing_tool_type,has_comments,automation_identifier,name,automation_status,run_in_releases,description,manual,requirement_coverage,latest_version,subtype,steps_num,class_name,owner,has_attachments,global_text_search_result,test_level,designer,test_type,identity_hash,component,framework,modified_by";
 
     private string queryMyRuns;
     public string QueryMyRuns
