@@ -12,17 +12,19 @@
 	</Product>
 
 	<Fragment>
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+    
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
         <Directory Id="PRODUCTFOLDER" Name="HPE" >
           <Directory Id="INSTALLFOLDER" Name="OctaneMyItems Plugin" />
         </Directory>
 			</Directory>
-		</Directory>
-
-  <!--  <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTFOLDER" />
-    <UIRef Id="WixUI_InstallDir" />-->
-	</Fragment>
+		</Directory>    
+  </Fragment>
 
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
@@ -35,9 +37,6 @@
       </Component>
       <Component Id="ProductComponent2">
         <File Source="$(var.OctaneMyItemsSyncService.TargetPath)" />
-      </Component>
-      <Component Id="License">
-        <File Source="$(var.OctaneMyItems.ProjectDir)License.txt" />
       </Component>
       <Component Id="RegistryEntries">
         <RegistryKey Root="HKCU"
