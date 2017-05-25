@@ -46,18 +46,23 @@ namespace OctaneMyItems
 
     #region Constructor
 
-    public ConfigurationForm(string defaultServerUrl, string defaultUser,  int defaultSharedspaceId, int defaultWorkspaceId)
+    public ConfigurationForm(string defaultServerUrl, string defaultUser, int defaultSharedspaceId, int defaultWorkspaceId, string lastToken = "")
     {
       InitializeComponent();
 
       m_tbServerUrl.Text = defaultServerUrl;
       m_tbUserName.Text = defaultUser;
+      Token = lastToken;
+
       SharedpaceId = defaultSharedspaceId;
       WorkspaceId = defaultWorkspaceId;
 
       SetButtonState(m_btnOK, false);
 
       KeyPreview = true;
+
+      if (!string.IsNullOrEmpty(lastToken))
+        TryAutomaticLogin();
     }
 
     #endregion
@@ -86,27 +91,7 @@ namespace OctaneMyItems
       {
         OctaneService = new OctaneService(m_tbServerUrl.Text);
         Token = await OctaneService.Login(m_tbUserName.Text, m_tbPassword.Text);
-
-        var sharedSpaces = await OctaneService.GetSharedSpaces();
-        if (sharedSpaces.total_count <= 0)
-        {
-          MessageBox.Show("There is no Sharedspaces");
-          return;
-        }
-
-        m_cbSharedspaces.Items.AddRange(sharedSpaces.data);
-
-        //Set default Sharedspace
-        var defaultSharedspace = sharedSpaces.data[0];
-        if (SharedpaceId.HasValue)
-        {
-          var temp = sharedSpaces.data.FirstOrDefault(x => x.id == SharedpaceId);
-          if (temp != null)
-            defaultSharedspace = temp;
-        }
-        m_cbSharedspaces.SelectedItem = defaultSharedspace;
-
-        m_cbSharedspaces.Enabled = true;
+        PrepareSharedSpaces();
       }
       catch (Exception ex)
       {
@@ -207,6 +192,48 @@ namespace OctaneMyItems
     #endregion
 
     #region Private Methods
+
+    private async void TryAutomaticLogin()
+    {
+      m_mainPanel.Enabled = false;
+      try
+      {
+        OctaneService = new OctaneService(m_tbServerUrl.Text);
+        await OctaneService.TryReLogin(m_tbUserName.Text, Token);
+
+        PrepareSharedSpaces();
+        m_tbPassword.Text = "**********";
+      }
+      catch (Exception)
+      {
+        OctaneService = null;
+      }
+      finally
+      {
+        m_mainPanel.Enabled = true;
+      }
+    }
+
+    private async void PrepareSharedSpaces()
+    {
+      var sharedSpaces = await OctaneService.GetSharedSpaces();
+      if (sharedSpaces.total_count <= 0)
+        throw new Exception("There is no Sharedspaces");
+
+      m_cbSharedspaces.Items.AddRange(sharedSpaces.data);
+
+      //Set default Sharedspace
+      var defaultSharedspace = sharedSpaces.data[0];
+      if (SharedpaceId.HasValue)
+      {
+        var temp = sharedSpaces.data.FirstOrDefault(x => x.id == SharedpaceId);
+        if (temp != null)
+          defaultSharedspace = temp;
+      }
+      m_cbSharedspaces.SelectedItem = defaultSharedspace;
+
+      m_cbSharedspaces.Enabled = true;
+    }
 
     private void SetButtonState(Button button, bool isEnabled)
     {

@@ -86,7 +86,7 @@ namespace OctaneMyItems
       if (m_isConfigurationFormOpen) return;
       m_isConfigurationFormOpen = true;
 
-      var form = new ConfigurationForm(m_serverUrl, m_userName, m_sharedspaceId, m_workspaceId);
+      var form = new ConfigurationForm(m_serverUrl, m_userName, m_sharedspaceId, m_workspaceId, m_token);
       form.ShowDialog();
       if (form.DialogResult == DialogResult.OK)
       {
@@ -174,6 +174,7 @@ namespace OctaneMyItems
       }
       catch (System.Exception)
       {
+        m_token = null;
       }
       return false;
     }
