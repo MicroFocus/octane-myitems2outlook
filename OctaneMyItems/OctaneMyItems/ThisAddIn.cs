@@ -246,8 +246,9 @@ namespace OctaneMyItems
         if (explorer.Selection[1] is Outlook.TaskItem)
           ((Outlook.TaskItem)explorer.Selection[1]).Close(Outlook.OlInspectorClose.olSave);
       }
-      catch (System.Exception)
+      catch (System.Exception ex)
       {
+            m_log.Error(ex);
       }
     }
 
