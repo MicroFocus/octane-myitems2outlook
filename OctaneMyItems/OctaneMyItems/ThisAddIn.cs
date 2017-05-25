@@ -18,13 +18,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace OctaneMyItems
 {
   public partial class ThisAddIn
   {
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
     private static Configuration m_configuration;
     private void ThisAddIn_Startup(object sender, System.EventArgs e)
     {
+      m_log.Info("startup...");
       m_configuration = new Configuration(this.Application);
     }
 
@@ -32,6 +36,7 @@ namespace OctaneMyItems
     {
       // Note: Outlook no longer raises this event. If you have code that 
       //    must run when Outlook shuts down, see http://go.microsoft.com/fwlink/?LinkId=506785
+      m_log.Info("shutdown.");
     }
 
     #region Public Members
@@ -59,12 +64,14 @@ namespace OctaneMyItems
 
     public static async Task SyncOne()
     {
+      m_log.Info($"{nameof(SyncOne)}");
       try
       {
         await Utilities.SyncOne();
       }
       catch (HttpRequestException ex)
       {
+        m_log.Error(ex);
         if(ex.Message.Contains("401"))
         {
           MessageBox.Show(Messages.NeedEnterCredential);
@@ -73,11 +80,13 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         MessageBox.Show(ex.ToString());
       }
     }
     public static async Task SyncAll()
     {
+      m_log.Info($"{nameof(SyncAll)}");
       try
       {
         if (await GetConfiguration())
@@ -86,7 +95,8 @@ namespace OctaneMyItems
           Utilities.AddOctaneCategories();
 
           var task1 = Task.Factory.StartNew(() =>
-          { // sync backlog item
+          {
+            m_log.Info("sync backlog item");
             var myBacklogs = octaneService.GetMyBacklogs().Result;
             Utilities.ClearOldTaskItem(myBacklogs.data, Constants.CategoryOctaneBacklog).Wait();
             foreach (OctaneMyItemsSyncService.Models.Backlog backlog in myBacklogs.data)
@@ -94,7 +104,8 @@ namespace OctaneMyItems
           });
 
           var task2 = Task.Factory.StartNew(() =>
-          { // sync run
+          {
+            m_log.Info("sync run");
             var runs = octaneService.GetMyRuns().Result;
             Utilities.ClearOldTaskItem(runs.data, Constants.CategoryOctaneRun).Wait();
             foreach (OctaneMyItemsSyncService.Models.Run run in runs.data)
@@ -102,7 +113,8 @@ namespace OctaneMyItems
           });
 
           var task3 = Task.Factory.StartNew(() =>
-          { // sync test
+          {
+            m_log.Info("sync test");
             var tests = octaneService.GetMyTests().Result;
             Utilities.ClearOldTaskItem(tests.data, Constants.CategoryOctaneTest).Wait();
             foreach (OctaneMyItemsSyncService.Models.Test test in tests.data)
@@ -116,6 +128,7 @@ namespace OctaneMyItems
       }
       catch (HttpRequestException ex)
       {
+        m_log.Error(ex);
         if (ex.Message.Contains("401"))
         {
           MessageBox.Show(Messages.NeedEnterCredential);
@@ -124,12 +137,14 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         MessageBox.Show(ex.ToString());
       }
     }
 
     public static async Task SyncBacklog()
     {
+      m_log.Info($"{nameof(SyncBacklog)}");
       try
       {
         if (await GetConfiguration())
@@ -145,6 +160,7 @@ namespace OctaneMyItems
       }
       catch (HttpRequestException ex)
       {
+        m_log.Error(ex);
         if (ex.Message.Contains("401"))
         {
           MessageBox.Show(Messages.NeedEnterCredential);
@@ -153,11 +169,13 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         MessageBox.Show(ex.ToString());
       }
     }
     public static async Task SyncTest()
     {
+      m_log.Info($"{nameof(SyncTest)}");
       try
       {
         if (await GetConfiguration())
@@ -173,6 +191,7 @@ namespace OctaneMyItems
       }
       catch (HttpRequestException ex)
       {
+        m_log.Error(ex);
         if (ex.Message.Contains("401"))
         {
           MessageBox.Show(Messages.NeedEnterCredential);
@@ -181,11 +200,13 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         MessageBox.Show(ex.ToString());
       }
     }
     public static async Task SyncRun()
     {
+      m_log.Info($"{nameof(SyncRun)}");
       try
       {
         if (await GetConfiguration())
@@ -201,6 +222,7 @@ namespace OctaneMyItems
       }
       catch (HttpRequestException ex)
       {
+        m_log.Error(ex);
         if (ex.Message.Contains("401"))
         {
           MessageBox.Show(Messages.NeedEnterCredential);
@@ -209,6 +231,7 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         MessageBox.Show(ex.ToString());
       }
     } 

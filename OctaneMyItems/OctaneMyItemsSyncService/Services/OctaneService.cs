@@ -28,6 +28,8 @@ namespace OctaneMyItemsSyncService.Services
   {
     #region Private Fields
 
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
     private readonly string _octaneServer;
     private HttpClient _httpClient;
 
@@ -75,6 +77,7 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<string> Login(string user, string password)
     {
+      m_log.Info($"login with user:{user}");
       var cookieContainer = new CookieContainer();
       var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
       _httpClient = new HttpClient(handler);
@@ -107,6 +110,7 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task TryReLogin(string user, string token)
     {
+      m_log.Info($"Try relogin with user:{user}");
       var cookieContainer = new CookieContainer();
       cookieContainer.Add(new Uri(_octaneServer), new Cookie("OCTANE_USER", user));
       cookieContainer.Add(new Uri(_octaneServer), new Cookie("LWSSO_COOKIE_KEY", token));
@@ -123,6 +127,7 @@ namespace OctaneMyItemsSyncService.Services
     }
     public async Task Logout()
     {
+      m_log.Info("logout");
       _currentUser = null;
       _currentUserName = null;
       _defaultSharespace = null;
@@ -135,21 +140,28 @@ namespace OctaneMyItemsSyncService.Services
 
     public async Task<SharedSpaces> GetSharedSpaces()
     {
+      m_log.Info($"{nameof(GetSharedSpaces)}");
       var response = await _httpClient.GetAsync("api/shared_spaces");
       response.EnsureSuccessStatusCode();
+      m_log.Info($"{nameof(GetSharedSpaces)} successful");
       return await response.Content.ReadAsAsync<SharedSpaces>();
     }
     public async Task<Workspaces> GetWorkspaces(int sharespaceId)
     {
+      m_log.Info($"{nameof(GetWorkspaces)}");
       var response = await _httpClient.GetAsync($"/api/shared_spaces/{sharespaceId}/workspaces");
       response.EnsureSuccessStatusCode();
+      m_log.Info($"{nameof(GetWorkspaces)} successful");
       return await response.Content.ReadAsAsync<Workspaces>();
     }
 
     public async Task SetDefaultSpace(SharedSpace sharespace, Workspace workspace)
     {
+      m_log.Info($"{nameof(SetDefaultSpace)}");
       var response = await _httpClient.GetAsync($"api/shared_spaces/{sharespace.id}/workspaces/{workspace.id}/workspace_users?query=\"name='{_currentUserName}'\"");
       response.EnsureSuccessStatusCode();
+      m_log.Info($"{nameof(SetDefaultSpace)} successful");
+
       var result = await response.Content.ReadAsAsync<Users>();
       _currentUser = result.data[0];
 
@@ -173,19 +185,25 @@ namespace OctaneMyItemsSyncService.Services
     {
       var url = $"{QueryUrl}/work_items";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
+
+      m_log.Info($"{nameof(GetBacklogs)}, url:{url}, with comments:{indetail}");
+
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       var backlogs = await response.Content.ReadAsAsync<Backlogs>();
 
       if (indetail)
       {
+        m_log.Debug("begin fetch backlogs...");
         //get test script for each test
         foreach (Backlog backlog in backlogs.data)
         {
+          m_log.Debug($"fetch backlog: id:{backlog.id}, name{backlog.name}");
           //if (backlog.has_comments)//comment out this line because cannot retrive has_comments by the old way
           backlog.comments = await GetBacklogComments(backlog.id);
           backlog.description = await CacheImage(backlog.description);
         }
+        m_log.Debug("end fetch backlogs.");
       }
       return backlogs;
     }
@@ -218,15 +236,20 @@ namespace OctaneMyItemsSyncService.Services
     {
       var url = $"{QueryUrl}/runs";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
+
+      m_log.Info($"{nameof(GetRuns)}, url:{url}, with comments:{indetail}");
+
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       Runs runs = await response.Content.ReadAsAsync<Runs>();
 
       if (indetail)
       {
+        m_log.Debug("begin fetch runs...");
         //get run steps for each run
         foreach (Run run in runs.data)
         {
+          m_log.Debug($"fetch run: id:{run.id}, name:{run.name}");
           if (run.steps_num > 0)
             run.steps = await GetRunSteps(run.id);
 
@@ -234,6 +257,7 @@ namespace OctaneMyItemsSyncService.Services
           run.comments = await GetRunComments(run.id);
           run.description = await CacheImage(run.description);
         }
+        m_log.Debug("end fetch runs.");
       }
       return runs;
     }
@@ -273,20 +297,26 @@ namespace OctaneMyItemsSyncService.Services
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests";
       if (!string.IsNullOrEmpty(parameters)) url += "?" + Uri.EscapeDataString(parameters);
+
+      m_log.Info($"{nameof(GetTests)}, url:{url}, with comments:{indetail}");
+
       var response = await _httpClient.GetAsync(url);
       response.EnsureSuccessStatusCode();
       Tests tests = await response.Content.ReadAsAsync<Tests>();
       if (indetail)
       {
+        m_log.Debug("begin fetch tests...");
         //get test script for each test
         foreach (Test test in tests.data)
         {
+          m_log.Debug($"fetch test: id:{test.id}, name:{test.name}");
           if (!string.IsNullOrEmpty(test.script_path))
             test.script = (await GetTestScript(test.id)).script;
           //if (test.has_comments)//comment out this line because cannot retrive has_comments by the old way
           test.comments = await GetTestComments(test.id);
           test.description = await CacheImage(test.description);
         }
+        m_log.Debug("end fetch tests.");
       }
       return tests;
     }
@@ -373,6 +403,7 @@ namespace OctaneMyItemsSyncService.Services
 
     private async Task<Comments> GetComments(string owner_type, int owner_id)
     {
+      m_log.Debug("getting comments...");
       var url = $"{QueryUrl}/comments";
       url += "?fields=id,author,text,last_modified,creation_time";
       url += "&expand=author{fields=name,full_name}";
@@ -394,6 +425,7 @@ namespace OctaneMyItemsSyncService.Services
     {
       if (string.IsNullOrEmpty(content)) return "";
 
+      m_log.Debug("caching image");
       string processedContent = "";
       await Task.Run(async ()=>
       {

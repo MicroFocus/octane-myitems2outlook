@@ -24,7 +24,9 @@ namespace OctaneMyItems
   public partial class ConfigurationForm : Form
   {
     #region Private Fileds
-    
+
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
     private Point? m_startLocation;
 
     private readonly Color EnabledBackColor = Color.FromArgb(1, 169, 130);
@@ -195,6 +197,7 @@ namespace OctaneMyItems
 
     private async void TryAutomaticLogin()
     {
+      m_log.Info($"{nameof(TryAutomaticLogin)}");
       m_mainPanel.Enabled = false;
       try
       {
@@ -204,8 +207,9 @@ namespace OctaneMyItems
         PrepareSharedSpaces();
         m_tbPassword.Text = "**********";
       }
-      catch (Exception)
+      catch (Exception ex)
       {
+        m_log.Error(ex);
         OctaneService = null;
       }
       finally
