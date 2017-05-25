@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "OctaneMyItems.dll.config")]
 
 namespace OctaneMyItems
 {

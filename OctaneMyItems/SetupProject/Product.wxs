@@ -86,7 +86,9 @@
       <Component Id="System.Net.Http.Formatting.dll">
         <File Id="System.Net.Http.Formatting.dll" Source="$(var.OctaneMyItems.TargetDir)System.Net.Http.Formatting.dll"  Checksum="yes"/>
       </Component>
-        
+      <Component Id="log4net">
+        <File Id="log4net" Source="$(var.OctaneMyItems.TargetDir)log4net.dll"  Checksum="yes"/>
+      </Component>  
     </ComponentGroup>
 	</Fragment>
 </Wix>
