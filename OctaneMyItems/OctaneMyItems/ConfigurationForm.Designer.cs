@@ -442,9 +442,9 @@ namespace OctaneMyItems
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "ConfigurationForm";
-      this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Octane Configuration";
+      this.TopMost = true;
       this.m_mainPanel.ResumeLayout(false);
       this.m_mainPanel.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
