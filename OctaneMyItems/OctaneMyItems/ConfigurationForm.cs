@@ -280,8 +280,14 @@ namespace OctaneMyItems
         if (m_btnOK.Enabled) m_btnOK_Click(null, null);
         else if (m_btnAuthenticate.Enabled) m_btnAuthenticate_Click(null, null);
       }
-    } 
+    }
 
-    #endregion
-  }
+        #endregion
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Yes;
+            Close();
+        }
+    }
 }
