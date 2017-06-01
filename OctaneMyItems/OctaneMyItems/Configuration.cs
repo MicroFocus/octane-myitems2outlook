@@ -102,6 +102,11 @@ namespace OctaneMyItems
         SaveConfiguration();
       }
 
+      else if (form.DialogResult == DialogResult.Yes)
+            {
+                DeleteConfiguration();
+            }
+
       m_isConfigurationFormOpen = false;
     }
 
@@ -127,6 +132,25 @@ namespace OctaneMyItems
       }
       return false;
     }
+
+    private bool DeleteConfiguration()
+    {
+            MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
+            try
+            {
+                StorageItem item = folder.GetStorage(Constants.OctaneStoreageName, OlStorageIdentifierType.olIdentifyBySubject);
+               
+               
+                    item.Delete();
+              
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                m_log.Error(ex);
+            }
+            return false;
+        }
 
     private void SaveConfiguration()
     {
