@@ -147,7 +147,7 @@ namespace OctaneMyItems
             }
             catch (System.Exception ex)
             {
-                m_log.Error(ex);
+                //m_log.Error(ex);
             }
             return false;
         }
