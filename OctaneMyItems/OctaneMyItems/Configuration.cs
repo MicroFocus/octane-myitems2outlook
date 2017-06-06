@@ -24,6 +24,8 @@ namespace OctaneMyItems
   {
     #region Private Fileds
 
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
     private string m_serverUrl;
     private string m_userName;
     private string m_token;
@@ -53,9 +55,14 @@ namespace OctaneMyItems
       LoadConfiguration();
 
       if (await ConnectToServer())
+      {
         m_initialized = true;
+      }
       else
+      {
+        m_token = null;
         ShowConfigurationForm();
+      }
     }
 
     public void ShowConfiguration()
@@ -108,6 +115,8 @@ namespace OctaneMyItems
 
     private bool LoadConfiguration()
     {
+      m_log.Info($"{nameof(LoadConfiguration)}");
+
       MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
       try
       {
@@ -118,8 +127,8 @@ namespace OctaneMyItems
           m_userName = item.UserProperties.Find(Constants.User)?.Value;
           m_token = item.UserProperties.Find(Constants.Token)?.Value;
 
-          m_sharedspaceId = item.UserProperties.Find(Constants.SharedSpaceId)?.Value;
-          m_workspaceId = item.UserProperties.Find(Constants.WorkSpaceId)?.Value;
+          m_sharedspaceId = int.Parse(item.UserProperties.Find(Constants.SharedSpaceId)?.Value.ToString());
+          m_workspaceId = int.Parse(item.UserProperties.Find(Constants.WorkSpaceId)?.Value.ToString());
         }
         return true;
       }
