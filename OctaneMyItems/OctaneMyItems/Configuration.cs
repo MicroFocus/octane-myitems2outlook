@@ -37,6 +37,7 @@ namespace OctaneMyItems
     private bool m_initialized;
 
     private bool m_isConfigurationFormOpen;
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     #endregion
 
@@ -182,8 +183,9 @@ namespace OctaneMyItems
         await m_octaneService.SetDefaultSpace(sharedspace, workspaces.data.First(x => x.id == m_workspaceId));
         return true;
       }
-      catch (System.Exception)
+      catch (System.Exception ex)
       {
+        m_log.Error(ex);
         m_token = null;
       }
       return false;

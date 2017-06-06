@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "OctaneMyItems.dll.config")]
 
 namespace OctaneMyItems
 {
@@ -246,8 +246,9 @@ namespace OctaneMyItems
         if (explorer.Selection[1] is Outlook.TaskItem)
           ((Outlook.TaskItem)explorer.Selection[1]).Close(Outlook.OlInspectorClose.olSave);
       }
-      catch (System.Exception)
+      catch (System.Exception ex)
       {
+            m_log.Error(ex);
       }
     }
 

@@ -88,6 +88,7 @@ namespace OctaneMyItemsSyncService.Services
       var result = await _httpClient.PostAsync("/authentication/sign_in", content);
       result.EnsureSuccessStatusCode();
 
+      m_log.Info($"login successful with user:{user}");
       string token = "";
       foreach (Cookie cookie in cookieContainer.GetCookies(result.RequestMessage.RequestUri))
       {
@@ -446,6 +447,7 @@ namespace OctaneMyItemsSyncService.Services
           }
           catch (Exception ex)
           {
+                  m_log.Error(ex);
           }
         }
         processedContent = content.Replace(ImageTag, CacheImageDirectory);
