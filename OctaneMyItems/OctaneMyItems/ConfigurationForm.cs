@@ -97,6 +97,7 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+                m_log.Error(ex);
         MessageBox.Show(ex.Message);
       }
       finally
@@ -139,7 +140,8 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.Message);
+                m_log.Error(ex);
+                MessageBox.Show(ex.Message);
       }
     }
 
@@ -155,7 +157,8 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.Message);
+                m_log.Error(ex);
+                MessageBox.Show(ex.Message);
       }
     }
 

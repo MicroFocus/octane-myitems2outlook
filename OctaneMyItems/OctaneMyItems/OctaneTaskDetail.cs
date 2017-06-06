@@ -43,6 +43,7 @@ namespace OctaneMyItems
     #endregion
 
     private readonly Color ThemeColor = Color.FromArgb(0, 179, 136);
+    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     // Occurs before the form region is displayed.
     // Use this.OutlookItem to get a reference to the current Outlook item.
@@ -120,6 +121,7 @@ namespace OctaneMyItems
       }
       catch (Exception ex)
       {
+        m_log.Error(ex);
         System.Windows.Forms.MessageBox.Show(ex.Message);
         Visible = false;
         Height = 0;
@@ -201,10 +203,13 @@ namespace OctaneMyItems
     }
 
     private readonly string commentTemplate =
-@"<div style=""margin: 2px; font-family:Arial; font-size=12px; color:#555555;"">		<div style=""background-color: #ededed;height: 20px;"">
-      <span style=""font-family:Arial;font-size:12px;position:relative;color:#01a982;""> name </span>			<span style=""font-family:Arial;font-size:10px;position:relative;color:#777777;""> time </span>
+@"<div style=""margin: 2px; font-family:Arial; font-size=12px; color:#555555;"">
+		<div style=""background-color: #ededed;height: 20px;"">
+      <span style=""font-family:Arial;font-size:12px;position:relative;color:#01a982;""> name </span>
+			<span style=""font-family:Arial;font-size:10px;position:relative;color:#777777;""> time </span>
     </div>
-    <div> comment </div></div>";
+    <div> comment </div>
+</div>";
     private string GenerateCommentsHtml(Comments comments)
     {
       if (comments == null || comments.data == null || comments.data.Count() == 0)
