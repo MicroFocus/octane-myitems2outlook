@@ -37,7 +37,6 @@ namespace OctaneMyItems
     private bool m_initialized;
 
     private bool m_isConfigurationFormOpen;
-    private static readonly log4net.ILog m_log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
     #endregion
 
