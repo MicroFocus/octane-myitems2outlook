@@ -50,6 +50,9 @@ namespace OctaneMyItemsSyncService.Services
         _octaneServer = octaneServer.Substring(0, octaneServer.Length - 1);
       else
         _octaneServer = octaneServer;
+
+      ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
     }
 
     #endregion
