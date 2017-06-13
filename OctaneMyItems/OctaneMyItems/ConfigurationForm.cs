@@ -48,7 +48,7 @@ namespace OctaneMyItems
 
     #region Constructor
 
-    public ConfigurationForm(string defaultServerUrl, string defaultUser, int defaultSharedspaceId, int defaultWorkspaceId, string lastToken = "")
+    public ConfigurationForm(string defaultServerUrl, string defaultUser, int? defaultSharedspaceId, int? defaultWorkspaceId, string lastToken = "")
     {
       InitializeComponent();
 

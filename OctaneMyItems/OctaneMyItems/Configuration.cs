@@ -29,8 +29,8 @@ namespace OctaneMyItems
     private string m_serverUrl;
     private string m_userName;
     private string m_token;
-    private int m_sharedspaceId;
-    private int m_workspaceId;
+    private int? m_sharedspaceId;
+    private int? m_workspaceId;
 
     private IOctaneService m_octaneService;
     private Microsoft.Office.Interop.Outlook.Application m_application;
@@ -110,9 +110,9 @@ namespace OctaneMyItems
       }
 
       else if (form.DialogResult == DialogResult.Yes)
-            {
-                DeleteConfiguration();
-            }
+      {
+        DeleteConfiguration();
+      }
 
       m_isConfigurationFormOpen = false;
     }
@@ -145,22 +145,26 @@ namespace OctaneMyItems
 
     private bool DeleteConfiguration()
     {
-            MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
-            try
-            {
-                StorageItem item = folder.GetStorage(Constants.OctaneStoreageName, OlStorageIdentifierType.olIdentifyBySubject);
-               
-               
-                    item.Delete();
-              
-                return true;
-            }
-            catch (System.Exception ex)
-            {
-                //m_log.Error(ex);
-            }
-            return false;
-        }
+      MAPIFolder folder = m_application.Session.GetDefaultFolder(OlDefaultFolders.olFolderInbox);
+      try
+      {
+        StorageItem item = folder.GetStorage(Constants.OctaneStoreageName, OlStorageIdentifierType.olIdentifyBySubject);       
+        item?.Delete();
+
+        m_serverUrl = "";
+        m_userName = "";
+        m_token = "";
+        m_sharedspaceId = null;
+        m_workspaceId = null;
+
+        return true;
+      }
+      catch (System.Exception ex)
+      {
+        m_log.Error(ex);
+      }
+      return false;
+    }
 
     private void SaveConfiguration()
     {
