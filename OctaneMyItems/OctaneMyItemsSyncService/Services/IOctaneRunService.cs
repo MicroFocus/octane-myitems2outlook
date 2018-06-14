@@ -19,11 +19,11 @@ namespace OctaneMyItemsSyncService.Services
 {
   public interface IOctaneRunService
   {
-    Task<Run> GetRun(int id, bool byCurrentOwner);
+    Task<Run> GetRun(string id, bool byCurrentOwner);
     Task<Runs> GetRuns(string parameters = null, bool indetail = false);
     Task<Runs> GetMyRuns();
-    Task<Run> GetMyRun(int id);
-    Task<Comments> GetRunComments(int id);
-    Task<Run_Steps> GetRunSteps(int run_id);
+    Task<Run> GetMyRun(string id);
+    Task<Comments> GetRunComments(string id);
+    Task<Run_Steps> GetRunSteps(string run_id);
   }
 }

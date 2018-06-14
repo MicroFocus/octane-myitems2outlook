@@ -19,11 +19,11 @@ namespace OctaneMyItemsSyncService.Services
 {
   public interface IOctaneTestService
   {
-    Task<Test> GetTest(int id, bool byCurrentOwner);
+    Task<Test> GetTest(string id, bool byCurrentOwner);
     Task<Tests> GetTests(string parameters = null, bool indetail = false);
     Task<Tests> GetMyTests();
-    Task<Test> GetMyTest(int id);
-    Task<Comments> GetTestComments(int id);
-    Task<TestScript> GetTestScript(int test_id);
+    Task<Test> GetMyTest(string id);
+    Task<Comments> GetTestComments(string id);
+    Task<TestScript> GetTestScript(string test_id);
   }
 }

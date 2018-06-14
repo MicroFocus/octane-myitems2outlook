@@ -29,8 +29,8 @@ namespace OctaneMyItems
     private string m_serverUrl;
     private string m_userName;
     private string m_token;
-    private int? m_sharedspaceId;
-    private int? m_workspaceId;
+    private string m_sharedspaceId;
+    private string m_workspaceId;
 
     private IOctaneService m_octaneService;
     private Microsoft.Office.Interop.Outlook.Application m_application;
@@ -100,8 +100,8 @@ namespace OctaneMyItems
         m_serverUrl = form.OctaneService.OctaneServerUrl;
         m_userName = form.OctaneService.CurrentUser.name;
         m_token = form.Token;
-        m_sharedspaceId = form.SharedpaceId.Value;
-        m_workspaceId = form.WorkspaceId.Value;
+        m_sharedspaceId = form.SharedpaceId;
+        m_workspaceId = form.WorkspaceId;
         m_octaneService = form.OctaneService;
 
         m_initialized = true;
@@ -206,7 +206,7 @@ namespace OctaneMyItems
 
         var sharedSpaces = await m_octaneService.GetSharedSpaces();
         var sharedspace = sharedSpaces.data.FirstOrDefault(x => x.id == m_sharedspaceId);
-        var workspaces = await m_octaneService.GetWorkspaces(sharedspace.id.Value);
+        var workspaces = await m_octaneService.GetWorkspaces(sharedspace.id);
         await m_octaneService.SetDefaultSpace(sharedspace, workspaces.data.First(x => x.id == m_workspaceId));
         return true;
       }

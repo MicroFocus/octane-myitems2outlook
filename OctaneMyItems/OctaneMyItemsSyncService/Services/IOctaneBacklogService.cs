@@ -19,10 +19,10 @@ namespace OctaneMyItemsSyncService.Services
 {
   public interface IOctaneBacklogService
   {
-    Task<Backlog> GetBacklog(int id, bool byCurrentOwner);
+    Task<Backlog> GetBacklog(string id, bool byCurrentOwner);
     Task<Backlogs> GetBacklogs(string parameters = null, bool indetail = false);
     Task<Backlogs> GetMyBacklogs();
-    Task<Backlog> GetMyBacklog(int id);
-    Task<Comments> GetBacklogComments(int id);
+    Task<Backlog> GetMyBacklog(string id);
+    Task<Comments> GetBacklogComments(string id);
   }
 }

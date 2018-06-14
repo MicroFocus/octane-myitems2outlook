@@ -46,7 +46,7 @@ namespace OctaneMyItemsSyncService.Models
     public Detected_By detected_by { get; set; }
     public DateTime? closed_on { get; set; }
     public object quality_story_type { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
     public DateTime last_modified { get; set; }
     public Defect_Type defect_type { get; set; }
     public Phase phase { get; set; }
