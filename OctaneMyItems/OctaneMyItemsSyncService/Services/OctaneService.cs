@@ -107,7 +107,7 @@ namespace OctaneMyItemsSyncService.Services
         }
       }
 
-      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_REST_API_TECH_PREVIEW");
+      _httpClient.DefaultRequestHeaders.Add("ALM-OCTANE-TECH-PREVIEW", "true");
       _currentUserName = user;
 
       return token;
@@ -122,7 +122,7 @@ namespace OctaneMyItemsSyncService.Services
       _httpClient = new HttpClient(new HttpClientHandler() { CookieContainer = cookieContainer });
       _httpClient.BaseAddress = new Uri(_octaneServer);
       _httpClient.DefaultRequestHeaders.Add("LWSSO_COOKIE_KEY", token);
-      _httpClient.DefaultRequestHeaders.Add("HPECLIENTTYPE", "HPE_REST_API_TECH_PREVIEW");
+      _httpClient.DefaultRequestHeaders.Add("ALM-OCTANE-TECH-PREVIEW", "true");
 
       //Try to get some data to test if the tooken is expired
       await GetSharedSpaces();
