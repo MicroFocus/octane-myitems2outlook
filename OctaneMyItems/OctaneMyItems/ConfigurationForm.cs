@@ -39,8 +39,8 @@ namespace OctaneMyItems
     #region Public Properties
 
     public string Token { get; private set; }
-    public int? SharedpaceId { get; private set; }
-    public int? WorkspaceId { get; private set; }
+    public string SharedpaceId { get; private set; }
+    public string WorkspaceId { get; private set; }
     
     public IOctaneService OctaneService { get; private set; }
 
@@ -48,7 +48,7 @@ namespace OctaneMyItems
 
     #region Constructor
 
-    public ConfigurationForm(string defaultServerUrl, string defaultUser, int? defaultSharedspaceId, int? defaultWorkspaceId, string lastToken = "")
+    public ConfigurationForm(string defaultServerUrl, string defaultUser, string defaultSharedspaceId, string defaultWorkspaceId, string lastToken = "")
     {
       InitializeComponent();
 
@@ -115,7 +115,7 @@ namespace OctaneMyItems
         var sharedSpace = m_cbSharedspaces.SelectedItem as SharedSpace;
         SharedpaceId = sharedSpace.id;
 
-        var workspaces = await OctaneService.GetWorkspaces(SharedpaceId.Value);
+        var workspaces = await OctaneService.GetWorkspaces(SharedpaceId);
         if (workspaces.total_count <= 0)
         {
           MessageBox.Show(Messages.NoWorkspace);
@@ -127,7 +127,7 @@ namespace OctaneMyItems
 
         //Set feault Worksapce
         var defaultWorkspace = workspaces.data[0];
-        if (WorkspaceId.HasValue)
+        if (WorkspaceId != null && !WorkspaceId.Equals(""))
         {
           var temp = workspaces.data.FirstOrDefault(x => x.id == WorkspaceId);
           if (temp != null)
@@ -231,7 +231,7 @@ namespace OctaneMyItems
 
       //Set default Sharedspace
       var defaultSharedspace = sharedSpaces.data[0];
-      if (SharedpaceId.HasValue)
+      if (SharedpaceId != null && !SharedpaceId.Equals(""))
       {
         var temp = sharedSpaces.data.FirstOrDefault(x => x.id == SharedpaceId);
         if (temp != null)

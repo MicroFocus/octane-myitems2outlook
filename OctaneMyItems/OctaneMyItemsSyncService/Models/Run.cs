@@ -43,7 +43,7 @@ namespace OctaneMyItemsSyncService.Models
     //public object failed_since_build_info { get; set; }
     //public object executor { get; set; }
     //public object error_type { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
     //public object failed_build_age { get; set; }
     public DateTime? last_modified { get; set; }
     //public object class_name { get; set; }
@@ -79,7 +79,7 @@ namespace OctaneMyItemsSyncService.Models
   {
     public string type { get; set; }
     public string name { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
   }
 
   //public class Runs_In_Suite
@@ -103,7 +103,7 @@ namespace OctaneMyItemsSyncService.Models
     public RunStepResult result { get; set; }
     public string actual { get; set; }
     public string description { get; set; }
-    public long id { get; set; }
+    public string id { get; set; }
     public int? order { get; set; }
     public int? version_stamp { get; set; }
     public StepType step_type { get; set; }
@@ -116,7 +116,7 @@ namespace OctaneMyItemsSyncService.Models
     public string logical_name { get; set; }
     public string name { get; set; }
     public int? index { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
   }
 
   public class StepType
@@ -124,7 +124,7 @@ namespace OctaneMyItemsSyncService.Models
     public string type { get; set; }
     public string logical_name { get; set; }
     public string name { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
     public int index { get; set; }
   }
 }

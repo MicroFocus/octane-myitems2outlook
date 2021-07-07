@@ -69,13 +69,13 @@ namespace OctaneMyItemsSyncService.Services
       get { return _currentUser; }
     }
 
-    public int DefaultSharedspaceId
+    public string DefaultSharedspaceId
     {
-      get { return _defaultSharespace.id.Value; }
+      get { return _defaultSharespace.id; }
     }
-    public int DefaultWorkspaceId
+    public string DefaultWorkspaceId
     {
-      get { return _defaultWorkspace.id.Value; }
+      get { return _defaultWorkspace.id; }
     }
 
     public async Task<string> Login(string user, string password)
@@ -150,7 +150,7 @@ namespace OctaneMyItemsSyncService.Services
       m_log.Info($"{nameof(GetSharedSpaces)} successful");
       return await response.Content.ReadAsAsync<SharedSpaces>();
     }
-    public async Task<Workspaces> GetWorkspaces(int sharespaceId)
+    public async Task<Workspaces> GetWorkspaces(string sharespaceId)
     {
       m_log.Info($"{nameof(GetWorkspaces)}");
       var response = await _httpClient.GetAsync($"/api/shared_spaces/{sharespaceId}/workspaces");
@@ -179,7 +179,7 @@ namespace OctaneMyItemsSyncService.Services
 
     #region IOctaneBacklogService
 
-    public async Task<Backlog> GetBacklog(int id, bool byCurrentOwner)
+    public async Task<Backlog> GetBacklog(string id, bool byCurrentOwner)
     {
       var result = await GetBacklogs($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{EXPAND_ALL}", true);
       if (result?.data?.Count() > 0) return result.data[0];
@@ -215,13 +215,13 @@ namespace OctaneMyItemsSyncService.Services
     {
       return await GetBacklogs($"query=\"{QueryMyBacklogs}\"&{EXPAND_ALL}", true);
     }
-    public async Task<Backlog> GetMyBacklog(int id)
+    public async Task<Backlog> GetMyBacklog(string id)
     {
       var result = await GetBacklogs($"query=\"{QueryMyBacklogs};id={id}\"&{EXPAND_ALL}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
-    public async Task<Comments> GetBacklogComments(int id)
+    public async Task<Comments> GetBacklogComments(string id)
     {
       return await GetComments("work_item", id);
     }
@@ -230,7 +230,7 @@ namespace OctaneMyItemsSyncService.Services
 
     #region IOctaneRunService
 
-    public async Task<Run> GetRun(int id, bool byCurrentOwner)
+    public async Task<Run> GetRun(string id, bool byCurrentOwner)
     {
       var result = await GetRuns($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{EXPAND_ALL}", true);
       if (result?.data?.Count() > 0) return result.data[0];
@@ -269,17 +269,17 @@ namespace OctaneMyItemsSyncService.Services
     {
       return await GetRuns($"query=\"{QueryMyRuns}\"&skip_subtype_filter={true}&{EXPAND_ALL}", true);
     }
-    public async Task<Run> GetMyRun(int id)
+    public async Task<Run> GetMyRun(string id)
     {
       var result = await GetRuns($"query=\"{QueryMyRuns}\"&skip_subtype_filter={true}&{EXPAND_ALL}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
-    public async Task<Comments> GetRunComments(int id)
+    public async Task<Comments> GetRunComments(string id)
     {
       return await GetComments("run", id);
     }
-    public async Task<Run_Steps> GetRunSteps(int run_id)
+    public async Task<Run_Steps> GetRunSteps(string run_id)
     {
       var url = $"{QueryUrl}/run_steps?query=\"run={{id={run_id}}}\"";
       var response = await _httpClient.GetAsync(url);
@@ -291,7 +291,7 @@ namespace OctaneMyItemsSyncService.Services
 
     #region IOctaneTestService
 
-    public async Task<Test> GetTest(int id, bool byCurrentOwner)
+    public async Task<Test> GetTest(string id, bool byCurrentOwner)
     {
       var result = await GetTests($"query=\"{GenerateIDQuery(id, byCurrentOwner)}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
@@ -328,17 +328,17 @@ namespace OctaneMyItemsSyncService.Services
     {
       return await GetTests($"query=\"{QueryMyTests}\"&{QueryTestsExpand}", true);
     }
-    public async Task<Test> GetMyTest(int id)
+    public async Task<Test> GetMyTest(string id)
     {
       var result = await GetTests($"query=\"{QueryMyTests};id={id}\"&{QueryTestsExpand}", true);
       if (result?.data?.Count() > 0) return result.data[0];
       return null;
     }
-    public async Task<Comments> GetTestComments(int id)
+    public async Task<Comments> GetTestComments(string id)
     {
       return await GetComments("test", id);
     }
-    public async Task<TestScript> GetTestScript(int test_id)
+    public async Task<TestScript> GetTestScript(string test_id)
     {
       var url = $"/api/shared_spaces/{_defaultSharespace.id}/workspaces/{_defaultWorkspace.id}/tests/" + test_id + "/script";
       var response = await _httpClient.GetAsync(url);
@@ -405,7 +405,7 @@ namespace OctaneMyItemsSyncService.Services
       queryMyRuns = null;
     }
 
-    private async Task<Comments> GetComments(string owner_type, int owner_id)
+    private async Task<Comments> GetComments(string owner_type, string owner_id)
     {
       m_log.Debug("getting comments...");
       var url = $"{QueryUrl}/comments";
@@ -418,7 +418,7 @@ namespace OctaneMyItemsSyncService.Services
       return await response.Content.ReadAsAsync<Comments>();
     }
 
-    private string GenerateIDQuery(int id, bool byCurrentOwner)
+    private string GenerateIDQuery(string id, bool byCurrentOwner)
     {
       var query = $"id={id}";
       if (byCurrentOwner) query += $";owner={{id={_currentUser.id}}}";

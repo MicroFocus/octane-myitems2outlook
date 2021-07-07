@@ -35,7 +35,7 @@ namespace OctaneMyItemsSyncService.Models
     public int? latest_version { get; set; }
     public string subtype { get; set; }
     public int? steps_num { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
     //public string class_name { get; set; }
     public DateTime? last_modified { get; set; }
     public int? approved_version { get; set; }
@@ -92,7 +92,7 @@ namespace OctaneMyItemsSyncService.Models
     public string type { get; set; }
     public string name { get; set; }
     public string logical_name { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
     public int? index { get; set; }
 
   }
@@ -113,6 +113,6 @@ namespace OctaneMyItemsSyncService.Models
   {
     public string type { get; set; }
     public string name { get; set; }
-    public int id { get; set; }
+    public string id { get; set; }
   }
 }

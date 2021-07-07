@@ -27,6 +27,6 @@ namespace OctaneMyItemsSyncService.Models
     public string type { get; set; }
     public string logical_name { get; set; }
     public string name { get; set; }
-    public int? id { get; set; }
+    public string id { get; set; }
   }
 }

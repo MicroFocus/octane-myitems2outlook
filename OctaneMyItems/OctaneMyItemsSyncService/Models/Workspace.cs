@@ -31,7 +31,7 @@ namespace OctaneMyItemsSyncService.Models
     public int? version_stamp { get; set; }
     public string name { get; set; }
     public string description { get; set; }
-    public int? id { get; set; }
+    public string id { get; set; }
     public DateTime? last_modified { get; set; }
   }
 }

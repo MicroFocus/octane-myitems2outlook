@@ -29,7 +29,7 @@ namespace OctaneMyItemsSyncService.Models
         public DateTime creation_time { get; set; }
         public User author { get; set; }
         public string text { get; set; }
-        public int id { get; set; }
+        public string id { get; set; }
         public DateTime last_modified { get; set; }
     }
 }

@@ -21,15 +21,15 @@ namespace OctaneMyItemsSyncService.Services
   {
     string OctaneServerUrl { get; }
     User CurrentUser { get; }
-    int DefaultSharedspaceId { get; }
-    int DefaultWorkspaceId { get; }
+    string DefaultSharedspaceId { get; }
+    string DefaultWorkspaceId { get; }
 
     Task<string> Login(string user, string password);
     Task TryReLogin(string user, string token);
     Task Logout();
 
     Task<SharedSpaces> GetSharedSpaces();
-    Task<Workspaces> GetWorkspaces(int sharespaceId);
+    Task<Workspaces> GetWorkspaces(string sharespaceId);
     
     Task SetDefaultSpace(SharedSpace sharespace, Workspace workspace);
   }

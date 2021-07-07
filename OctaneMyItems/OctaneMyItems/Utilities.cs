@@ -62,17 +62,17 @@ namespace OctaneMyItems
             {
               if (id.Contains(Constants.BackLog))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetMyBacklog(int.Parse(id.Replace(Constants.BackLog, "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyBacklog(id.Replace(Constants.BackLog, ""));
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains(Constants.Run))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetMyRun(int.Parse(id.Replace(Constants.Run, "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyRun(id.Replace(Constants.Run, ""));
                 UpdateTaskItem(item, oTask);
               }
               else if (id.Contains(Constants.Test))
               {
-                var item = await ThisAddIn.Configuration.OctaneService.GetMyTest(int.Parse(id.Replace(Constants.Test, "")));
+                var item = await ThisAddIn.Configuration.OctaneService.GetMyTest(id.Replace(Constants.Test, ""));
                 UpdateTaskItem(item, oTask);
               }
             }
